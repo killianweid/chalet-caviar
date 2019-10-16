@@ -24,6 +24,11 @@ Version: 1.0
     margin-top: 20px;
 }
 
+.wpcf7-form-control{
+    border-radius: 16px !important;
+    background-color: #ffffffdb;
+}
+
 .wpcf7-submit{
     background-color: rgba(255,255,255,0.4) !important;
     border-radius: 15px !important;
@@ -50,18 +55,29 @@ Version: 1.0
     letter-spacing: 1px;
 }
 
-.facebook_link, .instagram_link{
+.facebook_link, .instagram_link, .twitter_link{
     background-color: #6D5549!important;
     color: white !important;
     width: 30px !important;
     border-radius: 20px;
 }
 
-.facebook_link:hover, .instagram_link:hover{
+.facebook_link:hover, .instagram_link:hover, .twitter_link:hover{
     background-color: goldenrod !important;
 }
 
+#containerfooter .menu li a{
+    background-color: #f2f2f2;
+    color: #6D5549 !important;
+    display: block;
+    max-width: 150px;
+    transition: background .4s ease-in-out;
+}
 
+#containerfooter .menu li a:hover{
+    color: white !important;
+    background-color: #f2f2f2;
+}
 
 
 
