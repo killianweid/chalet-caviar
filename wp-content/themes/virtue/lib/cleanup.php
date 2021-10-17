@@ -26,10 +26,13 @@ add_filter('wp_get_attachment_link', 'virtue_attachment_link_class', 10, 1);
 /**
  * Wrap embedded media
  */
-function virtue_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
-  	return '<div class="entry-content-asset videofit">' . $cache . '</div>';
+function virtue_embed_wrap( $cache, $url, $attr = '', $post_ID = '' ) {
+	if ( ! has_blocks() ) {
+		$cache = '<div class="entry-content-asset videofit">' . $cache . '</div>';
+	}
+	return $cache;
 }
-add_filter('embed_oembed_html', 'virtue_embed_wrap', 10, 4);
+add_filter( 'embed_oembed_html', 'virtue_embed_wrap', 90, 4 );
 
 /**
  * Add Bootstrap thumbnail styling to images with captions

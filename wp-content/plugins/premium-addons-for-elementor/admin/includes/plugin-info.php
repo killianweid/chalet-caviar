@@ -10,7 +10,7 @@ class Plugin_Info {
 
     public function create_about_menu() {
         
-        if ( ! Helper_Functions::is_show_about() ) {
+        if ( ! Helper_Functions::is_hide_about() ) {
                 add_submenu_page(
                 'premium-addons',
                 '',
@@ -39,7 +39,7 @@ class Plugin_Info {
                  <h1 class="pa-title-main"><?php echo Helper_Functions::name(); ?></h1>
                  <h3 class="pa-title-sub"><?php echo sprintf(__('Thank you for using %s. This plugin has been developed by %s and we hope you enjoy using it.','premium-addons-for-elementor'), Helper_Functions::name(),Helper_Functions::author()); ?></h3>
               </div>
-              <?php if( ! Helper_Functions::is_show_logo() ) : ?>
+              <?php if( ! Helper_Functions::is_hide_logo() ) : ?>
                 <div class="pa-title-right">
                     <img class="pa-logo" src="<?php echo PREMIUM_ADDONS_URL . 'admin/images/premium-addons-logo.png';?>">
                 </div>
@@ -56,7 +56,7 @@ class Plugin_Info {
                           <div class="pa-text-container">
                              <h4><?php echo __('What is Premium Addons?', 'premium-addons-for-elementor'); ?></h4>
                              <p><?php echo __('Premium Addons for Elementor extends Elementor Page Builder capabilities with many fully customizable widgets and addons that help you to build impressive websites with no coding required.', 'premium-addons-for-elementor'); ?></p>
-                             <?php if( ! defined('PREMIUM_PRO_ADDONS_VERSION') ) : ?>
+                             <?php if( ! Helper_Functions::check_papro_version() ) : ?>
                                 <p><?php echo __('Get more widgets and addons with ', 'premium-addons-for-elementor'); ?><strong><?php echo __('Premium Addons Pro', 'premium-addons-for-elementor'); ?></strong> <a href="<?php echo esc_url( $url ); ?>" target="_blank" ><?php echo __('Click Here', 'premium-addons-for-elementor'); ?></a><?php echo __(' to know more.', 'premium-addons-for-elementor'); ?></p>
                              <?php endif; ?>
                           </div>
@@ -74,7 +74,7 @@ class Plugin_Info {
                        </div>
                     </div>
                  </div>
-                <?php if( ! Helper_Functions::is_show_rate() ) : ?>
+                <?php if( ! Helper_Functions::is_hide_rate() ) : ?>
                     <div>
                         <p><?php echo __('Did you like Premium Addons for Elementor Plugin? Please ', 'premium-addons-for-elementor'); ?><a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-addons-for-elementor'); ?></a></p>
                     </div>

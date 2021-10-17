@@ -235,7 +235,7 @@ d.slice(e-c+1,e+c+2).addClass("slick-active").attr("aria-hidden","false")),0===a
 
 	if (sf.ios) {
 		// iOS click won't bubble to body, attach to closest possible
-		$(window).load(function() {
+		jQuery(window).on( 'load', function(){
 			$('body').children().on('click', $.noop);
 		});
 	}

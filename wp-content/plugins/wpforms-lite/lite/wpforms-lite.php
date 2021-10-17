@@ -4,8 +4,6 @@
  * WPForms Lite. Load Lite specific features/functionality.
  *
  * @since 1.2.0
- *
- * @package WPForms
  */
 class WPForms_Lite {
 
@@ -26,6 +24,10 @@ class WPForms_Lite {
 		add_action( 'wpforms_admin_page', array( $this, 'addons_page' ) );
 		add_action( 'wpforms_admin_settings_after', array( $this, 'settings_cta' ), 10, 1 );
 		add_action( 'wp_ajax_wpforms_lite_settings_upgrade', array( $this, 'settings_cta_dismiss' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueues' ) );
+
+		// Entries count logging for WPForms Lite.
+		add_action( 'wpforms_process_entry_save', array( $this, 'update_entry_count' ), 10, 3 );
 	}
 
 	/**
@@ -61,7 +63,9 @@ class WPForms_Lite {
 		$id = 1;
 
 		echo '<div class="wpforms-panel-content-section-title">';
-			esc_html_e( 'Notifications', 'wpforms-lite' );
+			echo '<span id="wpforms-builder-settings-notifications-title">';
+				esc_html_e( 'Notifications', 'wpforms-lite' );
+			echo '</span>';
 			echo '<button class="wpforms-builder-settings-block-add upgrade-modal" data-name="' . esc_attr__( 'Multiple notifications', 'wpforms-lite' ) . '">';
 				esc_html_e( 'Add New Notification', 'wpforms-lite' );
 			echo '</button>';
@@ -225,6 +229,29 @@ class WPForms_Lite {
 		</div>
 
 		<?php
+		do_action( 'wpforms_builder_settings_notifications_after', 'notifications', $settings );
+	}
+
+	/**
+	 * Lite admin scripts and styles.
+	 *
+	 * @since 1.5.7
+	 */
+	public function admin_enqueues() {
+
+		if ( ! wpforms_is_admin_page() ) {
+			return;
+		}
+
+		$min = wpforms_get_min_suffix();
+
+		// Admin styles.
+		wp_enqueue_style(
+			'wpforms-lite-admin',
+			WPFORMS_PLUGIN_URL . "lite/assets/css/admin{$min}.css",
+			array(),
+			WPFORMS_VERSION
+		);
 	}
 
 	/**
@@ -349,6 +376,7 @@ class WPForms_Lite {
 		</div>
 
 		<?php
+		do_action( 'wpforms_builder_settings_confirmations_after', 'confirmations', $settings );
 	}
 
 	/**
@@ -368,16 +396,15 @@ class WPForms_Lite {
 
 		$strings = array(
 			'disable_notifications' => sprintf(
-				wp_kses(
-					/* translators: %s - WPForms.com docs page URL. */
+				wp_kses( /* translators: %s - WPForms.com docs page URL. */
 					__( 'You\'ve just turned off notification emails for this form. Since entries are not stored in WPForms Lite, notification emails are recommended for collecting entry details. For setup steps, <a href="%s" target="_blank" rel="noopener noreferrer">please see our notification tutorial</a>.', 'wpforms-lite' ),
-					array(
-						'a'      => array(
-							'href'   => array(),
-							'target' => array(),
-							'rel'    => array(),
-						),
-					)
+					[
+						'a' => [
+							'href'   => [],
+							'target' => [],
+							'rel'    => [],
+						],
+					]
 				),
 				'https://wpforms.com/docs/setup-form-notification-wpforms/'
 			),
@@ -414,7 +441,7 @@ class WPForms_Lite {
 				printf(
 					wp_kses(
 						/* translators: %s - star icons. */
-						__( 'We know that you will truly love WPForms. It has over 2000+ five star ratings (%s) and is active on over 1 million websites.', 'wpforms-lite' ),
+						__( 'We know that you will truly love WPForms. It has over 5000+ five star ratings (%s) and is active on over 3 million websites.', 'wpforms-lite' ),
 						array(
 							'i' => array(
 								'class'       => array(),
@@ -463,7 +490,7 @@ class WPForms_Lite {
 			</p>
 		</div>
 		<script type="text/javascript">
-			jQuery( document ).ready( function ( $ ) {
+			jQuery( function ( $ ) {
 				$( document ).on( 'click', '.settings-lite-cta .dismiss', function ( event ) {
 					event.preventDefault();
 					$.post( ajaxurl, {
@@ -958,6 +985,16 @@ class WPForms_Lite {
 		$upgrade = wpforms_admin_upgrade_link( 'addons' );
 		$addons  = array(
 			array(
+				'name' => 'ActiveCampaign',
+				'desc' => 'WPForms ActiveCampaign addon lets you add contacts to your account, record events, add notes to contacts, and more.',
+				'icon' => 'addon-icon-activecampaign.png',
+			),
+			array(
+				'name' => 'Authorize.Net',
+				'desc' => 'WPForms Authorize.Net addon allows you to connect your WordPress site with Authorize.Net to easily collect payments, donations, and online orders.',
+				'icon' => 'addon-icon-authorize-net.png',
+			),
+			array(
 				'name' => 'Aweber',
 				'desc' => 'WPForms AWeber addon allows you to create AWeber newsletter signup forms in WordPress, so you can grow your email list.',
 				'icon' => 'addon-icon-aweber.png',
@@ -1013,8 +1050,8 @@ class WPForms_Lite {
 				'icon' => 'addon-icon-getresponse.png',
 			),
 			array(
-				'name' => 'MailChimp',
-				'desc' => 'WPForms MailChimp addon allows you to create MailChimp newsletter signup forms in WordPress, so you can grow your email list.',
+				'name' => 'Mailchimp',
+				'desc' => 'WPForms Mailchimp addon allows you to create Mailchimp newsletter signup forms in WordPress, so you can grow your email list.',
 				'icon' => 'addon-icon-mailchimp.png',
 			),
 			array(
@@ -1031,6 +1068,11 @@ class WPForms_Lite {
 				'name' => 'Post Submissions',
 				'desc' => 'WPForms Post Submissions addon makes it easy to have user-submitted content in WordPress. This front-end post submission form allow your users to submit blog posts without logging into the admin area.',
 				'icon' => 'addon-icon-post-submissions.png',
+			),
+			array(
+				'name' => 'Salesforce',
+				'desc' => 'WPForms Salesforce addon lets you add contacts to your Salesforce CRM account, so you can easily manage leads and relationships.',
+				'icon' => 'addon-icon-salesforce.png',
 			),
 			array(
 				'name' => 'Signatures',
@@ -1051,6 +1093,11 @@ class WPForms_Lite {
 				'name' => 'User Registration',
 				'desc' => 'WPForms User Registration addon allows you to create custom WordPress user registration forms.',
 				'icon' => 'addon-icon-user-registration.png',
+			),
+			array(
+				'name' => 'Webhooks',
+				'desc' => 'The Webhooks addon allows you to send form entry data to secondary tools and external services. No code required, and no need for a third party connector.',
+				'icon' => 'addon-icon-webhooks.png',
 			),
 			array(
 				'name' => 'Zapier',
@@ -1075,17 +1122,16 @@ class WPForms_Lite {
 				</p>
 			</div>
 			<div class="wpforms-admin-content">
-				<div class="addons-container" id="wpforms-admin-addons-list">
+				<div id="wpforms-admin-addons-list">
 					<div class="list">
 						<?php foreach ( $addons as $addon ) : ?>
 						<div class="addon-container">
 							<div class="addon-item">
 								<div class="details wpforms-clear" style="">
-									<img src="<?php echo WPFORMS_PLUGIN_URL; ?>assets/images/<?php echo $addon['icon']; ?>">
+									<img src="<?php echo esc_url( WPFORMS_PLUGIN_URL . 'assets/images/' . $addon['icon'] ); ?>">
 									<h5 class="addon-name">
 										<?php
-										printf(
-											/* translators: %s - addon name*/
+										printf( /* translators: %s - addon name. */
 											esc_html__( '%s Addon', 'wpforms-lite' ),
 											$addon['name']
 										);
@@ -1109,6 +1155,31 @@ class WPForms_Lite {
 		</div>
 
 		<?php
+	}
+
+	/**
+	 * Increase entries count once a form is submitted.
+	 *
+	 * @since 1.5.9
+	 *
+	 * @param array      $fields  Set of form fields.
+	 * @param array      $entry   Entry contents.
+	 * @param int|string $form_id Form ID.
+	 */
+	public function update_entry_count( $fields, $entry, $form_id ) {
+
+		if ( ! apply_filters( 'wpforms_dash_widget_allow_entries_count_lite', true ) ) {
+			return;
+		}
+
+		$form_id = absint( $form_id );
+
+		if ( empty( $form_id ) ) {
+			return;
+		}
+
+		$count = absint( get_post_meta( $form_id, 'wpforms_entries_count', true ) );
+		update_post_meta( $form_id, 'wpforms_entries_count', $count + 1 );
 	}
 }
 

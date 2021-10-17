@@ -23,7 +23,7 @@
 	  		focusConfirm: true
         }).then(function(json_data) {}, function(dismiss) {
             if (dismiss === 'cancel') { 
-                window.location.href = redirectionLink + settings.theme;
+                window.open( redirectionLink + settings.theme, '_blank' );
             } 
         });
     });

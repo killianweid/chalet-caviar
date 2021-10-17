@@ -3,11 +3,7 @@
 /**
  * GDPR Checkbox field.
  *
- * @package    WPForms
- * @author     WPForms
- * @since      1.4.6
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2018, WPForms LLC
+ * @since 1.4.6
  */
 class WPForms_Field_GDPR_Checkbox extends WPForms_Field {
 
@@ -74,7 +70,7 @@ class WPForms_Field_GDPR_Checkbox extends WPForms_Field {
 		// Define data.
 		$form_id  = absint( $form_data['id'] );
 		$field_id = absint( $field['id'] );
-		$choices  = $field['choices'];
+		$choices  = ! empty( $field['choices'] ) ? $field['choices'] : [];
 
 		// Remove primary input.
 		unset( $properties['inputs']['primary'] );
@@ -293,7 +289,7 @@ class WPForms_Field_GDPR_Checkbox extends WPForms_Field {
 	}
 
 	/**
-	 * Formats and sanitizes field.
+	 * Format and sanitize field.
 	 *
 	 * @since 1.4.6
 	 *

@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
         		$footertext = str_replace('[copyright]','&copy;',$footertext);
         		$footertext = str_replace('[the-year]',date('Y'),$footertext);
         		$footertext = str_replace('[site-name]',get_bloginfo('name'),$footertext);
-        		$footertext = str_replace('[theme-credit]','- WordPress Theme by <a href="https://www.kadencewp.com/" rel="nofollow" target="_blank">Kadence WP</a>',$footertext);
+        		$footertext = str_replace('[theme-credit]','- WordPress Theme by <a href="https://www.kadencewp.com/" rel="nofollow noopener noreferrer" target="_blank">Kadence WP</a>',$footertext);
         		 echo do_shortcode($footertext); ?></p>
     	</div>
 

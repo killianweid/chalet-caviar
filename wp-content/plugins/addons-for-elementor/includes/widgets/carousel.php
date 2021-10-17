@@ -30,7 +30,7 @@ class LAE_Carousel_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-carousel';
+        return 'lae-icon-carousel';
     }
 
     public function get_categories() {

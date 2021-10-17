@@ -22,7 +22,7 @@ if (isset($_POST['logging'])) {
 $cpnl_supported =  DUPX_U::$on_php_53_plus ? true : false;
 ?>
 
-<form id='s2-input-form' method="post" class="content-form"  data-parsley-validate="true" data-parsley-excluded="input[type=hidden], [disabled], :hidden">
+<form id='s2-input-form' method="post" class="content-form"  autocomplete="off" data-parsley-validate="true" data-parsley-excluded="input[type=hidden], [disabled], :hidden">
 
 	<?php if ($is_dbtest_mode) : ?>
 		<div class="hdr-main">Database Validation	</div>
@@ -30,7 +30,10 @@ $cpnl_supported =  DUPX_U::$on_php_53_plus ? true : false;
 		<div class="dupx-logfile-link">
 			<?php DUPX_View_Funcs::installerLogLink(); ?>
 		</div>
-		<div class="hdr-main">Step <span class="step">2</span> of 4: Install Database	</div>
+		<div class="hdr-main">
+			Step <span class="step">2</span> of 4: Install Database
+			<div class="sub-header">This step will install the database from the archive.</div>
+		</div>
 		<div class="s2-btngrp">
 			<input id="s2-basic-btn" type="button" value="Basic" class="active" onclick="DUPX.togglePanels('basic')" />
 			<input id="s2-cpnl-btn" type="button" value="cPanel" class="in-active" onclick="DUPX.togglePanels('cpanel')" />
@@ -43,8 +46,6 @@ $cpnl_supported =  DUPX_U::$on_php_53_plus ? true : false;
 		<input type="hidden" name="view" value="step2" />
 		<input type="hidden" name="csrf_token" value="<?php echo DUPX_CSRF::generate('step2'); ?>">
 		<input type="hidden" name="secure-pass" value="<?php echo DUPX_U::esc_attr($_POST['secure-pass']); ?>" />
-		<input type="hidden" name="bootloader" value="<?php echo DUPX_U::esc_attr($GLOBALS['BOOTLOADER_NAME']); ?>" />
-		<input type="hidden" name="archive" value="<?php echo DUPX_U::esc_attr($GLOBALS['FW_PACKAGE_PATH']); ?>" />
 		<input type="hidden" name="logging" id="logging" value="<?php echo DUPX_U::esc_attr($_POST['logging']); ?>" />
 		<input type="hidden" name="dbcolsearchreplace"/>
 		<input type="hidden" name="ctrl_action" value="ctrl-step2" />
@@ -100,11 +101,12 @@ $cpnl_supported =  DUPX_U::$on_php_53_plus ? true : false;
 <!-- =========================================
 VIEW: STEP 2 - AJAX RESULT
 Auto Posts to view.step3.php  -->
-<form id='s2-result-form' method="post" class="content-form" style="display:none">
+<form id='s2-result-form' method="post" class="content-form" style="display:none" autocomplete="off">
 
 	<div class="dupx-logfile-link"><?php DUPX_View_Funcs::installerLogLink(); ?></div>
 	<div class="hdr-main">
 		Step <span class="step">2</span> of 4: Install Database
+		<div class="sub-header">This step will install the database from the archive.</div>
 	</div>
 
 	<!--  POST PARAMS -->
@@ -113,8 +115,6 @@ Auto Posts to view.step3.php  -->
 		<input type="hidden" name="view" value="step3" />
 		<input type="hidden" name="csrf_token" value="<?php echo DUPX_CSRF::generate('step3'); ?>">
 		<input type="hidden" name="secure-pass" value="<?php echo DUPX_U::esc_attr($_POST['secure-pass']); ?>" />
-		<input type="hidden" name="bootloader" value="<?php echo DUPX_U::esc_attr($GLOBALS['BOOTLOADER_NAME']); ?>" />
-	<input type="hidden" name="archive" value="<?php echo DUPX_U::esc_attr($GLOBALS['FW_PACKAGE_PATH']); ?>" />
 		<input type="hidden" name="logging" id="ajax-logging" />
 		<input type="hidden" name="dbaction" id="ajax-dbaction" />
 		<input type="hidden" name="dbhost" id="ajax-dbhost" />
@@ -305,7 +305,7 @@ Auto Posts to view.step3.php  -->
 					$("#ajax-exe-safe-mode").val($("#exe-safe-mode").val());
 					$("#ajax-json").val(escape(JSON.stringify(data)));
 
-					<?php if (! $GLOBALS['DUPX_DEBUG']) : ?>
+					<?php if (!DUPX_Log::isLevel(DUPX_Log::LV_DEBUG)) : ?>
 						setTimeout(function () {$formResult.submit();}, 1000);
 					<?php endif; ?>
 					$('#progress-area').fadeOut(700);

@@ -119,7 +119,7 @@
                             ),
                         ) );
                     ?>
-                    <span class="screen-reader-text"><?php esc_attr_e( 'Press return or enter to expand', 'virtue' ); ?></span>
+                    <span class="screen-reader-text"><?php esc_html_e( 'Press return or enter to expand', 'virtue' ); ?></span>
                 </h3>
                 <ul class="accordion-section-content redux-main">
                     <?php

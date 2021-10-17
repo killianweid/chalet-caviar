@@ -36,11 +36,15 @@ class ShortPixelFolder extends ShortPixelEntity{
     public static function createBackUpFolder($folder = SHORTPIXEL_BACKUP_FOLDER)
     {
       // create backup folder
-      $result = @mkdir($folder, 0777, true);
+      $fs = \wpSPIO()->filesystem();
+      $dir = $fs->getDirectory($folder);
+      $result = false;
 
-      if ($result)
+      if (! $dir->exists() )
       {
-          self::protectDirectoryListing($folder);
+        $dir->check();
+        self::protectDirectoryListing($folder);
+        $result = true;
       }
 
       return $result;
@@ -50,13 +54,21 @@ class ShortPixelFolder extends ShortPixelEntity{
     {
       $rules = "Options -Indexes";
       /* Plugin init is before loading these admin scripts. So it can happen misc.php is not yet loaded */
-      if (! function_exists('insert_with_markers'))
+      // This crashes at 5.3.
+    /*  if (! function_exists('insert_with_markers'))
       {
-        require_once( ABSPATH . 'wp-admin/includes/misc.php' );
-      }
-      insert_with_markers( trailingslashit($dirname) . '.htaccess', 'ShortPixel', $rules);
+        //require_once( ABSPATH . 'wp-admin/includes/misc.php' );
+        return; // sadly then no.
+      } */
+
+  //    insert_with_markers( trailingslashit($dirname) . '.htaccess', 'ShortPixel', $rules);
       // note - this doesn't bring the same protection. Subdirs without files written will still be listable.
       file_put_contents(trailingslashit($dirname) . 'index.html', chr(0)); // extra - for non-apache
+
+      if (\wpSPIO()->env()->is_nginx) // nginx has no htaccess support.
+        return;
+
+      file_put_contents(trailingslashit($dirname) . '.htaccess', $rules);
 
     }
 
@@ -115,7 +127,9 @@ class ShortPixelFolder extends ShortPixelEntity{
         return false;
     }
 
+/*
     public function countFiles($path = null) {
+
         $size = 0;
         $path = $path ? $path : $this->getPath();
         if($path == null) {
@@ -136,7 +150,7 @@ class ShortPixelFolder extends ShortPixelEntity{
             }
         }
         return $size;
-    }
+    } */
 
     public function getFileList($onlyNewerThan = 0) {
         $fileListPath = tempnam(SHORTPIXEL_UPLOADS_BASE . '/', 'sp_');
@@ -188,10 +202,12 @@ class ShortPixelFolder extends ShortPixelEntity{
         }
     }
 
+/*
     public function getFolderContentsChangeDate() {
         return self::getFolderContentsChangeDateRecursive($this->getPath(), 0, strtotime($this->getTsUpdated()));
     }
-
+*/
+/*
     protected static function getFolderContentsChangeDateRecursive($path, $mtime, $refMtime) {
         $ignore = array('.','..');
         if(!is_writable($path)) {
@@ -208,7 +224,7 @@ class ShortPixelFolder extends ShortPixelEntity{
             }
         }
         return $mtime;
-    }
+    } */
 
     function getId() {
         return $this->id;
@@ -231,7 +247,7 @@ class ShortPixelFolder extends ShortPixelEntity{
     }
 
     function setPath($path) {
-        $this->path = $path;
+        $this->path = trailingslashit($path);
     }
 
     function getType() {

@@ -98,11 +98,16 @@ function lae_get_taxonomy_info( $taxonomy )
         $output .= '<span class="lae-terms">';
         $term_count = 0;
         foreach ( $terms as $term ) {
-            if ( $term_count != 0 ) {
-                $output .= ', ';
+            $term_link = get_term_link( $term->slug, $taxonomy );
+            
+            if ( !empty($term_link) && !is_wp_error( $term_link ) ) {
+                if ( $term_count != 0 ) {
+                    $output .= ', ';
+                }
+                $output .= '<a href="' . get_term_link( $term->slug, $taxonomy ) . '">' . $term->name . '</a>';
+                $term_count = $term_count + 1;
             }
-            $output .= '<a href="' . get_term_link( $term->slug, $taxonomy ) . '">' . $term->name . '</a>';
-            $term_count = $term_count + 1;
+        
         }
         $output .= '</span>';
     }
@@ -376,7 +381,12 @@ function lae_get_sysinfo()
     return $return;
 }
 
-function lae_get_image_html( $image_setting, $image_size_key, $settings )
+function lae_get_image_html(
+    $image_setting,
+    $image_size_key,
+    $settings,
+    $disable_lazy_load = false
+)
 {
     $image_html = '';
     $attachment_id = $image_setting['id'];
@@ -386,33 +396,54 @@ function lae_get_image_html( $image_setting, $image_size_key, $settings )
     }
     $size = $settings[$image_size_key . '_size'];
     $image_class = 'lae-image';
+    if ( $disable_lazy_load ) {
+        $image_class .= ' ' . lae_disable_lazy_load_classes();
+    }
+    if ( isset( $image_setting['class'] ) ) {
+        $image_class .= ' ' . $image_setting['class'];
+    }
     // If is the new version - with image size.
     $image_sizes = get_intermediate_image_sizes();
     $image_sizes[] = 'full';
     
     if ( !empty($attachment_id) && in_array( $size, $image_sizes ) ) {
         $image_class .= " attachment-{$size} size-{$size}";
-        $image_attr = array(
+        $image_attrs = array(
             'class' => trim( $image_class ),
             'alt'   => get_the_title( $attachment_id ),
             'title' => lae_get_image_alt( $attachment_id ),
         );
+        if ( $disable_lazy_load ) {
+            $image_attrs = array_merge( $image_attrs, array(
+                'data-no-lazy' => 1,
+                'loading'      => 'eager',
+            ) );
+        }
         $image_html .= wp_get_attachment_image(
             $attachment_id,
             $size,
             false,
-            $image_attr
+            $image_attrs
         );
     } else {
         $image_src = Group_Control_Image_Size::get_attachment_image_src( $attachment_id, $image_size_key, $settings );
         if ( !$image_src && isset( $image_setting['url'] ) ) {
             $image_src = $image_setting['url'];
         }
+        $size = $settings[$image_size_key . '_size'];
+        $custom_dimension = $settings[$image_size_key . '_custom_dimension'];
         
         if ( !empty($image_src) ) {
+            $lazy_load_attr = '';
+            if ( $disable_lazy_load ) {
+                $lazy_load_attr = 'loading=eager data-no-lazy=1';
+            }
             $image_class_html = ( !empty($image_class) ? ' class="' . $image_class . '"' : '' );
             $image_html .= sprintf(
-                '<img src="%s" title="%s" alt="%s"%s />',
+                '<img width="%s" height="%s" %s src="%s" title="%s" alt="%s"%s />',
+                esc_attr( $custom_dimension['width'] ),
+                esc_attr( $custom_dimension['height'] ),
+                esc_attr( $lazy_load_attr ),
                 esc_attr( $image_src ),
                 get_the_title( $attachment_id ),
                 lae_get_image_alt( $attachment_id ),
@@ -576,4 +607,50 @@ function lae_get_template_part( $template_name, $settings )
     }
     
     return null;
+}
+
+function lae_shorten_number_format( $n, $precision = 1 )
+{
+    
+    if ( $n < 1000 ) {
+        // Anything less than a thousand
+        $n_format = number_format( $n );
+    } else {
+        
+        if ( $n < 1000000 ) {
+            // Anything less than a billion
+            $n_format = number_format( $n / 1000, $precision ) . 'k';
+        } else {
+            
+            if ( $n < 1000000000 ) {
+                // Anything less than a billion
+                $n_format = number_format( $n / 1000000, $precision ) . 'M';
+            } else {
+                // At least a billion
+                $n_format = number_format( $n / 1000000000, $precision ) . 'B';
+            }
+        
+        }
+    
+    }
+    
+    return $n_format;
+}
+
+function lae_disable_lazy_load_classes()
+{
+    // no-lazyload - wp-smushit
+    // data-no-lazy="1" - wprocket, rocket-lazy-load
+    // skip-lazy - jetpack, SG Optimizer using filter in functions.php
+    // exclude-me - autoptimize
+    // a3-notlazy - a3-lazy-load
+    return apply_filters( 'lae_disable_lazy_load_classes', 'skip-lazy no-lazyload exclude-me a3-notlazy' );
+}
+
+function lae_template_error( $error_string )
+{
+    $output = '<div class="lae-template-error">';
+    $output .= $error_string;
+    $output .= '</div>';
+    return $output;
 }

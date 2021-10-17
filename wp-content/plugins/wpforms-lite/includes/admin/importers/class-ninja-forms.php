@@ -2,11 +2,7 @@
 /**
  * Ninja Forms Importer class.
  *
- * @package    WPForms
- * @author     WPForms
- * @since      1.4.2
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2017, WPForms LLC
+ * @since 1.4.2
  */
 class WPForms_Ninja_Forms extends WPForms_Importer {
 
@@ -96,7 +92,7 @@ class WPForms_Ninja_Forms extends WPForms_Importer {
 		check_ajax_referer( 'wpforms-admin', 'nonce' );
 
 		// Check for permissions.
-		if ( ! wpforms_current_user_can() ) {
+		if ( ! wpforms_current_user_can( 'create_forms' ) ) {
 			wp_send_json_error();
 		}
 
@@ -122,7 +118,7 @@ class WPForms_Ninja_Forms extends WPForms_Importer {
 				'form_desc'              => '',
 				'submit_text'            => esc_html__( 'Submit', 'wpforms-lite' ),
 				'submit_text_processing' => esc_html__( 'Sending', 'wpforms-lite' ),
-				'honeypot'               => '1',
+				'antispam'               => '1',
 				'notification_enable'    => '1',
 				'notifications'          => array(
 					1 => array(

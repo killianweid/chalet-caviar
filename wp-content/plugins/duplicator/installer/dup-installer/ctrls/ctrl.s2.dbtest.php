@@ -148,36 +148,46 @@ class DUPX_DBTest
 		$this->basicCleanup();
 	}
 
-	/**
-	 * Verify Host Connection
-	 *
-	 * @return null
-	 */
-	private function r10All(&$test)
-	{
-		try {
+    /**
+     * Verify Host Connection
+     *
+     * @return null
+     */
+    private function r10All(&$test)
+    {
+        try {
 
-			if ($this->isFailedState($test)) {
-				return;
-			}
+            if ($this->isFailedState($test)) {
+                return;
+            }
 
-			$this->dbh = DUPX_DB::connect($this->in->dbhost, $this->in->dbuser, $this->in->dbpass, null, $this->in->dbport);
-			if ($this->dbh) {
-				$test['pass']	 = 1;
-				$test['info']	 = "The user <b>[".htmlentities($this->in->dbuser)."]</b> successfully connected to the database server on host <b>[".htmlentities($this->in->dbhost)."]</b>.";
-			} else {
-				$msg = "Unable to connect the user <b>[".htmlentities($this->in->dbuser)."]</b> to the host <b>[".htmlentities($this->in->dbhost)."]</b>";
-				$test['pass']	 = 0;
-				$test['info']	 = (mysqli_connect_error())
-								? "{$msg}. The server error response was: <i>" . htmlentities(mysqli_connect_error()) . '</i>'
-								: "{$msg}. Please contact your hosting provider or server administrator.";
-			}
+            //Host check
+            $parsed_host_info = DUPX_DB::parseDBHost($this->in->dbhost);
+            $parsed_host      = $parsed_host_info[0];
+            $isInvalidHost    = $parsed_host == 'http' || $parsed_host == "https";
 
-		} catch (Exception $ex) {
-			$test['pass']	 = 0;
-			$test['info']	 = "Unable to connect the user <b>[".htmlentities($this->in->dbuser)."]</b> to the host <b>[".htmlentities($this->in->dbhost)."]</b>.<br/>" . $this->formatError($ex);
-		}
-	}
+            if ($isInvalidHost) {
+                $fixed_host = DupLiteSnapLibIOU::untrailingslashit(str_replace($parsed_host."://","",$this->in->dbhost));
+                $test['pass'] = 0;
+                $test['info'] = "<b>[".htmlentities($this->in->dbhost)."]</b> is not a valid input. Try using <b>[$fixed_host]</b> instead.";
+                return;
+            }
+
+            $this->dbh = DUPX_DB::connect($this->in->dbhost, $this->in->dbuser, $this->in->dbpass, null);
+            if ($this->dbh) {
+                $test['pass'] = 1;
+                $test['info'] = "The user <b>[".htmlentities($this->in->dbuser)."]</b> successfully connected to the database server on host <b>[".htmlentities($this->in->dbhost)."]</b>.";
+            } else {
+                $msg          = "Unable to connect the user <b>[".htmlentities($this->in->dbuser)."]</b> to the host <b>[".htmlentities($this->in->dbhost)."]</b>";
+                $test['pass'] = 0;
+                $test['info'] = (mysqli_connect_error()) ? "{$msg}. The server error response was: <i>".htmlentities(mysqli_connect_error()).'</i>' : "{$msg}. Please contact your hosting provider or server administrator.";
+            }
+        }
+        catch (Exception $ex) {
+            $test['pass'] = 0;
+            $test['info'] = "Unable to connect the user <b>[".htmlentities($this->in->dbuser)."]</b> to the host <b>[".htmlentities($this->in->dbhost)."]</b>.<br/>".$this->formatError($ex);
+        }
+    }
 
 	/**
 	 * Check Server Version
@@ -429,7 +439,7 @@ class DUPX_DBTest
 
 			if ($invalid === 1) {
 				$test['pass']	 = 0;
-				$test['info']	 = "Please check the 'Legacy' checkbox above under options and then click the 'Retry Test' link.<br/>"
+				$test['info']	 = "Please check the 'Legacy' checkbox in the options section and then click the 'Retry Test' link.<br/>"
 								 . "<small>Details: The database where the package was created has a collation that is not supported on this server.  This issue happens "
 								 . "when a site is moved from an older version of MySQL to a newer version of MySQL. The recommended fix is to update MySQL on this server to support "
 								 . "the collation that is failing below.  If that is not an option for your host then continue by clicking the 'Legacy' checkbox above.  For more "
@@ -484,7 +494,7 @@ class DUPX_DBTest
 								 . "</small>";
 			} else {
 				$test['pass'] = 1;
-				$test['info'] = "The installer have not detected GTID mode.";
+				$test['info'] = "The installer has not detected GTID mode.";
 			}
 		} catch (Exception $ex) {			
 			//Return '1' to allow user to continue

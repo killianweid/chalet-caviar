@@ -6,7 +6,6 @@
 
     <div class="wp-shortpixel-options wp-shortpixel-tab-content" style="visibility: hidden">
 
-    <p><?php printf(__('New images uploaded to the Media Library will be optimized automatically.<br/>If you have existing images you would like to optimize, you can use the <a href="%supload.php?page=wp-short-pixel-bulk">Bulk Optimization Tool</a>.','shortpixel-image-optimiser'),get_admin_url());?></p>
     <table class="form-table">
         <tbody>
             <tr>
@@ -120,6 +119,10 @@
                     <p class="settings-info"><?php _e('You <strong>need to have backup active</strong> in order to be able to restore images to originals or to convert from Lossy to Lossless and back.','shortpixel-image-optimiser');?></p>
                 </td>
             </tr>
+            <tr class='view-notice-row backup_warning'>
+              <th scope='row'>&nbsp;</th>
+              <td><div class='view-notice warning'><p><?php _e('Make sure you have a backup in place. When optimizing Shortpixel will overwrite your images without recovery. This may result in lost images.', 'shortpixel-image-optimiser') ?></p></div></td>
+            </tr>
             <tr>
                 <th scope="row"><?php _e('Remove EXIF','shortpixel-image-optimiser');?></th>
                 <td>
@@ -127,6 +130,7 @@
                     <label for="removeExif"><?php _e('Remove the EXIF tag of the image (recommended).','shortpixel-image-optimiser');?></label>
                     <p class="settings-info"> <?php _e('EXIF is a set of various pieces of information that are automatically embedded into the image upon creation. This can include GPS position, camera manufacturer, date and time, etc.
                         Unless you really need that data to be preserved, we recommend removing it as it can lead to <a href="http://blog.shortpixel.com/how-much-smaller-can-be-images-without-exif-icc" target="_blank">better compression rates</a>.','shortpixel-image-optimiser');?></p>
+
                 </td>
             </tr>
             <tr class='exif_warning view-notice-row'>
@@ -135,6 +139,25 @@
                   <div class='view-notice warning'><p><?php printf(__('Warning - Converting from PNG to JPG will %s not %s keep the EXIF-information!'), "<strong>","</strong>"); ?></p></div>
                 </td>
             </tr>
+
+<?php /* Disabled, pending review           <tr>
+                <th scope="row"><?php _e('OptIn for Help Services','shortpixel-image-optimiser');?></th>
+                <td>
+                    <input name="helpscoutOptin" type="checkbox" id="helpscoutOptin" value="1" <?php checked($view->data->helpscoutOptin, 1);?>>
+                    <label for="helpscoutOptin"><?php _e('Show me InAdmin Help','shortpixel-image-optimiser');?></label>
+                    <p class="settings-info"> <?php _e('We use HelpScout and QuriOBot to better serve your questions. You have give permission  so we can answer your questions straight in your admin panel','shortpixel-image-optimiser');?></p>
+
+                </td>
+            </tr> */ ?>
+
+            <?php $imagick = (\wpSPIO()->env()->hasImagick()) ? 1 : 0; ?>
+            <tr class='exif_imagick_warning view-notice-row' data-imagick="<?php echo $imagick ?>">
+                  <th scope="row">&nbsp;</th>
+                  <td>
+                    <div class='view-notice warning'><p><?php printf(__('Warning - Imagick library not detected on server. WordPress will use another library to resize images, which may result in loss of EXIF-information'), "<strong>","</strong>"); ?></p></div>
+                  </td>
+            </tr>
+
             <tr>
               <?php  $resizeDisabled = (! $this->view->data->resizeImages) ? 'disabled' : '';
                  // @todo Inline styling here can be decluttered.
@@ -157,19 +180,120 @@
                             <span class="dashicons dashicons-editor-help"></span><?php _e('Read more','shortpixel-image-optimiser');?>
                         </a><br/>
                     </p>
+                    <?php if(false) { ?>
                     <div style="margin-top: 10px;">
                         <input type="radio" name="resizeType" id="resize_type_outer" value="outer" <?php echo($view->data->resizeType == 'inner' ? '' : 'checked') ?> style="margin: -50px 10px 60px 0;">
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-outer.png' ));?>"
-                             srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-outer.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-outer@2x.png' ));?> 2x'
+                        <img alt="<?php _e('Resize outer','shortpixel-image-optimiser'); ?>" src="<?php echo(wpSPIO()->plugin_url('res/img/resize-outer.png' ));?>"
+                             srcset='<?php echo(wpSPIO()->plugin_url('res/img/resize-outer.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/resize-outer@2x.png' ));?> 2x'
                              title="<?php _e('Sizes will be greater or equal to the corresponding value. For example, if you set the resize dimensions at 1000x1200, an image of 2000x3000px will be resized to 1000x1500px while an image of 3000x2000px will be resized to 1800x1200px','shortpixel-image-optimiser');?>">
                         <input type="radio" name="resizeType" id="resize_type_inner" value="inner" <?php echo($view->data->resizeType == 'inner' ? 'checked' : '') ?> style="margin: -50px 10px 60px 35px;">
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-inner.png' ));?>"
-                             srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-inner.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-inner@2x.png' ));?> 2x'
+                        <img alt="<?php _e('Resize inner','shortpixel-image-optimiser'); ?>" src="<?php echo(wpSPIO()->plugin_url('res/img/resize-inner.png' ));?>"
+                             srcset='<?php echo(wpSPIO()->plugin_url('res/img/resize-inner.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/resize-inner@2x.png' ));?> 2x'
                              title="<?php _e('Sizes will be smaller or equal to the corresponding value. For example, if you set the resize dimensions at 1000x1200, an image of 2000x3000px will be resized to 800x1200px while an image of 3000x2000px will be resized to 1000x667px','shortpixel-image-optimiser');?>">
                         <div style="display:inline-block;margin-left: 20px;"><a href="https://blog.shortpixel.com/resize-images/" class="shortpixel-help-link" target="_blank">
                             <span class="dashicons dashicons-editor-help"></span><?php _e('What is this?','shortpixel-image-optimiser');?></a>
                         </div>
                     </div>
+                    <?php } ?>
+
+                    <style>
+                        .presentation-wrap {
+                            padding: 10px;
+                            text-align: center;
+                            display: flex;
+                            justify-content: center;
+                            width: 600px;
+                        }
+                        @media(max-width: 1280px) {
+                            .presentation-wrap {
+                                width: 460px;
+                            }
+                        }
+                        @media(max-width: 1140px) {
+                            .presentation-wrap {
+                                width: 320px;
+                            }
+                        }
+                        .presentation-wrap img {
+                            margin-auto;
+                        }
+                        .spai-resize-frame {
+                            position: absolute;
+                            border: 2px dashed #fd1d1d;
+                        }
+                        .spai-resize-frame:after {
+                            font-size: 10px;
+                            font-weight: bold;
+                            position: absolute;
+                            bottom: -15px;
+                            right: 0;
+                            color: red;
+                        }
+                        .resize-options-wrap {
+                            margin: 10px 20px 0 20px;
+                            float: left;
+                        }
+                        .resize-type-wrap label {
+                            display: inline-block;
+                            padding: 15px 0 0 0;
+                        }
+                    </style>
+                    <div class="resize-type-wrap" <?php echo( $view->data->resizeImages ? '' : 'style="display:none;"' );?>>
+                        <div class="resize-options-wrap">
+                            <label title="<?php _e('Sizes will be greater or equal to the corresponding value. For example, if you set the resize dimensions at 1000x1200, an image of 2000x3000px will be resized to 1000x1500px while an image of 3000x2000px will be resized to 1800x1200px','shortpixel-image-optimiser');?>">
+                                <input type="radio" name="resizeType" id="resize_type_outer" value="outer" <?= $view->data->resizeType == 'inner' ? '' : 'checked'; ?>>
+                                <?= __( 'Cover', 'shortpixel-image-optimiser' ); ?>
+                            </label><br>
+                            <label title="<?php _e('Sizes will be smaller or equal to the corresponding value. For example, if you set the resize dimensions at 1000x1200, an image of 2000x3000px will be resized to 800x1200px while an image of 3000x2000px will be resized to 1000x667px','shortpixel-image-optimiser');?>">
+                                <input type="radio" name="resizeType" id="resize_type_inner" value="inner" <?= $view->data->resizeType == 'inner' ? 'checked' : ''; ?>>
+                                <?= __( 'Contain', 'shortpixel-image-optimiser' ); ?>
+                            </label><br>
+                            <div style="display:inline-block;margin-top: 15px;"><a href="https://blog.shortpixel.com/resize-images/" class="shortpixel-help-link" target="_blank">
+                                    <span class="dashicons dashicons-editor-help"></span><?php _e('What is this?','shortpixel-image-optimiser');?></a>
+                            </div>
+
+                        </div>
+                        <?php
+                        $resize_width  = (int) ( $view->data->resizeWidth > 0 ? $view->data->resizeWidth : min( 924, $view->minSizes[ 'width' ] ) );
+                        $resize_height = (int) ( $view->data->resizeHeight > 0 ? $view->data->resizeHeight : min( 924, $view->minSizes[ 'height' ] ) );
+                        $ratio         = $resize_height / $resize_width;
+
+                        $frame_style = 'padding-top:' . round( ( $ratio < 1.5 ? ( $ratio < 0.5 ? 0.5 : $ratio ) : 1.5 ) * 100, 0 ) . '%;';
+
+                        $image_size = getimagesize( wpSPIO()->plugin_path( 'res/img/resize-type.png' ) );
+                        ?>
+                        <div class="presentation-wrap">
+                            <div class="spai-resize-frame"></div>
+                            <img class="spai-resize-img" src="<?php echo(wpSPIO()->plugin_url('res/img/resize-type.png'));?>" data-width="300" data-height="160"
+                                 srcset="<?php echo(wpSPIO()->plugin_url('res/img/resize-type@2x.png'));?> 2x" alt="">
+                        </div>
+
+                        <!--
+                        <div class="presentation-wrap">
+                            <div class="presentation-wrapper hidden" data-type="<?= $view->data->resizeType ?>">
+                                <div class="frame-wrap">
+                                    <div class="frame">
+                                        <div class="frame-inner" style="<?= $frame_style; ?>">
+                                            <div class="image-wrap">
+                                                <img src="<?= wpSPIO()->plugin_url( 'res/img/resize-type.png' ); ?>" data-width="<?= $image_size[ 0 ]; ?>" data-height="<?= $image_size[ 1 ]; ?>" srcset="<?= wpSPIO()->plugin_url( 'res/img/resize-type@2x.png' ); ?> 2x" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    <script type="text/javascript">
+
+                    </script>
+
+
+
+
+
+
+
                 </td>
             </tr>
         </tbody>

@@ -31,7 +31,7 @@ class LAE_Testimonials_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'fa fa-comments-o';
+        return 'lae-icon-testimonials3';
     }
 
     public function get_categories() {

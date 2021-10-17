@@ -14,18 +14,18 @@ class Admin_Notices {
     
     private static $papro = 'premium-addons-pro';
     
-    private static $pbg = 'premium-blocks-for-gutenberg';
-    
     /**
     * Constructor for the class
     */
     public function __construct() {
         
-        add_action('admin_init', array( $this, 'init') );
+        add_action( 'admin_init', array( $this, 'init') );
         
-        add_action('admin_notices', array( $this, 'admin_notices' ) );
+        add_action( 'admin_notices', array( $this, 'admin_notices' ) );
         
         add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+        
+        add_action( 'wp_ajax_pa_reset_admin_notice', array( $this, 'reset_admin_notice' ) );
         
         add_action( 'wp_ajax_pa_dismiss_admin_notice', array( $this, 'dismiss_admin_notice' ) );
         
@@ -38,7 +38,7 @@ class Admin_Notices {
 
         $this->handle_review_notice();
         
-        $this->handle_color_trans_notice();
+        $this->handle_lottie_notice();
         
     }
     
@@ -57,7 +57,7 @@ class Admin_Notices {
             $this->get_review_notice();
         }
         
-        $this->get_color_trans_notice();
+        $this->get_lottie_notice();
         
     }
 
@@ -87,51 +87,28 @@ class Admin_Notices {
     }
    
     /**
+     * Checks if Premium Horizontal Scroll message is dismissed.
      * 
-     * Checks if Premium Gutenberg message is dismissed.
-     * 
-     * @access public
-     * @return void
-     * 
-    */
-    public function handle_pbg_notice() {
-        if ( ! isset( $_GET['pbg'] ) ) {
-            return;
-        }
-
-        if ( 'opt_out' === $_GET['pbg'] ) {
-            check_admin_referer( 'opt_out' );
-
-            update_option( 'pbg_notice', '1' );
-        }
-
-        wp_redirect( remove_query_arg( 'pbg' ) );
-        exit;
-    }
-    
-    /**
-     * Checks if Premium Color Transition message is dismissed.
-     * 
-     * @since 3.7.5
+     * @since 3.11.7
      * @access public
      * 
      * @return void
      */
-    public function handle_color_trans_notice() {
-        if ( ! isset( $_GET['color_trans'] ) ) {
+    public function handle_lottie_notice() {
+        
+        if ( ! isset( $_GET['lottie_widget'] ) ) {
             return;
         }
 
-        if ( 'opt_out' === $_GET['color_trans'] ) {
+        if ( 'opt_out' === $_GET['lottie_widget'] ) {
             check_admin_referer( 'opt_out' );
 
-            update_option( 'color_trans_notice', '1' );
+            update_option( 'lottie_widget_notice', '1' );
         }
 
-        wp_redirect( remove_query_arg( 'color_trans' ) );
+        wp_redirect( remove_query_arg( 'lottie_widget' ) );
         exit;
     }
-
     
     /**
      * Required plugin check
@@ -148,7 +125,7 @@ class Admin_Notices {
         
         if( ! defined('ELEMENTOR_VERSION' ) ) {
 
-            if ( ! self::is_plugin_installed( $elementor_path ) ) {
+            if ( ! Helper_Functions::is_plugin_installed( $elementor_path ) ) {
 
                 if( self::check_user_can( 'install_plugins' ) ) {
 
@@ -230,93 +207,41 @@ class Admin_Notices {
         
     }
     
-    /**
-     * 
-     * Shows an admin notice for Premium Gutenberg.
-     * 
-     * @since 2.7.6
-     * @return void
-     * 
-     */
-    public function get_pbg_notice() {
-        
-        $pbg_path = sprintf( '%1$s/%1$s.php', self::$pbg);
-        
-        if( ! defined('PREMIUM_BLOCKS_VERSION' ) ) {
-
-            if ( ! self::is_plugin_installed( $pbg_path ) && self::check_user_can( 'install_plugins' ) ) {
-
-                $pbg_notice = get_option( 'pbg_notice' );
-
-                $install_url = wp_nonce_url( self_admin_url( sprintf( 'update.php?action=install-plugin&plugin=%s', self::$pbg ) ), 'install-plugin_premium-blocks-for-gutenberg' );
-
-                if ( '1' === $pbg_notice ) {
-                    return;
-                } else if ( '1' !== $pbg_notice ) {
-                    $optout_url = wp_nonce_url( add_query_arg( 'pbg', 'opt_out' ), 'opt_out' );
-
-                    ?>
-<div class="error">
-                <p style="display: flex; align-items: center; padding:10px 10px 10px 0;">
-                    <img src="<?php echo PREMIUM_ADDONS_URL .'admin/images/premium-blocks-logo.png'; ?>" style="margin-right: 0.8em; width: 40px;">
-                    <span><strong><?php echo __('Premium Blocks for Gutenberg', 'premium-addons-for-elementor'); ?>&nbsp;</strong><?php echo __('is Now Available.','premium-addons-for-elementor'); ?>&nbsp;</span>
-                    <a href="<?php echo $install_url; ?>" style="flex-grow: 2;"><span class="button-primary" style="margin-left:5px;"><?php echo __('Install it Now.','premium-addons-for-elementor'); ?></span></a>
-                    <a href="<?php echo $optout_url; ?>" style="text-decoration: none; margin-left: 1em; float:right; "><span class="dashicons dashicons-dismiss"></span></a>
-                </p>
-</div>
-
-                <?php }
-
-            }
-        
-        }
-        
-    }
     
     /**
      * 
-     * Shows an admin notice for Premium Color Transition.
+     * Shows admin notice for Premium Lottie Animations.
      * 
-     * @since 3.7.5
+     * @since 3.11.7
      * @access public
      * 
      * @return void
      */
-    public function get_color_trans_notice() {
+    public function get_lottie_notice() {
         
-        $color_trans_notice = get_option( 'color_trans_notice' );
+        $lottie_notice = get_option( 'lottie_widget_notice' );
+        
+        if( '1' === $lottie_notice )
+            return;
         
         $theme = Helper_Functions::get_installed_theme();
     
-        $notice_url = sprintf( 'https://premiumaddons.com/elementor-color-transition-widget/?utm_source=color-trans-notification&utm_medium=wp-dash&utm_campaign=get-pro&utm_term=%s', $theme );
-
-        if ( '1' === $color_trans_notice ) {
-            return;
-        } else if ( '1' !== $color_trans_notice ) {
-            $optout_url = wp_nonce_url( add_query_arg( 'color_trans', 'opt_out' ), 'opt_out' );
-            
-            $message = sprintf( __('<p class="pa-text-wrap" style="display: flex; align-items: center; padding:10px 10px 10px 0;"><img src="%s" style="margin-right: 0.8em; width: 40px;"><strong><span>Premium Color Transition&nbsp</strong> widget is now available in Premium Addons Pro.&nbsp</span><a href="%s" target="_blank" style="flex-grow: 2;"> Check it out now.</a>', 'premium-addons-for-elementor' ), PREMIUM_ADDONS_URL .'admin/images/premium-addons-logo.png', $notice_url );
-            
-            $message .= sprintf( __('<a href="%s" style="text-decoration: none; margin-left: 1em; float:right; "><span class="dashicons dashicons-dismiss"></span></a></p>', 'premium-addons-for-elementor'),  $optout_url );
-
-            $this->render_admin_notices( $message );
-
-        }
-        
-    }
-
+        $notice_url = sprintf( 'https://premiumaddons.com/elementor-lottie-animations-widget/?utm_source=lottie-notification&utm_medium=wp-dash&utm_campaign=get-pro&utm_term=%s', $theme );
     
-    /**
-     * Checks if a plugin is installed
-     * 
-     * @since 1.0.0
-     * @return boolean
-     * 
-     */
-    public static function is_plugin_installed( $plugin_path ){
-        require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        $plugins = get_plugins();
-        return isset( $plugins[ $plugin_path ] );
+        $templates_message = '<div class="pa-text-wrap">';
+
+        $templates_message .= '<img class="pa-notice-logo" src="' . PREMIUM_ADDONS_URL .'admin/images/premium-addons-logo.png' . '">';
+
+        $templates_message .= '<strong>' . __('Premium Lottie Animations','premium-addons-for-elementor') . '&nbsp</strong><span>' . __('widget is now available.', 'premium-addons-for-elementor') . '&nbsp</span><a href="' . esc_url( $notice_url ) . '" target="_blank">' . __('Check it out now', 'premium-addons-for-elementor') . '</a>';
+
+        $templates_message .= '<div class="pa-notice-close" data-notice="lottie"><span class="dashicons dashicons-dismiss"></span></div>';
+
+        $templates_message .= '</div>';
+
+        $this->render_admin_notices( $templates_message );
+
+        
+        
     }
     
     /**
@@ -338,9 +263,9 @@ class Admin_Notices {
      * 
      * @return void
      */
-    private function render_admin_notices( $message ) {
+    private function render_admin_notices( $message, $class = '', $handle = '' ) {
         ?>
-            <div class="error">
+            <div class="error pa-new-feature-notice <?php echo $class; ?>" data-notice="<?php echo $handle; ?>">
                 <?php echo $message; ?>
             </div>
         <?php
@@ -373,7 +298,7 @@ class Admin_Notices {
      * 
      * @return void
      */
-    public function dismiss_admin_notice() {
+    public function reset_admin_notice() {
         
         $key = isset( $_POST['notice'] ) ? $_POST['notice'] : '';
         
@@ -392,6 +317,34 @@ class Admin_Notices {
         }
         
     }
+    
+    /**
+     * Dismiss admin notice
+     * 
+     * @since 3.11.7
+     * @access public
+     * 
+     * @return void
+     */
+    public function dismiss_admin_notice() {
+        
+        $key = isset( $_POST['notice'] ) ? $_POST['notice'] : '';
+        
+        if ( ! empty( $key ) ) {
+            
+            update_option( 'lottie_widget_notice', '1' );
+            
+            wp_send_json_success();
+            
+        } else {
+            
+            wp_send_json_error();
+            
+        }
+        
+    }
+    
+    
 
     public static function get_instance() {
         if( self::$instance == null ) {

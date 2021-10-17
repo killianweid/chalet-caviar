@@ -61,7 +61,7 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 	div.scan-item div.badge-warn {background:#636363;}
 	div.scan-item div.info {display:none; padding:10px; background:#fff}
 	div.scan-good {display:inline-block; color:green;font-weight:bold;}
-	div.scan-warn {display:inline-block; color:#630f0f;font-weight:bold;}
+	div.scan-warn {display:inline-block; color:#d61212;font-weight:bold;}
 	div.dup-more-details {float:right; font-size:14px}
 	div.dup-more-details a{color:black}
 	div.dup-more-details a:hover {color:#777; cursor:pointer}
@@ -182,8 +182,8 @@ TOOL BAR:STEPS -->
 			</div>	
 		</td>
 		<td>
-			<a href="?page=duplicator" class="add-new-h2"><i class="fa fa-archive fa-sm"></i> <?php esc_html_e('Packages', 'duplicator'); ?></a> 
-			<span> <?php esc_html_e('Create New', 'duplicator'); ?></span>
+			<a href="?page=duplicator" class="button"><i class="fa fa-archive fa-sm"></i> <?php esc_html_e('Packages', 'duplicator'); ?></a>
+			<a href="javascript:void(0)" class="button disabled"> <?php esc_html_e("Create New", 'duplicator'); ?></a>
 		</td>
 	</tr>
 </table>		
@@ -420,7 +420,7 @@ jQuery(document).ready(function($)
 		html_msg += '<li><?php esc_html_e("- On some budget hosts scanning over 30k files can lead to timeout/gateway issues. Consider scanning only your main WordPress site and avoid trying to backup other external directories.", 'duplicator') ?></li>';
 		html_msg += '<li><?php esc_html_e("- Symbolic link recursion can cause timeouts.  Ask your server admin if any are present in the scan path.  If they are add the full path as a filter and try running the scan again.", 'duplicator') ?></li>';
 		html_msg += '</ul>';
-		$('#dup-msg-error-response-status').html('Scan Path Error [<?php echo rtrim(DUPLICATOR_WPROOTPATH, '/'); ?>]');
+		$('#dup-msg-error-response-status').html('Scan Path Error [<?php echo duplicator_get_abs_path(); ?>]');
 		$('#dup-msg-error-response-text').html(html_msg);
 		$('#dup-msg-error').show(200);
 	}

@@ -1,8 +1,11 @@
 <?php
 
+/**
+ * Premium Countdown.
+ */
 namespace PremiumAddons\Widgets;
 
-use PremiumAddons\Helper_Functions;
+// Elementor Classes.
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -10,9 +13,16 @@ use Elementor\Scheme_Color;
 use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Box_Shadow;
+
+// PremiumAddons Classes.
+use PremiumAddons\Helper_Functions;
 
 if( !defined( 'ABSPATH' ) ) exit; // No access of directly access
 
+/**
+ * Class Premium_Countdown
+ */
 class Premium_Countdown extends Widget_Base {
     
 	public function get_name() {
@@ -38,15 +48,26 @@ class Premium_Countdown extends Widget_Base {
     }
     
     public function get_script_depends() {
-		return [ 'premium-addons-js','count-down-timer-js' ];
+		return [
+            'count-down-timer-js',
+            'premium-addons-js'
+        ];
 	}
 
 	public function get_categories() {
 		return [ 'premium-elements' ];
 	}
+    
+    public function get_custom_help_url() {
+		return 'https://premiumaddons.com/support/';
+	}
 
-    // Adding the controls fields for the premium countdown
-    // This will controls the animation, colors and background, dimensions etc
+    /**
+	 * Register Countdown controls.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'premium_countdown_global_settings',
@@ -114,6 +135,30 @@ class Premium_Countdown extends Widget_Base {
 				'multiple'		=> true,
 				'separator'		=> 'after'
 		  	]
+		);
+        
+        $this->add_control('premium_countdown_separator',
+            [
+                'label'         => __('Digits Separator', 'premium-addons-for-elementor'),
+                'description'   => __('Enable or disable digits separator','premium-addons-for-elementor'),
+                'type'          => Controls_Manager::SWITCHER,
+                'condition'     => [
+                    'premium_countdown_style'   => 'd-u-u'
+                ]
+            ]
+        );
+        
+        $this->add_control(
+			'premium_countdown_separator_text',
+			[
+				'label'			=> __('Separator Text', 'premium-addons-for-elementor'),
+				'type'			=> Controls_Manager::TEXT,
+				'condition'		=> [
+                    'premium_countdown_style'   => 'd-u-u',
+					'premium_countdown_separator' => 'yes'
+				],
+				'default'		=> ':'
+			]
 		);
         
         $this->add_responsive_control(
@@ -406,6 +451,14 @@ class Premium_Countdown extends Widget_Base {
 			]
 		);
         
+        $this->add_group_control(
+            Group_Control_Box_Shadow::get_type(),
+            [
+                'name'          => 'premium_countdown_units_shadow',
+                'selector'      => '{{WRAPPER}} .countdown .pre_countdown-section',
+            ]
+        );
+        
         $this->add_responsive_control(
 			'premium_countdown_digit_bg_size',
 		  	[
@@ -436,13 +489,13 @@ class Premium_Countdown extends Widget_Base {
         $this->add_control('premium_countdown_digit_border_radius',
                 [
                     'label'         => __('Border Radius', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::SLIDER,
+                    'type'          => Controls_Manager::DIMENSIONS,
                     'size_units'    => ['px', '%', 'em'],
                     'selectors'     => [
-                        '{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-amount' => 'border-radius: {{SIZE}}{{UNIT}};'
-                        ]
+                        '{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-amount' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
                     ]
-                );
+                ]
+            );
         
         $this->end_controls_section();
         
@@ -468,6 +521,15 @@ class Premium_Countdown extends Widget_Base {
 			]
 		);
         
+        $this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'premium_countdown_unit_typo',
+				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
+				'selector' => '{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-period',
+			]
+		);
+        
         $this->add_control(
 			'premium_countdown_unit_backcolor',
 			[
@@ -479,17 +541,7 @@ class Premium_Countdown extends Widget_Base {
 			]
 		);
 
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			[
-				'name' => 'premium_countdown_unit_typo',
-				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
-				'selector' => '{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-period',
-				'separator'		=> 'after'
-			]
-		);
-        
-            $this->add_responsive_control(
+        $this->add_responsive_control(
 			'premium_countdown_separator_width',
 			[
 				'label'			=> __( 'Spacing in Between', 'premium-addons-for-elementor' ),
@@ -505,13 +557,81 @@ class Premium_Countdown extends Widget_Base {
 				],
 				'selectors'		=> [
 					'{{WRAPPER}} .countdown .pre_countdown-section' => 'margin-right: calc( {{SIZE}}{{UNIT}} / 2 ); margin-left: calc( {{SIZE}}{{UNIT}} / 2 );'
-				]
+				],
+                'condition'		=> [
+					'premium_countdown_separator!' => 'yes'
+				],
 			]
 		);
 
 		$this->end_controls_section();
+        
+        $this->start_controls_section('premium_countdown_separator_style', 
+            [
+                'label'         => __('Separator', 'premium-addons-for-elementor'),
+                'tab'           => Controls_Manager::TAB_STYLE,
+                'condition'		=> [
+                    'premium_countdown_style'   => 'd-u-u',
+					'premium_countdown_separator' => 'yes'
+				],
+            ]
+            );
+        
+        $this->add_responsive_control(
+			'premium_countdown_separator_size',
+		  	[
+		     	'label'			=> __( 'Size', 'premium-addons-for-elementor' ),
+		     	'type' 			=> Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 100,
+					]
+				],
+				'selectors'		=> [
+					'{{WRAPPER}} .pre-countdown_separator' => 'font-size: {{SIZE}}px;'
+				]
+		  	]
+		);
+
+        $this->add_control(
+			'premium_countdown_separator_color',
+			[
+				'label' 		=> __( 'Color', 'premium-addons-for-elementor' ),
+				'type' 			=> Controls_Manager::COLOR,
+				'scheme' 		=> [
+				    'type' 	=> Scheme_Color::get_type(),
+				    'value' => Scheme_Color::COLOR_2,
+				],
+				'selectors'		=> [
+					'{{WRAPPER}} .pre-countdown_separator' => 'color: {{VALUE}};'
+				]
+			]
+		);
+        
+        $this->add_responsive_control('premium_countdown_separator_margin',
+                [
+                    'label'         => __('Margin', 'premium-addons-for-elementor'),
+                    'type'          => Controls_Manager::DIMENSIONS,
+                    'size_units'    => ['px', 'em'],
+                    'selectors'     => [
+                        '{{WRAPPER}} .pre-countdown_separator' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'
+                    ]
+                ]
+            );
+        
+        $this->end_controls_section();
+        
 	}
 
+	/**
+	 * Render Countdown widget output on the frontend.
+	 *
+	 * Written in PHP and used to generate the final HTML.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function render( ) {
 		
       	$settings = $this->get_settings_for_display();
@@ -521,7 +641,7 @@ class Premium_Countdown extends Widget_Base {
       	$formats = $settings['premium_countdown_units'];
       	$format = implode('', $formats );
       	$time = str_replace('-', '/', current_time('mysql') );
-      	$serverSync = '';
+      	
       	if( $settings['premium_countdown_s_u_time'] == 'wp-time' ) : 
 			$sent_time = $time;
         else:
@@ -563,6 +683,9 @@ class Premium_Countdown extends Widget_Base {
             $event = 'expiryUrl';
             $text = $redirect;
         }
+        
+        $separator_text = ! empty ( $settings['premium_countdown_separator_text'] ) ? $settings['premium_countdown_separator_text'] : '';
+        
         $countdown_settings = [
             'label1'    => $label,
             'label2'    => $labels1,
@@ -571,10 +694,11 @@ class Premium_Countdown extends Widget_Base {
             'event'     => $event,
             'text'      => $text,
             'serverSync'=> $sent_time,
+            'separator' => $separator_text
         ];
         
       	?>
-        <div id="countDownContiner-<?php echo esc_attr($this->get_id()); ?>" class="premium-countdown" data-settings='<?php echo wp_json_encode($countdown_settings); ?>'>
+        <div id="countDownContiner-<?php echo esc_attr($this->get_id()); ?>" class="premium-countdown premium-countdown-separator-<?php  echo $settings['premium_countdown_separator']; ?>" data-settings='<?php echo wp_json_encode( $countdown_settings ); ?>'>
             <div id="countdown-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-countdown-init countdown<?php echo $pcdt_style; ?>"></div>
         </div>
       	<?php

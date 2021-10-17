@@ -462,11 +462,11 @@
 .lae-container .lae-flex-direction-nav a.lae-flex-prev {
   left: -30px; }
   .lae-container .lae-flex-direction-nav a.lae-flex-prev:before {
-    content: "\e900"; }
+    content: "\e904"; }
 .lae-container .lae-flex-direction-nav a.lae-flex-next {
   right: -30px; }
   .lae-container .lae-flex-direction-nav a.lae-flex-next:before {
-    content: "\e901"; }
+    content: "\e905"; }
 .lae-container .lae-flex-control-nav {
   width: 100%;
   position: absolute;
@@ -520,6 +520,9 @@
 .slick-loading .slick-list {
   background: #fff url("./ajax-loader.gif") center center no-repeat; }
 
+@media only screen and (max-width: 1024px) {
+  .slick-slider {
+    padding: 0 10px; } }
 .lae-container button.slick-prev, .lae-container button.slick-next {
   position: absolute;
   bottom: initial;
@@ -568,18 +571,20 @@
   .lae-dark-bg .lae-container button.slick-prev:hover:before, .lae-dark-bg .lae-container button.slick-prev:hover:after, .lae-dark-bg .lae-container button.slick-next:hover:before, .lae-dark-bg .lae-container button.slick-next:hover:after {
     color: #aaa !important;
     background: none !important; }
-  @media only screen and (max-width: 1024px) {
-    .lae-container button.slick-prev, .lae-container button.slick-next {
-      display: none !important;
-      /* Let users navigate via touch */ } }
 .lae-container button.slick-prev {
   left: -40px; }
   .lae-container button.slick-prev:before {
-    content: "\e900"; }
+    content: "\e904"; }
+  @media only screen and (max-width: 1024px) {
+    .lae-container button.slick-prev {
+      left: -10px; } }
 .lae-container button.slick-next {
   right: -40px; }
   .lae-container button.slick-next:before {
-    content: "\e901"; }
+    content: "\e905"; }
+  @media only screen and (max-width: 1024px) {
+    .lae-container button.slick-next {
+      right: -10px; } }
 .lae-container ul.slick-dots {
   width: 100%;
   position: absolute;
@@ -735,5 +740,17 @@ input.lae-button, button.lae-button, a.lae-button, .lae-button:active, .lae-butt
   .lae-button.lae-semitrans:hover {
     background-color: #fff;
     color: #333 !important; }
+
+/* Template Library Theme Builder Templates */
+.single-elementor_library [data-elementor-type="livemesh_grid"] .elementor-element.elementor-widget.elementor-widget-livemesh-grid-item .elementor-widget-container {
+  border: 5px double #a4a0a2;
+  padding: 10px; }
+
+.single-elementor_library [data-elementor-type="livemesh_grid"] .elementor-column {
+  border: 1px dotted #827e80; }
+
+.lae-template-error {
+  padding: 20px;
+  font-style: italic; }
 
 /*# sourceMappingURL=lae-frontend.css.map */

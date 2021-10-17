@@ -41,11 +41,21 @@ global $virtue;
 					<a class="brand logofont" href="<?php echo esc_url( home_url( '/' ) ); ?>">
 						<?php
 						if ( ! empty( $virtue['x1_virtue_logo_upload']['url'] ) ) {
+							if ( isset( $virtue['x1_virtue_logo_upload']['id'] ) ) {
+								$image_alt = get_post_meta( $virtue['x1_virtue_logo_upload']['id'], '_wp_attachment_image_alt', true );
+							} else {
+								$image_alt = '';
+							}
+							if ( isset( $virtue['x2_virtue_logo_upload']['id'] ) ) {
+								$image2_alt = get_post_meta( $virtue['x2_virtue_logo_upload']['id'], '_wp_attachment_image_alt', true );
+							} else {
+								$image2_alt = '';
+							}
 							?>
 							<div id="thelogo">
-								<img src="<?php echo esc_url( $virtue['x1_virtue_logo_upload']['url'] ); ?>" alt="<?php bloginfo( 'name' ); ?>" width="<?php echo esc_attr( $virtue['x1_virtue_logo_upload']['width'] ); ?>" height="<?php echo esc_attr( $virtue['x1_virtue_logo_upload']['height'] ); ?>" class="kad-standard-logo" />
+								<img src="<?php echo esc_url( $virtue['x1_virtue_logo_upload']['url'] ); ?>" alt="<?php echo ( $image_alt ? $image_alt : get_bloginfo( 'name' ) ); ?>" width="<?php echo esc_attr( $virtue['x1_virtue_logo_upload']['width'] ); ?>" height="<?php echo esc_attr( $virtue['x1_virtue_logo_upload']['height'] ); ?>" class="kad-standard-logo" />
 								<?php if ( ! empty( $virtue['x2_virtue_logo_upload']['url'] ) ) { ?>
-								<img src="<?php echo esc_url( $virtue['x2_virtue_logo_upload']['url'] ); ?>" alt="<?php bloginfo( 'name' ); ?>" width="<?php echo esc_attr( $virtue['x2_virtue_logo_upload']['width'] ); ?>" height="<?php echo esc_attr( $virtue['x2_virtue_logo_upload']['height'] ); ?>" class="kad-retina-logo" style="max-height:<?php echo esc_attr( $virtue['x1_virtue_logo_upload']['height'] ); ?>px" />
+								<img src="<?php echo esc_url( $virtue['x2_virtue_logo_upload']['url'] ); ?>" alt="<?php echo ( $image2_alt ? $image2_alt : get_bloginfo( 'name' ) ); ?>" width="<?php echo esc_attr( $virtue['x2_virtue_logo_upload']['width'] ); ?>" height="<?php echo esc_attr( $virtue['x2_virtue_logo_upload']['height'] ); ?>" class="kad-retina-logo" style="max-height:<?php echo esc_attr( $virtue['x1_virtue_logo_upload']['height'] ); ?>px" />
 								<?php } ?>
 							</div>
 							<?php

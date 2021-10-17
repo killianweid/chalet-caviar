@@ -21,7 +21,7 @@
             directionNav: settings['direction_nav'],
             prevText: "Previous<span></span>",
             nextText: "Next<span></span>",
-            smoothHeight: false,
+            smoothHeight: settings['smooth_height'],
             animationLoop: true,
             slideshow: true,
             rtl: rtl,
@@ -29,6 +29,52 @@
             controlsContainer: "lae-testimonials-slider"
         });
 
+
+    };
+
+    var WidgetLAETabSliderHandler = function ($scope, $) {
+
+        var slider_elem = $scope.find('.lae-tab-slider').eq(0);
+
+        if (slider_elem.length > 0) {
+
+            var rtl = slider_elem.attr('dir') === 'rtl';
+
+            var settings = slider_elem.data('settings');
+
+            var autoplay = settings['autoplay'];
+
+            var adaptive_height = settings['adaptive_height'];
+
+            var infinite = settings['infinite_looping'];
+
+            var autoplay_speed = parseInt(settings['autoplay_speed']) || 3000;
+
+            var animation_speed = parseInt(settings['animation_speed']) || 300;
+
+            var pause_on_hover = settings['pause_on_hover'];
+
+            var pause_on_focus = settings['pause_on_focus'];
+
+            slider_elem.slick({
+                arrows: false,
+                dots: true,
+                customPaging: function(slider, index) {
+                    return $(slider.$slides[index]).find('.lae-tab-slide-nav');
+                },
+                infinite: infinite,
+                autoplay: autoplay,
+                autoplaySpeed: autoplay_speed,
+                speed: animation_speed,
+                fade: false,
+                pauseOnHover: pause_on_hover,
+                pauseOnFocus: pause_on_focus,
+                adaptiveHeight: adaptive_height,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                rtl: rtl,
+            });
+        }
 
     };
 
@@ -50,9 +96,10 @@
 
             WidgetLAEStatsBarHandler($(this.element), $);
 
+            this.destroy(); // Done with handle on scroll
+
         }, {
-            offset: (window.innerHeight || document.documentElement.clientHeight) - 150,
-            triggerOnce: true
+            offset: (window.innerHeight || document.documentElement.clientHeight) - 150
         });
 
     };
@@ -85,9 +132,10 @@
 
             WidgetLAEPiechartsHandler($(this.element), $);
 
+            this.destroy(); // Done with handle on scroll
+
         }, {
-            offset: (window.innerHeight || document.documentElement.clientHeight) - 100,
-            triggerOnce: true
+            offset: (window.innerHeight || document.documentElement.clientHeight) - 100
         });
 
     };
@@ -114,9 +162,10 @@
 
             WidgetLAEOdometersHandler($(this.element), $);
 
+            this.destroy(); // Done with handle on scroll
+
         }, {
-            offset: (window.innerHeight || document.documentElement.clientHeight) - 100,
-            triggerOnce: true
+            offset: (window.innerHeight || document.documentElement.clientHeight) - 100
         });
     };
 
@@ -135,6 +184,8 @@
             var dots = settings['dots'];
 
             var autoplay = settings['autoplay'];
+
+            var adaptive_height = settings['adaptive_height'];
 
             var autoplay_speed = parseInt(settings['autoplay_speed']) || 3000;
 
@@ -169,6 +220,7 @@
                 speed: animation_speed,
                 fade: false,
                 pauseOnHover: pause_on_hover,
+                adaptiveHeight: adaptive_height,
                 slidesToShow: display_columns,
                 slidesToScroll: scroll_columns,
                 rtl: rtl,
@@ -199,7 +251,7 @@
             return;
         }
 
-        var portfolioElem = $scope.find('.lae-portfolio');
+        var portfolioElem = $scope.find('.lae-portfolio:not(.lae-custom-grid)');
         if (portfolioElem.length === 0) {
             return; // no items to filter or load and hence don't continue
         }
@@ -215,8 +267,8 @@
             originLeft: !rtl,
         });
 
-        // layout Isotope after all images have loaded
-        portfolioElem.imagesLoaded(function () {
+        // layout Isotope after each image load
+        portfolioElem.imagesLoaded().progress( function() {
             portfolioElem.isotope('layout');
         });
 
@@ -255,6 +307,8 @@
 
             elementorFrontend.hooks.addAction('frontend/element_ready/lae-odometers.default', WidgetLAEOdometersHandlerOnScroll);
         }
+
+        elementorFrontend.hooks.addAction('frontend/element_ready/lae-tab-slider.default', WidgetLAETabSliderHandler);
 
         elementorFrontend.hooks.addAction('frontend/element_ready/lae-posts-carousel.default', WidgetLAECarouselHandler);
 

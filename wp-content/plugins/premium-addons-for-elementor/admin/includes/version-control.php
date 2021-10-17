@@ -27,7 +27,7 @@ class Version_Control {
     
     public function create_version_control_menu() {
         
-        if ( ! Helper_Functions::is_show_version_control() ) {
+        if ( ! Helper_Functions::is_hide_version_control() ) {
             
                 add_submenu_page(
                 'premium-addons',
@@ -46,7 +46,7 @@ class Version_Control {
         $js_info = array(
             'ajaxurl'   => admin_url( 'admin-ajax.php' ),
             'nonce' 	=> wp_create_nonce( 'pa-version-control' ),
-		);
+	);
         
         wp_localize_script( 'pa-admin-js', 'settings', $js_info );
         
@@ -73,7 +73,7 @@ class Version_Control {
              <h1 class="pa-title-main"><?php echo Helper_Functions::name(); ?></h1>
              <h3 class="pa-title-sub"><?php echo sprintf(__('Thank you for using %s. This plugin has been developed by %s and we hope you enjoy using it.','premium-addons-for-elementor'), Helper_Functions::name(), Helper_Functions::author() ); ?></h3>
           </div>
-          <?php if( ! Helper_Functions::is_show_logo() ) : ?>
+          <?php if( ! Helper_Functions::is_hide_logo() ) : ?>
                 <div class="pa-title-right">
                     <img class="pa-logo" src="<?php echo PREMIUM_ADDONS_URL . 'admin/images/premium-addons-logo.png'; ?>">
                 </div>
@@ -92,7 +92,7 @@ class Version_Control {
                    <tr class="pa-roll-row">
                       <th><?php echo __('Rollback Version', 'premium-addons-for-elementor'); ?></th>
                       <td>
-                         <div><?php echo  sprintf( '<a target="_blank" href="%1$s" class="button pa-btn pa-rollback-button elementor-button-spinner">%2$s</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ), __('Reinstall Version 3.7.7', 'premium-addons-for-elementor') ); ?></div>
+                         <div><?php echo  sprintf( '<a target="_blank" href="%1$s" class="button pa-btn pa-rollback-button elementor-button-spinner">%2$s</a>', wp_nonce_url( admin_url( 'admin-post.php?action=premium_addons_rollback' ), 'premium_addons_rollback' ), __('Rollback to Version ' . PREMIUM_ADDONS_STABLE_VERSION, 'premium-addons-for-elementor') ); ?></div>
                          <p class="pa-roll-desc">
                              <span><?php echo __('Warning: Please backup your database before making the rollback.', 'premium-addons-for-elementor'); ?></span>
                          </p>

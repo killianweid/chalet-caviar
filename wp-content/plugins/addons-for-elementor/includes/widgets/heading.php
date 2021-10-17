@@ -30,7 +30,7 @@ class LAE_Heading_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-text-area';
+        return 'lae-icon-heading';
     }
 
     public function get_categories() {

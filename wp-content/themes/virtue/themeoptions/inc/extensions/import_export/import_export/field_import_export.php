@@ -113,7 +113,7 @@
                         <textarea class="large-text noUpdate" id="import-link-value" name="<?php echo $this->parent->args['opt_name'] ?>[import_link]" rows="2"></textarea>
                     </div>
 
-                    <p id="redux-import-action"><input type="submit" id="redux-import" name="import" class="button-primary" value="<?php esc_html_e( 'Import', 'virtue' ) ?>">&nbsp;&nbsp;<span><?php echo esc_html( apply_filters( 'redux-import-warning', __( 'WARNING! This will overwrite all existing option values, please proceed with caution!', 'virtue' ) ) ) ?></span></p>
+                    <p id="redux-import-action"><input type="submit" id="redux-import" name="import" class="button-primary" value="<?php esc_attr_e( 'Import', 'virtue' ) ?>">&nbsp;&nbsp;<span><?php echo esc_html( apply_filters( 'redux-import-warning', __( 'WARNING! This will overwrite all existing option values, please proceed with caution!', 'virtue' ) ) ) ?></span></p>
 
                     <div class="hr"/>
                     <div class="inner"><span>&nbsp;</span></div></div>

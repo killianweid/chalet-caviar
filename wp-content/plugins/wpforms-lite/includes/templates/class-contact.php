@@ -3,11 +3,7 @@
 /**
  * Contact form template.
  *
- * @package    WPForms
- * @author     WPForms
- * @since      1.0.0
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2016, WPForms LLC
+ * @since 1.0.0
  */
 class WPForms_Template_Contact extends WPForms_Template {
 
@@ -71,7 +67,7 @@ class WPForms_Template_Contact extends WPForms_Template {
 						'message_scroll' => '1',
 					),
 				),
-				'honeypot'               => '1',
+				'antispam'               => '1',
 				'submit_text'            => esc_html__( 'Submit', 'wpforms-lite' ),
 				'submit_text_processing' => esc_html__( 'Sending...', 'wpforms-lite' ),
 			),

@@ -112,8 +112,8 @@ class ShortPixelAPI {
             throw new Exception(__('Invalid API Key', 'shortpixel-image-optimiser'));
         }
 
-      //  WpShortPixel::log("DO REQUESTS for META: " . json_encode($itemHandler->getRawMeta()) . " STACK: " . json_encode(debug_backtrace()));
-          $URLs = apply_filters('shortpixel_image_urls', $URLs, $itemHandler->getId()) ;
+      // This filter, moved to facade GetuRls/Paths
+      //  $URLs = apply_filters('shortpixel_image_urls', $URLs, $itemHandler->getId()) ;
 
         $requestParameters = array(
             'plugin_version' => SHORTPIXEL_IMAGE_OPTIMISER_VERSION,
@@ -135,18 +135,14 @@ class ShortPixelAPI {
         }
 
         //WpShortPixel::log("ShortPixel API Request Settings: " . json_encode($requestParameters));
-        //Log::addDebug('ShortPixel API Request');
         $response = wp_remote_post($this->_apiEndPoint, $this->prepareRequest($requestParameters, $Blocking) );
+        Log::addDebug('ShortPixel API Request sent', $requestParameters);
 
         //WpShortPixel::log('RESPONSE: ' . json_encode($response));
 
         //only if $Blocking is true analyze the response
         if ( $Blocking )
         {
-            //WpShortPixel::log("API response : " . json_encode($response));
-
-            //die(var_dump(array('URL: ' => $this->_apiEndPoint, '<br><br>REQUEST:' => $requestParameters, '<br><br>RESPONSE: ' => $response, '<br><br>BODY: ' => isset($response['body']) ? $response['body'] : '' )));
-            //there was an error, save this error inside file's SP optimization field
             if ( is_object($response) && get_class($response) == 'WP_Error' )
             {
                 $errorMessage = $response->errors['http_request_failed'][0];
@@ -245,7 +241,14 @@ class ShortPixelAPI {
         //#$compressionType = isset($meta['ShortPixel']['type']) ? ($meta['ShortPixel']['type'] == 'lossy' ? 1 : 0) : $this->_settings->compressionType;
         $meta = $itemHandler->getMeta();
         $compressionType = $meta->getCompressionType() !== null ? $meta->getCompressionType() : $this->_settings->compressionType;
-        $response = $this->doRequests($URLs, true, $itemHandler, $compressionType);//send requests to API
+
+        try {
+          $response = $this->doRequests($URLs, true, $itemHandler, $compressionType);//send requests to API
+        }
+        catch(Exception $e) {
+          Log::addError('Api DoRequest Thrown ' . $e->getMessage());
+          $response = array(); // otherwise not set.
+        }
 
         //die($response['body']);
 
@@ -268,7 +271,7 @@ class ShortPixelAPI {
             $firstImage = $APIresponse[0];//extract as object first image
             switch($firstImage->Status->Code)
             {
-            case 2:
+            case 2: //self::STATUS_SUCCESS: <- @todo Success in this constant is 1 ,but appears to be 2? // success
                 //handle image has been processed
                 if(!isset($firstImage->Status->QuotaExceeded)) {
                     $this->_settings->quotaExceeded = 0;//reset the quota exceeded flag
@@ -467,12 +470,12 @@ class ShortPixelAPI {
             return array("Status" => self::STATUS_SUCCESS);
         }
 
-        Log::addDebug('Backing The Up', array($mainPath, $PATHs));
-
         //$fullSubDir = str_replace(wp_normalize_path(get_home_path()), "", wp_normalize_path(dirname($itemHandler->getMeta()->getPath()))) . '/';
         //$SubDir = ShortPixelMetaFacade::returnSubDir($itemHandler->getMeta()->getPath(), $itemHandler->getType());
         $fullSubDir = ShortPixelMetaFacade::returnSubDir($mainPath);
         $source = $PATHs; //array with final paths for these files
+
+        $fs = \wpSPIO()->filesystem();
 
         if( !file_exists(SHORTPIXEL_BACKUP_FOLDER) && ! ShortPixelFolder::createBackUpFolder() ) {//creates backup folder if it doesn't exist
             Log::addWarn('Backup folder does not exist and it cannot be created');
@@ -483,22 +486,30 @@ class ShortPixelAPI {
 
         foreach ( $source as $fileID => $filePATH )//create destination files array
         {
-            $destination[$fileID] = SHORTPIXEL_BACKUP_FOLDER . '/' . $fullSubDir . self::MB_basename($source[$fileID]);
+            $file = $fs->getFile($filePATH);
+            $bkFilePath = $fs->getBackupDirectory($file);
+            $bkFile = $fs->getFile($bkFilePath . $file->getFileName() );
+
+            $destination[$fileID] = $bkFile; //SHORTPIXEL_BACKUP_FOLDER . '/' . $fullSubDir . self::MB_basename($source[$fileID]);
         }
 
         //now that we have original files and where we should back them up we attempt to do just that
         if(is_writable(SHORTPIXEL_BACKUP_FOLDER))
         {
-
-            foreach ( $destination as $fileID => $filePATH )
+            foreach ( $destination as $fileID => $destination_file )
             {
-                if ( !file_exists($filePATH) )
+                //$destination_file = $fs->getFile($filePATH);
+
+                if ( ! $destination_file->exists() )
                 {
-                    if ( !@copy($source[$fileID], $filePATH) )
+                    $source_file = $fs->getFile($source[$fileID]);
+                    $result = $source_file->copy($destination_file);
+                    if (  ! $result )
                     {//file couldn't be saved in backup folder
-                        $msg = sprintf(__('Cannot save file <i>%s</i> in backup directory','shortpixel-image-optimiser'),self::MB_basename($source[$fileID]));
+                        $msg = sprintf(__('Cannot save file <i>%s</i> in backup directory','shortpixel-image-optimiser'),$destination_file->getFullPath() );
                         return array("Status" => self::STATUS_FAIL, "Message" => $msg);
                     }
+
                 }
             }
             return array("Status" => self::STATUS_SUCCESS);
@@ -512,14 +523,21 @@ class ShortPixelAPI {
 
     private function createArchiveTempFolder($archiveBasename) {
         $archiveTempDir = get_temp_dir() . '/' . $archiveBasename;
-        if(file_exists($archiveTempDir) && is_dir($archiveTempDir) && (time() - filemtime($archiveTempDir) < max(30, SHORTPIXEL_MAX_EXECUTION_TIME) + 10)) {
+        $fs = \wpSPIO()->filesystem();
+        $tempDir = $fs->getDirectory($archiveTempDir);
+
+        if( $tempDir->exists() && (time() - filemtime($archiveTempDir) < max(30, SHORTPIXEL_MAX_EXECUTION_TIME) + 10)) {
             Log::addWarn("CONFLICT. Folder already exists and is modified in the last minute. Current IP:" . $_SERVER['REMOTE_ADDR']);
             return array("Status" => self::STATUS_RETRY, "Code" => 1, "Message" => "Pending");
         }
-        if( !file_exists($archiveTempDir) && !@mkdir($archiveTempDir) ) {
+
+        // try to create temporary folder
+        $tempDir->check();
+
+        if( ! $tempDir->exists() ) {
             return array("Status" => self::STATUS_ERROR, "Code" => self::ERR_SAVE, "Message" => "Could not create temporary folder.");
         }
-        return array("Status" => self::STATUS_SUCCESS, "Dir" => $archiveTempDir);
+        return array("Status" => self::STATUS_SUCCESS, "Dir" => $tempDir);
     }
 
     private function downloadArchive($archive, $compressionType, $first = true) {
@@ -666,12 +684,14 @@ class ShortPixelAPI {
 
         $writeFailed = 0;
         $width = $height = null;
-        $resize = $this->_settings->resizeImages;
+        $do_resize = $this->_settings->resizeImages;
         $retinas = 0;
         $thumbsOpt = 0;
         $thumbsOptList = array();
+        // The settings model.
+        $settings = \wpSPIO()->settings();
 
-        $fs = new \ShortPixel\FileSystemController();
+        $fs = \wpSPIO()->fileSystem();
 
         //Log::addDebug($tempFiles);
         // Check and Run all tempfiles. Move it to appropiate places.
@@ -702,7 +722,7 @@ class ShortPixelAPI {
                         if(ShortPixelMetaFacade::isRetina($targetFile->getFullPath())) {
                             $retinas ++;
                         }
-                        if($resize && $itemHandler->getMeta()->getPath() == $targetFile->getFullPath() ) { //this is the main image
+                        if($do_resize && $itemHandler->getMeta()->getPath() == $targetFile->getFullPath() ) { //this is the main image
                             $size = getimagesize($PATHs[$tempFileID]);
                             $width = $size[0];
                             $height = $size[1];
@@ -791,6 +811,7 @@ class ShortPixelAPI {
         $meta->setCompressionType($compressionType);
         $meta->setCompressedSize(@filesize($meta->getPath()));
         $meta->setKeepExif($this->_settings->keepExif);
+        $meta->setCmyk2rgb($this->_settings->CMYKtoRGBconversion);
         $meta->setTsOptimized(date("Y-m-d H:i:s"));
         $meta->setThumbsOptList(is_array($meta->getThumbsOptList()) ? array_unique(array_merge($meta->getThumbsOptList(), $thumbsOptList)) : $thumbsOptList);
         $meta->setThumbsOpt(($meta->getThumbsTodo() ||  $this->_settings->processThumbnails) ? count($meta->getThumbsOptList()) : 0);
@@ -804,9 +825,26 @@ class ShortPixelAPI {
             $meta->setActualWidth($width);
             $meta->setActualHeight($height);
         }
+
         $meta->setRetries($meta->getRetries() + 1);
         $meta->setBackup(!$NoBackup);
         $meta->setStatus(2);
+
+        if ($do_resize)
+        {
+
+          $resizeWidth = $settings->resizeWidth;
+          $resizeHeight = $settings->resizeHeight;
+
+          if ($resizeWidth == $width || $resizeHeight == $height)  // resized.
+          {
+              $meta->setResizeWidth($width);
+              $meta->setResizeHeight($height);
+              $meta->setResize(true);
+          }
+          else
+            $meta->setResize(false);
+        }
 
         $itemHandler->updateMeta($meta);
         $itemHandler->optimizationSucceeded();
@@ -828,6 +866,7 @@ class ShortPixelAPI {
     /**
      * @param $archive
      * @param $tempFiles
+     * @todo Move to FS-controller
      */
     protected static function cleanupTemporaryFiles($archive, $tempFiles)
     {
@@ -835,8 +874,16 @@ class ShortPixelAPI {
             ShortpixelFolder::deleteFolder($archive['Path']);
         } else {
             if (!empty($tempFiles) && is_array($tempFiles)) {
+
                 foreach ($tempFiles as $tmpFile) {
-                    @unlink($tmpFile["Message"]);
+                    $filepath = isset($tmpFile['Message']) ? $tmpFile['Message'] : false;
+                    if ($filepath)
+                    {
+                      $file = \wpSPIO()->filesystem()->getFile($filepath);
+                      if ($file->exists())
+                        $file->delete();
+                    //@unlink($tmpFile["Message"]);
+                    }
                 }
             }
         }

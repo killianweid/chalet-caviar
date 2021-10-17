@@ -94,10 +94,6 @@
                     'overload_field_path'
                 ) ); // Adds the local field
 
-                add_filter( 'upload_mimes', array(
-                    $this,
-                    'custom_upload_mimes'
-                ) );
 
             }
 

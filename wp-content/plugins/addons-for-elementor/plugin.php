@@ -45,7 +45,7 @@ if ( !class_exists( 'Livemesh_Elementor_Addons' ) ) {
         public function __clone()
         {
             // Cloning instances of the class is forbidden
-            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'livemesh-el-addons' ), '2.8' );
+            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'livemesh-el-addons' ), '4.4' );
         }
         
         /**
@@ -55,7 +55,7 @@ if ( !class_exists( 'Livemesh_Elementor_Addons' ) ) {
         public function __wakeup()
         {
             // Unserializing instances of the class is forbidden
-            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'livemesh-el-addons' ), '2.8' );
+            _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'livemesh-el-addons' ), '4.4' );
         }
         
         private function setup_debug_constants()
@@ -99,6 +99,10 @@ if ( !class_exists( 'Livemesh_Elementor_Addons' ) ) {
             if ( is_plugin_active( 'wpml-string-translation/plugin.php' ) ) {
                 require_once LAE_PLUGIN_DIR . 'i18n/wpml-compatibility-init.php';
             }
+            /* Initialize the theme builder templates - Requires elementor pro plugin */
+            if ( is_plugin_active( 'elementor-pro/elementor-pro.php' ) ) {
+                require_once LAE_PLUGIN_DIR . 'includes/theme-builder/init.php';
+            }
         }
         
         /**
@@ -135,11 +139,21 @@ if ( !class_exists( 'Livemesh_Elementor_Addons' ) ) {
             add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
             // Initialize string translation of plugin elements after String Translation plugin is loaded
             add_action( 'wpml_st_loaded', array( $this, 'init_wpml_compatibility' ) );
+            // Filter to exclude images from lazy load using https://wordpress.org/plugins/sg-cachepress/
+            add_filter( 'sgo_lazy_load_exclude_classes', array( $this, 'exclude_images_with_specific_class' ) );
             add_action( 'elementor/widgets/widgets_registered', array( $this, 'include_widgets' ) );
+            add_action( 'elementor/editor/after_enqueue_styles', array( $this, 'enqueue_editor_styles' ), 10 );
             add_action( 'elementor/frontend/after_register_scripts', array( $this, 'register_frontend_scripts' ), 10 );
             add_action( 'elementor/frontend/after_register_styles', array( $this, 'register_frontend_styles' ), 10 );
             add_action( 'elementor/frontend/after_enqueue_styles', array( $this, 'enqueue_frontend_styles' ), 10 );
             add_action( 'elementor/init', array( $this, 'add_elementor_category' ) );
+        }
+        
+        function exclude_images_with_specific_class( $classes )
+        {
+            // Add the class name that you want to exclude from lazy load.
+            $classes[] = 'skip-lazy';
+            return $classes;
         }
         
         function init_wpml_compatibility()
@@ -191,12 +205,10 @@ if ( !class_exists( 'Livemesh_Elementor_Addons' ) ) {
             ), 1 );
         }
         
-        public function localize_scripts()
+        public function localize_array( $array = array() )
         {
-            $custom_css = lae_get_option( 'lae_custom_css', '' );
-            wp_localize_script( 'lae-frontend-scripts', 'lae_settings', array(
-                'custom_css' => $custom_css,
-            ) );
+            $array['custom_css'] = lae_get_option( 'lae_custom_css', '' );
+            return $array;
         }
         
         /**
@@ -256,10 +268,22 @@ if ( !class_exists( 'Livemesh_Elementor_Addons' ) ) {
                 LAE_VERSION,
                 true
             );
-            $custom_css = lae_get_option( 'lae_custom_css', '' );
-            wp_localize_script( 'lae-frontend-scripts', 'lae_settings', array(
-                'custom_css' => $custom_css,
-            ) );
+            $array = $this->localize_array();
+            wp_localize_script( 'lae-frontend-scripts', 'lae_js_vars', $array );
+        }
+        
+        /**
+         * Load Frontend Styles
+         *
+         */
+        public function enqueue_editor_styles()
+        {
+            wp_enqueue_style(
+                'lae-icomoon-styles',
+                LAE_PLUGIN_URL . 'assets/css/icomoon.css',
+                array(),
+                LAE_VERSION
+            );
         }
         
         /**
@@ -340,6 +364,13 @@ if ( !class_exists( 'Livemesh_Elementor_Addons' ) ) {
             if ( !$deactivate_element_testimonials_slider ) {
                 require_once LAE_ADDONS_DIR . 'testimonials-slider.php';
                 $widgets_manager->register_widget_type( new \LivemeshAddons\Widgets\LAE_Testimonials_Slider_Widget() );
+            }
+            
+            $deactivate_element_tab_slider = lae_get_option( 'lae_deactivate_element_tab_slider', false );
+            
+            if ( !$deactivate_element_tab_slider ) {
+                require_once LAE_ADDONS_DIR . 'tab-slider.php';
+                $widgets_manager->register_widget_type( new \LivemeshAddons\Widgets\LAE_Tab_Slider_Widget() );
             }
             
             $deactivate_element_stats_bar = lae_get_option( 'lae_deactivate_element_stats_bar', false );

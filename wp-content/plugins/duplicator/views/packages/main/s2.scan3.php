@@ -4,7 +4,7 @@ defined('ABSPATH') || defined('DUPXABSPATH') || exit;
 	/* @var $Package DUP_Package */
 	function _duplicatorGetRootPath() {
 		$txt   = __('Root Path', 'duplicator');
-		$root  = rtrim(DUPLICATOR_WPROOTPATH, '//');
+		$root  = duplicator_get_abs_path();
 		$sroot = strlen($root) > 50 ? substr($root, 0, 50) . '...' : $root;
 		echo "<div title='{$root}' class='divider'><i class='fa fa-folder-open'></i> {$sroot}</div>";
 	}
@@ -357,6 +357,34 @@ UNREADABLE FILES -->
 
 <?php } ?>
 
+<!-- ======================
+Restore only package -->
+<div id="migratepackage-block"  class="scan-item scan-item-last">
+	<div class='title' onclick="Duplicator.Pack.toggleScanItem(this);">
+		<div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('Migration Status', 'duplicator');?></div>
+        <div id="data-arc-status-migratepackage"></div>
+	</div>
+    <div class="info">
+        <script id="hb-migrate-package-result" type="text/x-handlebars-template">
+            <div class="container">
+                <div class="data">					
+                    {{#if ARC.Status.CanbeMigratePackage}}
+                        <?php esc_html_e("The package created here can be migrated to the new server.", 'duplicator'); ?>
+                    {{else}}
+                        <span style="color: red;">
+                            <?php
+                            esc_html_e("The package that created here can't be migrated to the new server.
+                                The Package created here can be restored on the same server.", 'duplicator');
+                            ?>
+                        </span>
+                    {{/if}}			
+                </div>
+            </div>
+        </script>
+        <div id="migrate-package-result"></div>
+    </div>
+</div>
+
 <!-- ============
 DATABASE -->
 <div id="dup-scan-db">
@@ -426,6 +454,34 @@ DATABASE -->
 			?>
 		</div>
 	</div>
+    <?php
+    $procedures = $GLOBALS['wpdb']->get_col("SHOW PROCEDURE STATUS WHERE `Db` = '{$wpdb->dbname}'", 1);
+    if (count($procedures)) { ?>
+    <div id="showcreateproc-block"  class="scan-item scan-item-last">
+        <div class='title' onclick="Duplicator.Pack.toggleScanItem(this);">
+            <div class="text"><i class="fa fa-caret-right"></i> <?php esc_html_e('Stored Proc Access', 'duplicator');?></div>
+            <div id="data-arc-status-showcreateproc"></div>
+        </div>
+        <div class="info">
+            <script id="hb-showcreateproc-result" type="text/x-handlebars-template">
+                <div class="container">
+                    <div class="data">
+                        {{#if ARC.Status.showCreateProc}}
+                        <?php esc_html_e("The database user for this WordPress site has sufficient permissions to write stored procedures to the sql file of the archive. [The command SHOW CREATE FUNCTION will work.]", 'duplicator'); ?>
+                        {{else}}
+                        <span style="color: red;">
+                        <?php
+                        esc_html_e("The database user for this WordPress site does NOT sufficient permissions to write stored procedures to the sql file of the archive.  Stored procedures will not be added to the sql file.", 'duplicator');
+                        ?>
+                    </span>
+                        {{/if}}
+                    </div>
+                </div>
+            </script>
+            <div id="showcreateproc-package-result"></div>
+        </div>
+    </div>
+    <?php } ?>
     
 	<!-- ============
 	TOTAL SIZE -->
@@ -448,15 +504,15 @@ DATABASE -->
 		<div style="padding: 7px; background-color:#F3B2B7; font-weight: bold ">
 		<?php
 			printf(__('The build can\'t continue because the total size of files and the database exceeds the %s limit that can be processed when creating a DupArchive package. ', 'duplicator'), $duparchive_max_limit);
-            printf(__('<a href="javascript:void(0)" onclick="jQuery(\'#data-ll-status-recommendations\').toggle()">Click for recommendations.</a>', 'duplicator'));
 		?>
+			<a href="javascript:void(0)" onclick="jQuery('#data-ll-status-recommendations').slideToggle('slow');"><?php esc_html_e('Click for recommendations.', 'duplicator'); ?></a>
 		</div>
 		<div class="info" id="data-ll-status-recommendations">
 		<?php
 			echo '<b>';
 			$lnk = '<a href="admin.php?page=duplicator-settings&tab=package" target="_blank">' . esc_html__('Archive Engine', 'duplicator') . '</a>';
-			printf(__("The {$lnk} is set to create packages in the 'DupArchive' format.  This custom format is used to overcome budget host constraints."
-					. " With DupArchive, Duplicator is restricted to processing sites up to %s.  To process larger sites, consider these recommendations. ", 'duplicator'), $duparchive_max_limit, $duparchive_max_limit);
+			printf(esc_html__("The %s is set to create packages in the 'DupArchive' format.  This custom format is used to overcome budget host constraints."
+					. " With DupArchive, Duplicator is restricted to processing sites up to %s.  To process larger sites, consider these recommendations. ", 'duplicator'), $lnk, $duparchive_max_limit, $duparchive_max_limit);
 			echo '</b>';
 			echo '<br/><hr size="1" />';
 
@@ -557,7 +613,7 @@ DIALOG: Scan Results -->
 		<small><?php echo ($Package->Archive->FilterOn) ? __('Enabled', 'duplicator') : __('Disabled', 'duplicator') ;?></small>
 	</h2>
 	<div class="filter-area">
-		<b><i class="fa fa-folder-open"></i> <?php echo rtrim(DUPLICATOR_WPROOTPATH, "//");?></b>
+		<b><i class="fa fa-folder-open"></i> <?php echo duplicator_get_abs_path();?></b>
 
 		<script id="hb-filter-file-list" type="text/x-handlebars-template">
 			<div class="file-info">
@@ -652,7 +708,7 @@ jQuery(document).ready(function($)
 {
 
 	Handlebars.registerHelper('stripWPRoot', function(path) {
-		return  path.replace('<?php echo rtrim(DUPLICATOR_WPROOTPATH, "//") ?>', '');
+		return  path.replace('<?php echo duplicator_get_abs_path(); ?>', '');
 	});
 
 	//Uncheck file names if directory is checked
@@ -800,7 +856,10 @@ jQuery(document).ready(function($)
 		$('#data-arc-status-size').html(Duplicator.Pack.setScanStatus(data.ARC.Status.Size));
 		$('#data-arc-status-names').html(Duplicator.Pack.setScanStatus(data.ARC.Status.Names));
         $('#data-arc-status-unreadablefiles').html(Duplicator.Pack.setScanStatus(data.ARC.Status.UnreadableItems));
-        $('#data-arc-size1').text(data.ARC.Size || errMsg);
+        
+		$('#data-arc-status-migratepackage').html(Duplicator.Pack.setScanStatus(data.ARC.Status.MigratePackage));
++        $('#data-arc-status-showcreateproc').html(Duplicator.Pack.setScanStatus(data.ARC.Status.showCreateProcStatus));
+		$('#data-arc-size1').text(data.ARC.Size || errMsg);
 		$('#data-arc-size2').text(data.ARC.Size || errMsg);
 		$('#data-arc-files').text(data.ARC.FileCount || errMsg);
 		$('#data-arc-dirs').text(data.ARC.DirCount || errMsg);
@@ -841,6 +900,22 @@ jQuery(document).ready(function($)
             var templateScript = Handlebars.compile(template);
             var html = templateScript(data);
             $('div.hb-filter-file-list-result').html(html);
+        }
+
+		//MIGRATE PACKAGE
+        if ($("#hb-migrate-package-result").length) {
+            var template = $('#hb-migrate-package-result').html();
+            var templateScript = Handlebars.compile(template);
+            var html = templateScript(data);
+            $('#migrate-package-result').html(html);
+        }
+
+        //SHOW CREATE
+        if ($("#hb-showcreateproc-result").length) {
+            var template = $('#hb-showcreateproc-result').html();
+            var templateScript = Handlebars.compile(template);
+            var html = templateScript(data);
+            $('#showcreateproc-package-result').html(html);
         }
 
 		Duplicator.UI.loadQtip();

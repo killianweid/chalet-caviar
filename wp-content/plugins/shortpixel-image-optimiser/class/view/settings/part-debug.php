@@ -1,5 +1,6 @@
 <?php
 namespace ShortPixel;
+use ShortPixel\Notices\NoticeController as Notices;
 
 ?>
 

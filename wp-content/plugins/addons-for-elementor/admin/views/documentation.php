@@ -1164,6 +1164,127 @@ else {
             <div id="updates-panel" class="panel-left">
 
                 <h2>Change Log for the Premium Version</h2>
+                <h3>4.4</h3>
+                <ul>
+                    <li>Added - Option to disable featured image for posts in posts carousel</li>
+                    <li>Added - Custom icons for almost all elementor addons part of this plugin</li>
+                    <li>Updated - Freemius SDK 2.4.1 with License White-Label Update, WP 5.5. jQuery Compatibility, Auto-Updates UI Integration, and more!</li>
+                </ul>
+                <h3>4.3.1</h3>
+                <ul>
+                    <li>Added - Smooth height option to Testimonials Slider</li>
+                </ul>
+                <h3>4.3</h3>
+                <ul>
+                    <li>Added - Touch enabled, responsive Tab Slider widget for Elementor</li>
+                    <li>Added - Three default styles for Tab Slider widget</li>
+                    <li>Added - Extensive customization options for Tab Slider elements</li>
+                    <li>Added - Ability to deactivate Tab Slider addon in Settings window</li>
+                    <li>Added - Ability to use icons or images for titles of tab slider</li>
+                </ul>
+                <h3>4.2</h3>
+                <ul>
+                    <li>Fixed - Pagination and filtering in Posts Grid and Posts Block would remove loading indicator prematurely</li>
+                    <li>Fixed - The loading indicator for Load More button displayed during filtering</li>
+                    <li>Fixed - The message prompting for custom grid template not fully visible</li>
+                    <li>Fixed - The drop indicator for grid items in Livemesh Grid templates displayed incorrectly</li>
+                    <li>Added - Styling for error messages prompting the user to choose Custom Skin and Custom Grid templates</li>
+                    <li>Updated - Freemius SDK 2.4.0</li>
+                </ul>
+                <h3>4.1.1</h3>
+                <ul>
+                    <li>Added - Adaptive height option for single slide Posts Carousel</li>
+                    <li>Fixed - Class does not exist error when registering document types</li>
+                </ul>
+                <h3>4.1.0</h3>
+                <ul>
+                    <li> Added - Compatibility with Elementor 3.0</li>
+                    <li> Fixed - Method get_site_editor_type does not exist error when loading Theme Builder in Elementor PRO</li>
+                </ul>
+                <h3>4.0.0</h3>
+                <ul>
+                    <li>Added - Choice of 'Custom Skin' and 'Custom Grid' for posts grid items to design your custom posts grid and/or custom posts grid item using theme builder templates in Elementor PRO. You can now create custom skins for grid items and also create custom grid layout via drag and drop of page builder elements in Elementor.</li>
+                    <li>Added - Choice of 'Custom Skin' for posts carousel items with ability to use theme builder templates for designing your own posts carousel. The custom skins for posts carousel items can now be designed via drag and drop of page builder elements in Elementor.</li>
+                    <li>Added - Design custom skin for items of Posts Carousel and Posts Grid with custom choice of fields and their arrangement using Elementor page builder.</li>
+                    <li>Added - Ability to choose separate Skin Templates for individual items within a Posts Grid. A single Posts Grid can now feature disparate set of grid items which utilize individual skins of their choice.</li>
+                    <li>Added - Ability to use any custom post type with custom fields(including ACF/Pods/Toolset) for Posts Grid and Posts Carousel items. </li>
+                    <li>Added - You can now drag and drop widgets in Elementor to build custom carousels/sliders and grids of Services, Events, Features, Team, Testimonials, Posts Grid, Posts Carousels etc. by utilizing the custom grid and grid item templates feature built into Posts Carousel and Posts Grid widgets. Possibilities for building custom carousels and grids are endless with dynamic widgets and page building experience provided by Elementor and data provided by custom post types and ACF/Pods/Toolset plugins. </li>
+                    <li>Added - Added two theme builder template locations Livemesh Item and Livemesh Grid to help build custom grids and custom skins for posts grid and posts carousel widgets.</li>
+                    <li>Added - Pagination, Next/Previous, Load More and Load on Scroll/Infinite Scroll support for Posts Grid featuring custom grids and those featuring custom grid items.</li>
+                    <li>Added - Filters using custom taxonomy terms or categories/tags work for those Posts Grid instances which feature user designed custom grids</li>
+                    <li>Fixed - The posts carousel does not show arrow navigation controls on smartphones</li>
+                </ul>
+                <h3>3.0.0</h3>
+                <ul>
+                    <li>Added - Options to turn off/on title and taxonomy terms displayed on posts carousel thumbnail</li>
+                    <li>Added - Open in new window option for post links in posts carousel</li>
+                    <li>Added - Ability to add read more link for the posts carousel</li>
+                    <li>Added - Styling for read more link for the posts carousel</li>
+                    <li>Fixed - The posts carousel article would populate wrong style classes</li>
+                    <li>Fixed - The WP filters/hooks in posts carousel received page id as post id</li>
+                </ul>
+                <h3>2.9.9</h3>
+                <ul>
+                    <li>Fixed - The posts carousel and posts grid can cause error when the taxonomy terms are missing.</li>
+                </ul>
+                <h3>2.9.8</h3>
+                <ul>
+                    <li>Fixed - The posts block and posts grid addons would allow a max of 100 words for post excerpts.</li>
+                    <li>Fixed - The display taxonomy option not enabled for 'Grid Style 5' and 'Post Meta' section is empty in the Posts Grid addon settings.</li>
+                </ul>
+                <h3>2.9.7</h3>
+                <ul>
+                    <li>Tweak - Enabled lazy load for all the widgets except for the grid/gallery addons - Posts Grid, WooCommerce Grid, YouTube Grid, Vimeo Grid, Twitter grid, Instagram Grid, Video and Image Gallery. These Grid and Gallery addons utilize the popular Isotope library for laying out grid elements and Isotope library is not compatible with lazy loading of images.</li>
+                </ul>
+                <h3>2.9.6</h3>
+                <ul>
+                    <li>Updated - Freemius SDK 2.3.2 with Opt-In / Out Enhancements, User Change, and More.</li>
+                    <li>Added - The Posts Grid, Posts Block, Posts Carousel and Image/Video Gallery addons are now compatible with most of the popular lazy load plugins.</li>
+                </ul>
+                <h3>2.9.5</h3>
+                <ul>
+                    <li>Added - WooCommerce support for Posts Grid. You can now create a AJAX powered grid of products with all details relevant to products captured as part of the grid - alternate image, product name, sale price, rating, add to cart button, sale indicator, add to wish list etc.</li>
+                    <li>Added - Two new styles to the Posts Grid exclusive to WooCommerce products. </li>
+                    <li>Added - Quick view option for WooCommerce products. You can now view all major details of a product in a modal window without leaving the page housing the WooCommerce grid.</li>
+                    <li>Added - A readme.txt for the premium version of the plugin. The readme.html file has been removed.</li>
+                </ul>
+                <h3>2.9.4</h3>
+                <ul>
+                    <li>Updated - Freemius SDK 2.3.1 with white label mode, URL whitelisting and other features and bug fixes.</li>
+                    <li>Fixed - The social icons were not being displayed for team member profiles.</li>
+                </ul>
+                <h3>2.9.3</h3>
+                <ul>
+                    <li>Added - Instagram Grid/Gallery widget that displays images and videos by talking to unofficial Instagram API.</li>
+                    <li>Added - Display images and videos in Instagram Grid given one or more user names or hash tags.</li>
+                    <li>Added - Display excerpt, user account name/avatar, posted date, likes/views/comments count of Instagram images/videos, as provided by Instagram API.</li>
+                    <li>Added - Display Instagram user account header with information like account name, logo, website, full name, account stats and account description, as provided by Instagram API.</li>
+                    <li>Added - Three skins for display of Instagram posts.</li>
+                    <li>Note - The addon talks to unofficial API provided by Instagram and hence changes to the API by Facebook can break the widget. The official API of Instagram is restrictive and evolving; we may move to the same at a later date.</li>
+                    <li>Added - Display of title and description in the lightbox popup for Vimeo and YouTube videos in Vimeo and YouTube Grid widgets. </li>
+                </ul>
+                <h3>2.9.2</h3>
+                <ul>
+                    <li>Added - Vimeo Video Grid/Gallery widget that connects to Vimeo Developer API to display videos automatically from Vimeo.</li>
+                    <li>Added - Display videos in Vimeo Grid given a User ID, Channel ID, Album ID or a Group ID.</li>
+                    <li>Added - Large number of sort options for display of videos like alphabetical, posted date, modified date, view count, number of likes, comments number and video duration.</li>
+                    <li>Added - Display title, excerpt, user account name/avatar, categories, posted date, duration, views/likes/comments count of Vimeo videos, as provided by Vimeo API.</li>
+                    <li>Added - Display Vimeo user account header with information like account name, logo, website, location, account stats and account description, as provided by Vimeo API.</li>
+                    <li>Fixed - Some navigation elements like the slider/carousel next/previous, accordion/tab open/close were displaying wrong icons.</li>
+                </ul>
+                <h3>2.9.1</h3>
+                <ul>
+                    <li>Added - YouTube Video Grid/Gallery widget that connects to YouTube Developer API to display videos automatically from YouTube.</li>
+                    <li>Added - Display videos in YouTube Grid given a Channel ID, Playlist ID or a list of video IDs.</li>
+                    <li>Added - Display title, excerpt, channel name/avatar, posted date, duration, views/likes/comments count of YouTube videos, as provided by YouTube API.</li>
+                    <li>Added - Display YouTube channel header with information like channel name, banner, avatar, channel stats and channel description, as provided by YouTube API.</li>
+                </ul>
+                <h3>2.9</h3>
+                <ul>
+                    <li>Added - Load on Scroll (Infinite Scroll) for Posts Grid, Posts Block and Image/Video Gallery modules.</li>
+                    <li>Fixed - A short delay in loading the posts and gallery items after the loading indicator has turned off when using load more option.</li>
+                    <li>Fixed - The HTML5 videos would autoplay in the background under certain conditions.</li>
+                </ul>
                 <h3>2.8</h3>
                 <ul>
                     <li>Added - RTL Support for ALL modules.</li>

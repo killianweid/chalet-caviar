@@ -173,7 +173,7 @@ if (!class_exists('ReduxFramework_kad_slides')) {
                 echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-link_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][link]" value="" placeholder="'.esc_attr( $placeholder ).'" class="full-text" /></li>';
                 
                 echo '<li><label for="'. esc_attr( $this->field['id'] ) .  '-target_' . esc_attr( $x ) . '">';
-                echo '<input type="checkbox" class="checkbox-slide-target" id="' . esc_attr( $this->field['id'] ) . '-target_' . esc_attr( $x ) . '" value="" ' . checked(  '', '1', false ) . ' name="' . esc_attr( $this->args['opt_name'] ) . '[' . esc_attr( $this->field['id'] ) . '][' . esc_attr( $x ) . '][target]" />';
+                echo '<input type="checkbox" class="checkbox-slide-target" id="' . esc_attr( $this->field['id'] ) . '-target_' . esc_attr( $x ) . '" value="" ' . checked(  '', '1', false ) . ' name="' . $this->field['name'] . '[' . $this->field['id'] . '][' . $x . '][target]" />';
                 echo ' '.esc_html__('Open Link in New Tab/Window', 'virtue'). '</label></li>';
 
                 echo '<li><input type="hidden" class="slide-sort" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][sort]" id="' . esc_attr( $this->field['id'] ) . '-sort_' . esc_attr( $x ) . '" value="' . esc_attr( $x ) . '" />';

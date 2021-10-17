@@ -34,7 +34,7 @@ class LAE_Team_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'fa fa-user-o';
+        return 'lae-icon-team4';
     }
 
     public function get_categories() {

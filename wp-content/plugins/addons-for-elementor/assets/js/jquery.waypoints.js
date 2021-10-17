@@ -166,7 +166,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     }
   }
 
-  window.Waypoint = Waypoint
+  window.livemeshWaypoint = Waypoint
 }())
 ;(function() {
   'use strict'
@@ -177,7 +177,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 
   var keyCounter = 0
   var contexts = {}
-  var Waypoint = window.Waypoint
+  var Waypoint = window.livemeshWaypoint
   var oldWindowLoad = window.onload
 
   /* http://imakewebthings.com/waypoints/api/context */
@@ -492,7 +492,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
     vertical: {},
     horizontal: {}
   }
-  var Waypoint = window.Waypoint
+  var Waypoint = window.livemeshWaypoint
 
   /* http://imakewebthings.com/waypoints/api/group */
   function Group(options) {
@@ -586,7 +586,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
   'use strict'
 
   var $ = window.jQuery
-  var Waypoint = window.Waypoint
+  var Waypoint = window.livemeshWaypoint
 
   function JQueryAdapter(element) {
     this.$element = $(element)
@@ -626,7 +626,7 @@ https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
 ;(function() {
   'use strict'
 
-  var Waypoint = window.Waypoint
+  var Waypoint = window.livemeshWaypoint
 
   function createExtension(framework) {
     return function() {

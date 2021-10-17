@@ -5,11 +5,7 @@ namespace WPForms\Lite\Admin;
 /**
  * Dashboard Widget shows a chart and the form entries stats in WP Dashboard.
  *
- * @package    WPForms\Lite\Admin
- * @author     WPForms
- * @since      1.5.0
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2018, WPForms LLC
+ * @since 1.5.0
  */
 class DashboardWidget {
 
@@ -43,7 +39,7 @@ class DashboardWidget {
 			return;
 		}
 
-		if ( ! apply_filters( 'wpforms_admin_dashboardwidget', '__return_true' ) ) {
+		if ( ! apply_filters( 'wpforms_admin_dashboardwidget', true ) ) {
 			return;
 		}
 
@@ -69,10 +65,7 @@ class DashboardWidget {
 			// Transient lifetime in seconds. Defaults to the end of a current day.
 			'transient_lifetime'               => \apply_filters( 'wpforms_dash_widget_transient_lifetime', \strtotime( 'tomorrow' ) - \time() ),
 
-			// Allow entries count logging for WPForms Lite.
-			'allow_entries_count_lite'         => \apply_filters( 'wpforms_dash_widget_allow_entries_count_lite', true ),
-
-			// Determines if the forms with no entries should appear in a forms list. Once switched, the effect applies after cache expiration.
+			// Determine if the forms with no entries should appear in a forms list. Once switched, the effect applies after cache expiration.
 			'display_forms_list_empty_entries' => \apply_filters( 'wpforms_dash_widget_display_forms_list_empty_entries', true ),
 		);
 	}
@@ -89,10 +82,6 @@ class DashboardWidget {
 		\add_action( 'wp_dashboard_setup', array( $this, 'widget_register' ) );
 
 		\add_action( 'admin_init', array( $this, 'hide_widget' ) );
-
-		if ( ! empty( $this->settings['allow_entries_count_lite'] ) ) {
-			\add_action( 'wpforms_process_entry_save', array( $this, 'update_entry_count' ), 10, 3 );
-		}
 
 		\add_action( 'wpforms_create_form', __CLASS__ . '::clear_widget_cache' );
 		\add_action( 'wpforms_save_form', __CLASS__ . '::clear_widget_cache' );
@@ -373,7 +362,9 @@ class DashboardWidget {
 		<div class="wpforms-dash-widget-recommended-plugin-block">
 			<p><?php \esc_html_e( 'Recommended Plugin:', 'wpforms-lite' ); ?>
 				<b><?php \esc_html_e( 'MonsterInsights', 'wpforms-lite' ); ?></b> -
-				<a href="<?php echo \esc_url( $install_mi_url ); ?>"><?php \esc_html_e( 'Install', 'wpforms-lite' ); ?></a> &vert;
+				<?php if ( wpforms_can_install( 'plugin' ) ) { ?>
+					<a href="<?php echo \esc_url( $install_mi_url ); ?>"><?php \esc_html_e( 'Install', 'wpforms-lite' ); ?></a> &vert;
+				<?php } ?>
 				<a href="https://www.monsterinsights.com/?utm_source=wpformsplugin&utm_medium=link&utm_campaign=wpformsdashboardwidget"><?php \esc_html_e( 'Learn More', 'wpforms-lite' ); ?></a></p>
 		</div>
 		<?php
@@ -382,7 +373,7 @@ class DashboardWidget {
 	/**
 	 * Get entries count grouped by form.
 	 * Main point of entry to fetch form entry count data from DB.
-	 * Caches the result.
+	 * Cache the result.
 	 *
 	 * @since 1.5.0
 	 *
@@ -477,27 +468,6 @@ class DashboardWidget {
 
 		\wp_safe_redirect( $redirect_url );
 		exit();
-	}
-
-	/**
-	 * Increase entries count once a form is submitted.
-	 *
-	 * @since 1.5.0
-	 *
-	 * @param array      $fields  Set of form fields.
-	 * @param array      $entry   Entry contents.
-	 * @param int|string $form_id Form ID.
-	 */
-	public function update_entry_count( $fields, $entry, $form_id ) {
-
-		$form_id = \absint( $form_id );
-
-		if ( empty( $form_id ) ) {
-			return;
-		}
-
-		$count = \absint( \get_post_meta( $form_id, 'wpforms_entries_count', true ) );
-		\update_post_meta( $form_id, 'wpforms_entries_count', $count + 1 );
 	}
 
 	/**

@@ -1,17 +1,26 @@
 <?php 
 
+/**
+ * Premium Carousel.
+ */
 namespace PremiumAddons\Widgets;
 
-use PremiumAddons\Helper_Functions;
-use PremiumAddons\Includes;
+// Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Border;
 
+// PremiumAddons Classes.
+use PremiumAddons\Helper_Functions;
+use PremiumAddons\Includes;
+
 if( ! defined( 'ABSPATH' ) ) exit; // No access of directly access
 
+/**
+ * Class Premium_Carousel
+ */
 class Premium_Carousel extends Widget_Base {
 
     protected $templateInstance;
@@ -33,11 +42,12 @@ class Premium_Carousel extends Widget_Base {
 	}
     
     public function is_reload_preview_required() {
-       return true;
+        return true;
     }
     
     public function get_style_depends() {
         return [
+            'font-awesome-5-all',
             'premium-addons'
         ];
     }
@@ -53,9 +63,16 @@ class Premium_Carousel extends Widget_Base {
 		return [ 'premium-elements' ];
 	}
 
+    public function get_custom_help_url() {
+		return 'https://premiumaddons.com/support/';
+	}
     
-    // Adding the controls fields for the premium carousel
-    // This will controls the animation, colors and background, dimensions etc
+    /**
+	 * Register Carousel controls.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function _register_controls() {
 		$this->start_controls_section('premium_carousel_global_settings',
 			[
@@ -83,6 +100,7 @@ class Premium_Carousel extends Widget_Base {
 		     	'type'          => Controls_Manager::SELECT2,
 		     	'options'       => $this->getTemplateInstance()->get_elementor_page_list(),
 		     	'multiple'      => true,
+                'label_block'   => true,
                 'condition'     => [
                     'premium_carousel_content_type' => 'select'
                 ]
@@ -95,6 +113,7 @@ class Premium_Carousel extends Widget_Base {
             [
                 'label'         => __( 'Content', 'premium-addons-for-elementor' ),
                 'type'          => Controls_Manager::SELECT2,
+                'label_block'   => true,
                 'options'       => $this->getTemplateInstance()->get_elementor_page_list()
             ]
         );
@@ -103,7 +122,7 @@ class Premium_Carousel extends Widget_Base {
             [
                 'label'         => __('Templates', 'premium-addons-for-elementor'),
                 'type'          => Controls_Manager::REPEATER,
-                'fields'        => array_values( $repeater->get_controls() ),
+                'fields'        => $repeater->get_controls(),
                 'condition'     => [
                     'premium_carousel_content_type' => 'repeater'
                 ],
@@ -170,17 +189,25 @@ class Premium_Carousel extends Widget_Base {
 				'label'             => __( 'Vertical Offset', 'premium-addons-for-elementor' ),
 				'type'              => Controls_Manager::SLIDER,
                 'size_units'        => ['px', 'em', '%'],
-                'default'           => [
-                    'unit'  => '%',
-                    'size'  => 50
-                ],
                 'selectors'         => [
                     '{{WRAPPER}} .premium-carousel-dots-above ul.slick-dots' => 'top: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .premium-carousel-dots-below ul.slick-dots' => 'bottom: {{SIZE}}{{UNIT}}',
                 ],
                 'condition'     => [
                     'premium_carousel_dot_navigation_show'  => 'yes',
-                    'premium_carousel_dot_position'         => 'above'
                 ]
+			]
+		);
+        
+        $this->add_control('premium_carousel_navigation_effect',
+			[
+				'label' 		=> __( 'Ripple Effect', 'premium-addons-for-elementor' ),
+				'description'	=> __( 'Enable a ripple effect when the active dot is hovered/clicked', 'premium-addons-for-elementor' ),
+				'type'			=> Controls_Manager::SWITCHER,
+                'prefix_class'  => 'premium-carousel-ripple-',
+                'condition'		=> [
+					'premium_carousel_dot_navigation_show' => 'yes'
+				],
 			]
 		);
         
@@ -235,7 +262,7 @@ class Premium_Carousel extends Widget_Base {
         
         $this->start_controls_section('premium_carousel_slides_settings',
 			[
-				'label' => __( 'Slides\' Settings' , 'premium-addons-for-elementor' )
+				'label' => __( 'Slides Settings' , 'premium-addons-for-elementor' )
 			]
 		);
         
@@ -297,14 +324,13 @@ class Premium_Carousel extends Widget_Base {
 				'condition'		=> [
 					'premium_carousel_autoplay' => 'yes'
 				],
-				'separator'		=> 'after'
 			]
 		);
 
         $this->add_control('premium_carousel_animation_list', 
             [
                 'label'         => __('Animations', 'premium-addons-for-elementor'),
-                'type'          => Controls_Manager::ANIMATION,
+                'type'          => Controls_Manager::HIDDEN,
                 'render_type'   => 'template'
             ]
             );
@@ -407,9 +433,9 @@ class Premium_Carousel extends Widget_Base {
         
         $this->end_controls_section();
         
-        $this->start_controls_section('docs',
+        $this->start_controls_section('section_pa_docs',
             [
-                'label'         => __('Helpful Documentations', 'premium-addons-pro'),
+                'label'         => __('Helpful Documentations', 'premium-addons-for-elementor'),
             ]
         );
         
@@ -417,6 +443,30 @@ class Premium_Carousel extends Widget_Base {
             [
                 'type'            => Controls_Manager::RAW_HTML,
                 'raw'             => sprintf( __( '%1$s Issue: I can see the first slide only » %2$s', 'premium-addons-for-elementor' ), '<a href="https://premiumaddons.com/docs/i-can-see-the-first-slide-only-in-carousel-widget/?utm_source=pa-dashboard&utm_medium=pa-editor&utm_campaign=pa-plugin" target="_blank" rel="noopener">', '</a>' ),
+                'content_classes' => 'editor-pa-doc',
+            ]
+		);
+
+		$this->add_control('doc_2',
+            [
+                'type'            => Controls_Manager::RAW_HTML,
+                'raw'             => sprintf( __( '%1$s How to create an Elementor template to be used in Premium Carousel » %2$s', 'premium-addons-for-elementor' ), '<a href="https://premiumaddons.com/docs/how-to-create-elementor-template-to-be-used-with-premium-addons/?utm_source=pa-dashboard&utm_medium=pa-editor&utm_campaign=pa-plugin" target="_blank" rel="noopener">', '</a>' ),
+                'content_classes' => 'editor-pa-doc',
+            ]
+		);
+		
+		$this->add_control('doc_3',
+            [
+                'type'            => Controls_Manager::RAW_HTML,
+                'raw'             => sprintf( __( '%1$s I\'m not able to see Font Awesome icons in the widget » %2$s', 'premium-addons-for-elementor' ), '<a href="https://premiumaddons.com/docs/why-im-not-able-to-see-elementor-font-awesome-5-icons-in-premium-add-ons/?utm_source=papro-dashboard&utm_medium=papro-editor&utm_campaign=papro-plugin" target="_blank" rel="noopener">', '</a>' ),
+                'content_classes' => 'editor-pa-doc',
+            ]
+        );
+
+        $this->add_control('doc_4',
+            [
+                'type'            => Controls_Manager::RAW_HTML,
+                'raw'             => sprintf( __( '%1$s How to add entrance animations to the elements inside Premium Carousel Widget » %2$s', 'premium-addons-for-elementor' ), '<a href="https://premiumaddons.com/docs/how-to-add-entrance-animations-to-elementor-elements-in-premium-carousel-widget/?utm_source=papro-dashboard&utm_medium=papro-editor&utm_campaign=papro-plugin" target="_blank" rel="noopener">', '</a>' ),
                 'content_classes' => 'editor-pa-doc',
             ]
         );
@@ -780,57 +830,63 @@ class Premium_Carousel extends Widget_Base {
 			]
 		);
         
-        $this->add_control('premium_carousel_navigation_effect',
+        $this->add_control('premium_carousel_ripple_active_color',
 			[
-				'label' 		=> __( 'Ripple Effect', 'premium-addons-for-elementor' ),
-				'description'	=> __( 'Enable a ripple effect when the active dot is hovered/clicked', 'premium-addons-for-elementor' ),
-				'type'			=> Controls_Manager::SWITCHER,
-                'condition'		=> [
-					'premium_carousel_dot_navigation_show' => 'yes'
-				],
-			]
-		);
-        
-        $this->add_control('premium_carousel_navigation_effect_border_color',
-			[
-				'label' 		=> __( 'Ripple Color', 'premium-addons-for-elementor' ),
+				'label' 		=> __( 'Active Ripple Color', 'premium-addons-for-elementor' ),
 				'type' 			=> Controls_Manager::COLOR,
-				'scheme' 		=> [
-				    'type' 	=> Scheme_Color::get_type(),
-				    'value' => Scheme_Color::COLOR_1,
-				],
 				'condition'		=> [
 					'premium_carousel_dot_navigation_show' => 'yes',
                     'premium_carousel_navigation_effect'   => 'yes'
 				],
 				'selectors'		=> [
-					'{{WRAPPER}} .premium-carousel-wrapper.hvr-ripple-out ul.slick-dots li.slick-active:before' => 'border-color: {{VALUE}}'
+					'{{WRAPPER}}.premium-carousel-ripple-yes ul.slick-dots li.slick-active:hover:before' => 'background-color: {{VALUE}}'
 				]
 			]
 		);
         
-        $this->add_control('premium_carousel_navigation_effect_border_radius',
-            [
-                'label'         => __('Border Radius', 'premium-addons-for-elementor'),
-                'type'          => Controls_Manager::SLIDER,
-                'size_units'    => ['px', '%', 'em'],
-                'condition'		=> [
-                    'premium_carousel_dot_navigation_show' => 'yes',
-                    'premium_carousel_navigation_effect'    => 'yes'
-                ],
-                'selectors'     => [
-                    '{{WRAPPER}} .premium-carousel-wrapper.hvr-ripple-out ul.slick-dots li.slick-active:before' => 'border-radius: {{SIZE}}{{UNIT}};'
-                    ]
-                ]
-            );
-
+        $this->add_control('premium_carousel_ripple_color',
+			[
+				'label' 		=> __( 'Inactive Ripple Color', 'premium-addons-for-elementor' ),
+				'type' 			=> Controls_Manager::COLOR,
+				'condition'		=> [
+					'premium_carousel_dot_navigation_show' => 'yes',
+                    'premium_carousel_navigation_effect'   => 'yes'
+				],
+				'selectors'		=> [
+					'{{WRAPPER}}.premium-carousel-ripple-yes ul.slick-dots li:hover:before' => 'background-color: {{VALUE}}'
+				]
+			]
+		);
+        
 		$this->end_controls_section();
 
 	}
 
+	/**
+	 * Render Carousel widget output on the frontend.
+	 *
+	 * Written in PHP and used to generate the final HTML.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function render() {
         
-		$settings = $this->get_settings();
+        $settings = $this->get_settings();
+        
+        $templates = array();
+        
+        if( 'select' === $settings['premium_carousel_content_type'] ){
+            $templates = $settings['premium_carousel_slider_content'];
+        } else {
+            foreach( $settings['premium_carousel_templates_repeater'] as $template ){
+                array_push($templates, $template['premium_carousel_repeater_item']);
+            }
+        }
+
+        if( empty( $templates ) ) {
+            return;
+        }
         
         $vertical = $settings['premium_carousel_slider_type'] == 'vertical' ? true : false;
 		
@@ -998,10 +1054,9 @@ class Premium_Carousel extends Widget_Base {
 		$extra_class = ! empty ( $settings['premium_carousel_extra_class'] ) ? ' ' . $settings['premium_carousel_extra_class'] : '';
 		
 		$animation_class = $settings['premium_carousel_animation_list'];
+        
 		$animation = ! empty( $animation_class ) ? 'animated ' . $animation_class : 'null';
         
-        $dot_anim = $settings['premium_carousel_navigation_effect'] == 'yes' ? 'hvr-ripple-out' : '';
-
         $tablet_breakpoint = ! empty ( $settings['premium_carousel_tablet_breakpoint'] ) ? $settings['premium_carousel_tablet_breakpoint'] : 1025;
         
         $mobile_breakpoint = ! empty ( $settings['premium_carousel_mobile_breakpoint'] ) ? $settings['premium_carousel_mobile_breakpoint'] : 768;
@@ -1035,21 +1090,10 @@ class Premium_Carousel extends Widget_Base {
             'mobileBreak'   => $mobile_breakpoint
         ];
         
-        $templates = array();
-        
-        if( 'select' === $settings['premium_carousel_content_type'] ){
-            $templates = $settings['premium_carousel_slider_content'];
-        } else {
-            foreach( $settings['premium_carousel_templates_repeater'] as $template ){
-                array_push($templates, $template['premium_carousel_repeater_item']);
-            }
-        }
-        
         $this->add_render_attribute( 'carousel', 'id', 'premium-carousel-wrapper-' . esc_attr( $this->get_id() ) );
         
         $this->add_render_attribute( 'carousel', 'class', [
             'premium-carousel-wrapper',
-            $dot_anim,
             'carousel-wrapper-' . esc_attr( $this->get_id() ),
             $extra_class,
             $dir
@@ -1072,17 +1116,27 @@ class Premium_Carousel extends Widget_Base {
             <div id="premium-carousel-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-carousel-inner">
                 <?php 
                     foreach( $templates as $template_title ) :
+                        if( ! empty( $template_title ) ) :
                  ?>
-                <div class="item-wrapper">
+                <div class="premium-carousel-template item-wrapper">
                     <?php echo $this->getTemplateInstance()->get_template_content( $template_title ); ?>
                 </div>
-                <?php endforeach; ?>
+                <?php   endif; 
+                endforeach; ?>
             </div>
         </div>
 		<?php
 	}
-    
-    protected function _content_template() {
+	
+	/**
+	 * Render Carousel widget output in the editor.
+	 *
+	 * Written as a Backbone JavaScript template and used to generate the live preview.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
+    protected function content_template() {
         
         ?>
         
@@ -1264,9 +1318,7 @@ class Premium_Carousel extends Widget_Base {
 
             var animationClass  = settings.premium_carousel_animation_list;
             var animation       = '' !== animationClass ? 'animated ' + animationClass : 'null';
-                
-            var dotAnim = settings.premium_carousel_navigation_effect === 'yes' ? 'hvr-ripple-out' : '';
-
+            
             var tabletBreakpoint = '' !== settings.premium_carousel_tablet_breakpoint ? settings.premium_carousel_tablet_breakpoint : 1025;
 
             var mobileBreakpoint = '' !== settings.premium_carousel_mobile_breakpoint ? settings.premium_carousel_mobile_breakpoint : 768;
@@ -1320,7 +1372,6 @@ class Premium_Carousel extends Widget_Base {
 
             view.addRenderAttribute( 'carousel', 'class', [
                 'premium-carousel-wrapper',
-                dotAnim,
                 'carousel-wrapper-' + view.getID(),
                 extraClass,
                 dir
@@ -1344,9 +1395,12 @@ class Premium_Carousel extends Widget_Base {
         
         <div {{{ view.getRenderAttributeString('carousel') }}}>
             <div {{{ view.getRenderAttributeString('carousel-inner') }}}>
-                <# _.each( templates, function( templateID ) { #>
+                <# _.each( templates, function( templateID ) { 
+                    if( templateID ) { 
+                #>
                     <div class="item-wrapper" data-template="{{templateID}}"></div>
-                <# } ); #>
+                <#  } 
+                } ); #>
             </div>
         </div>
         

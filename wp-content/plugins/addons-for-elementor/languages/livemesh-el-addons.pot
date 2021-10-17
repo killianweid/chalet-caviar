@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Events Calendar Slider\n"
-"POT-Creation-Date: 2019-04-15 19:54+0530\n"
+"POT-Creation-Date: 2019-10-17 16:35+0530\n"
 "PO-Revision-Date: 2015-10-26 13:24-0000\n"
 "Last-Translator: LiveMesh\n"
 "Language-Team: LiveMesh\n"
@@ -64,7 +64,7 @@ msgid "Widgets Settings"
 msgstr ""
 
 #: admin/admin-init.php:100 includes/widgets/heading.php:119
-#: includes/widgets/premium/icon-list.php:163
+#: includes/widgets/premium/icon-list.php:181
 msgid "Settings"
 msgstr ""
 
@@ -168,8 +168,10 @@ msgstr ""
 
 #: admin/views/documentation.php:1079
 #: includes/widgets/premium/gallery-carousel.php:277
-#: includes/widgets/premium/gallery.php:477
+#: includes/widgets/premium/gallery.php:478
 #: includes/widgets/premium/twitter-grid.php:351
+#: includes/widgets/premium/vimeo-grid.php:437
+#: includes/widgets/premium/youtube-grid.php:388
 msgid "Elementor"
 msgstr ""
 
@@ -195,75 +197,78 @@ msgstr ""
 msgid "Install Portfolio Post Type"
 msgstr ""
 
-#: admin/views/documentation.php:1455
+#: admin/views/documentation.php:1519
 msgid "Why upgrade to Premium version?"
 msgstr ""
 
-#: admin/views/documentation.php:1456
+#: admin/views/documentation.php:1520
 msgid ""
 "Premium version offers multiple benefits - more addon elements, "
 "advanced features for addons including those part of the free "
 "plugin and priority support through a dedicated support portal."
 msgstr ""
 
-#: admin/views/documentation.php:1460 admin/views/settings.php:814
+#: admin/views/documentation.php:1524 admin/views/settings.php:970
 msgid "Know More"
 msgstr ""
 
-#: admin/views/documentation.php:1460
+#: admin/views/documentation.php:1524
 msgid "Know More Details"
 msgstr ""
 
-#: admin/views/documentation.php:1476
+#: admin/views/documentation.php:1540
 msgid "Contact Us"
 msgstr ""
 
-#: admin/views/documentation.php:1489
+#: admin/views/documentation.php:1553
 msgid "Write to Us"
 msgstr ""
 
-#: admin/views/settings.php:99 includes/widgets/premium/button.php:132
-#: includes/widgets/premium/button.php:246
-#: includes/widgets/premium/features.php:192
+#: admin/views/settings.php:111
+#: includes/widgets/premium/button.php:133
+#: includes/widgets/premium/button.php:247
+#: includes/widgets/premium/features.php:209
 #: includes/widgets/premium/gallery-carousel.php:209
-#: includes/widgets/premium/gallery.php:317
-#: includes/widgets/premium/portfolio.php:198
-#: includes/widgets/premium/posts-block.php:194
+#: includes/widgets/premium/gallery.php:318
+#: includes/widgets/premium/portfolio.php:262
+#: includes/widgets/premium/posts-block.php:260
 #: includes/widgets/premium/twitter-grid.php:143
-#: includes/widgets/team-members.php:302
+#: includes/widgets/premium/vimeo-grid.php:367
+#: includes/widgets/premium/youtube-grid.php:318
+#: includes/widgets/team-members.php:320
 msgid "General"
 msgstr ""
 
-#: admin/views/settings.php:102
+#: admin/views/settings.php:114
 msgid "Elements"
 msgstr ""
 
-#: admin/views/settings.php:106
+#: admin/views/settings.php:118
 msgid "Social API"
 msgstr ""
 
-#: admin/views/settings.php:110 admin/views/settings.php:600
-#: admin/views/settings.php:605
+#: admin/views/settings.php:122 admin/views/settings.php:721
+#: admin/views/settings.php:726
 msgid "Custom CSS"
 msgstr ""
 
-#: admin/views/settings.php:113
+#: admin/views/settings.php:125
 msgid "Debugging"
 msgstr ""
 
-#: admin/views/settings.php:116 admin/views/settings.php:672
+#: admin/views/settings.php:128 admin/views/settings.php:796
 msgid "Premium Version"
 msgstr ""
 
-#: admin/views/settings.php:126
+#: admin/views/settings.php:138
 msgid "Theme Colors"
 msgstr ""
 
-#: admin/views/settings.php:131
+#: admin/views/settings.php:143
 msgid "Theme Color Scheme"
 msgstr ""
 
-#: admin/views/settings.php:132
+#: admin/views/settings.php:144
 msgid ""
 "Most themes use a single color as a major color across the site. "
 "This color is often used for links, titles, buttons, icons, "
@@ -274,405 +279,878 @@ msgid ""
 "on mouse hover."
 msgstr ""
 
-#: admin/views/settings.php:139
+#: admin/views/settings.php:151
 msgid "Theme Color"
 msgstr ""
 
-#: admin/views/settings.php:140
+#: admin/views/settings.php:152
 msgid "Select the default theme color."
 msgstr ""
 
-#: admin/views/settings.php:151
+#: admin/views/settings.php:163
 msgid "Theme Hover Color"
 msgstr ""
 
-#: admin/views/settings.php:152
+#: admin/views/settings.php:164
 msgid "Select the default hover color for your theme."
 msgstr ""
 
-#: admin/views/settings.php:175
+#: admin/views/settings.php:186
 msgid "Twitter API"
 msgstr ""
 
-#: admin/views/settings.php:179
+#: admin/views/settings.php:190
 msgid "Twitter App details"
 msgstr ""
 
-#: admin/views/settings.php:180
+#: admin/views/settings.php:191
 msgid ""
 "Register your Twitter App to generate your Consumer Key & Secret - "
 msgstr ""
 
-#: admin/views/settings.php:182
+#: admin/views/settings.php:193 admin/views/settings.php:268
 msgid "Register your App"
 msgstr ""
 
-#: admin/views/settings.php:190
+#: admin/views/settings.php:201
 msgid "Twitter Consumer Key"
 msgstr ""
 
-#: admin/views/settings.php:191
+#: admin/views/settings.php:202
 msgid "Enter your Twitter consumer key."
 msgstr ""
 
-#: admin/views/settings.php:203
+#: admin/views/settings.php:214
 msgid "Twitter Consumer Secret"
 msgstr ""
 
-#: admin/views/settings.php:204
+#: admin/views/settings.php:215
 msgid "Enter your Twitter consumer secret."
 msgstr ""
 
-#: admin/views/settings.php:228
-msgid "Optimize Plugin"
+#: admin/views/settings.php:229
+msgid "YouTube API"
+msgstr ""
+
+#: admin/views/settings.php:233
+msgid "Connect to YouTube"
+msgstr ""
+
+#: admin/views/settings.php:234
+msgid ""
+"Request for an YouTube API key by creating a project in Google "
+"Developers Console - "
 msgstr ""
 
 #: admin/views/settings.php:236
+msgid "Get Started"
+msgstr ""
+
+#: admin/views/settings.php:244
+msgid "YouTube API Key"
+msgstr ""
+
+#: admin/views/settings.php:245
+msgid ""
+"Enter your API key available in credentials page of the project "
+"created in Google Developers Console."
+msgstr ""
+
+#: admin/views/settings.php:261
+msgid "Vimeo API"
+msgstr ""
+
+#: admin/views/settings.php:265
+msgid "Vimeo App details"
+msgstr ""
+
+#: admin/views/settings.php:266
+msgid ""
+"Register your Vimeo App to generate your Client ID and Secret - "
+msgstr ""
+
+#: admin/views/settings.php:276
+msgid "Vimeo Client ID"
+msgstr ""
+
+#: admin/views/settings.php:277
+msgid "Enter your Vimeo Client ID."
+msgstr ""
+
+#: admin/views/settings.php:289
+msgid "Vimeo Client Secret"
+msgstr ""
+
+#: admin/views/settings.php:290
+msgid "Enter your Vimeo Client Secret."
+msgstr ""
+
+#: admin/views/settings.php:311
+msgid "Optimize Plugin"
+msgstr ""
+
+#: admin/views/settings.php:319
 msgid "Deactivate elements for better performance"
 msgstr ""
 
-#: admin/views/settings.php:238
+#: admin/views/settings.php:321
 msgid ""
 "You can deactivate those elements that you do not intend to use to "
 "avoid loading scripts and files related to those elements."
 msgstr ""
 
-#: admin/views/settings.php:246
+#: admin/views/settings.php:329
 msgid "Deactivate Carousel"
 msgstr ""
 
-#: admin/views/settings.php:247
+#: admin/views/settings.php:330
 msgid "Deactivate the carousel element."
 msgstr ""
 
-#: admin/views/settings.php:258
+#: admin/views/settings.php:341
 msgid "Deactivate Clients"
 msgstr ""
 
-#: admin/views/settings.php:259
+#: admin/views/settings.php:342
 msgid "Deactivate the clients element."
 msgstr ""
 
-#: admin/views/settings.php:270
+#: admin/views/settings.php:353
 msgid "Deactivate Heading"
 msgstr ""
 
-#: admin/views/settings.php:271
+#: admin/views/settings.php:354
 msgid "Deactivate the heading element."
 msgstr ""
 
-#: admin/views/settings.php:282
+#: admin/views/settings.php:365
 msgid "Deactivate Odometers"
 msgstr ""
 
-#: admin/views/settings.php:283
+#: admin/views/settings.php:366
 msgid "Deactivate the odometers element."
 msgstr ""
 
-#: admin/views/settings.php:295
+#: admin/views/settings.php:378
 msgid "Deactivate Piecharts"
 msgstr ""
 
-#: admin/views/settings.php:296
+#: admin/views/settings.php:379
 msgid "Deactivate the piecharts element."
 msgstr ""
 
-#: admin/views/settings.php:308
+#: admin/views/settings.php:391
 msgid "Deactivate Portfolio"
 msgstr ""
 
-#: admin/views/settings.php:309
+#: admin/views/settings.php:392
 msgid "Deactivate the portfolio element."
 msgstr ""
 
-#: admin/views/settings.php:321
+#: admin/views/settings.php:404
 msgid "Deactivate Posts Carousel"
 msgstr ""
 
-#: admin/views/settings.php:322
+#: admin/views/settings.php:405
 msgid "Deactivate the posts carousel element."
 msgstr ""
 
-#: admin/views/settings.php:334
+#: admin/views/settings.php:417
 msgid "Deactivate Pricing Table"
 msgstr ""
 
-#: admin/views/settings.php:335
+#: admin/views/settings.php:418
 msgid "Deactivate the pricing table element."
 msgstr ""
 
-#: admin/views/settings.php:347
+#: admin/views/settings.php:430
 msgid "Deactivate Services"
 msgstr ""
 
-#: admin/views/settings.php:348
+#: admin/views/settings.php:431
 msgid "Deactivate the services element."
 msgstr ""
 
-#: admin/views/settings.php:359
+#: admin/views/settings.php:442
 msgid "Deactivate Stats Bars"
 msgstr ""
 
-#: admin/views/settings.php:360
+#: admin/views/settings.php:443
 msgid "Deactivate the stats bars element."
 msgstr ""
 
-#: admin/views/settings.php:372
+#: admin/views/settings.php:455
 msgid "Deactivate Team"
 msgstr ""
 
-#: admin/views/settings.php:373
+#: admin/views/settings.php:456
 msgid "Deactivate the team element."
 msgstr ""
 
-#: admin/views/settings.php:384
+#: admin/views/settings.php:467
 msgid "Deactivate Testimonials"
 msgstr ""
 
-#: admin/views/settings.php:385
+#: admin/views/settings.php:468
 msgid "Deactivate the testimonials element."
 msgstr ""
 
-#: admin/views/settings.php:397
+#: admin/views/settings.php:480
 msgid "Deactivate Testimonials Slider"
 msgstr ""
 
-#: admin/views/settings.php:398
+#: admin/views/settings.php:481
 msgid "Deactivate the testimonials slider element."
 msgstr ""
 
-#: admin/views/settings.php:414
+#: admin/views/settings.php:496
 msgid "Deactivate Posts Block"
 msgstr ""
 
-#: admin/views/settings.php:415
+#: admin/views/settings.php:497
 msgid "Deactivate the Posts Block element."
 msgstr ""
 
-#: admin/views/settings.php:428
+#: admin/views/settings.php:509
+msgid "Deactivate Twitter Grid"
+msgstr ""
+
+#: admin/views/settings.php:510
+msgid "Deactivate the Twitter Grid element."
+msgstr ""
+
+#: admin/views/settings.php:522
+msgid "Deactivate YouTube Grid"
+msgstr ""
+
+#: admin/views/settings.php:523
+msgid "Deactivate the YouTube Grid element."
+msgstr ""
+
+#: admin/views/settings.php:535
+msgid "Deactivate Vimeo Grid"
+msgstr ""
+
+#: admin/views/settings.php:536
+msgid "Deactivate the Vimeo Grid element."
+msgstr ""
+
+#: admin/views/settings.php:548
 msgid "Deactivate Accordion"
 msgstr ""
 
-#: admin/views/settings.php:429
+#: admin/views/settings.php:549
 msgid "Deactivate the accordion element."
 msgstr ""
 
-#: admin/views/settings.php:441
+#: admin/views/settings.php:561
 msgid "Deactivate Tabs"
 msgstr ""
 
-#: admin/views/settings.php:442
+#: admin/views/settings.php:562
 msgid "Deactivate the tabs element."
 msgstr ""
 
-#: admin/views/settings.php:453
+#: admin/views/settings.php:573
 msgid "Deactivate FAQ"
 msgstr ""
 
-#: admin/views/settings.php:454
+#: admin/views/settings.php:574
 msgid "Deactivate the faq element."
 msgstr ""
 
-#: admin/views/settings.php:466
+#: admin/views/settings.php:586
 msgid "Deactivate Countdown"
 msgstr ""
 
-#: admin/views/settings.php:467
+#: admin/views/settings.php:587
 msgid "Deactivate the countdown element."
 msgstr ""
 
-#: admin/views/settings.php:479
+#: admin/views/settings.php:599
 msgid "Deactivate Features"
 msgstr ""
 
-#: admin/views/settings.php:480
+#: admin/views/settings.php:600
 msgid "Deactivate the features element."
 msgstr ""
 
-#: admin/views/settings.php:492
+#: admin/views/settings.php:612
 msgid "Deactivate Button"
 msgstr ""
 
-#: admin/views/settings.php:493
+#: admin/views/settings.php:613
 msgid "Deactivate the button element."
 msgstr ""
 
-#: admin/views/settings.php:505
+#: admin/views/settings.php:625
 msgid "Deactivate Services Carousel"
 msgstr ""
 
-#: admin/views/settings.php:506
+#: admin/views/settings.php:626
 msgid "Deactivate the services carousel element."
 msgstr ""
 
-#: admin/views/settings.php:517
+#: admin/views/settings.php:638
 msgid "Deactivate Gallery Carousel"
 msgstr ""
 
-#: admin/views/settings.php:518
+#: admin/views/settings.php:639
 msgid "Deactivate the gallery carousel element."
 msgstr ""
 
-#: admin/views/settings.php:530
+#: admin/views/settings.php:651
 msgid "Deactivate Gallery"
 msgstr ""
 
-#: admin/views/settings.php:531
+#: admin/views/settings.php:652
 msgid "Deactivate the gallery element."
 msgstr ""
 
-#: admin/views/settings.php:543
+#: admin/views/settings.php:664
 msgid "Deactivate Icon List"
 msgstr ""
 
-#: admin/views/settings.php:544
+#: admin/views/settings.php:665
 msgid "Deactivate the icon list element."
 msgstr ""
 
-#: admin/views/settings.php:556
+#: admin/views/settings.php:677
 msgid "Deactivate Image Slider"
 msgstr ""
 
-#: admin/views/settings.php:557
+#: admin/views/settings.php:678
 msgid "Deactivate the image slider element."
 msgstr ""
 
-#: admin/views/settings.php:569
+#: admin/views/settings.php:690
 msgid "Deactivate Slider"
 msgstr ""
 
-#: admin/views/settings.php:570
+#: admin/views/settings.php:691
 msgid "Deactivate the slider element."
 msgstr ""
 
-#: admin/views/settings.php:607
+#: admin/views/settings.php:728
 msgid "Please enter custom CSS for custom styling of addons"
 msgstr ""
 
-#: admin/views/settings.php:626
+#: admin/views/settings.php:748
 msgid "Debug Mode"
 msgstr ""
 
-#: admin/views/settings.php:631
+#: admin/views/settings.php:753
 msgid "Enable Script Debug Mode"
 msgstr ""
 
-#: admin/views/settings.php:633
+#: admin/views/settings.php:755
 msgid ""
 "Use unminified Javascript files instead of minified ones to help "
 "developers debug an issue"
 msgstr ""
 
-#: admin/views/settings.php:646
+#: admin/views/settings.php:770
 msgid "System Info"
 msgstr ""
 
-#: admin/views/settings.php:652
+#: admin/views/settings.php:776
 msgid "System Information"
 msgstr ""
 
-#: admin/views/settings.php:653
+#: admin/views/settings.php:777
 msgid "Server setup information useful for debugging purposes."
 msgstr ""
 
-#: admin/views/settings.php:681
+#: admin/views/settings.php:805
 msgid "Why upgrade to Premium Version of the plugin?!"
 msgstr ""
 
-#: admin/views/settings.php:685
+#: admin/views/settings.php:809
 msgid "Thanks for upgrading to the Premium Version of the plugin!"
 msgstr ""
 
-#: admin/views/settings.php:749
+#: admin/views/settings.php:894
 msgid "Purchase Now"
 msgstr ""
 
-#: admin/views/settings.php:810
+#: admin/views/settings.php:964
 msgid "Go Premium"
 msgstr ""
 
-#: includes/blocks/block-gallery.php:255
-#: includes/blocks/block-posts.php:268
+#: i18n/wpml-compatibility-init.php:75
+msgid "Heading: Title"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:80
+msgid "Heading: Subheading"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:85
+msgid "Heading: Short Text"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:164
+msgid "Button: Title"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:169
+msgid "Button: Target URL"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:180
+#: i18n/wpml-compatibility-init.php:307
+msgid "Posts Grid: Heading"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:185
+msgid "Posts Grid: Heading URL"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:190
+msgid "Posts Grid: Read More Text"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:200
+msgid "Posts Block: Heading"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:205
+msgid "Posts Block: Heading URL"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:210
+msgid "Posts Block: Read More Text"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:220
+msgid "Gallery: Heading"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:225
+msgid "Gallery: Heading URL"
+msgstr ""
+
+#: i18n/wpml-compatibility-init.php:237
+msgid "Twitter Grid: Read More Text"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-accordion.php:39
+msgid "Accordion: Title"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-accordion.php:42
+msgid "Accordion: Content"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-faq.php:35
+msgid "FAQ: Question"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-faq.php:38
+msgid "FAQ: Answer"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-features.php:35
+msgid "Features: Title"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-features.php:38
+msgid "Features: Subtitle"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-features.php:41
+msgid "Features: Description"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery-carousel.php:35
+msgid "Gallery Carousel Item: Title"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery-carousel.php:38
+msgid "Gallery Carousel Item: Tags"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery-carousel.php:41
+msgid "Gallery Carousel Item: YouTube/Vimeo Video Link"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery-carousel.php:44
+msgid "Gallery Carousel Item: MP4 Video Link"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery-carousel.php:47
+msgid "Gallery Carousel Item: WebM Video Link"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery-carousel.php:50
+msgid "Gallery Carousel Item: Link URL"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery-carousel.php:53
+msgid "Gallery Carousel Item: Description"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery.php:35
+msgid "Gallery Item: Title"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery.php:38
+msgid "Gallery Item: Tags"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery.php:41
+msgid "Gallery Item: YouTube/Vimeo Video Link"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery.php:44
+msgid "Gallery Item: MP4 Video Link"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery.php:47
+msgid "Gallery Item: WebM Video Link"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery.php:50
+msgid "Gallery Item: Link URL"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-gallery.php:53
+msgid "Gallery Item: Description"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-icon-list.php:35
+msgid "Icon: Text"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-icon-list.php:38
+msgid "Icon: Link URL"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-image-slider.php:35
+msgid "Image Slide: Caption Heading"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-image-slider.php:38
+msgid "Image Slide: Subheading"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-image-slider.php:41
+msgid "Image Slide: Caption Button Text"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-image-slider.php:44
+msgid "Image Slide: Link URL"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-services-carousel.php:35
+#: i18n/wpml/modules/wpml-services.php:35
+msgid "Service: Title"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-services-carousel.php:38
+msgid "Service: Subtitle"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-services-carousel.php:41
+msgid "Service: Button Text"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-services-carousel.php:44
+msgid "Service: Link URL"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-services-carousel.php:47
+msgid "Service: Excerpt"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-slider.php:35
+msgid "Slide: Title"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-slider.php:38
+msgid "Slide: Content"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-tabs.php:35
+msgid "Tab: Title"
+msgstr ""
+
+#: i18n/wpml/modules/premium/wpml-tabs.php:38
+msgid "Tab: Content"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-carousel.php:35
+msgid "Carousel: Title"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-carousel.php:38
+msgid "Carousel: Content"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-clients.php:35
+msgid "Client: Name"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-clients.php:38
+msgid "Client: Website URL"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-odometers.php:35
+msgid "Odometer: Title"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-odometers.php:38
+msgid "Odometer: Prefix"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-odometers.php:41
+msgid "Odometer: Suffix"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-piecharts.php:35
+msgid "Piechart: Title"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-pricing-table.php:35
+msgid "Pricing: Title"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-pricing-table.php:38
+msgid "Pricing: Tagline"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-pricing-table.php:41
+msgid "Pricing: Price Tag"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-pricing-table.php:44
+msgid "Pricing: Button Text"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-pricing-table.php:47
+msgid "Pricing: Button URL"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-pricing-table.php:50
+msgid "Pricing: Content"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-services.php:38
+msgid "Service: Description"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-stats-bars.php:35
+msgid "Stats Bar: Title"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-team-members.php:35
+msgid "Team Member: Name"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-team-members.php:38
+msgid "Team Member: Position"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-team-members.php:41
+msgid "Team Member: Details"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-testimonials-slider.php:35
+msgid "Testimonial Slide: Name"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-testimonials-slider.php:38
+msgid "Testimonial Slide: Credentials"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-testimonials-slider.php:41
+msgid "Testimonial Slide: Content"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-testimonials.php:35
+msgid "Testimonial: Name"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-testimonials.php:38
+msgid "Testimonial: Credentials"
+msgstr ""
+
+#: i18n/wpml/modules/wpml-testimonials.php:41
+msgid "Testimonial: Content"
+msgstr ""
+
+#: includes/blocks/block-gallery.php:253
+#: includes/blocks/block-posts.php:290
 #: includes/blocks/block-twitter.php:159
-#: includes/widgets/premium/gallery.php:506
-#: includes/widgets/premium/portfolio.php:572
-#: includes/widgets/premium/posts-block.php:529
+#: includes/blocks/block-vimeo.php:183
+#: includes/blocks/block-youtube.php:177
+#: includes/widgets/premium/gallery.php:507
+#: includes/widgets/premium/portfolio.php:636
+#: includes/widgets/premium/posts-block.php:595
 #: includes/widgets/premium/twitter-grid.php:379
+#: includes/widgets/premium/vimeo-grid.php:465
+#: includes/widgets/premium/youtube-grid.php:416
 msgid "Load More"
 msgstr ""
 
-#: includes/blocks/block-header.php:120
+#: includes/blocks/block-header.php:84
 #: includes/blocks/headers/block-header-4.php:20
 #: includes/blocks/headers/block-header-4.php:24
 #: includes/blocks/headers/block-header-6.php:18
-#: includes/helper-functions.php:509
+#: includes/helper-functions.php:521
 msgid "All"
 msgstr ""
 
-#: includes/blocks/block-header.php:132
+#: includes/blocks/block-header.php:96
 msgid "More"
 msgstr ""
 
-#: includes/blocks/clients/twitter-client.php:89
-msgid "You did not authorize the plugin to"
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:91
-msgid "connect to Twitter."
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:96
-#: includes/blocks/clients/twitter-client.php:131
-#: includes/blocks/clients/twitter-client.php:239
-msgid "Cannot retrieve tweets"
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:130
-msgid "No Twitter source specified in the options."
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:179
-msgid "Cannot obtain Twitter bearer token."
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:181
-msgid "Please check the credentials in the "
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:183
-msgid "plugin settings."
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:235
-msgid "No tweets were found on Twitter"
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:327
-msgid "An error occurred from Twitter."
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:329
-msgid "Please check the grid options specified and reload the page."
-msgstr ""
-
-#: includes/blocks/clients/twitter-client.php:489
+#: includes/blocks/clients/social-client.php:74
 msgid " ( Error Message: "
 msgstr ""
 
-#: includes/blocks/clients/twitter-client.php:490
+#: includes/blocks/clients/social-client.php:75
 msgid " ( Error Code: "
 msgstr ""
 
-#: includes/blocks/clients/twitter-client.php:497
+#: includes/blocks/clients/social-client.php:82
 msgid " Further Details: "
 msgstr ""
 
-#: includes/blocks/clients/twitter-client.php:498
+#: includes/blocks/clients/social-client.php:83
 msgid " ( Code: "
 msgstr ""
 
-#: includes/blocks/clients/twitter-client.php:499
+#: includes/blocks/clients/social-client.php:84
 msgid " ( Message: "
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:73
+#: includes/blocks/clients/vimeo-client.php:94
+#: includes/blocks/clients/youtube-client.php:101
+msgid "You did not authorize the plugin to"
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:75
+msgid "connect to Twitter."
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:80
+#: includes/blocks/clients/twitter-client.php:115
+#: includes/blocks/clients/twitter-client.php:223
+msgid "Cannot retrieve tweets"
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:114
+msgid "No Twitter source specified in the options."
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:163
+msgid "Cannot obtain Twitter bearer token."
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:165
+msgid "Please check the credentials in the "
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:167
+msgid "plugin settings."
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:219
+msgid "No tweets were found on Twitter"
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:311
+msgid "An error occurred from Twitter."
+msgstr ""
+
+#: includes/blocks/clients/twitter-client.php:313
+msgid "Please check the grid options specified and reload the page."
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:96
+msgid "connect to Vimeo."
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:101
+#: includes/blocks/clients/vimeo-client.php:254
+#: includes/blocks/clients/vimeo-client.php:341
+#: includes/blocks/clients/youtube-client.php:108
+#: includes/blocks/clients/youtube-client.php:311
+#: includes/blocks/clients/youtube-client.php:334
+#: includes/blocks/clients/youtube-client.php:400
+msgid "Cannot retrieve videos"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:124
+#: includes/blocks/clients/vimeo-client.php:303
+msgid "An error occurred when invoking Vimeo API:"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:132
+#: includes/blocks/clients/vimeo-client.php:311
+msgid "Cannot invoke Vimeo API"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:147
+#, php-format
+msgid ""
+"Your Vimeo Client ID and Client Secret are not valid or have "
+"expired. Please try to <a href=\"%s\" target=\"_blank\" style="
+"\"text-decoration: underline\">create a new app on Vimeo.</a>"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:153
+msgid "Vimeo Authorization Failed"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:250
+msgid "User/Group/Album/Channel Id not specified"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:320
+msgid "Vimeo API returned an error:"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:326
+msgid "Vimeo API Error"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:337
+msgid "No data were found for the current User/Album/Group/Channel"
+msgstr ""
+
+#: includes/blocks/clients/vimeo-client.php:445
+msgid "Like on Vimeo"
+msgstr ""
+
+#: includes/blocks/clients/youtube-client.php:103
+msgid "connect to YouTube."
+msgstr ""
+
+#: includes/blocks/clients/youtube-client.php:307
+msgid "Channel Id not specified"
+msgstr ""
+
+#: includes/blocks/clients/youtube-client.php:330
+msgid "Playlist Id not specified"
+msgstr ""
+
+#: includes/blocks/clients/youtube-client.php:381
+msgid "An error occurred when invoking YouTube API:"
+msgstr ""
+
+#: includes/blocks/clients/youtube-client.php:386
+msgid "YouTube API Error"
+msgstr ""
+
+#: includes/blocks/clients/youtube-client.php:396
+msgid "No data were found for the current Channel/Playlist/Videos"
+msgstr ""
+
+#: includes/blocks/clients/youtube-client.php:450
+msgid "Like on YouTube"
 msgstr ""
 
 #: includes/blocks/functions/gallery-functions.php:17
@@ -680,8 +1158,9 @@ msgid "Width"
 msgstr ""
 
 #: includes/blocks/functions/gallery-functions.php:21
-#: includes/widgets/premium/button.php:159
+#: includes/widgets/premium/button.php:160
 #: includes/widgets/premium/image-slider.php:188
+#: includes/widgets/premium/vimeo-grid.php:168
 msgid "Default"
 msgstr ""
 
@@ -702,242 +1181,274 @@ msgid "Comma separated tags for the gallery item"
 msgstr ""
 
 #: includes/blocks/headers/block-header-6.php:23
-#: includes/helper-functions.php:514
+#: includes/helper-functions.php:526
 msgid "View all items filed under "
 msgstr ""
 
-#: includes/blocks/source/posts-source.php:308
-#: includes/helper-functions.php:164
+#: includes/blocks/headers/block-header-vimeo.php:65
+#: includes/widgets/premium/youtube-grid.php:82
+msgid "Videos"
+msgstr ""
+
+#: includes/blocks/headers/block-header-vimeo.php:67
+#: includes/widgets/premium/twitter-grid.php:741
+#: includes/widgets/premium/vimeo-grid.php:870
+#: includes/widgets/premium/youtube-grid.php:782
+msgid "Likes"
+msgstr ""
+
+#: includes/blocks/headers/block-header-vimeo.php:69
+msgid "Followers"
+msgstr ""
+
+#: includes/blocks/headers/block-header-vimeo.php:71
+msgid "Following"
+msgstr ""
+
+#: includes/blocks/headers/block-header-youtube.php:64
+msgid "videos"
+msgstr ""
+
+#: includes/blocks/headers/block-header-youtube.php:66
+msgid "views"
+msgstr ""
+
+#: includes/blocks/source/posts-source.php:312
+#: includes/helper-functions.php:176
 msgid "By "
 msgstr ""
 
-#: includes/blocks/source/posts-source.php:324
-#: includes/helper-functions.php:153 includes/helper-functions.php:157
+#: includes/blocks/source/posts-source.php:328
+#: includes/helper-functions.php:165 includes/helper-functions.php:169
 msgid "l, F, Y, g:i a"
 msgstr ""
 
-#: includes/blocks/source/posts-source.php:350
-#: includes/blocks/source/posts-source.php:378
+#: includes/blocks/source/posts-source.php:354
+#: includes/blocks/source/posts-source.php:382
 msgid "No Comments"
 msgstr ""
 
-#: includes/blocks/source/posts-source.php:350
-#: includes/blocks/source/posts-source.php:378
+#: includes/blocks/source/posts-source.php:354
+#: includes/blocks/source/posts-source.php:382
 #, php-format
 msgid "%1$s Comment"
 msgstr ""
 
-#: includes/blocks/source/posts-source.php:350
-#: includes/blocks/source/posts-source.php:378
+#: includes/blocks/source/posts-source.php:354
+#: includes/blocks/source/posts-source.php:382
 #, php-format
 msgid "%1$s Comments"
 msgstr ""
 
-#: includes/blocks/source/posts-source.php:362
-#: includes/blocks/source/posts-source.php:364
 #: includes/blocks/source/posts-source.php:366
+#: includes/blocks/source/posts-source.php:368
+#: includes/blocks/source/posts-source.php:370
 #, php-format
 msgid "Comment on %1$s"
 msgstr ""
 
 #: includes/blocks/source/twitter-source.php:241
+#: includes/blocks/source/vimeo-source.php:270
+#: includes/blocks/source/youtube-source.php:270
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: includes/helper-functions.php:157
+#: includes/helper-functions.php:169
 msgid "Y"
 msgstr ""
 
-#: includes/helper-functions.php:157
+#: includes/helper-functions.php:169
 msgid "m"
 msgstr ""
 
-#: includes/helper-functions.php:157
+#: includes/helper-functions.php:169
 msgid "d"
 msgstr ""
 
-#: includes/helper-functions.php:559 includes/helper-functions.php:606
-#: includes/widgets/premium/button.php:94
-#: includes/widgets/premium/gallery.php:504
-#: includes/widgets/premium/portfolio.php:569
-#: includes/widgets/premium/posts-block.php:526
-#: includes/widgets/premium/tabs.php:127
+#: includes/helper-functions.php:571 includes/helper-functions.php:618
+#: includes/widgets/premium/button.php:95
+#: includes/widgets/premium/gallery.php:505
+#: includes/widgets/premium/portfolio.php:633
+#: includes/widgets/premium/posts-block.php:592
+#: includes/widgets/premium/tabs.php:128
 #: includes/widgets/premium/twitter-grid.php:378
-#: includes/widgets/services.php:161
+#: includes/widgets/premium/vimeo-grid.php:464
+#: includes/widgets/premium/youtube-grid.php:415
+#: includes/widgets/services.php:171
 msgid "None"
 msgstr ""
 
-#: includes/helper-functions.php:560
+#: includes/helper-functions.php:572
 msgid "Bounce"
 msgstr ""
 
-#: includes/helper-functions.php:561
+#: includes/helper-functions.php:573
 msgid "Flash"
 msgstr ""
 
-#: includes/helper-functions.php:562
+#: includes/helper-functions.php:574
 msgid "Pulse"
 msgstr ""
 
-#: includes/helper-functions.php:563
+#: includes/helper-functions.php:575
 msgid "Swing"
 msgstr ""
 
-#: includes/helper-functions.php:564
+#: includes/helper-functions.php:576
 msgid "Shake"
 msgstr ""
 
-#: includes/helper-functions.php:565
+#: includes/helper-functions.php:577
 msgid "Tada"
 msgstr ""
 
-#: includes/helper-functions.php:566
+#: includes/helper-functions.php:578
 msgid "Wobble"
 msgstr ""
 
-#: includes/helper-functions.php:567
+#: includes/helper-functions.php:579
 msgid "Jello"
 msgstr ""
 
-#: includes/helper-functions.php:568
+#: includes/helper-functions.php:580
 msgid "Rubber Band"
 msgstr ""
 
-#: includes/helper-functions.php:569
+#: includes/helper-functions.php:581
 msgid "Bounce In"
 msgstr ""
 
-#: includes/helper-functions.php:570
+#: includes/helper-functions.php:582
 msgid "Bounce In Left"
 msgstr ""
 
-#: includes/helper-functions.php:571
+#: includes/helper-functions.php:583
 msgid "Bounce In Right"
 msgstr ""
 
-#: includes/helper-functions.php:572
+#: includes/helper-functions.php:584
 msgid "Bounce In Down"
 msgstr ""
 
-#: includes/helper-functions.php:573
+#: includes/helper-functions.php:585
 msgid "Bounce In Up"
 msgstr ""
 
-#: includes/helper-functions.php:574 includes/helper-functions.php:607
+#: includes/helper-functions.php:586 includes/helper-functions.php:619
 msgid "Fade In"
 msgstr ""
 
-#: includes/helper-functions.php:575 includes/helper-functions.php:608
+#: includes/helper-functions.php:587 includes/helper-functions.php:620
 msgid "Fade In Left"
 msgstr ""
 
-#: includes/helper-functions.php:576
+#: includes/helper-functions.php:588
 msgid "Fade In Left Big"
 msgstr ""
 
-#: includes/helper-functions.php:577 includes/helper-functions.php:609
+#: includes/helper-functions.php:589 includes/helper-functions.php:621
 msgid "Fade In Right"
 msgstr ""
 
-#: includes/helper-functions.php:578
+#: includes/helper-functions.php:590
 msgid "Fade In Right Big"
 msgstr ""
 
-#: includes/helper-functions.php:579
+#: includes/helper-functions.php:591
 msgid "Fade In Up"
 msgstr ""
 
-#: includes/helper-functions.php:580
+#: includes/helper-functions.php:592
 msgid "Fade In Up Big"
 msgstr ""
 
-#: includes/helper-functions.php:581
+#: includes/helper-functions.php:593
 msgid "Fade In Down"
 msgstr ""
 
-#: includes/helper-functions.php:582
+#: includes/helper-functions.php:594
 msgid "Fade In Down Big"
 msgstr ""
 
-#: includes/helper-functions.php:583
+#: includes/helper-functions.php:595
 msgid "Flip"
 msgstr ""
 
-#: includes/helper-functions.php:584
+#: includes/helper-functions.php:596
 msgid "Flip In X"
 msgstr ""
 
-#: includes/helper-functions.php:585
+#: includes/helper-functions.php:597
 msgid "Flip In Y"
 msgstr ""
 
-#: includes/helper-functions.php:586
+#: includes/helper-functions.php:598
 msgid "Light Speed In"
 msgstr ""
 
-#: includes/helper-functions.php:587
+#: includes/helper-functions.php:599
 msgid "Rotate In"
 msgstr ""
 
-#: includes/helper-functions.php:588
+#: includes/helper-functions.php:600
 msgid "Rotate In Up Left"
 msgstr ""
 
-#: includes/helper-functions.php:589
+#: includes/helper-functions.php:601
 msgid "Rotate In Up Right"
 msgstr ""
 
-#: includes/helper-functions.php:590
+#: includes/helper-functions.php:602
 msgid "Rotate In Down Left"
 msgstr ""
 
-#: includes/helper-functions.php:591
+#: includes/helper-functions.php:603
 msgid "Rotate In Down Right"
 msgstr ""
 
-#: includes/helper-functions.php:592
+#: includes/helper-functions.php:604
 msgid "Slide In Left"
 msgstr ""
 
-#: includes/helper-functions.php:593
+#: includes/helper-functions.php:605
 msgid "Slide In Right"
 msgstr ""
 
-#: includes/helper-functions.php:594
+#: includes/helper-functions.php:606
 msgid "Slide In Down"
 msgstr ""
 
-#: includes/helper-functions.php:595
+#: includes/helper-functions.php:607
 msgid "Slide In Up"
 msgstr ""
 
-#: includes/helper-functions.php:596
+#: includes/helper-functions.php:608
 msgid "Zoom In"
 msgstr ""
 
-#: includes/helper-functions.php:597
+#: includes/helper-functions.php:609
 msgid "Zoom In Left"
 msgstr ""
 
-#: includes/helper-functions.php:598
+#: includes/helper-functions.php:610
 msgid "Zoom In Right"
 msgstr ""
 
-#: includes/helper-functions.php:599
+#: includes/helper-functions.php:611
 msgid "Zoom In Down"
 msgstr ""
 
-#: includes/helper-functions.php:600
+#: includes/helper-functions.php:612
 msgid "Zoom In Up"
 msgstr ""
 
-#: includes/helper-functions.php:601
+#: includes/helper-functions.php:613
 msgid "Roll In"
 msgstr ""
 
 #: includes/widgets/carousel.php:29 includes/widgets/carousel.php:53
-#: includes/widgets/carousel.php:419
+#: includes/widgets/carousel.php:417
 msgid "Carousel"
 msgstr ""
 
@@ -966,34 +1477,34 @@ msgid "The HTML content for the element"
 msgstr ""
 
 #: includes/widgets/carousel.php:142
-#: includes/widgets/posts-carousel.php:261
-#: includes/widgets/premium/services-carousel.php:197
+#: includes/widgets/posts-carousel.php:327
+#: includes/widgets/premium/services-carousel.php:213
 msgid "Carousel Settings"
 msgstr ""
 
 #: includes/widgets/carousel.php:151 includes/widgets/carousel.php:164
 #: includes/widgets/carousel.php:177 includes/widgets/carousel.php:189
-#: includes/widgets/portfolio.php:185
-#: includes/widgets/portfolio.php:197
-#: includes/widgets/portfolio.php:219
-#: includes/widgets/portfolio.php:232
-#: includes/widgets/portfolio.php:245
-#: includes/widgets/portfolio.php:267
-#: includes/widgets/portfolio.php:288
-#: includes/widgets/posts-carousel.php:178
-#: includes/widgets/posts-carousel.php:190
-#: includes/widgets/posts-carousel.php:202
-#: includes/widgets/posts-carousel.php:224
-#: includes/widgets/posts-carousel.php:237
-#: includes/widgets/posts-carousel.php:250
-#: includes/widgets/posts-carousel.php:270
-#: includes/widgets/posts-carousel.php:283
-#: includes/widgets/posts-carousel.php:295
-#: includes/widgets/posts-carousel.php:307
+#: includes/widgets/portfolio.php:249
+#: includes/widgets/portfolio.php:261
+#: includes/widgets/portfolio.php:283
+#: includes/widgets/portfolio.php:296
+#: includes/widgets/portfolio.php:309
+#: includes/widgets/portfolio.php:331
+#: includes/widgets/portfolio.php:352
+#: includes/widgets/posts-carousel.php:244
+#: includes/widgets/posts-carousel.php:256
+#: includes/widgets/posts-carousel.php:268
+#: includes/widgets/posts-carousel.php:290
+#: includes/widgets/posts-carousel.php:303
+#: includes/widgets/posts-carousel.php:316
+#: includes/widgets/posts-carousel.php:336
+#: includes/widgets/posts-carousel.php:349
+#: includes/widgets/posts-carousel.php:361
+#: includes/widgets/posts-carousel.php:373
 #: includes/widgets/premium/accordion.php:76
 #: includes/widgets/premium/accordion.php:87
-#: includes/widgets/premium/button.php:197
-#: includes/widgets/premium/features.php:202
+#: includes/widgets/premium/button.php:198
+#: includes/widgets/premium/features.php:219
 #: includes/widgets/premium/gallery-carousel.php:229
 #: includes/widgets/premium/gallery-carousel.php:241
 #: includes/widgets/premium/gallery-carousel.php:261
@@ -1001,14 +1512,14 @@ msgstr ""
 #: includes/widgets/premium/gallery-carousel.php:314
 #: includes/widgets/premium/gallery-carousel.php:326
 #: includes/widgets/premium/gallery-carousel.php:338
-#: includes/widgets/premium/gallery.php:123
-#: includes/widgets/premium/gallery.php:288
-#: includes/widgets/premium/gallery.php:328
-#: includes/widgets/premium/gallery.php:405
-#: includes/widgets/premium/gallery.php:417
-#: includes/widgets/premium/gallery.php:429
-#: includes/widgets/premium/gallery.php:461
-#: includes/widgets/premium/gallery.php:519
+#: includes/widgets/premium/gallery.php:124
+#: includes/widgets/premium/gallery.php:289
+#: includes/widgets/premium/gallery.php:329
+#: includes/widgets/premium/gallery.php:406
+#: includes/widgets/premium/gallery.php:418
+#: includes/widgets/premium/gallery.php:430
+#: includes/widgets/premium/gallery.php:462
+#: includes/widgets/premium/gallery.php:521
 #: includes/widgets/premium/image-slider.php:220
 #: includes/widgets/premium/image-slider.php:305
 #: includes/widgets/premium/image-slider.php:319
@@ -1018,40 +1529,40 @@ msgstr ""
 #: includes/widgets/premium/image-slider.php:378
 #: includes/widgets/premium/image-slider.php:394
 #: includes/widgets/premium/image-slider.php:410
-#: includes/widgets/premium/portfolio.php:227
-#: includes/widgets/premium/portfolio.php:316
-#: includes/widgets/premium/portfolio.php:339
-#: includes/widgets/premium/portfolio.php:351
-#: includes/widgets/premium/portfolio.php:363
-#: includes/widgets/premium/portfolio.php:378
-#: includes/widgets/premium/portfolio.php:393
-#: includes/widgets/premium/portfolio.php:405
-#: includes/widgets/premium/portfolio.php:420
-#: includes/widgets/premium/portfolio.php:449
-#: includes/widgets/premium/portfolio.php:477
-#: includes/widgets/premium/portfolio.php:500
-#: includes/widgets/premium/portfolio.php:516
-#: includes/widgets/premium/portfolio.php:532
-#: includes/widgets/premium/portfolio.php:545
-#: includes/widgets/premium/portfolio.php:585
-#: includes/widgets/premium/posts-block.php:223
-#: includes/widgets/premium/posts-block.php:329
-#: includes/widgets/premium/posts-block.php:341
-#: includes/widgets/premium/posts-block.php:351
-#: includes/widgets/premium/posts-block.php:376
-#: includes/widgets/premium/posts-block.php:388
-#: includes/widgets/premium/posts-block.php:400
-#: includes/widgets/premium/posts-block.php:423
-#: includes/widgets/premium/posts-block.php:436
-#: includes/widgets/premium/posts-block.php:449
-#: includes/widgets/premium/posts-block.php:461
+#: includes/widgets/premium/portfolio.php:291
+#: includes/widgets/premium/portfolio.php:380
+#: includes/widgets/premium/portfolio.php:403
+#: includes/widgets/premium/portfolio.php:415
+#: includes/widgets/premium/portfolio.php:427
+#: includes/widgets/premium/portfolio.php:442
+#: includes/widgets/premium/portfolio.php:457
+#: includes/widgets/premium/portfolio.php:469
+#: includes/widgets/premium/portfolio.php:484
+#: includes/widgets/premium/portfolio.php:513
+#: includes/widgets/premium/portfolio.php:541
+#: includes/widgets/premium/portfolio.php:564
+#: includes/widgets/premium/portfolio.php:580
+#: includes/widgets/premium/portfolio.php:596
+#: includes/widgets/premium/portfolio.php:609
+#: includes/widgets/premium/portfolio.php:650
+#: includes/widgets/premium/posts-block.php:289
+#: includes/widgets/premium/posts-block.php:395
+#: includes/widgets/premium/posts-block.php:407
+#: includes/widgets/premium/posts-block.php:417
+#: includes/widgets/premium/posts-block.php:442
+#: includes/widgets/premium/posts-block.php:454
+#: includes/widgets/premium/posts-block.php:466
 #: includes/widgets/premium/posts-block.php:489
 #: includes/widgets/premium/posts-block.php:502
-#: includes/widgets/premium/posts-block.php:542
-#: includes/widgets/premium/services-carousel.php:206
-#: includes/widgets/premium/services-carousel.php:219
-#: includes/widgets/premium/services-carousel.php:232
-#: includes/widgets/premium/services-carousel.php:244
+#: includes/widgets/premium/posts-block.php:515
+#: includes/widgets/premium/posts-block.php:527
+#: includes/widgets/premium/posts-block.php:555
+#: includes/widgets/premium/posts-block.php:568
+#: includes/widgets/premium/posts-block.php:609
+#: includes/widgets/premium/services-carousel.php:222
+#: includes/widgets/premium/services-carousel.php:235
+#: includes/widgets/premium/services-carousel.php:248
+#: includes/widgets/premium/services-carousel.php:260
 #: includes/widgets/premium/slider.php:172
 #: includes/widgets/premium/slider.php:187
 #: includes/widgets/premium/slider.php:200
@@ -1068,6 +1579,27 @@ msgstr ""
 #: includes/widgets/premium/twitter-grid.php:290
 #: includes/widgets/premium/twitter-grid.php:302
 #: includes/widgets/premium/twitter-grid.php:335
+#: includes/widgets/premium/vimeo-grid.php:212
+#: includes/widgets/premium/vimeo-grid.php:227
+#: includes/widgets/premium/vimeo-grid.php:239
+#: includes/widgets/premium/vimeo-grid.php:251
+#: includes/widgets/premium/vimeo-grid.php:278
+#: includes/widgets/premium/vimeo-grid.php:290
+#: includes/widgets/premium/vimeo-grid.php:320
+#: includes/widgets/premium/vimeo-grid.php:332
+#: includes/widgets/premium/vimeo-grid.php:344
+#: includes/widgets/premium/vimeo-grid.php:356
+#: includes/widgets/premium/vimeo-grid.php:422
+#: includes/widgets/premium/youtube-grid.php:175
+#: includes/widgets/premium/youtube-grid.php:190
+#: includes/widgets/premium/youtube-grid.php:202
+#: includes/widgets/premium/youtube-grid.php:229
+#: includes/widgets/premium/youtube-grid.php:241
+#: includes/widgets/premium/youtube-grid.php:271
+#: includes/widgets/premium/youtube-grid.php:283
+#: includes/widgets/premium/youtube-grid.php:295
+#: includes/widgets/premium/youtube-grid.php:307
+#: includes/widgets/premium/youtube-grid.php:373
 #: includes/widgets/pricing-table.php:199
 #: includes/widgets/testimonials-slider.php:189
 #: includes/widgets/testimonials-slider.php:203
@@ -1078,27 +1610,27 @@ msgstr ""
 
 #: includes/widgets/carousel.php:152 includes/widgets/carousel.php:165
 #: includes/widgets/carousel.php:178 includes/widgets/carousel.php:190
-#: includes/widgets/portfolio.php:184
-#: includes/widgets/portfolio.php:196
-#: includes/widgets/portfolio.php:218
-#: includes/widgets/portfolio.php:231
-#: includes/widgets/portfolio.php:244
-#: includes/widgets/portfolio.php:266
-#: includes/widgets/portfolio.php:287
-#: includes/widgets/posts-carousel.php:177
-#: includes/widgets/posts-carousel.php:189
-#: includes/widgets/posts-carousel.php:201
-#: includes/widgets/posts-carousel.php:223
-#: includes/widgets/posts-carousel.php:236
-#: includes/widgets/posts-carousel.php:249
-#: includes/widgets/posts-carousel.php:271
-#: includes/widgets/posts-carousel.php:284
-#: includes/widgets/posts-carousel.php:296
-#: includes/widgets/posts-carousel.php:308
+#: includes/widgets/portfolio.php:248
+#: includes/widgets/portfolio.php:260
+#: includes/widgets/portfolio.php:282
+#: includes/widgets/portfolio.php:295
+#: includes/widgets/portfolio.php:308
+#: includes/widgets/portfolio.php:330
+#: includes/widgets/portfolio.php:351
+#: includes/widgets/posts-carousel.php:243
+#: includes/widgets/posts-carousel.php:255
+#: includes/widgets/posts-carousel.php:267
+#: includes/widgets/posts-carousel.php:289
+#: includes/widgets/posts-carousel.php:302
+#: includes/widgets/posts-carousel.php:315
+#: includes/widgets/posts-carousel.php:337
+#: includes/widgets/posts-carousel.php:350
+#: includes/widgets/posts-carousel.php:362
+#: includes/widgets/posts-carousel.php:374
 #: includes/widgets/premium/accordion.php:77
 #: includes/widgets/premium/accordion.php:88
-#: includes/widgets/premium/button.php:198
-#: includes/widgets/premium/features.php:203
+#: includes/widgets/premium/button.php:199
+#: includes/widgets/premium/features.php:220
 #: includes/widgets/premium/gallery-carousel.php:228
 #: includes/widgets/premium/gallery-carousel.php:240
 #: includes/widgets/premium/gallery-carousel.php:262
@@ -1106,14 +1638,14 @@ msgstr ""
 #: includes/widgets/premium/gallery-carousel.php:315
 #: includes/widgets/premium/gallery-carousel.php:327
 #: includes/widgets/premium/gallery-carousel.php:339
-#: includes/widgets/premium/gallery.php:122
-#: includes/widgets/premium/gallery.php:289
-#: includes/widgets/premium/gallery.php:327
-#: includes/widgets/premium/gallery.php:404
-#: includes/widgets/premium/gallery.php:416
-#: includes/widgets/premium/gallery.php:428
-#: includes/widgets/premium/gallery.php:462
-#: includes/widgets/premium/gallery.php:518
+#: includes/widgets/premium/gallery.php:123
+#: includes/widgets/premium/gallery.php:290
+#: includes/widgets/premium/gallery.php:328
+#: includes/widgets/premium/gallery.php:405
+#: includes/widgets/premium/gallery.php:417
+#: includes/widgets/premium/gallery.php:429
+#: includes/widgets/premium/gallery.php:463
+#: includes/widgets/premium/gallery.php:520
 #: includes/widgets/premium/image-slider.php:221
 #: includes/widgets/premium/image-slider.php:306
 #: includes/widgets/premium/image-slider.php:320
@@ -1123,40 +1655,40 @@ msgstr ""
 #: includes/widgets/premium/image-slider.php:379
 #: includes/widgets/premium/image-slider.php:395
 #: includes/widgets/premium/image-slider.php:411
-#: includes/widgets/premium/portfolio.php:226
-#: includes/widgets/premium/portfolio.php:317
-#: includes/widgets/premium/portfolio.php:338
-#: includes/widgets/premium/portfolio.php:350
-#: includes/widgets/premium/portfolio.php:362
-#: includes/widgets/premium/portfolio.php:377
-#: includes/widgets/premium/portfolio.php:392
-#: includes/widgets/premium/portfolio.php:404
-#: includes/widgets/premium/portfolio.php:419
-#: includes/widgets/premium/portfolio.php:448
-#: includes/widgets/premium/portfolio.php:476
-#: includes/widgets/premium/portfolio.php:499
-#: includes/widgets/premium/portfolio.php:515
-#: includes/widgets/premium/portfolio.php:531
-#: includes/widgets/premium/portfolio.php:544
-#: includes/widgets/premium/portfolio.php:584
-#: includes/widgets/premium/posts-block.php:222
-#: includes/widgets/premium/posts-block.php:328
-#: includes/widgets/premium/posts-block.php:340
-#: includes/widgets/premium/posts-block.php:352
-#: includes/widgets/premium/posts-block.php:375
-#: includes/widgets/premium/posts-block.php:387
-#: includes/widgets/premium/posts-block.php:399
-#: includes/widgets/premium/posts-block.php:422
-#: includes/widgets/premium/posts-block.php:435
-#: includes/widgets/premium/posts-block.php:448
-#: includes/widgets/premium/posts-block.php:460
+#: includes/widgets/premium/portfolio.php:290
+#: includes/widgets/premium/portfolio.php:381
+#: includes/widgets/premium/portfolio.php:402
+#: includes/widgets/premium/portfolio.php:414
+#: includes/widgets/premium/portfolio.php:426
+#: includes/widgets/premium/portfolio.php:441
+#: includes/widgets/premium/portfolio.php:456
+#: includes/widgets/premium/portfolio.php:468
+#: includes/widgets/premium/portfolio.php:483
+#: includes/widgets/premium/portfolio.php:512
+#: includes/widgets/premium/portfolio.php:540
+#: includes/widgets/premium/portfolio.php:563
+#: includes/widgets/premium/portfolio.php:579
+#: includes/widgets/premium/portfolio.php:595
+#: includes/widgets/premium/portfolio.php:608
+#: includes/widgets/premium/portfolio.php:649
+#: includes/widgets/premium/posts-block.php:288
+#: includes/widgets/premium/posts-block.php:394
+#: includes/widgets/premium/posts-block.php:406
+#: includes/widgets/premium/posts-block.php:418
+#: includes/widgets/premium/posts-block.php:441
+#: includes/widgets/premium/posts-block.php:453
+#: includes/widgets/premium/posts-block.php:465
 #: includes/widgets/premium/posts-block.php:488
 #: includes/widgets/premium/posts-block.php:501
-#: includes/widgets/premium/posts-block.php:541
-#: includes/widgets/premium/services-carousel.php:207
-#: includes/widgets/premium/services-carousel.php:220
-#: includes/widgets/premium/services-carousel.php:233
-#: includes/widgets/premium/services-carousel.php:245
+#: includes/widgets/premium/posts-block.php:514
+#: includes/widgets/premium/posts-block.php:526
+#: includes/widgets/premium/posts-block.php:554
+#: includes/widgets/premium/posts-block.php:567
+#: includes/widgets/premium/posts-block.php:608
+#: includes/widgets/premium/services-carousel.php:223
+#: includes/widgets/premium/services-carousel.php:236
+#: includes/widgets/premium/services-carousel.php:249
+#: includes/widgets/premium/services-carousel.php:261
 #: includes/widgets/premium/slider.php:173
 #: includes/widgets/premium/slider.php:188
 #: includes/widgets/premium/slider.php:201
@@ -1173,6 +1705,27 @@ msgstr ""
 #: includes/widgets/premium/twitter-grid.php:289
 #: includes/widgets/premium/twitter-grid.php:301
 #: includes/widgets/premium/twitter-grid.php:336
+#: includes/widgets/premium/vimeo-grid.php:211
+#: includes/widgets/premium/vimeo-grid.php:226
+#: includes/widgets/premium/vimeo-grid.php:238
+#: includes/widgets/premium/vimeo-grid.php:250
+#: includes/widgets/premium/vimeo-grid.php:277
+#: includes/widgets/premium/vimeo-grid.php:289
+#: includes/widgets/premium/vimeo-grid.php:319
+#: includes/widgets/premium/vimeo-grid.php:331
+#: includes/widgets/premium/vimeo-grid.php:343
+#: includes/widgets/premium/vimeo-grid.php:355
+#: includes/widgets/premium/vimeo-grid.php:423
+#: includes/widgets/premium/youtube-grid.php:174
+#: includes/widgets/premium/youtube-grid.php:189
+#: includes/widgets/premium/youtube-grid.php:201
+#: includes/widgets/premium/youtube-grid.php:228
+#: includes/widgets/premium/youtube-grid.php:240
+#: includes/widgets/premium/youtube-grid.php:270
+#: includes/widgets/premium/youtube-grid.php:282
+#: includes/widgets/premium/youtube-grid.php:294
+#: includes/widgets/premium/youtube-grid.php:306
+#: includes/widgets/premium/youtube-grid.php:374
 #: includes/widgets/pricing-table.php:200
 #: includes/widgets/testimonials-slider.php:190
 #: includes/widgets/testimonials-slider.php:204
@@ -1182,244 +1735,261 @@ msgid "Yes"
 msgstr ""
 
 #: includes/widgets/carousel.php:155
-#: includes/widgets/posts-carousel.php:274
+#: includes/widgets/posts-carousel.php:340
 #: includes/widgets/premium/gallery-carousel.php:305
-#: includes/widgets/premium/services-carousel.php:210
+#: includes/widgets/premium/services-carousel.php:226
 msgid "Prev/Next Arrows?"
 msgstr ""
 
 #: includes/widgets/carousel.php:169
-#: includes/widgets/posts-carousel.php:287
+#: includes/widgets/posts-carousel.php:353
 #: includes/widgets/premium/gallery-carousel.php:318
-#: includes/widgets/premium/services-carousel.php:224
+#: includes/widgets/premium/services-carousel.php:240
 msgid "Show dot indicators for navigation?"
 msgstr ""
 
 #: includes/widgets/carousel.php:181
-#: includes/widgets/posts-carousel.php:299
+#: includes/widgets/posts-carousel.php:365
 #: includes/widgets/premium/gallery-carousel.php:330
-#: includes/widgets/premium/services-carousel.php:236
+#: includes/widgets/premium/services-carousel.php:252
 #: includes/widgets/premium/slider.php:218
 #: includes/widgets/testimonials-slider.php:194
 msgid "Pause on Hover?"
 msgstr ""
 
 #: includes/widgets/carousel.php:194
-#: includes/widgets/posts-carousel.php:311
+#: includes/widgets/posts-carousel.php:377
 #: includes/widgets/premium/gallery-carousel.php:343
-#: includes/widgets/premium/services-carousel.php:249
+#: includes/widgets/premium/services-carousel.php:265
 msgid "Autoplay?"
 msgstr ""
 
 #: includes/widgets/carousel.php:195
-#: includes/widgets/posts-carousel.php:312
+#: includes/widgets/posts-carousel.php:378
 #: includes/widgets/premium/gallery-carousel.php:344
-#: includes/widgets/premium/services-carousel.php:250
+#: includes/widgets/premium/services-carousel.php:266
 msgid "Should the carousel autoplay as in a slideshow."
 msgstr ""
 
 #: includes/widgets/carousel.php:202
-#: includes/widgets/posts-carousel.php:319
+#: includes/widgets/posts-carousel.php:385
 #: includes/widgets/premium/gallery-carousel.php:351
-#: includes/widgets/premium/services-carousel.php:257
+#: includes/widgets/premium/services-carousel.php:273
 msgid "Autoplay speed in ms"
 msgstr ""
 
 #: includes/widgets/carousel.php:212
-#: includes/widgets/posts-carousel.php:329
+#: includes/widgets/posts-carousel.php:395
 #: includes/widgets/premium/gallery-carousel.php:361
-#: includes/widgets/premium/services-carousel.php:267
+#: includes/widgets/premium/services-carousel.php:283
 msgid "Autoplay animation speed in ms"
 msgstr ""
 
 #: includes/widgets/carousel.php:223
-#: includes/widgets/posts-carousel.php:340
+#: includes/widgets/posts-carousel.php:406
 #: includes/widgets/premium/gallery-carousel.php:372
-#: includes/widgets/premium/services-carousel.php:278
+#: includes/widgets/premium/services-carousel.php:294
 msgid "Responsive Options"
 msgstr ""
 
 #: includes/widgets/carousel.php:231
-#: includes/widgets/portfolio.php:340
-#: includes/widgets/posts-carousel.php:348
+#: includes/widgets/portfolio.php:404
+#: includes/widgets/posts-carousel.php:414
 #: includes/widgets/premium/gallery-carousel.php:380
-#: includes/widgets/premium/gallery.php:554
-#: includes/widgets/premium/portfolio.php:607
-#: includes/widgets/premium/services-carousel.php:286
+#: includes/widgets/premium/gallery.php:556
+#: includes/widgets/premium/portfolio.php:672
+#: includes/widgets/premium/services-carousel.php:302
 #: includes/widgets/premium/twitter-grid.php:411
+#: includes/widgets/premium/vimeo-grid.php:497
+#: includes/widgets/premium/youtube-grid.php:448
 msgid "Desktop"
 msgstr ""
 
-#: includes/widgets/carousel.php:242 includes/widgets/carousel.php:297
-#: includes/widgets/carousel.php:363
-#: includes/widgets/portfolio.php:349
-#: includes/widgets/portfolio.php:372
-#: includes/widgets/portfolio.php:396
-#: includes/widgets/posts-carousel.php:358
-#: includes/widgets/posts-carousel.php:405
+#: includes/widgets/carousel.php:241 includes/widgets/carousel.php:296
+#: includes/widgets/carousel.php:361
+#: includes/widgets/portfolio.php:413
+#: includes/widgets/portfolio.php:436
+#: includes/widgets/portfolio.php:460
+#: includes/widgets/posts-carousel.php:424
+#: includes/widgets/posts-carousel.php:471
 #: includes/widgets/premium/gallery-carousel.php:415
 #: includes/widgets/premium/gallery-carousel.php:462
 #: includes/widgets/premium/gallery-carousel.php:518
-#: includes/widgets/premium/gallery.php:564
-#: includes/widgets/premium/gallery.php:588
-#: includes/widgets/premium/gallery.php:611
-#: includes/widgets/premium/portfolio.php:616
-#: includes/widgets/premium/portfolio.php:639
-#: includes/widgets/premium/portfolio.php:663
-#: includes/widgets/premium/services-carousel.php:297
-#: includes/widgets/premium/services-carousel.php:352
-#: includes/widgets/premium/services-carousel.php:418
+#: includes/widgets/premium/gallery.php:566
+#: includes/widgets/premium/gallery.php:590
+#: includes/widgets/premium/gallery.php:613
+#: includes/widgets/premium/portfolio.php:681
+#: includes/widgets/premium/portfolio.php:704
+#: includes/widgets/premium/portfolio.php:728
+#: includes/widgets/premium/services-carousel.php:313
+#: includes/widgets/premium/services-carousel.php:368
+#: includes/widgets/premium/services-carousel.php:434
 #: includes/widgets/premium/twitter-grid.php:421
 #: includes/widgets/premium/twitter-grid.php:445
 #: includes/widgets/premium/twitter-grid.php:468
+#: includes/widgets/premium/vimeo-grid.php:507
+#: includes/widgets/premium/vimeo-grid.php:531
+#: includes/widgets/premium/vimeo-grid.php:554
+#: includes/widgets/premium/youtube-grid.php:458
+#: includes/widgets/premium/youtube-grid.php:482
+#: includes/widgets/premium/youtube-grid.php:505
 msgid "Gutter"
 msgstr ""
 
-#: includes/widgets/carousel.php:243 includes/widgets/carousel.php:298
-#: includes/widgets/carousel.php:364
-#: includes/widgets/portfolio.php:373
-#: includes/widgets/portfolio.php:397
-#: includes/widgets/posts-carousel.php:359
-#: includes/widgets/posts-carousel.php:406
-#: includes/widgets/posts-carousel.php:464
+#: includes/widgets/carousel.php:242 includes/widgets/carousel.php:297
+#: includes/widgets/carousel.php:362
+#: includes/widgets/portfolio.php:437
+#: includes/widgets/portfolio.php:461
+#: includes/widgets/posts-carousel.php:425
+#: includes/widgets/posts-carousel.php:472
+#: includes/widgets/posts-carousel.php:530
 #: includes/widgets/premium/gallery-carousel.php:416
 #: includes/widgets/premium/gallery-carousel.php:463
 #: includes/widgets/premium/gallery-carousel.php:519
-#: includes/widgets/premium/gallery.php:589
-#: includes/widgets/premium/gallery.php:612
-#: includes/widgets/premium/portfolio.php:640
-#: includes/widgets/premium/portfolio.php:664
-#: includes/widgets/premium/services-carousel.php:298
-#: includes/widgets/premium/services-carousel.php:353
-#: includes/widgets/premium/services-carousel.php:419
+#: includes/widgets/premium/gallery.php:591
+#: includes/widgets/premium/gallery.php:614
+#: includes/widgets/premium/portfolio.php:705
+#: includes/widgets/premium/portfolio.php:729
+#: includes/widgets/premium/services-carousel.php:314
+#: includes/widgets/premium/services-carousel.php:369
+#: includes/widgets/premium/services-carousel.php:435
 #: includes/widgets/premium/twitter-grid.php:446
 #: includes/widgets/premium/twitter-grid.php:469
+#: includes/widgets/premium/vimeo-grid.php:532
+#: includes/widgets/premium/vimeo-grid.php:555
+#: includes/widgets/premium/youtube-grid.php:483
+#: includes/widgets/premium/youtube-grid.php:506
 msgid "Space between columns."
 msgstr ""
 
-#: includes/widgets/carousel.php:263 includes/widgets/carousel.php:319
-#: includes/widgets/carousel.php:382 includes/widgets/clients.php:60
-#: includes/widgets/portfolio.php:297
-#: includes/widgets/posts-carousel.php:371
-#: includes/widgets/posts-carousel.php:419
-#: includes/widgets/posts-carousel.php:476
+#: includes/widgets/carousel.php:262 includes/widgets/carousel.php:317
+#: includes/widgets/carousel.php:380 includes/widgets/clients.php:60
+#: includes/widgets/portfolio.php:361
+#: includes/widgets/posts-carousel.php:437
+#: includes/widgets/posts-carousel.php:485
+#: includes/widgets/posts-carousel.php:542
 #: includes/widgets/premium/faq.php:61
 #: includes/widgets/premium/gallery-carousel.php:389
 #: includes/widgets/premium/gallery-carousel.php:438
 #: includes/widgets/premium/gallery-carousel.php:494
-#: includes/widgets/premium/portfolio.php:283
-#: includes/widgets/premium/posts-block.php:286
-#: includes/widgets/premium/posts-block.php:303
-#: includes/widgets/premium/services-carousel.php:318
-#: includes/widgets/premium/services-carousel.php:374
-#: includes/widgets/premium/services-carousel.php:437
-#: includes/widgets/services.php:92
+#: includes/widgets/premium/portfolio.php:347
+#: includes/widgets/premium/posts-block.php:352
+#: includes/widgets/premium/posts-block.php:369
+#: includes/widgets/premium/services-carousel.php:334
+#: includes/widgets/premium/services-carousel.php:390
+#: includes/widgets/premium/services-carousel.php:453
+#: includes/widgets/services.php:93
 #: includes/widgets/team-members.php:77
 #: includes/widgets/testimonials.php:60
 msgid "Columns per row"
 msgstr ""
 
-#: includes/widgets/carousel.php:276 includes/widgets/carousel.php:331
-#: includes/widgets/carousel.php:394
-#: includes/widgets/posts-carousel.php:384
-#: includes/widgets/posts-carousel.php:431
-#: includes/widgets/posts-carousel.php:488
+#: includes/widgets/carousel.php:275 includes/widgets/carousel.php:329
+#: includes/widgets/carousel.php:392
+#: includes/widgets/posts-carousel.php:450
+#: includes/widgets/posts-carousel.php:497
+#: includes/widgets/posts-carousel.php:554
 #: includes/widgets/premium/gallery-carousel.php:402
 #: includes/widgets/premium/gallery-carousel.php:450
 #: includes/widgets/premium/gallery-carousel.php:506
-#: includes/widgets/premium/services-carousel.php:331
-#: includes/widgets/premium/services-carousel.php:386
-#: includes/widgets/premium/services-carousel.php:449
+#: includes/widgets/premium/services-carousel.php:347
+#: includes/widgets/premium/services-carousel.php:402
+#: includes/widgets/premium/services-carousel.php:465
 msgid "Columns to scroll"
 msgstr ""
 
-#: includes/widgets/carousel.php:288
-#: includes/widgets/portfolio.php:363
-#: includes/widgets/posts-carousel.php:396
+#: includes/widgets/carousel.php:287
+#: includes/widgets/portfolio.php:427
+#: includes/widgets/posts-carousel.php:462
 #: includes/widgets/premium/gallery-carousel.php:429
-#: includes/widgets/premium/gallery.php:578
-#: includes/widgets/premium/portfolio.php:630
-#: includes/widgets/premium/services-carousel.php:343
+#: includes/widgets/premium/gallery.php:580
+#: includes/widgets/premium/portfolio.php:695
+#: includes/widgets/premium/services-carousel.php:359
 #: includes/widgets/premium/twitter-grid.php:435
+#: includes/widgets/premium/vimeo-grid.php:521
+#: includes/widgets/premium/youtube-grid.php:472
 msgid "Tablet"
 msgstr ""
 
-#: includes/widgets/carousel.php:343
-#: includes/widgets/posts-carousel.php:443
+#: includes/widgets/carousel.php:341
+#: includes/widgets/posts-carousel.php:509
 #: includes/widgets/premium/gallery-carousel.php:475
 #: includes/widgets/premium/gallery-carousel.php:531
-#: includes/widgets/premium/services-carousel.php:398
+#: includes/widgets/premium/services-carousel.php:414
 msgid "Tablet Resolution"
 msgstr ""
 
-#: includes/widgets/carousel.php:344
-#: includes/widgets/posts-carousel.php:444
+#: includes/widgets/carousel.php:342
+#: includes/widgets/posts-carousel.php:510
 #: includes/widgets/premium/gallery-carousel.php:476
 #: includes/widgets/premium/gallery-carousel.php:532
-#: includes/widgets/premium/services-carousel.php:399
+#: includes/widgets/premium/services-carousel.php:415
 msgid "The resolution to treat as a tablet resolution."
 msgstr ""
 
-#: includes/widgets/carousel.php:354
-#: includes/widgets/portfolio.php:387
-#: includes/widgets/posts-carousel.php:454
+#: includes/widgets/carousel.php:352
+#: includes/widgets/portfolio.php:451
+#: includes/widgets/posts-carousel.php:520
 #: includes/widgets/premium/gallery-carousel.php:485
-#: includes/widgets/premium/gallery.php:602
-#: includes/widgets/premium/portfolio.php:654
-#: includes/widgets/premium/services-carousel.php:409
+#: includes/widgets/premium/gallery.php:604
+#: includes/widgets/premium/portfolio.php:719
+#: includes/widgets/premium/services-carousel.php:425
 #: includes/widgets/premium/twitter-grid.php:459
+#: includes/widgets/premium/vimeo-grid.php:545
+#: includes/widgets/premium/youtube-grid.php:496
 msgid "Mobile Phone"
 msgstr ""
 
-#: includes/widgets/carousel.php:406
-#: includes/widgets/posts-carousel.php:500
-#: includes/widgets/premium/services-carousel.php:461
-#: includes/widgets/premium/tabs.php:84
+#: includes/widgets/carousel.php:404
+#: includes/widgets/posts-carousel.php:566
+#: includes/widgets/premium/services-carousel.php:477
+#: includes/widgets/premium/tabs.php:85
 msgid "Mobile Resolution"
 msgstr ""
 
-#: includes/widgets/carousel.php:407
-#: includes/widgets/posts-carousel.php:501
-#: includes/widgets/premium/services-carousel.php:462
+#: includes/widgets/carousel.php:405
+#: includes/widgets/posts-carousel.php:567
+#: includes/widgets/premium/services-carousel.php:478
 msgid "The resolution to treat as a mobile resolution."
 msgstr ""
 
-#: includes/widgets/carousel.php:428
+#: includes/widgets/carousel.php:426
 #: includes/widgets/premium/accordion.php:176
 #: includes/widgets/premium/faq.php:205
 #: includes/widgets/premium/slider.php:296
 msgid "Content"
 msgstr ""
 
-#: includes/widgets/carousel.php:437 includes/widgets/heading.php:226
-#: includes/widgets/heading.php:256 includes/widgets/odometers.php:221
-#: includes/widgets/odometers.php:250
-#: includes/widgets/odometers.php:279
+#: includes/widgets/carousel.php:435 includes/widgets/heading.php:226
+#: includes/widgets/heading.php:256 includes/widgets/odometers.php:223
+#: includes/widgets/odometers.php:252
+#: includes/widgets/odometers.php:281
 #: includes/widgets/piecharts.php:173
 #: includes/widgets/piecharts.php:202
 #: includes/widgets/piecharts.php:231
 #: includes/widgets/premium/accordion.php:185
 #: includes/widgets/premium/faq.php:186
 #: includes/widgets/premium/faq.php:214
-#: includes/widgets/premium/features.php:263
-#: includes/widgets/premium/features.php:292
-#: includes/widgets/premium/features.php:321
+#: includes/widgets/premium/features.php:280
+#: includes/widgets/premium/features.php:319
+#: includes/widgets/premium/features.php:348
 #: includes/widgets/premium/image-slider.php:528
-#: includes/widgets/premium/services-carousel.php:501
-#: includes/widgets/premium/services-carousel.php:530
+#: includes/widgets/premium/services-carousel.php:517
+#: includes/widgets/premium/services-carousel.php:557
+#: includes/widgets/premium/services-carousel.php:586
 #: includes/widgets/premium/slider.php:305
-#: includes/widgets/premium/tabs.php:288
+#: includes/widgets/premium/tabs.php:291
 #: includes/widgets/pricing-table.php:261
 #: includes/widgets/pricing-table.php:291
 #: includes/widgets/pricing-table.php:340
 #: includes/widgets/pricing-table.php:369
 #: includes/widgets/pricing-table.php:398
-#: includes/widgets/services.php:245 includes/widgets/services.php:274
+#: includes/widgets/services.php:274 includes/widgets/services.php:314
 #: includes/widgets/stats-bars.php:210
-#: includes/widgets/stats-bars.php:260
-#: includes/widgets/team-members.php:389
-#: includes/widgets/team-members.php:418
+#: includes/widgets/stats-bars.php:239
+#: includes/widgets/team-members.php:407
 #: includes/widgets/team-members.php:447
+#: includes/widgets/team-members.php:476
 #: includes/widgets/testimonials-slider.php:298
 #: includes/widgets/testimonials-slider.php:346
 #: includes/widgets/testimonials-slider.php:375
@@ -1429,18 +1999,18 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: includes/widgets/carousel.php:448
+#: includes/widgets/carousel.php:446
 #: includes/widgets/premium/slider.php:316
 msgid "Background Color"
 msgstr ""
 
-#: includes/widgets/carousel.php:459
-#: includes/widgets/premium/icon-list.php:318
+#: includes/widgets/carousel.php:457
+#: includes/widgets/premium/icon-list.php:336
 #: includes/widgets/premium/slider.php:327
 msgid "Padding"
 msgstr ""
 
-#: includes/widgets/carousel.php:460
+#: includes/widgets/carousel.php:458
 #: includes/widgets/premium/slider.php:328
 msgid "Padding for the columns."
 msgstr ""
@@ -1451,12 +2021,12 @@ msgid "Clients"
 msgstr ""
 
 #: includes/widgets/clients.php:81 includes/widgets/heading.php:156
-#: includes/widgets/premium/button.php:235
+#: includes/widgets/premium/button.php:236
 #: includes/widgets/premium/faq.php:132
-#: includes/widgets/premium/icon-list.php:203
+#: includes/widgets/premium/icon-list.php:221
 #: includes/widgets/pricing-table.php:220
-#: includes/widgets/services.php:204
-#: includes/widgets/team-members.php:285
+#: includes/widgets/services.php:233
+#: includes/widgets/team-members.php:303
 #: includes/widgets/testimonials.php:149
 msgid "Animation Type"
 msgstr ""
@@ -1508,7 +2078,7 @@ msgid "Client Hover Color"
 msgstr ""
 
 #: includes/widgets/clients.php:186
-#: includes/widgets/posts-carousel.php:532
+#: includes/widgets/posts-carousel.php:598
 #: includes/widgets/premium/gallery-carousel.php:564
 msgid "Thumbnail Hover Opacity (%)"
 msgstr ""
@@ -1536,8 +2106,8 @@ msgstr ""
 #: includes/widgets/heading.php:61
 #: includes/widgets/premium/accordion.php:61
 #: includes/widgets/premium/services-carousel.php:65
-#: includes/widgets/premium/tabs.php:63
-#: includes/widgets/services.php:82
+#: includes/widgets/premium/tabs.php:64
+#: includes/widgets/services.php:83
 msgid "Choose Style"
 msgstr ""
 
@@ -1545,7 +2115,7 @@ msgstr ""
 #: includes/widgets/premium/accordion.php:64
 #: includes/widgets/premium/image-slider.php:80
 #: includes/widgets/premium/services-carousel.php:68
-#: includes/widgets/services.php:61 includes/widgets/services.php:71
+#: includes/widgets/services.php:62 includes/widgets/services.php:72
 #: includes/widgets/team-members.php:67
 msgid "Style 1"
 msgstr ""
@@ -1554,14 +2124,14 @@ msgstr ""
 #: includes/widgets/premium/accordion.php:65
 #: includes/widgets/premium/image-slider.php:81
 #: includes/widgets/premium/services-carousel.php:69
-#: includes/widgets/services.php:62 includes/widgets/services.php:72
+#: includes/widgets/services.php:63 includes/widgets/services.php:73
 #: includes/widgets/team-members.php:68
 msgid "Style 2"
 msgstr ""
 
 #: includes/widgets/heading.php:66
 #: includes/widgets/premium/accordion.php:66
-#: includes/widgets/services.php:63 includes/widgets/services.php:73
+#: includes/widgets/services.php:64 includes/widgets/services.php:74
 msgid "Style 3"
 msgstr ""
 
@@ -1586,296 +2156,315 @@ msgid "Short text generally displayed below the heading title."
 msgstr ""
 
 #: includes/widgets/heading.php:128
-#: includes/widgets/premium/button.php:207
-#: includes/widgets/premium/icon-list.php:172
+#: includes/widgets/premium/button.php:208
+#: includes/widgets/premium/icon-list.php:190
 msgid "Alignment"
 msgstr ""
 
 #: includes/widgets/heading.php:132
-#: includes/widgets/premium/button.php:211
-#: includes/widgets/premium/icon-list.php:176
+#: includes/widgets/premium/button.php:212
+#: includes/widgets/premium/icon-list.php:194
 msgid "Left"
 msgstr ""
 
 #: includes/widgets/heading.php:136
-#: includes/widgets/premium/button.php:215
-#: includes/widgets/premium/icon-list.php:180
+#: includes/widgets/premium/button.php:216
+#: includes/widgets/premium/icon-list.php:198
 msgid "Center"
 msgstr ""
 
 #: includes/widgets/heading.php:140
-#: includes/widgets/premium/button.php:219
-#: includes/widgets/premium/icon-list.php:184
+#: includes/widgets/premium/button.php:220
+#: includes/widgets/premium/icon-list.php:202
 msgid "Right"
 msgstr ""
 
 #: includes/widgets/heading.php:144
-#: includes/widgets/premium/button.php:223
-#: includes/widgets/premium/icon-list.php:188
+#: includes/widgets/premium/button.php:224
+#: includes/widgets/premium/icon-list.php:206
 msgid "Justified"
 msgstr ""
 
-#: includes/widgets/heading.php:168 includes/widgets/portfolio.php:119
-#: includes/widgets/posts-carousel.php:115
+#: includes/widgets/heading.php:168 includes/widgets/portfolio.php:163
+#: includes/widgets/posts-carousel.php:161
 #: includes/widgets/premium/accordion.php:159
 #: includes/widgets/premium/faq.php:159
-#: includes/widgets/premium/features.php:236
-#: includes/widgets/premium/portfolio.php:127
-#: includes/widgets/premium/posts-block.php:123
+#: includes/widgets/premium/features.php:253
+#: includes/widgets/premium/portfolio.php:172
+#: includes/widgets/premium/posts-block.php:170
+#: includes/widgets/premium/youtube-grid.php:114
 msgid "Title"
 msgstr ""
 
-#: includes/widgets/heading.php:176 includes/widgets/portfolio.php:529
-#: includes/widgets/posts-carousel.php:562
+#: includes/widgets/heading.php:176 includes/widgets/portfolio.php:593
+#: includes/widgets/posts-carousel.php:628
 #: includes/widgets/premium/faq.php:168
-#: includes/widgets/premium/features.php:245
+#: includes/widgets/premium/features.php:262
 #: includes/widgets/premium/gallery-carousel.php:595
-#: includes/widgets/premium/gallery.php:757
-#: includes/widgets/premium/portfolio.php:783
-#: includes/widgets/premium/services-carousel.php:483
-#: includes/widgets/services.php:227
-#: includes/widgets/team-members.php:371
+#: includes/widgets/premium/gallery.php:759
+#: includes/widgets/premium/portfolio.php:848
+#: includes/widgets/premium/services-carousel.php:499
+#: includes/widgets/premium/vimeo-grid.php:578
+#: includes/widgets/premium/youtube-grid.php:529
+#: includes/widgets/services.php:256
+#: includes/widgets/team-members.php:389
 #: includes/widgets/testimonials-slider.php:328
 #: includes/widgets/testimonials.php:294
 msgid "Title HTML Tag"
 msgstr ""
 
-#: includes/widgets/heading.php:179 includes/widgets/portfolio.php:425
-#: includes/widgets/portfolio.php:532
-#: includes/widgets/portfolio.php:629
-#: includes/widgets/posts-carousel.php:565
-#: includes/widgets/posts-carousel.php:651
+#: includes/widgets/heading.php:179 includes/widgets/portfolio.php:489
+#: includes/widgets/portfolio.php:596
+#: includes/widgets/portfolio.php:693
+#: includes/widgets/posts-carousel.php:631
+#: includes/widgets/posts-carousel.php:717
 #: includes/widgets/premium/faq.php:171
-#: includes/widgets/premium/features.php:248
+#: includes/widgets/premium/features.php:265
 #: includes/widgets/premium/gallery-carousel.php:598
-#: includes/widgets/premium/gallery.php:639
-#: includes/widgets/premium/gallery.php:760
+#: includes/widgets/premium/gallery.php:641
+#: includes/widgets/premium/gallery.php:762
 #: includes/widgets/premium/image-slider.php:457
-#: includes/widgets/premium/portfolio.php:690
-#: includes/widgets/premium/portfolio.php:786
-#: includes/widgets/premium/portfolio.php:883
-#: includes/widgets/premium/posts-block.php:567
-#: includes/widgets/premium/posts-block.php:738
-#: includes/widgets/premium/services-carousel.php:486
+#: includes/widgets/premium/portfolio.php:755
+#: includes/widgets/premium/portfolio.php:851
+#: includes/widgets/premium/portfolio.php:948
+#: includes/widgets/premium/posts-block.php:634
+#: includes/widgets/premium/posts-block.php:805
+#: includes/widgets/premium/services-carousel.php:502
+#: includes/widgets/premium/vimeo-grid.php:581
+#: includes/widgets/premium/youtube-grid.php:532
 #: includes/widgets/pricing-table.php:246
 #: includes/widgets/pricing-table.php:324
-#: includes/widgets/services.php:230
-#: includes/widgets/team-members.php:374
+#: includes/widgets/services.php:259
+#: includes/widgets/team-members.php:392
 #: includes/widgets/testimonials-slider.php:331
 #: includes/widgets/testimonials.php:297
 msgid "H1"
 msgstr ""
 
-#: includes/widgets/heading.php:180 includes/widgets/portfolio.php:426
-#: includes/widgets/portfolio.php:533
-#: includes/widgets/portfolio.php:630
-#: includes/widgets/posts-carousel.php:566
-#: includes/widgets/posts-carousel.php:652
+#: includes/widgets/heading.php:180 includes/widgets/portfolio.php:490
+#: includes/widgets/portfolio.php:597
+#: includes/widgets/portfolio.php:694
+#: includes/widgets/posts-carousel.php:632
+#: includes/widgets/posts-carousel.php:718
 #: includes/widgets/premium/faq.php:172
-#: includes/widgets/premium/features.php:249
+#: includes/widgets/premium/features.php:266
 #: includes/widgets/premium/gallery-carousel.php:599
-#: includes/widgets/premium/gallery.php:640
-#: includes/widgets/premium/gallery.php:761
+#: includes/widgets/premium/gallery.php:642
+#: includes/widgets/premium/gallery.php:763
 #: includes/widgets/premium/image-slider.php:458
-#: includes/widgets/premium/portfolio.php:691
-#: includes/widgets/premium/portfolio.php:787
-#: includes/widgets/premium/portfolio.php:884
-#: includes/widgets/premium/posts-block.php:568
-#: includes/widgets/premium/posts-block.php:739
-#: includes/widgets/premium/services-carousel.php:487
+#: includes/widgets/premium/portfolio.php:756
+#: includes/widgets/premium/portfolio.php:852
+#: includes/widgets/premium/portfolio.php:949
+#: includes/widgets/premium/posts-block.php:635
+#: includes/widgets/premium/posts-block.php:806
+#: includes/widgets/premium/services-carousel.php:503
+#: includes/widgets/premium/vimeo-grid.php:582
+#: includes/widgets/premium/youtube-grid.php:533
 #: includes/widgets/pricing-table.php:247
 #: includes/widgets/pricing-table.php:325
-#: includes/widgets/services.php:231
-#: includes/widgets/team-members.php:375
+#: includes/widgets/services.php:260
+#: includes/widgets/team-members.php:393
 #: includes/widgets/testimonials-slider.php:332
 #: includes/widgets/testimonials.php:298
 msgid "H2"
 msgstr ""
 
-#: includes/widgets/heading.php:181 includes/widgets/portfolio.php:427
-#: includes/widgets/portfolio.php:534
-#: includes/widgets/portfolio.php:631
-#: includes/widgets/posts-carousel.php:567
-#: includes/widgets/posts-carousel.php:653
+#: includes/widgets/heading.php:181 includes/widgets/portfolio.php:491
+#: includes/widgets/portfolio.php:598
+#: includes/widgets/portfolio.php:695
+#: includes/widgets/posts-carousel.php:633
+#: includes/widgets/posts-carousel.php:719
 #: includes/widgets/premium/faq.php:173
-#: includes/widgets/premium/features.php:250
+#: includes/widgets/premium/features.php:267
 #: includes/widgets/premium/gallery-carousel.php:600
-#: includes/widgets/premium/gallery.php:641
-#: includes/widgets/premium/gallery.php:762
+#: includes/widgets/premium/gallery.php:643
+#: includes/widgets/premium/gallery.php:764
 #: includes/widgets/premium/image-slider.php:459
-#: includes/widgets/premium/portfolio.php:692
-#: includes/widgets/premium/portfolio.php:788
-#: includes/widgets/premium/portfolio.php:885
-#: includes/widgets/premium/posts-block.php:569
-#: includes/widgets/premium/posts-block.php:740
-#: includes/widgets/premium/services-carousel.php:488
+#: includes/widgets/premium/portfolio.php:757
+#: includes/widgets/premium/portfolio.php:853
+#: includes/widgets/premium/portfolio.php:950
+#: includes/widgets/premium/posts-block.php:636
+#: includes/widgets/premium/posts-block.php:807
+#: includes/widgets/premium/services-carousel.php:504
+#: includes/widgets/premium/vimeo-grid.php:583
+#: includes/widgets/premium/youtube-grid.php:534
 #: includes/widgets/pricing-table.php:248
 #: includes/widgets/pricing-table.php:326
-#: includes/widgets/services.php:232
-#: includes/widgets/team-members.php:376
+#: includes/widgets/services.php:261
+#: includes/widgets/team-members.php:394
 #: includes/widgets/testimonials-slider.php:333
 #: includes/widgets/testimonials.php:299
 msgid "H3"
 msgstr ""
 
-#: includes/widgets/heading.php:182 includes/widgets/portfolio.php:428
-#: includes/widgets/portfolio.php:535
-#: includes/widgets/portfolio.php:632
-#: includes/widgets/posts-carousel.php:568
-#: includes/widgets/posts-carousel.php:654
+#: includes/widgets/heading.php:182 includes/widgets/portfolio.php:492
+#: includes/widgets/portfolio.php:599
+#: includes/widgets/portfolio.php:696
+#: includes/widgets/posts-carousel.php:634
+#: includes/widgets/posts-carousel.php:720
 #: includes/widgets/premium/faq.php:174
-#: includes/widgets/premium/features.php:251
+#: includes/widgets/premium/features.php:268
 #: includes/widgets/premium/gallery-carousel.php:601
-#: includes/widgets/premium/gallery.php:642
-#: includes/widgets/premium/gallery.php:763
+#: includes/widgets/premium/gallery.php:644
+#: includes/widgets/premium/gallery.php:765
 #: includes/widgets/premium/image-slider.php:460
-#: includes/widgets/premium/portfolio.php:693
-#: includes/widgets/premium/portfolio.php:789
-#: includes/widgets/premium/portfolio.php:886
-#: includes/widgets/premium/posts-block.php:570
-#: includes/widgets/premium/posts-block.php:741
-#: includes/widgets/premium/services-carousel.php:489
+#: includes/widgets/premium/portfolio.php:758
+#: includes/widgets/premium/portfolio.php:854
+#: includes/widgets/premium/portfolio.php:951
+#: includes/widgets/premium/posts-block.php:637
+#: includes/widgets/premium/posts-block.php:808
+#: includes/widgets/premium/services-carousel.php:505
+#: includes/widgets/premium/vimeo-grid.php:584
+#: includes/widgets/premium/youtube-grid.php:535
 #: includes/widgets/pricing-table.php:249
 #: includes/widgets/pricing-table.php:327
-#: includes/widgets/services.php:233
-#: includes/widgets/team-members.php:377
+#: includes/widgets/services.php:262
+#: includes/widgets/team-members.php:395
 #: includes/widgets/testimonials-slider.php:334
 #: includes/widgets/testimonials.php:300
 msgid "H4"
 msgstr ""
 
-#: includes/widgets/heading.php:183 includes/widgets/portfolio.php:429
-#: includes/widgets/portfolio.php:536
-#: includes/widgets/portfolio.php:633
-#: includes/widgets/posts-carousel.php:569
-#: includes/widgets/posts-carousel.php:655
+#: includes/widgets/heading.php:183 includes/widgets/portfolio.php:493
+#: includes/widgets/portfolio.php:600
+#: includes/widgets/portfolio.php:697
+#: includes/widgets/posts-carousel.php:635
+#: includes/widgets/posts-carousel.php:721
 #: includes/widgets/premium/faq.php:175
-#: includes/widgets/premium/features.php:252
+#: includes/widgets/premium/features.php:269
 #: includes/widgets/premium/gallery-carousel.php:602
-#: includes/widgets/premium/gallery.php:643
-#: includes/widgets/premium/gallery.php:764
+#: includes/widgets/premium/gallery.php:645
+#: includes/widgets/premium/gallery.php:766
 #: includes/widgets/premium/image-slider.php:461
-#: includes/widgets/premium/portfolio.php:694
-#: includes/widgets/premium/portfolio.php:790
-#: includes/widgets/premium/portfolio.php:887
-#: includes/widgets/premium/posts-block.php:571
-#: includes/widgets/premium/posts-block.php:742
-#: includes/widgets/premium/services-carousel.php:490
+#: includes/widgets/premium/portfolio.php:759
+#: includes/widgets/premium/portfolio.php:855
+#: includes/widgets/premium/portfolio.php:952
+#: includes/widgets/premium/posts-block.php:638
+#: includes/widgets/premium/posts-block.php:809
+#: includes/widgets/premium/services-carousel.php:506
+#: includes/widgets/premium/vimeo-grid.php:585
+#: includes/widgets/premium/youtube-grid.php:536
 #: includes/widgets/pricing-table.php:250
 #: includes/widgets/pricing-table.php:328
-#: includes/widgets/services.php:234
-#: includes/widgets/team-members.php:378
+#: includes/widgets/services.php:263
+#: includes/widgets/team-members.php:396
 #: includes/widgets/testimonials-slider.php:335
 #: includes/widgets/testimonials.php:301
 msgid "H5"
 msgstr ""
 
-#: includes/widgets/heading.php:184 includes/widgets/portfolio.php:430
-#: includes/widgets/portfolio.php:537
-#: includes/widgets/portfolio.php:634
-#: includes/widgets/posts-carousel.php:570
-#: includes/widgets/posts-carousel.php:656
+#: includes/widgets/heading.php:184 includes/widgets/portfolio.php:494
+#: includes/widgets/portfolio.php:601
+#: includes/widgets/portfolio.php:698
+#: includes/widgets/posts-carousel.php:636
+#: includes/widgets/posts-carousel.php:722
 #: includes/widgets/premium/faq.php:176
-#: includes/widgets/premium/features.php:253
+#: includes/widgets/premium/features.php:270
 #: includes/widgets/premium/gallery-carousel.php:603
-#: includes/widgets/premium/gallery.php:644
-#: includes/widgets/premium/gallery.php:765
+#: includes/widgets/premium/gallery.php:646
+#: includes/widgets/premium/gallery.php:767
 #: includes/widgets/premium/image-slider.php:462
-#: includes/widgets/premium/portfolio.php:695
-#: includes/widgets/premium/portfolio.php:791
-#: includes/widgets/premium/portfolio.php:888
-#: includes/widgets/premium/posts-block.php:572
-#: includes/widgets/premium/posts-block.php:743
-#: includes/widgets/premium/services-carousel.php:491
+#: includes/widgets/premium/portfolio.php:760
+#: includes/widgets/premium/portfolio.php:856
+#: includes/widgets/premium/portfolio.php:953
+#: includes/widgets/premium/posts-block.php:639
+#: includes/widgets/premium/posts-block.php:810
+#: includes/widgets/premium/services-carousel.php:507
+#: includes/widgets/premium/vimeo-grid.php:586
+#: includes/widgets/premium/youtube-grid.php:537
 #: includes/widgets/pricing-table.php:251
 #: includes/widgets/pricing-table.php:329
-#: includes/widgets/services.php:235
-#: includes/widgets/team-members.php:379
+#: includes/widgets/services.php:264
+#: includes/widgets/team-members.php:397
 #: includes/widgets/testimonials-slider.php:336
 #: includes/widgets/testimonials.php:302
 msgid "H6"
 msgstr ""
 
-#: includes/widgets/heading.php:185 includes/widgets/portfolio.php:431
-#: includes/widgets/portfolio.php:538
-#: includes/widgets/portfolio.php:635
-#: includes/widgets/posts-carousel.php:571
-#: includes/widgets/posts-carousel.php:657
+#: includes/widgets/heading.php:185 includes/widgets/portfolio.php:495
+#: includes/widgets/portfolio.php:602
+#: includes/widgets/portfolio.php:699
+#: includes/widgets/posts-carousel.php:637
+#: includes/widgets/posts-carousel.php:723
 #: includes/widgets/premium/faq.php:177
-#: includes/widgets/premium/features.php:254
+#: includes/widgets/premium/features.php:271
 #: includes/widgets/premium/gallery-carousel.php:604
-#: includes/widgets/premium/gallery.php:645
-#: includes/widgets/premium/gallery.php:766
+#: includes/widgets/premium/gallery.php:647
+#: includes/widgets/premium/gallery.php:768
 #: includes/widgets/premium/image-slider.php:463
-#: includes/widgets/premium/portfolio.php:696
-#: includes/widgets/premium/portfolio.php:792
-#: includes/widgets/premium/portfolio.php:889
-#: includes/widgets/premium/posts-block.php:573
-#: includes/widgets/premium/posts-block.php:744
-#: includes/widgets/premium/services-carousel.php:492
+#: includes/widgets/premium/portfolio.php:761
+#: includes/widgets/premium/portfolio.php:857
+#: includes/widgets/premium/portfolio.php:954
+#: includes/widgets/premium/posts-block.php:640
+#: includes/widgets/premium/posts-block.php:811
+#: includes/widgets/premium/services-carousel.php:508
+#: includes/widgets/premium/vimeo-grid.php:587
+#: includes/widgets/premium/youtube-grid.php:538
 #: includes/widgets/pricing-table.php:252
 #: includes/widgets/pricing-table.php:330
-#: includes/widgets/services.php:236
-#: includes/widgets/team-members.php:380
+#: includes/widgets/services.php:265
+#: includes/widgets/team-members.php:398
 #: includes/widgets/testimonials-slider.php:337
 #: includes/widgets/testimonials.php:303
 msgid "div"
 msgstr ""
 
-#: includes/widgets/heading.php:194 includes/widgets/portfolio.php:440
-#: includes/widgets/premium/gallery.php:654
+#: includes/widgets/heading.php:194 includes/widgets/portfolio.php:504
+#: includes/widgets/premium/gallery.php:656
 #: includes/widgets/premium/image-slider.php:472
-#: includes/widgets/premium/portfolio.php:705
-#: includes/widgets/premium/posts-block.php:582
+#: includes/widgets/premium/portfolio.php:770
+#: includes/widgets/premium/posts-block.php:649
 msgid "Heading Color"
 msgstr ""
 
-#: includes/widgets/heading.php:207 includes/widgets/odometers.php:292
-#: includes/widgets/premium/button.php:328
-#: includes/widgets/premium/gallery.php:1069
-#: includes/widgets/premium/icon-list.php:339
+#: includes/widgets/heading.php:207 includes/widgets/odometers.php:294
+#: includes/widgets/premium/button.php:329
+#: includes/widgets/premium/gallery.php:1071
+#: includes/widgets/premium/icon-list.php:357
 #: includes/widgets/premium/image-slider.php:509
 #: includes/widgets/premium/image-slider.php:571
-#: includes/widgets/premium/portfolio.php:1240
-#: includes/widgets/premium/posts-block.php:898
-#: includes/widgets/premium/posts-block.php:990
-#: includes/widgets/premium/posts-block.php:1190
+#: includes/widgets/premium/portfolio.php:1305
+#: includes/widgets/premium/posts-block.php:965
+#: includes/widgets/premium/posts-block.php:1057
+#: includes/widgets/premium/posts-block.php:1257
 #: includes/widgets/premium/twitter-grid.php:929
+#: includes/widgets/premium/vimeo-grid.php:1120
+#: includes/widgets/premium/youtube-grid.php:1032
 msgid "Typography"
 msgstr ""
 
 #: includes/widgets/heading.php:218
-#: includes/widgets/premium/features.php:284
+#: includes/widgets/premium/features.php:311
 msgid "Subtitle"
 msgstr ""
 
-#: includes/widgets/odometers.php:31 includes/widgets/odometers.php:56
-#: includes/widgets/odometers.php:83
+#: includes/widgets/odometers.php:32 includes/widgets/odometers.php:57
+#: includes/widgets/odometers.php:84
 msgid "Odometers"
 msgstr ""
 
-#: includes/widgets/odometers.php:63
+#: includes/widgets/odometers.php:64
 msgid "Odometers per row"
 msgstr ""
 
-#: includes/widgets/odometers.php:87
+#: includes/widgets/odometers.php:88
 msgid "No of Customers"
 msgstr ""
 
-#: includes/widgets/odometers.php:94
+#: includes/widgets/odometers.php:95
 msgid "Hours Worked"
 msgstr ""
 
-#: includes/widgets/odometers.php:101
+#: includes/widgets/odometers.php:102
 msgid "Support Tickets"
 msgstr ""
 
-#: includes/widgets/odometers.php:108
+#: includes/widgets/odometers.php:109
 msgid "Product Revenue"
 msgstr ""
 
-#: includes/widgets/odometers.php:118
-#: includes/widgets/odometers.php:271
+#: includes/widgets/odometers.php:119
+#: includes/widgets/odometers.php:273
 #: includes/widgets/piecharts.php:105
 #: includes/widgets/piecharts.php:165
 #: includes/widgets/stats-bars.php:81
@@ -1883,105 +2472,94 @@ msgstr ""
 msgid "Stats Title"
 msgstr ""
 
-#: includes/widgets/odometers.php:119
+#: includes/widgets/odometers.php:120
 #: includes/widgets/piecharts.php:107
 #: includes/widgets/stats-bars.php:84
 msgid "My stats title"
 msgstr ""
 
-#: includes/widgets/odometers.php:128
+#: includes/widgets/odometers.php:129
 msgid "Start Value"
 msgstr ""
 
-#: includes/widgets/odometers.php:134
+#: includes/widgets/odometers.php:135
 msgid "Stop Value"
 msgstr ""
 
-#: includes/widgets/odometers.php:141
+#: includes/widgets/odometers.php:142
 msgid "Choose Icon Type"
-msgstr ""
-
-#: includes/widgets/odometers.php:145
-#: includes/widgets/premium/button.php:95
-#: includes/widgets/premium/icon-list.php:111
-#: includes/widgets/premium/icon-list.php:132
-#: includes/widgets/premium/tabs.php:128
-#: includes/widgets/services.php:162
-msgid "Icon"
 msgstr ""
 
 #: includes/widgets/odometers.php:146
 #: includes/widgets/premium/button.php:96
-#: includes/widgets/premium/icon-list.php:112
-#: includes/widgets/premium/icon-list.php:117
+#: includes/widgets/premium/icon-list.php:127
+#: includes/widgets/premium/icon-list.php:149
 #: includes/widgets/premium/tabs.php:129
-#: includes/widgets/services.php:163
+#: includes/widgets/services.php:172
+msgid "Icon"
+msgstr ""
+
+#: includes/widgets/odometers.php:147
+#: includes/widgets/premium/button.php:97
+#: includes/widgets/premium/icon-list.php:128
+#: includes/widgets/premium/icon-list.php:133
+#: includes/widgets/premium/tabs.php:130
+#: includes/widgets/services.php:173
 msgid "Icon Image"
 msgstr ""
 
-#: includes/widgets/odometers.php:152
+#: includes/widgets/odometers.php:153
 msgid "Stats Image"
 msgstr ""
 
-#: includes/widgets/odometers.php:168
+#: includes/widgets/odometers.php:169
 msgid "Stats Icon"
 msgstr ""
 
-#: includes/widgets/odometers.php:179
+#: includes/widgets/odometers.php:181
 msgid "Prefix"
 msgstr ""
 
-#: includes/widgets/odometers.php:181
+#: includes/widgets/odometers.php:183
 msgid ""
 "The prefix string like currency symbols like $ to indicate a "
 "monetary value."
 msgstr ""
 
-#: includes/widgets/odometers.php:192
+#: includes/widgets/odometers.php:194
 msgid "Suffix"
 msgstr ""
 
-#: includes/widgets/odometers.php:194
+#: includes/widgets/odometers.php:196
 msgid "The suffix string like hr for hours or m for million."
 msgstr ""
 
-#: includes/widgets/odometers.php:213
+#: includes/widgets/odometers.php:215
 msgid "Stats Number"
 msgstr ""
 
-#: includes/widgets/odometers.php:242
+#: includes/widgets/odometers.php:244
 msgid "Stats Prefix and Suffix"
 msgstr ""
 
-#: includes/widgets/odometers.php:302
-#: includes/widgets/premium/button.php:338
-#: includes/widgets/premium/icon-list.php:214
-#: includes/widgets/premium/tabs.php:312
+#: includes/widgets/odometers.php:304
+#: includes/widgets/premium/button.php:339
+#: includes/widgets/premium/icon-list.php:232
+#: includes/widgets/premium/tabs.php:315
 msgid "Icons"
 msgstr ""
 
-#: includes/widgets/odometers.php:310
-#: includes/widgets/premium/tabs.php:321
-#: includes/widgets/services.php:303
+#: includes/widgets/odometers.php:312
+#: includes/widgets/premium/tabs.php:324
+#: includes/widgets/services.php:343
 msgid "Icon or Icon Image size in pixels"
 msgstr ""
 
-#: includes/widgets/odometers.php:329
-#: includes/widgets/premium/button.php:365
-#: includes/widgets/premium/icon-list.php:238
-#: includes/widgets/team-members.php:495
-msgid "Spacing"
-msgstr ""
-
-#: includes/widgets/odometers.php:330
-msgid "Space after icon."
-msgstr ""
-
-#: includes/widgets/odometers.php:350
-#: includes/widgets/premium/button.php:386
-#: includes/widgets/premium/icon-list.php:259
-#: includes/widgets/premium/tabs.php:340
-#: includes/widgets/team-members.php:516
+#: includes/widgets/odometers.php:331
+#: includes/widgets/premium/button.php:387
+#: includes/widgets/premium/icon-list.php:277
+#: includes/widgets/premium/tabs.php:343
+#: includes/widgets/team-members.php:545
 #: includes/widgets/testimonials-slider.php:423
 msgid "Icon Color"
 msgstr ""
@@ -2000,14 +2578,14 @@ msgstr ""
 #: includes/widgets/premium/services-carousel.php:99
 #: includes/widgets/premium/services-carousel.php:106
 #: includes/widgets/premium/services-carousel.php:113
-#: includes/widgets/services.php:125
+#: includes/widgets/services.php:126
 #: includes/widgets/stats-bars.php:64
 msgid "Web Design"
 msgstr ""
 
 #: includes/widgets/piecharts.php:90
 #: includes/widgets/premium/services-carousel.php:98
-#: includes/widgets/services.php:131
+#: includes/widgets/services.php:135
 #: includes/widgets/stats-bars.php:69
 msgid "SEO Services"
 msgstr ""
@@ -2019,7 +2597,7 @@ msgstr ""
 #: includes/widgets/piecharts.php:98
 #: includes/widgets/premium/services-carousel.php:105
 #: includes/widgets/premium/services-carousel.php:112
-#: includes/widgets/services.php:137
+#: includes/widgets/services.php:144
 #: includes/widgets/stats-bars.php:74
 msgid "Brand Marketing"
 msgstr ""
@@ -2065,181 +2643,243 @@ msgid "Posts Grid"
 msgstr ""
 
 #: includes/widgets/portfolio.php:56
-#: includes/widgets/premium/portfolio.php:64
-#: includes/widgets/premium/posts-block.php:60
+#: includes/widgets/premium/portfolio.php:65
+#: includes/widgets/premium/posts-block.php:61
 msgid "Post Query"
 msgstr ""
 
-#: includes/widgets/portfolio.php:64
-#: includes/widgets/posts-carousel.php:60
+#: includes/widgets/portfolio.php:63
+#: includes/widgets/posts-carousel.php:61
 #: includes/widgets/premium/portfolio.php:72
-#: includes/widgets/premium/posts-block.php:68
+#: includes/widgets/premium/posts-block.php:70
+msgid "Source"
+msgstr ""
+
+#: includes/widgets/portfolio.php:66
+#: includes/widgets/posts-carousel.php:64
+#: includes/widgets/premium/portfolio.php:75
+#: includes/widgets/premium/posts-block.php:73
+msgid "Custom Query"
+msgstr ""
+
+#: includes/widgets/portfolio.php:67
+#: includes/widgets/posts-carousel.php:65
+#: includes/widgets/premium/portfolio.php:76
+#: includes/widgets/premium/posts-block.php:74
+msgid "Current Query"
+msgstr ""
+
+#: includes/widgets/portfolio.php:68
+#: includes/widgets/posts-carousel.php:66
+#: includes/widgets/premium/portfolio.php:77
+#: includes/widgets/premium/posts-block.php:75
+msgid "Related"
+msgstr ""
+
+#: includes/widgets/portfolio.php:77
+#: includes/widgets/posts-carousel.php:75
+#: includes/widgets/premium/portfolio.php:86
+#: includes/widgets/premium/posts-block.php:84
 msgid "Post Types"
 msgstr ""
 
-#: includes/widgets/portfolio.php:75
-#: includes/widgets/posts-carousel.php:71
-#: includes/widgets/premium/portfolio.php:83
-#: includes/widgets/premium/posts-block.php:79
+#: includes/widgets/portfolio.php:92
+#: includes/widgets/posts-carousel.php:90
+#: includes/widgets/premium/portfolio.php:101
+#: includes/widgets/premium/posts-block.php:99
+msgid "Choose the taxonomies to display related posts."
+msgstr ""
+
+#: includes/widgets/portfolio.php:94
+#: includes/widgets/posts-carousel.php:92
+#: includes/widgets/premium/portfolio.php:103
+#: includes/widgets/premium/posts-block.php:101
+msgid ""
+"Choose the taxonomies to be used for displaying posts related to "
+"current post, page or custom post type."
+msgstr ""
+
+#: includes/widgets/portfolio.php:107
+#: includes/widgets/posts-carousel.php:105
+#: includes/widgets/premium/portfolio.php:116
+#: includes/widgets/premium/posts-block.php:114
 msgid "Taxonomies"
 msgstr ""
 
-#: includes/widgets/portfolio.php:86
-#: includes/widgets/posts-carousel.php:82
-#: includes/widgets/premium/portfolio.php:94
-#: includes/widgets/premium/posts-block.php:90
+#: includes/widgets/portfolio.php:121
+#: includes/widgets/posts-carousel.php:119
+#: includes/widgets/premium/portfolio.php:130
+#: includes/widgets/premium/posts-block.php:128
 msgid "Post In"
 msgstr ""
 
-#: includes/widgets/portfolio.php:87
-#: includes/widgets/posts-carousel.php:83
-#: includes/widgets/premium/portfolio.php:95
+#: includes/widgets/portfolio.php:122
+#: includes/widgets/posts-carousel.php:120
+#: includes/widgets/premium/portfolio.php:131
 msgid ""
 "Provide a comma separated list of Post IDs to display in the grid."
 msgstr ""
 
-#: includes/widgets/portfolio.php:96
-#: includes/widgets/posts-carousel.php:92
-#: includes/widgets/premium/portfolio.php:104
-#: includes/widgets/premium/posts-block.php:100
+#: includes/widgets/portfolio.php:134
+#: includes/widgets/posts-carousel.php:132
+#: includes/widgets/premium/portfolio.php:143
+#: includes/widgets/premium/posts-block.php:141
 msgid "Posts Per Page"
 msgstr ""
 
-#: includes/widgets/portfolio.php:105
-#: includes/widgets/posts-carousel.php:101
-#: includes/widgets/premium/portfolio.php:113
-#: includes/widgets/premium/posts-block.php:109
+#: includes/widgets/portfolio.php:146
+#: includes/widgets/posts-carousel.php:144
+#: includes/widgets/premium/portfolio.php:155
+#: includes/widgets/premium/posts-block.php:153
 msgid "Advanced"
 msgstr ""
 
-#: includes/widgets/portfolio.php:113
-#: includes/widgets/posts-carousel.php:109
-#: includes/widgets/premium/portfolio.php:121
-#: includes/widgets/premium/posts-block.php:117
+#: includes/widgets/portfolio.php:157
+#: includes/widgets/posts-carousel.php:155
+#: includes/widgets/premium/portfolio.php:166
+#: includes/widgets/premium/posts-block.php:164
+#: includes/widgets/premium/vimeo-grid.php:187
+#: includes/widgets/premium/youtube-grid.php:110
 msgid "Order By"
 msgstr ""
 
-#: includes/widgets/portfolio.php:116
-#: includes/widgets/posts-carousel.php:112
-#: includes/widgets/premium/portfolio.php:124
-#: includes/widgets/premium/posts-block.php:120
+#: includes/widgets/portfolio.php:160
+#: includes/widgets/posts-carousel.php:158
+#: includes/widgets/premium/portfolio.php:169
+#: includes/widgets/premium/posts-block.php:167
 msgid "No order"
 msgstr ""
 
-#: includes/widgets/portfolio.php:117
-#: includes/widgets/posts-carousel.php:113
-#: includes/widgets/premium/portfolio.php:125
-#: includes/widgets/premium/posts-block.php:121
+#: includes/widgets/portfolio.php:161
+#: includes/widgets/posts-carousel.php:159
+#: includes/widgets/premium/portfolio.php:170
+#: includes/widgets/premium/posts-block.php:168
 msgid "Post ID"
 msgstr ""
 
-#: includes/widgets/portfolio.php:118
-#: includes/widgets/posts-carousel.php:114
-#: includes/widgets/premium/portfolio.php:126
-#: includes/widgets/premium/posts-block.php:122
+#: includes/widgets/portfolio.php:162
+#: includes/widgets/posts-carousel.php:160
+#: includes/widgets/premium/portfolio.php:171
+#: includes/widgets/premium/posts-block.php:169
 msgid "Author"
 msgstr ""
 
-#: includes/widgets/portfolio.php:120
-#: includes/widgets/posts-carousel.php:116
-#: includes/widgets/premium/portfolio.php:128
-#: includes/widgets/premium/posts-block.php:124
+#: includes/widgets/portfolio.php:164
+#: includes/widgets/posts-carousel.php:162
+#: includes/widgets/premium/portfolio.php:173
+#: includes/widgets/premium/posts-block.php:171
 msgid "Published date"
 msgstr ""
 
-#: includes/widgets/portfolio.php:121
-#: includes/widgets/posts-carousel.php:117
-#: includes/widgets/premium/portfolio.php:129
-#: includes/widgets/premium/posts-block.php:125
+#: includes/widgets/portfolio.php:165
+#: includes/widgets/posts-carousel.php:163
+#: includes/widgets/premium/portfolio.php:174
+#: includes/widgets/premium/posts-block.php:172
 msgid "Modified date"
 msgstr ""
 
-#: includes/widgets/portfolio.php:122
-#: includes/widgets/posts-carousel.php:118
-#: includes/widgets/premium/portfolio.php:130
-#: includes/widgets/premium/posts-block.php:126
+#: includes/widgets/portfolio.php:166
+#: includes/widgets/posts-carousel.php:164
+#: includes/widgets/premium/portfolio.php:175
+#: includes/widgets/premium/posts-block.php:173
 msgid "By parent"
 msgstr ""
 
-#: includes/widgets/portfolio.php:123
-#: includes/widgets/posts-carousel.php:119
-#: includes/widgets/premium/portfolio.php:131
-#: includes/widgets/premium/posts-block.php:127
+#: includes/widgets/portfolio.php:167
+#: includes/widgets/posts-carousel.php:165
+#: includes/widgets/premium/portfolio.php:176
+#: includes/widgets/premium/posts-block.php:174
 msgid "Random order"
 msgstr ""
 
-#: includes/widgets/portfolio.php:124
-#: includes/widgets/posts-carousel.php:120
-#: includes/widgets/premium/portfolio.php:132
-#: includes/widgets/premium/posts-block.php:128
+#: includes/widgets/portfolio.php:168
+#: includes/widgets/posts-carousel.php:166
+#: includes/widgets/premium/portfolio.php:177
+#: includes/widgets/premium/posts-block.php:175
 msgid "Comment count"
 msgstr ""
 
-#: includes/widgets/portfolio.php:125
-#: includes/widgets/posts-carousel.php:121
-#: includes/widgets/premium/portfolio.php:133
-#: includes/widgets/premium/posts-block.php:129
+#: includes/widgets/portfolio.php:169
+#: includes/widgets/posts-carousel.php:167
+#: includes/widgets/premium/portfolio.php:178
+#: includes/widgets/premium/posts-block.php:176
 msgid "Menu order"
 msgstr ""
 
-#: includes/widgets/portfolio.php:126
-#: includes/widgets/posts-carousel.php:122
-#: includes/widgets/premium/portfolio.php:134
-#: includes/widgets/premium/posts-block.php:130
+#: includes/widgets/portfolio.php:170
+#: includes/widgets/posts-carousel.php:168
+#: includes/widgets/premium/portfolio.php:179
+#: includes/widgets/premium/posts-block.php:177
 msgid "By include order"
 msgstr ""
 
-#: includes/widgets/portfolio.php:135
-#: includes/widgets/posts-carousel.php:131
-#: includes/widgets/premium/portfolio.php:143
-#: includes/widgets/premium/posts-block.php:139
+#: includes/widgets/portfolio.php:182
+#: includes/widgets/posts-carousel.php:180
+#: includes/widgets/premium/portfolio.php:191
+#: includes/widgets/premium/posts-block.php:189
 msgid "Order"
 msgstr ""
 
-#: includes/widgets/portfolio.php:138
-#: includes/widgets/posts-carousel.php:134
-#: includes/widgets/premium/portfolio.php:146
-#: includes/widgets/premium/posts-block.php:142
+#: includes/widgets/portfolio.php:185
+#: includes/widgets/posts-carousel.php:183
+#: includes/widgets/premium/portfolio.php:194
+#: includes/widgets/premium/posts-block.php:192
+#: includes/widgets/premium/vimeo-grid.php:191
 msgid "Ascending"
 msgstr ""
 
-#: includes/widgets/portfolio.php:139
-#: includes/widgets/posts-carousel.php:135
-#: includes/widgets/premium/portfolio.php:147
-#: includes/widgets/premium/posts-block.php:143
+#: includes/widgets/portfolio.php:186
+#: includes/widgets/posts-carousel.php:184
+#: includes/widgets/premium/portfolio.php:195
+#: includes/widgets/premium/posts-block.php:193
+#: includes/widgets/premium/vimeo-grid.php:190
 msgid "Descending"
 msgstr ""
 
-#: includes/widgets/portfolio.php:150
-#: includes/widgets/posts-carousel.php:146
-#: includes/widgets/premium/portfolio.php:329
-#: includes/widgets/premium/posts-block.php:364
+#: includes/widgets/portfolio.php:199
+#: includes/widgets/posts-carousel.php:197
+#: includes/widgets/premium/portfolio.php:207
+#: includes/widgets/premium/posts-block.php:205
+msgid "Offset"
+msgstr ""
+
+#: includes/widgets/portfolio.php:200
+#: includes/widgets/posts-carousel.php:198
+#: includes/widgets/premium/portfolio.php:208
+#: includes/widgets/premium/posts-block.php:206
+msgid "Number of posts to skip or pass over."
+msgstr ""
+
+#: includes/widgets/portfolio.php:214
+#: includes/widgets/posts-carousel.php:212
+#: includes/widgets/premium/portfolio.php:393
+#: includes/widgets/premium/posts-block.php:430
 msgid "Post Content"
 msgstr ""
 
-#: includes/widgets/portfolio.php:157
-#: includes/widgets/premium/portfolio.php:165
+#: includes/widgets/portfolio.php:221
+#: includes/widgets/premium/portfolio.php:229
 msgid "Heading for the grid"
 msgstr ""
 
-#: includes/widgets/portfolio.php:159
-#: includes/widgets/portfolio.php:160
-#: includes/widgets/premium/portfolio.php:167
-#: includes/widgets/premium/portfolio.php:168
-#: includes/widgets/premium/posts-block.php:163
-#: includes/widgets/premium/posts-block.php:164
+#: includes/widgets/portfolio.php:223
+#: includes/widgets/portfolio.php:224
+#: includes/widgets/premium/portfolio.php:231
+#: includes/widgets/premium/portfolio.php:232
+#: includes/widgets/premium/posts-block.php:229
+#: includes/widgets/premium/posts-block.php:230
 msgid "My Posts"
 msgstr ""
 
-#: includes/widgets/portfolio.php:171
-#: includes/widgets/premium/portfolio.php:237
-#: includes/widgets/premium/posts-block.php:233
+#: includes/widgets/portfolio.php:235
+#: includes/widgets/premium/portfolio.php:301
+#: includes/widgets/premium/posts-block.php:299
 msgid "Choose the taxonomy to display and filter on."
 msgstr ""
 
-#: includes/widgets/portfolio.php:173
-#: includes/widgets/premium/portfolio.php:239
-#: includes/widgets/premium/posts-block.php:235
+#: includes/widgets/portfolio.php:237
+#: includes/widgets/premium/portfolio.php:303
+#: includes/widgets/premium/posts-block.php:301
 msgid ""
 "Choose the taxonomy information to display for posts/portfolio and "
 "the taxonomy that is used to filter the portfolio/post. Takes "
@@ -2247,236 +2887,246 @@ msgid ""
 "query."
 msgstr ""
 
-#: includes/widgets/portfolio.php:182
-#: includes/widgets/premium/portfolio.php:390
+#: includes/widgets/portfolio.php:246
+#: includes/widgets/premium/portfolio.php:454
 msgid "Display posts title for the post/portfolio item?"
 msgstr ""
 
-#: includes/widgets/portfolio.php:194
-#: includes/widgets/premium/portfolio.php:402
+#: includes/widgets/portfolio.php:258
+#: includes/widgets/premium/portfolio.php:466
 msgid "Display post excerpt/summary for the post/portfolio item?"
 msgstr ""
 
-#: includes/widgets/portfolio.php:208
-#: includes/widgets/posts-carousel.php:213
-#: includes/widgets/premium/portfolio.php:489
+#: includes/widgets/portfolio.php:272
+#: includes/widgets/posts-carousel.php:279
+#: includes/widgets/premium/portfolio.php:553
 msgid "Post Meta"
 msgstr ""
 
-#: includes/widgets/portfolio.php:216
-#: includes/widgets/premium/portfolio.php:497
+#: includes/widgets/portfolio.php:280
+#: includes/widgets/premium/portfolio.php:561
 msgid "Display post author info for the post/portfolio item?"
 msgstr ""
 
-#: includes/widgets/portfolio.php:229
-#: includes/widgets/premium/portfolio.php:513
+#: includes/widgets/portfolio.php:293
+#: includes/widgets/premium/portfolio.php:577
 msgid "Display post date info for the post item?"
 msgstr ""
 
-#: includes/widgets/portfolio.php:242
+#: includes/widgets/portfolio.php:306
 msgid ""
 "Display taxonomy info for the post item? Choose the right taxonomy "
 "in Post Content section above."
 msgstr ""
 
-#: includes/widgets/portfolio.php:256
+#: includes/widgets/portfolio.php:320
 msgid "General Settings"
 msgstr ""
 
-#: includes/widgets/portfolio.php:264
-#: includes/widgets/posts-carousel.php:175
-#: includes/widgets/premium/portfolio.php:336
-#: includes/widgets/premium/posts-block.php:326
+#: includes/widgets/portfolio.php:328
+#: includes/widgets/posts-carousel.php:241
+#: includes/widgets/premium/portfolio.php:400
+#: includes/widgets/premium/posts-block.php:392
 msgid "Link Images to Posts?"
 msgstr ""
 
-#: includes/widgets/portfolio.php:277
-#: includes/widgets/posts-carousel.php:167
-#: includes/widgets/premium/portfolio.php:216
-#: includes/widgets/premium/posts-block.php:212
+#: includes/widgets/portfolio.php:341
+#: includes/widgets/posts-carousel.php:233
+#: includes/widgets/premium/portfolio.php:280
+#: includes/widgets/premium/posts-block.php:278
 msgid "Image Size"
 msgstr ""
 
-#: includes/widgets/portfolio.php:285
-#: includes/widgets/premium/gallery.php:325
-#: includes/widgets/premium/portfolio.php:224
-#: includes/widgets/premium/posts-block.php:220
+#: includes/widgets/portfolio.php:349
+#: includes/widgets/premium/gallery.php:326
+#: includes/widgets/premium/portfolio.php:288
+#: includes/widgets/premium/posts-block.php:286
 msgid "Filterable?"
 msgstr ""
 
-#: includes/widgets/portfolio.php:318
-#: includes/widgets/premium/portfolio.php:303
+#: includes/widgets/portfolio.php:382
+#: includes/widgets/premium/portfolio.php:367
 msgid "Choose a layout for the grid"
 msgstr ""
 
-#: includes/widgets/portfolio.php:320
-#: includes/widgets/premium/gallery.php:392
-#: includes/widgets/premium/portfolio.php:305
+#: includes/widgets/portfolio.php:384
+#: includes/widgets/premium/gallery.php:393
+#: includes/widgets/premium/portfolio.php:369
 #: includes/widgets/premium/twitter-grid.php:189
+#: includes/widgets/premium/vimeo-grid.php:412
+#: includes/widgets/premium/youtube-grid.php:363
 msgid "Fit Rows"
 msgstr ""
 
-#: includes/widgets/portfolio.php:321
-#: includes/widgets/premium/gallery.php:393
-#: includes/widgets/premium/portfolio.php:306
+#: includes/widgets/portfolio.php:385
+#: includes/widgets/premium/gallery.php:394
+#: includes/widgets/premium/portfolio.php:370
 #: includes/widgets/premium/twitter-grid.php:188
+#: includes/widgets/premium/vimeo-grid.php:411
+#: includes/widgets/premium/youtube-grid.php:362
 msgid "Masonry"
 msgstr ""
 
-#: includes/widgets/portfolio.php:332
-#: includes/widgets/premium/gallery.php:546
-#: includes/widgets/premium/portfolio.php:599
+#: includes/widgets/portfolio.php:396
+#: includes/widgets/premium/gallery.php:548
+#: includes/widgets/premium/portfolio.php:664
 #: includes/widgets/premium/twitter-grid.php:403
+#: includes/widgets/premium/vimeo-grid.php:489
+#: includes/widgets/premium/youtube-grid.php:440
 msgid "Gutter Options"
 msgstr ""
 
-#: includes/widgets/portfolio.php:350
-#: includes/widgets/premium/gallery.php:565
-#: includes/widgets/premium/portfolio.php:617
+#: includes/widgets/portfolio.php:414
+#: includes/widgets/premium/gallery.php:567
+#: includes/widgets/premium/portfolio.php:682
 #: includes/widgets/premium/twitter-grid.php:422
+#: includes/widgets/premium/vimeo-grid.php:508
+#: includes/widgets/premium/youtube-grid.php:459
 msgid "Space between columns in the grid."
 msgstr ""
 
-#: includes/widgets/portfolio.php:413
-#: includes/widgets/premium/portfolio.php:679
+#: includes/widgets/portfolio.php:477
+#: includes/widgets/premium/portfolio.php:744
 msgid "Grid Heading"
 msgstr ""
 
-#: includes/widgets/portfolio.php:422
-#: includes/widgets/premium/gallery.php:636
+#: includes/widgets/portfolio.php:486
+#: includes/widgets/premium/gallery.php:638
 #: includes/widgets/premium/image-slider.php:454
-#: includes/widgets/premium/portfolio.php:687
-#: includes/widgets/premium/posts-block.php:564
+#: includes/widgets/premium/portfolio.php:752
+#: includes/widgets/premium/posts-block.php:631
 msgid "Heading HTML Tag"
 msgstr ""
 
-#: includes/widgets/portfolio.php:461
-#: includes/widgets/premium/portfolio.php:726
+#: includes/widgets/portfolio.php:525
+#: includes/widgets/premium/portfolio.php:791
 msgid "Grid Filters"
 msgstr ""
 
-#: includes/widgets/portfolio.php:469
-#: includes/widgets/premium/gallery.php:683
-#: includes/widgets/premium/portfolio.php:734
-#: includes/widgets/premium/posts-block.php:611
+#: includes/widgets/portfolio.php:533
+#: includes/widgets/premium/gallery.php:685
+#: includes/widgets/premium/portfolio.php:799
+#: includes/widgets/premium/posts-block.php:678
 msgid "Filter Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:480
-#: includes/widgets/premium/gallery.php:694
-#: includes/widgets/premium/portfolio.php:745
-#: includes/widgets/premium/posts-block.php:622
+#: includes/widgets/portfolio.php:544
+#: includes/widgets/premium/gallery.php:696
+#: includes/widgets/premium/portfolio.php:810
+#: includes/widgets/premium/posts-block.php:689
 msgid "Filter Hover Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:491
+#: includes/widgets/portfolio.php:555
 msgid "Active Filter Border Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:512
+#: includes/widgets/portfolio.php:576
 msgid "Grid Thumbnail"
 msgstr ""
 
-#: includes/widgets/portfolio.php:520
-#: includes/widgets/posts-carousel.php:553
-#: includes/widgets/premium/portfolio.php:774
+#: includes/widgets/portfolio.php:584
+#: includes/widgets/posts-carousel.php:619
+#: includes/widgets/premium/portfolio.php:839
 msgid "Thumbnail Info Entry Title"
 msgstr ""
 
-#: includes/widgets/portfolio.php:547
-#: includes/widgets/posts-carousel.php:580
+#: includes/widgets/portfolio.php:611
+#: includes/widgets/posts-carousel.php:646
 #: includes/widgets/premium/gallery-carousel.php:613
-#: includes/widgets/premium/gallery.php:775
-#: includes/widgets/premium/portfolio.php:801
+#: includes/widgets/premium/gallery.php:777
+#: includes/widgets/premium/portfolio.php:866
+#: includes/widgets/premium/vimeo-grid.php:596
+#: includes/widgets/premium/youtube-grid.php:547
 msgid "Title Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:558
-#: includes/widgets/posts-carousel.php:591
+#: includes/widgets/portfolio.php:622
+#: includes/widgets/posts-carousel.php:657
 #: includes/widgets/premium/gallery-carousel.php:624
 msgid "Title Hover Border Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:577
-#: includes/widgets/posts-carousel.php:610
-#: includes/widgets/premium/portfolio.php:831
+#: includes/widgets/portfolio.php:641
+#: includes/widgets/posts-carousel.php:676
+#: includes/widgets/premium/portfolio.php:896
 msgid "Thumbnail Info Taxonomy Terms"
 msgstr ""
 
-#: includes/widgets/portfolio.php:586
-#: includes/widgets/posts-carousel.php:619
-#: includes/widgets/premium/portfolio.php:840
-#: includes/widgets/premium/posts-block.php:694
+#: includes/widgets/portfolio.php:650
+#: includes/widgets/posts-carousel.php:685
+#: includes/widgets/premium/portfolio.php:905
+#: includes/widgets/premium/posts-block.php:761
 msgid "Taxonomy Terms Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:597
-#: includes/widgets/premium/portfolio.php:851
+#: includes/widgets/portfolio.php:661
+#: includes/widgets/premium/portfolio.php:916
 msgid "Taxonomy Terms Hover Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:618
+#: includes/widgets/portfolio.php:682
 msgid "Grid Item Entry Title"
 msgstr ""
 
-#: includes/widgets/portfolio.php:626
-#: includes/widgets/posts-carousel.php:648
-#: includes/widgets/premium/portfolio.php:880
-#: includes/widgets/premium/posts-block.php:735
+#: includes/widgets/portfolio.php:690
+#: includes/widgets/posts-carousel.php:714
+#: includes/widgets/premium/portfolio.php:945
+#: includes/widgets/premium/posts-block.php:802
 msgid "Entry Title HTML Tag"
 msgstr ""
 
-#: includes/widgets/portfolio.php:644
-#: includes/widgets/posts-carousel.php:666
-#: includes/widgets/premium/portfolio.php:898
-#: includes/widgets/premium/posts-block.php:753
+#: includes/widgets/portfolio.php:708
+#: includes/widgets/posts-carousel.php:732
+#: includes/widgets/premium/portfolio.php:963
+#: includes/widgets/premium/posts-block.php:820
 msgid "Entry Title Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:655
-#: includes/widgets/premium/portfolio.php:909
-#: includes/widgets/premium/posts-block.php:764
+#: includes/widgets/portfolio.php:719
+#: includes/widgets/premium/portfolio.php:974
+#: includes/widgets/premium/posts-block.php:831
 msgid "Entry Title Hover Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:676
+#: includes/widgets/portfolio.php:740
 msgid "Grid Item Entry Summary"
 msgstr ""
 
-#: includes/widgets/portfolio.php:684
-#: includes/widgets/posts-carousel.php:695
-#: includes/widgets/premium/portfolio.php:938
-#: includes/widgets/premium/posts-block.php:793
+#: includes/widgets/portfolio.php:748
+#: includes/widgets/posts-carousel.php:761
+#: includes/widgets/premium/portfolio.php:1003
+#: includes/widgets/premium/posts-block.php:860
 msgid "Entry Summary Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:705
+#: includes/widgets/portfolio.php:769
 msgid "Grid Item Entry Meta"
 msgstr ""
 
-#: includes/widgets/portfolio.php:713
-#: includes/widgets/posts-carousel.php:724
-#: includes/widgets/premium/portfolio.php:959
-#: includes/widgets/premium/posts-block.php:814
+#: includes/widgets/portfolio.php:777
+#: includes/widgets/posts-carousel.php:790
+#: includes/widgets/premium/portfolio.php:1024
+#: includes/widgets/premium/posts-block.php:881
 msgid "Entry Meta"
 msgstr ""
 
-#: includes/widgets/portfolio.php:722
-#: includes/widgets/posts-carousel.php:733
-#: includes/widgets/premium/portfolio.php:967
-#: includes/widgets/premium/posts-block.php:822
+#: includes/widgets/portfolio.php:786
+#: includes/widgets/posts-carousel.php:799
+#: includes/widgets/premium/portfolio.php:1032
+#: includes/widgets/premium/posts-block.php:889
 msgid "Entry Meta Color"
 msgstr ""
 
-#: includes/widgets/portfolio.php:742
-#: includes/widgets/posts-carousel.php:753
+#: includes/widgets/portfolio.php:806
+#: includes/widgets/posts-carousel.php:819
 msgid "Entry Meta Link"
 msgstr ""
 
-#: includes/widgets/portfolio.php:751
-#: includes/widgets/posts-carousel.php:762
-#: includes/widgets/premium/portfolio.php:978
-#: includes/widgets/premium/posts-block.php:833
+#: includes/widgets/portfolio.php:815
+#: includes/widgets/posts-carousel.php:828
+#: includes/widgets/premium/portfolio.php:1043
+#: includes/widgets/premium/posts-block.php:900
 msgid "Entry Meta Link Color"
 msgstr ""
 
@@ -2488,62 +3138,62 @@ msgstr ""
 msgid "Posts Query"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:154
+#: includes/widgets/posts-carousel.php:220
 msgid "Choose the taxonomy to display info."
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:155
+#: includes/widgets/posts-carousel.php:221
 msgid ""
 "Choose the taxonomy to use for display of taxonomy information for "
 "posts/custom post types."
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:187
-#: includes/widgets/premium/posts-block.php:373
+#: includes/widgets/posts-carousel.php:253
+#: includes/widgets/premium/posts-block.php:439
 msgid "Display posts title below the post item?"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:199
-#: includes/widgets/premium/posts-block.php:385
+#: includes/widgets/posts-carousel.php:265
+#: includes/widgets/premium/posts-block.php:451
 msgid "Display post excerpt/summary below the post item?"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:221
-#: includes/widgets/premium/posts-block.php:420
+#: includes/widgets/posts-carousel.php:287
+#: includes/widgets/premium/posts-block.php:486
 msgid "Display post author info below the post item?"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:234
-#: includes/widgets/premium/posts-block.php:433
+#: includes/widgets/posts-carousel.php:300
+#: includes/widgets/premium/posts-block.php:499
 msgid "Display post date info below the post item?"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:247
+#: includes/widgets/posts-carousel.php:313
 msgid "Display taxonomy info below the post item?"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:463
+#: includes/widgets/posts-carousel.php:529
 msgid "Mobile Gutter"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:513
+#: includes/widgets/posts-carousel.php:579
 msgid "Post Thumbnail"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:521
+#: includes/widgets/posts-carousel.php:587
 #: includes/widgets/premium/gallery-carousel.php:553
 msgid "Thumbnail Hover Background Color"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:640
+#: includes/widgets/posts-carousel.php:706
 msgid "Post Entry Title"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:687
+#: includes/widgets/posts-carousel.php:753
 msgid "Post Entry Summary"
 msgstr ""
 
-#: includes/widgets/posts-carousel.php:716
+#: includes/widgets/posts-carousel.php:782
 msgid "Post Entry Meta"
 msgstr ""
 
@@ -2608,233 +3258,249 @@ msgstr ""
 msgid "Accordion Content"
 msgstr ""
 
-#: includes/widgets/premium/button.php:30
-#: includes/widgets/premium/button.php:53
+#: includes/widgets/premium/button.php:31
+#: includes/widgets/premium/button.php:54
 msgid "Button"
 msgstr ""
 
-#: includes/widgets/premium/button.php:60
+#: includes/widgets/premium/button.php:61
 msgid "Button Title"
 msgstr ""
 
-#: includes/widgets/premium/button.php:62
 #: includes/widgets/premium/button.php:63
+#: includes/widgets/premium/button.php:64
 msgid "Buy Now"
 msgstr ""
 
-#: includes/widgets/premium/button.php:72
+#: includes/widgets/premium/button.php:73
 msgid "The URL to which button should point to."
 msgstr ""
 
-#: includes/widgets/premium/button.php:73
+#: includes/widgets/premium/button.php:74
 msgid "Target URL"
 msgstr ""
 
-#: includes/widgets/premium/button.php:80
+#: includes/widgets/premium/button.php:81
 #: includes/widgets/premium/gallery-carousel.php:130
-#: includes/widgets/premium/gallery.php:100
-#: includes/widgets/premium/gallery.php:208
-#: includes/widgets/premium/icon-list.php:149
+#: includes/widgets/premium/gallery.php:101
+#: includes/widgets/premium/gallery.php:209
+#: includes/widgets/premium/icon-list.php:167
 #: includes/widgets/premium/image-slider.php:124
 #: includes/widgets/premium/image-slider.php:177
-#: includes/widgets/premium/portfolio.php:185
-#: includes/widgets/premium/posts-block.php:181
+#: includes/widgets/premium/portfolio.php:249
+#: includes/widgets/premium/posts-block.php:247
 #: includes/widgets/premium/services-carousel.php:94
 #: includes/widgets/premium/services-carousel.php:101
 #: includes/widgets/premium/services-carousel.php:108
 #: includes/widgets/premium/services-carousel.php:115
-#: includes/widgets/premium/services-carousel.php:181
+#: includes/widgets/premium/services-carousel.php:197
 #: includes/widgets/pricing-table.php:188
 msgid "http://your-link.com"
 msgstr ""
 
-#: includes/widgets/premium/button.php:89
-#: includes/widgets/premium/icon-list.php:107
-#: includes/widgets/services.php:157
+#: includes/widgets/premium/button.php:90
+#: includes/widgets/premium/icon-list.php:123
+#: includes/widgets/services.php:167
 msgid "Icon Type"
 msgstr ""
 
-#: includes/widgets/premium/button.php:103
+#: includes/widgets/premium/button.php:104
 msgid "Button Image"
 msgstr ""
 
-#: includes/widgets/premium/button.php:117
+#: includes/widgets/premium/button.php:118
 msgid "Button Icon"
 msgstr ""
 
-#: includes/widgets/premium/button.php:140
+#: includes/widgets/premium/button.php:141
 msgid "Set a unique CSS class for the button. (optional)."
 msgstr ""
 
-#: includes/widgets/premium/button.php:141
+#: includes/widgets/premium/button.php:142
 #: includes/widgets/premium/image-slider.php:68
 #: includes/widgets/premium/slider.php:62
 msgid "Class"
 msgstr ""
 
-#: includes/widgets/premium/button.php:148
+#: includes/widgets/premium/button.php:149
 msgid "Inline CSS styling for the button element. (optional)."
 msgstr ""
 
-#: includes/widgets/premium/button.php:149
+#: includes/widgets/premium/button.php:150
 msgid "Style"
 msgstr ""
 
-#: includes/widgets/premium/button.php:156
+#: includes/widgets/premium/button.php:157
 msgid "Can be overridden with custom colors in Style tab."
 msgstr ""
 
-#: includes/widgets/premium/button.php:157
-#: includes/widgets/premium/button.php:254
-#: includes/widgets/premium/gallery.php:995
+#: includes/widgets/premium/button.php:158
+#: includes/widgets/premium/button.php:255
+#: includes/widgets/premium/gallery.php:997
 #: includes/widgets/premium/image-slider.php:186
-#: includes/widgets/premium/portfolio.php:1166
-#: includes/widgets/premium/posts-block.php:916
-#: includes/widgets/premium/posts-block.php:1116
+#: includes/widgets/premium/portfolio.php:1231
+#: includes/widgets/premium/posts-block.php:983
+#: includes/widgets/premium/posts-block.php:1183
 #: includes/widgets/premium/twitter-grid.php:855
+#: includes/widgets/premium/vimeo-grid.php:1046
+#: includes/widgets/premium/youtube-grid.php:958
 #: includes/widgets/pricing-table.php:467
 msgid "Button Color"
 msgstr ""
 
-#: includes/widgets/premium/button.php:160
+#: includes/widgets/premium/button.php:161
 #: includes/widgets/premium/image-slider.php:190
 msgid "Black"
 msgstr ""
 
-#: includes/widgets/premium/button.php:161
+#: includes/widgets/premium/button.php:162
 #: includes/widgets/premium/image-slider.php:191
 msgid "Blue"
 msgstr ""
 
-#: includes/widgets/premium/button.php:162
+#: includes/widgets/premium/button.php:163
 #: includes/widgets/premium/image-slider.php:192
 msgid "Cyan"
 msgstr ""
 
-#: includes/widgets/premium/button.php:163
+#: includes/widgets/premium/button.php:164
 #: includes/widgets/premium/image-slider.php:193
 msgid "Green"
 msgstr ""
 
-#: includes/widgets/premium/button.php:164
+#: includes/widgets/premium/button.php:165
 #: includes/widgets/premium/image-slider.php:194
 msgid "Orange"
 msgstr ""
 
-#: includes/widgets/premium/button.php:165
+#: includes/widgets/premium/button.php:166
 #: includes/widgets/premium/image-slider.php:195
 msgid "Pink"
 msgstr ""
 
-#: includes/widgets/premium/button.php:166
+#: includes/widgets/premium/button.php:167
 #: includes/widgets/premium/image-slider.php:196
 msgid "Red"
 msgstr ""
 
-#: includes/widgets/premium/button.php:167
+#: includes/widgets/premium/button.php:168
 #: includes/widgets/premium/image-slider.php:197
 msgid "Teal"
 msgstr ""
 
-#: includes/widgets/premium/button.php:168
+#: includes/widgets/premium/button.php:169
 #: includes/widgets/premium/image-slider.php:198
 msgid "Transparent"
 msgstr ""
 
-#: includes/widgets/premium/button.php:169
+#: includes/widgets/premium/button.php:170
 #: includes/widgets/premium/image-slider.php:199
 msgid "Semi Transparent"
 msgstr ""
 
-#: includes/widgets/premium/button.php:179
+#: includes/widgets/premium/button.php:180
 #: includes/widgets/premium/image-slider.php:207
 #: includes/widgets/pricing-table.php:447
 msgid "Button Size"
 msgstr ""
 
-#: includes/widgets/premium/button.php:180
+#: includes/widgets/premium/button.php:181
 msgid "Can be overridden with custom padding in Style tab."
 msgstr ""
 
-#: includes/widgets/premium/button.php:182
+#: includes/widgets/premium/button.php:183
 #: includes/widgets/premium/image-slider.php:209
 msgid "Medium"
 msgstr ""
 
-#: includes/widgets/premium/button.php:183
+#: includes/widgets/premium/button.php:184
 #: includes/widgets/premium/image-slider.php:210
 msgid "Large"
 msgstr ""
 
-#: includes/widgets/premium/button.php:184
+#: includes/widgets/premium/button.php:185
 #: includes/widgets/premium/image-slider.php:211
 msgid "Small"
 msgstr ""
 
-#: includes/widgets/premium/button.php:195
+#: includes/widgets/premium/button.php:196
 #: includes/widgets/premium/image-slider.php:219
 msgid "Rounded Button?"
 msgstr ""
 
-#: includes/widgets/premium/button.php:196
+#: includes/widgets/premium/button.php:197
 msgid "Can be overridden with custom border radius in Style tab."
 msgstr ""
 
-#: includes/widgets/premium/button.php:266
-#: includes/widgets/premium/gallery.php:1007
-#: includes/widgets/premium/portfolio.php:1178
-#: includes/widgets/premium/posts-block.php:928
-#: includes/widgets/premium/posts-block.php:1128
+#: includes/widgets/premium/button.php:267
+#: includes/widgets/premium/gallery.php:1009
+#: includes/widgets/premium/portfolio.php:1243
+#: includes/widgets/premium/posts-block.php:995
+#: includes/widgets/premium/posts-block.php:1195
 #: includes/widgets/premium/twitter-grid.php:867
+#: includes/widgets/premium/vimeo-grid.php:1058
+#: includes/widgets/premium/youtube-grid.php:970
 #: includes/widgets/pricing-table.php:479
 msgid "Button Hover Color"
 msgstr ""
 
-#: includes/widgets/premium/button.php:278
-#: includes/widgets/premium/gallery.php:1019
-#: includes/widgets/premium/portfolio.php:1190
-#: includes/widgets/premium/posts-block.php:940
-#: includes/widgets/premium/posts-block.php:1140
+#: includes/widgets/premium/button.php:279
+#: includes/widgets/premium/gallery.php:1021
+#: includes/widgets/premium/portfolio.php:1255
+#: includes/widgets/premium/posts-block.php:1007
+#: includes/widgets/premium/posts-block.php:1207
 #: includes/widgets/premium/twitter-grid.php:879
+#: includes/widgets/premium/vimeo-grid.php:1070
+#: includes/widgets/premium/youtube-grid.php:982
 msgid "Custom Padding"
 msgstr ""
 
-#: includes/widgets/premium/button.php:291
-#: includes/widgets/premium/gallery.php:1032
-#: includes/widgets/premium/portfolio.php:1203
-#: includes/widgets/premium/posts-block.php:953
-#: includes/widgets/premium/posts-block.php:1153
+#: includes/widgets/premium/button.php:292
+#: includes/widgets/premium/gallery.php:1034
+#: includes/widgets/premium/portfolio.php:1268
+#: includes/widgets/premium/posts-block.php:1020
+#: includes/widgets/premium/posts-block.php:1220
 #: includes/widgets/premium/twitter-grid.php:892
+#: includes/widgets/premium/vimeo-grid.php:1083
+#: includes/widgets/premium/youtube-grid.php:995
 msgid "Custom Border Radius"
 msgstr ""
 
-#: includes/widgets/premium/button.php:307
+#: includes/widgets/premium/button.php:308
 msgid "Button Label"
 msgstr ""
 
-#: includes/widgets/premium/button.php:315
-#: includes/widgets/premium/gallery.php:1044
-#: includes/widgets/premium/portfolio.php:1215
-#: includes/widgets/premium/posts-block.php:965
-#: includes/widgets/premium/posts-block.php:1165
+#: includes/widgets/premium/button.php:316
+#: includes/widgets/premium/gallery.php:1046
+#: includes/widgets/premium/portfolio.php:1280
+#: includes/widgets/premium/posts-block.php:1032
+#: includes/widgets/premium/posts-block.php:1232
 #: includes/widgets/premium/twitter-grid.php:904
+#: includes/widgets/premium/vimeo-grid.php:1095
+#: includes/widgets/premium/youtube-grid.php:1007
 #: includes/widgets/pricing-table.php:491
 msgid "Label Color"
 msgstr ""
 
-#: includes/widgets/premium/button.php:349
-#: includes/widgets/premium/icon-list.php:222
+#: includes/widgets/premium/button.php:350
+#: includes/widgets/premium/icon-list.php:240
 msgid "Icon/Image size in pixels"
 msgstr ""
 
 #: includes/widgets/premium/button.php:366
+#: includes/widgets/premium/icon-list.php:256
+#: includes/widgets/team-members.php:524
+msgid "Spacing"
+msgstr ""
+
+#: includes/widgets/premium/button.php:367
 msgid "Space between icon/image and label."
 msgstr ""
 
-#: includes/widgets/premium/button.php:401
-#: includes/widgets/premium/icon-list.php:271
-#: includes/widgets/services.php:333
-#: includes/widgets/team-members.php:528
+#: includes/widgets/premium/button.php:402
+#: includes/widgets/premium/icon-list.php:289
+#: includes/widgets/services.php:373
+#: includes/widgets/team-members.php:557
 msgid "Icon Hover Color"
 msgstr ""
 
@@ -2914,36 +3580,53 @@ msgid ""
 msgstr ""
 
 #: includes/widgets/premium/features.php:157
-#: includes/widgets/premium/features.php:313
-msgid "Text"
+msgid "Feature URL"
 msgstr ""
 
 #: includes/widgets/premium/features.php:158
+msgid "The link for the page describing the feature."
+msgstr ""
+
+#: includes/widgets/premium/features.php:165
+msgid "http://feature-link.com"
+msgstr ""
+
+#: includes/widgets/premium/features.php:174
+#: includes/widgets/premium/features.php:340
+msgid "Text"
+msgstr ""
+
+#: includes/widgets/premium/features.php:175
 msgid "The feature content."
 msgstr ""
 
-#: includes/widgets/premium/features.php:159
+#: includes/widgets/premium/features.php:176
 msgid "Feature content goes here."
 msgstr ""
 
-#: includes/widgets/premium/features.php:169
+#: includes/widgets/premium/features.php:186
 msgid "Animation for the Feature Image"
 msgstr ""
 
-#: includes/widgets/premium/features.php:177
+#: includes/widgets/premium/features.php:194
 msgid "Animation for the Feature Text"
 msgstr ""
 
-#: includes/widgets/premium/features.php:201
+#: includes/widgets/premium/features.php:218
 msgid "Apply Tiled Design?"
 msgstr ""
 
-#: includes/widgets/premium/features.php:212
+#: includes/widgets/premium/features.php:229
 msgid "Features Spacing"
 msgstr ""
 
-#: includes/widgets/premium/features.php:213
+#: includes/widgets/premium/features.php:230
 msgid "Takes effect only if tiled design has not been applied"
+msgstr ""
+
+#: includes/widgets/premium/features.php:290
+#: includes/widgets/premium/posts-block.php:952
+msgid "Link Hover Color"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:34
@@ -2951,57 +3634,57 @@ msgid "Gallery Carousel"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:59
-#: includes/widgets/premium/gallery.php:111
+#: includes/widgets/premium/gallery.php:112
 msgid "Gallery Items"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:72
-#: includes/widgets/premium/gallery.php:150
+#: includes/widgets/premium/gallery.php:151
 msgid "Item Type"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:74
-#: includes/widgets/premium/gallery.php:152
+#: includes/widgets/premium/gallery.php:153
 msgid "Image"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:75
-#: includes/widgets/premium/gallery.php:153
+#: includes/widgets/premium/gallery.php:154
 msgid "YouTube Video"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:76
-#: includes/widgets/premium/gallery.php:154
+#: includes/widgets/premium/gallery.php:155
 msgid "Vimeo Video"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:77
-#: includes/widgets/premium/gallery.php:155
+#: includes/widgets/premium/gallery.php:156
 msgid "HTML5 Video"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:84
-#: includes/widgets/premium/gallery.php:162
+#: includes/widgets/premium/gallery.php:163
 msgid "Item Label"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:86
-#: includes/widgets/premium/gallery.php:164
+#: includes/widgets/premium/gallery.php:165
 msgid "My item name"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:87
-#: includes/widgets/premium/gallery.php:165
+#: includes/widgets/premium/gallery.php:166
 msgid "The label or name for the gallery item."
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:95
-#: includes/widgets/premium/gallery.php:173
+#: includes/widgets/premium/gallery.php:174
 msgid "Gallery Image"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:96
-#: includes/widgets/premium/gallery.php:174
+#: includes/widgets/premium/gallery.php:175
 msgid ""
 "The image for the gallery item. If item type chosen is YouTube or "
 "Vimeo video, the image will be used as a placeholder image for "
@@ -3009,7 +3692,7 @@ msgid ""
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:109
-#: includes/widgets/premium/gallery.php:187
+#: includes/widgets/premium/gallery.php:188
 msgid "Item Tag(s)"
 msgstr ""
 
@@ -3018,54 +3701,54 @@ msgid "One or more comma separated tags for the gallery item."
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:122
-#: includes/widgets/premium/gallery.php:200
+#: includes/widgets/premium/gallery.php:201
 msgid "Item Link"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:123
-#: includes/widgets/premium/gallery.php:201
+#: includes/widgets/premium/gallery.php:202
 msgid ""
 "The URL of the page to which the image gallery item points to "
 "(optional)."
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:141
-#: includes/widgets/premium/gallery.php:219
+#: includes/widgets/premium/gallery.php:220
 msgid "Video URL"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:142
-#: includes/widgets/premium/gallery.php:220
+#: includes/widgets/premium/gallery.php:221
 msgid "The URL of the YouTube or Vimeo video."
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:157
-#: includes/widgets/premium/gallery.php:235
+#: includes/widgets/premium/gallery.php:236
 msgid "MP4 Video URL"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:158
-#: includes/widgets/premium/gallery.php:236
+#: includes/widgets/premium/gallery.php:237
 msgid "The URL of the MP4 video."
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:174
-#: includes/widgets/premium/gallery.php:252
+#: includes/widgets/premium/gallery.php:253
 msgid "WebM Video URL"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:175
-#: includes/widgets/premium/gallery.php:253
+#: includes/widgets/premium/gallery.php:254
 msgid "The URL of the WebM video."
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:190
-#: includes/widgets/premium/gallery.php:299
+#: includes/widgets/premium/gallery.php:300
 msgid "Item description"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:192
-#: includes/widgets/premium/gallery.php:301
+#: includes/widgets/premium/gallery.php:302
 msgid ""
 "Short description for the gallery item displayed in the lightbox "
 "gallery.(optional)"
@@ -3078,7 +3761,7 @@ msgid ""
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:218
-#: includes/widgets/premium/gallery.php:72
+#: includes/widgets/premium/gallery.php:73
 msgid "Gallery Class/Identifier"
 msgstr ""
 
@@ -3091,32 +3774,36 @@ msgid "Display image/video tags?"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:251
-#: includes/widgets/premium/gallery.php:452
+#: includes/widgets/premium/gallery.php:453
 msgid "Gallery Image Size"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:265
-#: includes/widgets/premium/gallery.php:465
-#: includes/widgets/premium/portfolio.php:320
-#: includes/widgets/premium/posts-block.php:355
+#: includes/widgets/premium/gallery.php:466
+#: includes/widgets/premium/portfolio.php:384
+#: includes/widgets/premium/posts-block.php:421
 msgid "Enable Lightbox Gallery?"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:273
-#: includes/widgets/premium/gallery.php:473
+#: includes/widgets/premium/gallery.php:474
 #: includes/widgets/premium/twitter-grid.php:347
+#: includes/widgets/premium/vimeo-grid.php:433
+#: includes/widgets/premium/youtube-grid.php:384
 msgid "Lightbox Library"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:274
-#: includes/widgets/premium/gallery.php:474
+#: includes/widgets/premium/gallery.php:475
 #: includes/widgets/premium/twitter-grid.php:348
 msgid "Choose the preferred library for the lightbox"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:276
-#: includes/widgets/premium/gallery.php:476
+#: includes/widgets/premium/gallery.php:477
 #: includes/widgets/premium/twitter-grid.php:350
+#: includes/widgets/premium/vimeo-grid.php:436
+#: includes/widgets/premium/youtube-grid.php:387
 msgid "Fancybox"
 msgstr ""
 
@@ -3129,175 +3816,181 @@ msgid "Gallery Thumbnail"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:587
-#: includes/widgets/premium/gallery.php:746
+#: includes/widgets/premium/gallery.php:748
 msgid "Gallery Item Title"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:645
-#: includes/widgets/premium/gallery.php:809
+#: includes/widgets/premium/gallery.php:811
 msgid "Gallery Item Tags"
 msgstr ""
 
 #: includes/widgets/premium/gallery-carousel.php:653
-#: includes/widgets/premium/gallery.php:820
+#: includes/widgets/premium/gallery.php:822
 msgid "Item Tags Color"
 msgstr ""
 
 #: includes/widgets/premium/gallery.php:37
-#: includes/widgets/premium/gallery.php:64
+#: includes/widgets/premium/gallery.php:65
 msgid "Gallery"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:71
+#: includes/widgets/premium/gallery.php:72
 msgid ""
 "Specify an unique identifier used as a custom CSS class name and "
 "lightbox group name/slug for the gallery element."
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:80
+#: includes/widgets/premium/gallery.php:81
 msgid "Heading for the gallery"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:82
 #: includes/widgets/premium/gallery.php:83
+#: includes/widgets/premium/gallery.php:84
 msgid "My Gallery"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:93
+#: includes/widgets/premium/gallery.php:94
 msgid "URL for the heading of the gallery"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:120
+#: includes/widgets/premium/gallery.php:121
 msgid "Bulk upload images?"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:132
+#: includes/widgets/premium/gallery.php:133
 msgid "Add Images"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:143
+#: includes/widgets/premium/gallery.php:144
 msgid "Add items or choose bulk upload option above:"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:189
+#: includes/widgets/premium/gallery.php:190
 msgid ""
 "One or more comma separated tags for the gallery item. Will be used "
 "as filters for the items."
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:270
+#: includes/widgets/premium/gallery.php:271
 msgid "Video Aspect Ratio"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:287
+#: includes/widgets/premium/gallery.php:288
 msgid "Display video inline?"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:338
-#: includes/widgets/premium/portfolio.php:249
-#: includes/widgets/premium/posts-block.php:245
+#: includes/widgets/premium/gallery.php:339
+#: includes/widgets/premium/portfolio.php:313
+#: includes/widgets/premium/posts-block.php:311
 msgid "Choose Header Style"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:340
-#: includes/widgets/premium/portfolio.php:251
-#: includes/widgets/premium/posts-block.php:247
+#: includes/widgets/premium/gallery.php:341
+#: includes/widgets/premium/portfolio.php:315
+#: includes/widgets/premium/posts-block.php:313
 msgid "Header Style 1"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:341
-#: includes/widgets/premium/portfolio.php:252
-#: includes/widgets/premium/posts-block.php:248
+#: includes/widgets/premium/gallery.php:342
+#: includes/widgets/premium/portfolio.php:316
+#: includes/widgets/premium/posts-block.php:314
 msgid "Header Style 2"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:342
-#: includes/widgets/premium/portfolio.php:253
-#: includes/widgets/premium/posts-block.php:249
+#: includes/widgets/premium/gallery.php:343
+#: includes/widgets/premium/portfolio.php:317
+#: includes/widgets/premium/posts-block.php:315
 msgid "Header Style 3"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:343
-#: includes/widgets/premium/portfolio.php:254
-#: includes/widgets/premium/posts-block.php:250
+#: includes/widgets/premium/gallery.php:344
+#: includes/widgets/premium/portfolio.php:318
+#: includes/widgets/premium/posts-block.php:316
 msgid "Header Style 4"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:344
-#: includes/widgets/premium/portfolio.php:255
-#: includes/widgets/premium/posts-block.php:251
+#: includes/widgets/premium/gallery.php:345
+#: includes/widgets/premium/portfolio.php:319
+#: includes/widgets/premium/posts-block.php:317
 msgid "Header Style 5"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:345
-#: includes/widgets/premium/portfolio.php:256
-#: includes/widgets/premium/posts-block.php:252
+#: includes/widgets/premium/gallery.php:346
+#: includes/widgets/premium/portfolio.php:320
+#: includes/widgets/premium/posts-block.php:318
 msgid "Header Style 6"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:346
-#: includes/widgets/premium/portfolio.php:257
-#: includes/widgets/premium/posts-block.php:253
+#: includes/widgets/premium/gallery.php:347
+#: includes/widgets/premium/portfolio.php:321
+#: includes/widgets/premium/posts-block.php:319
 msgid "Header Style 7"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:356
+#: includes/widgets/premium/gallery.php:357
 msgid "Choose Gallery Style"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:358
+#: includes/widgets/premium/gallery.php:359
 msgid "Gallery Style 1"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:359
+#: includes/widgets/premium/gallery.php:360
 msgid "Gallery Style 2"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:360
+#: includes/widgets/premium/gallery.php:361
 msgid "Gallery Style 3"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:369
+#: includes/widgets/premium/gallery.php:370
 #: includes/widgets/premium/twitter-grid.php:165
+#: includes/widgets/premium/vimeo-grid.php:388
+#: includes/widgets/premium/youtube-grid.php:339
 msgid "Columns"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:390
+#: includes/widgets/premium/gallery.php:391
 msgid "Choose a layout for the gallery grid"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:402
+#: includes/widgets/premium/gallery.php:403
 msgid "Display title for the gallery item?"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:414
+#: includes/widgets/premium/gallery.php:415
 msgid "Display tags for the gallery item?"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:426
+#: includes/widgets/premium/gallery.php:427
 msgid "Display description for the gallery item?"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:443
+#: includes/widgets/premium/gallery.php:444
 #: includes/widgets/premium/twitter-grid.php:326
 msgid "Image Size and Lightbox"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:491
-#: includes/widgets/premium/gallery.php:501
-#: includes/widgets/premium/gallery.php:874
-#: includes/widgets/premium/portfolio.php:557
-#: includes/widgets/premium/portfolio.php:566
-#: includes/widgets/premium/portfolio.php:1051
-#: includes/widgets/premium/posts-block.php:514
-#: includes/widgets/premium/posts-block.php:523
-#: includes/widgets/premium/posts-block.php:1000
+#: includes/widgets/premium/gallery.php:492
+#: includes/widgets/premium/gallery.php:502
+#: includes/widgets/premium/gallery.php:876
+#: includes/widgets/premium/portfolio.php:621
+#: includes/widgets/premium/portfolio.php:630
+#: includes/widgets/premium/portfolio.php:1116
+#: includes/widgets/premium/posts-block.php:580
+#: includes/widgets/premium/posts-block.php:589
+#: includes/widgets/premium/posts-block.php:1067
 #: includes/widgets/premium/twitter-grid.php:365
 #: includes/widgets/premium/twitter-grid.php:375
+#: includes/widgets/premium/vimeo-grid.php:451
+#: includes/widgets/premium/vimeo-grid.php:461
+#: includes/widgets/premium/youtube-grid.php:402
+#: includes/widgets/premium/youtube-grid.php:412
 msgid "Pagination"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:502
+#: includes/widgets/premium/gallery.php:503
 msgid ""
 "Choose pagination type or choose None if no pagination is desired. "
 "Make sure you enter the items per page value in the option 'Number "
@@ -3305,165 +3998,177 @@ msgid ""
 "field below to control number of items to display per page."
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:505
-#: includes/widgets/premium/portfolio.php:571
-#: includes/widgets/premium/posts-block.php:528
+#: includes/widgets/premium/gallery.php:506
+#: includes/widgets/premium/portfolio.php:635
+#: includes/widgets/premium/posts-block.php:594
 msgid "Paged"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:516
+#: includes/widgets/premium/gallery.php:508
+#: includes/widgets/premium/portfolio.php:637
+#: includes/widgets/premium/posts-block.php:596
+msgid "Load On Scroll"
+msgstr ""
+
+#: includes/widgets/premium/gallery.php:518
 msgid ""
 "Display count of items yet to be loaded with the load more button?"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:532
+#: includes/widgets/premium/gallery.php:534
 msgid ""
 "Number of items to be displayed per page and on each load more "
 "invocation."
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:627
+#: includes/widgets/premium/gallery.php:629
 msgid "Gallery Heading"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:675
+#: includes/widgets/premium/gallery.php:677
 msgid "Gallery Filters"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:786
-#: includes/widgets/premium/portfolio.php:812
+#: includes/widgets/premium/gallery.php:788
+#: includes/widgets/premium/portfolio.php:877
+#: includes/widgets/premium/vimeo-grid.php:607
+#: includes/widgets/premium/youtube-grid.php:558
 msgid "Title Hover Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:841
+#: includes/widgets/premium/gallery.php:843
 msgid "Gallery Entry Description"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:853
+#: includes/widgets/premium/gallery.php:855
 msgid "Description Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:885
-#: includes/widgets/premium/portfolio.php:1059
-#: includes/widgets/premium/posts-block.php:1008
+#: includes/widgets/premium/gallery.php:887
+#: includes/widgets/premium/portfolio.php:1124
+#: includes/widgets/premium/posts-block.php:1075
 #: includes/widgets/testimonials.php:244
 msgid "Border Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:896
-#: includes/widgets/premium/portfolio.php:1070
-#: includes/widgets/premium/posts-block.php:1019
+#: includes/widgets/premium/gallery.php:898
+#: includes/widgets/premium/portfolio.php:1135
+#: includes/widgets/premium/posts-block.php:1086
 msgid "Hover Background Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:907
-#: includes/widgets/premium/portfolio.php:1081
-#: includes/widgets/premium/posts-block.php:1030
+#: includes/widgets/premium/gallery.php:909
+#: includes/widgets/premium/portfolio.php:1146
+#: includes/widgets/premium/posts-block.php:1097
 msgid "Nav Icon Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:919
-#: includes/widgets/premium/portfolio.php:1093
-#: includes/widgets/premium/posts-block.php:1042
+#: includes/widgets/premium/gallery.php:921
+#: includes/widgets/premium/portfolio.php:1158
+#: includes/widgets/premium/posts-block.php:1109
 msgid "Hover Nav Icon Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:930
-#: includes/widgets/premium/portfolio.php:1104
-#: includes/widgets/premium/posts-block.php:1053
+#: includes/widgets/premium/gallery.php:932
+#: includes/widgets/premium/portfolio.php:1169
+#: includes/widgets/premium/posts-block.php:1120
 msgid "Disabled Nav Icon Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:941
-#: includes/widgets/premium/portfolio.php:1115
-#: includes/widgets/premium/posts-block.php:1064
+#: includes/widgets/premium/gallery.php:943
+#: includes/widgets/premium/portfolio.php:1180
+#: includes/widgets/premium/posts-block.php:1131
 msgid "Navigation text"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:951
-#: includes/widgets/premium/portfolio.php:1125
-#: includes/widgets/premium/posts-block.php:1074
+#: includes/widgets/premium/gallery.php:953
+#: includes/widgets/premium/portfolio.php:1190
+#: includes/widgets/premium/posts-block.php:1141
 msgid "Nav Text Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:962
-#: includes/widgets/premium/portfolio.php:1136
-#: includes/widgets/premium/posts-block.php:1085
+#: includes/widgets/premium/gallery.php:964
+#: includes/widgets/premium/portfolio.php:1201
+#: includes/widgets/premium/posts-block.php:1152
 msgid "Hover Nav Text Color"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:973
-#: includes/widgets/premium/portfolio.php:1147
-#: includes/widgets/premium/posts-block.php:1096
+#: includes/widgets/premium/gallery.php:975
+#: includes/widgets/premium/portfolio.php:1212
+#: includes/widgets/premium/posts-block.php:1163
 msgid "Nav Text Typography"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:984
-#: includes/widgets/premium/portfolio.php:1158
-#: includes/widgets/premium/posts-block.php:1108
+#: includes/widgets/premium/gallery.php:986
+#: includes/widgets/premium/portfolio.php:1223
+#: includes/widgets/premium/posts-block.php:1175
 #: includes/widgets/premium/twitter-grid.php:844
+#: includes/widgets/premium/vimeo-grid.php:1035
+#: includes/widgets/premium/youtube-grid.php:947
 msgid "Load More Button"
 msgstr ""
 
-#: includes/widgets/premium/gallery.php:1056
-#: includes/widgets/premium/portfolio.php:1227
-#: includes/widgets/premium/posts-block.php:977
-#: includes/widgets/premium/posts-block.php:1177
+#: includes/widgets/premium/gallery.php:1058
+#: includes/widgets/premium/portfolio.php:1292
+#: includes/widgets/premium/posts-block.php:1044
+#: includes/widgets/premium/posts-block.php:1244
 #: includes/widgets/premium/twitter-grid.php:916
+#: includes/widgets/premium/vimeo-grid.php:1107
+#: includes/widgets/premium/youtube-grid.php:1019
 msgid "Label Hover Color"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:30
-#: includes/widgets/premium/icon-list.php:55
+#: includes/widgets/premium/icon-list.php:31
+#: includes/widgets/premium/icon-list.php:56
 msgid "Icon List"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:65
+#: includes/widgets/premium/icon-list.php:66
 msgid "Facebook"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:71
+#: includes/widgets/premium/icon-list.php:75
 msgid "Twitter"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:77
+#: includes/widgets/premium/icon-list.php:84
 msgid "Linkedin"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:83
+#: includes/widgets/premium/icon-list.php:93
 msgid "Google Plus"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:89
+#: includes/widgets/premium/icon-list.php:102
 msgid "Dribbble"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:98
+#: includes/widgets/premium/icon-list.php:114
 msgid "Icon Title"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:99
+#: includes/widgets/premium/icon-list.php:115
 msgid "My icon title"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:142
+#: includes/widgets/premium/icon-list.php:160
 msgid "Link"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:239
-#: includes/widgets/team-members.php:496
+#: includes/widgets/premium/icon-list.php:257
+#: includes/widgets/team-members.php:525
 msgid "Space between icons."
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:285
+#: includes/widgets/premium/icon-list.php:303
 msgid "Tooltip"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:293
+#: includes/widgets/premium/icon-list.php:311
 msgid "Tooltip Background Color"
 msgstr ""
 
-#: includes/widgets/premium/icon-list.php:306
+#: includes/widgets/premium/icon-list.php:324
 msgid "Tooltip Color"
 msgstr ""
 
@@ -3687,99 +4392,105 @@ msgstr ""
 msgid "Button Padding"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:158
-#: includes/widgets/premium/posts-block.php:154
-#: includes/widgets/premium/posts-block.php:556
+#: includes/widgets/premium/portfolio.php:222
+#: includes/widgets/premium/posts-block.php:220
+#: includes/widgets/premium/posts-block.php:623
 msgid "Block Heading"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:178
+#: includes/widgets/premium/portfolio.php:242
 msgid "URL for the heading of the grid"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:206
+#: includes/widgets/premium/portfolio.php:270
 #: includes/widgets/premium/twitter-grid.php:66
+#: includes/widgets/premium/vimeo-grid.php:67
+#: includes/widgets/premium/youtube-grid.php:67
 msgid ""
 "Specify an unique identifier used as a custom CSS class name and "
 "lightbox group name/slug for the grid element."
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:207
+#: includes/widgets/premium/portfolio.php:271
 msgid "Grid Class/Identifier"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:267
+#: includes/widgets/premium/portfolio.php:331
 #: includes/widgets/premium/twitter-grid.php:152
+#: includes/widgets/premium/vimeo-grid.php:376
+#: includes/widgets/premium/youtube-grid.php:327
 msgid "Choose Grid Style"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:269
+#: includes/widgets/premium/portfolio.php:333
 msgid "Grid Style 1"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:270
+#: includes/widgets/premium/portfolio.php:334
 msgid "Grid Style 2"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:271
+#: includes/widgets/premium/portfolio.php:335
 msgid "Grid Style 3"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:272
+#: includes/widgets/premium/portfolio.php:336
 msgid "Grid Style 4"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:273
+#: includes/widgets/premium/portfolio.php:337
 msgid "Grid Style 5"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:274
+#: includes/widgets/premium/portfolio.php:338
 msgid "Grid Style 6"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:348
-#: includes/widgets/premium/posts-block.php:338
+#: includes/widgets/premium/portfolio.php:412
+#: includes/widgets/premium/posts-block.php:404
 msgid "Open post links in new window?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:360
+#: includes/widgets/premium/portfolio.php:424
 msgid "Display posts title on the post/portfolio thumbnail?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:375
+#: includes/widgets/premium/portfolio.php:439
 msgid "Display taxonomy info on post/project thumbnail?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:417
-#: includes/widgets/premium/posts-block.php:397
+#: includes/widgets/premium/portfolio.php:481
+#: includes/widgets/premium/posts-block.php:463
 msgid "Preserve shortcodes/HTML tags in excerpt?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:431
-#: includes/widgets/premium/posts-block.php:408
+#: includes/widgets/premium/portfolio.php:495
+#: includes/widgets/premium/posts-block.php:474
+#: includes/widgets/premium/vimeo-grid.php:260
+#: includes/widgets/premium/youtube-grid.php:211
 msgid "Excerpt length in number of words."
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:446
-#: includes/widgets/premium/posts-block.php:458
+#: includes/widgets/premium/portfolio.php:510
+#: includes/widgets/premium/posts-block.php:524
 msgid "Display read more link to the post/portfolio?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:461
-#: includes/widgets/premium/posts-block.php:473
+#: includes/widgets/premium/portfolio.php:525
+#: includes/widgets/premium/posts-block.php:539
 #: includes/widgets/premium/twitter-grid.php:311
 msgid "Read more text"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:463
-#: includes/widgets/premium/posts-block.php:475
+#: includes/widgets/premium/portfolio.php:527
+#: includes/widgets/premium/posts-block.php:541
 #: includes/widgets/premium/twitter-grid.php:313
 msgid "Specify the text for the read more link/button"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:464
-#: includes/widgets/premium/portfolio.php:1010
-#: includes/widgets/premium/posts-block.php:476
+#: includes/widgets/premium/portfolio.php:528
+#: includes/widgets/premium/portfolio.php:1075
+#: includes/widgets/premium/posts-block.php:542
 #: includes/widgets/premium/services-carousel.php:93
 #: includes/widgets/premium/services-carousel.php:100
 #: includes/widgets/premium/services-carousel.php:107
@@ -3789,65 +4500,65 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:474
-#: includes/widgets/premium/posts-block.php:486
+#: includes/widgets/premium/portfolio.php:538
+#: includes/widgets/premium/posts-block.php:552
 msgid "Display post excerpt/summary in the lightbox?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:529
+#: includes/widgets/premium/portfolio.php:593
 msgid "Display post comments number for the post item?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:542
+#: includes/widgets/premium/portfolio.php:606
 msgid ""
 "Display taxonomy info below the post item? Choose the right "
 "taxonomy in General section."
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:567
-#: includes/widgets/premium/posts-block.php:524
+#: includes/widgets/premium/portfolio.php:631
+#: includes/widgets/premium/posts-block.php:590
 msgid ""
 "Choose pagination type or choose None if no pagination is desired. "
 "Make sure the 'Post per page' field value is set in the Build Query "
 "window to control number of posts to display per page."
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:570
-#: includes/widgets/premium/posts-block.php:527
+#: includes/widgets/premium/portfolio.php:634
+#: includes/widgets/premium/posts-block.php:593
 msgid "Next Prev"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:582
-#: includes/widgets/premium/posts-block.php:539
+#: includes/widgets/premium/portfolio.php:647
+#: includes/widgets/premium/posts-block.php:606
 msgid ""
 "Display count of posts yet to be loaded with the load more button?"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:766
+#: includes/widgets/premium/portfolio.php:831
 msgid "Entry Thumbnail"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:872
-#: includes/widgets/premium/posts-block.php:727
+#: includes/widgets/premium/portfolio.php:937
+#: includes/widgets/premium/posts-block.php:794
 msgid "Entry Title"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:930
-#: includes/widgets/premium/posts-block.php:785
+#: includes/widgets/premium/portfolio.php:995
+#: includes/widgets/premium/posts-block.php:852
 msgid "Entry Summary"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:989
-#: includes/widgets/premium/posts-block.php:844
+#: includes/widgets/premium/portfolio.php:1054
+#: includes/widgets/premium/posts-block.php:911
 msgid "Entry Meta Link Hover Color"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:1018
+#: includes/widgets/premium/portfolio.php:1083
 #: includes/widgets/premium/twitter-grid.php:811
 msgid "Read More Color"
 msgstr ""
 
-#: includes/widgets/premium/portfolio.php:1029
+#: includes/widgets/premium/portfolio.php:1094
 #: includes/widgets/premium/twitter-grid.php:822
 msgid "Read More Hover Color"
 msgstr ""
@@ -3856,121 +4567,117 @@ msgstr ""
 msgid "Posts Block"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:91
+#: includes/widgets/premium/posts-block.php:129
 msgid ""
 "Provide a comma separated list of Post IDs to display in the posts "
 "block."
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:161
+#: includes/widgets/premium/posts-block.php:227
 msgid "Heading for the block"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:174
+#: includes/widgets/premium/posts-block.php:240
 msgid "URL for the heading of the block"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:202
+#: includes/widgets/premium/posts-block.php:268
 msgid ""
 "Specify an unique identifier used as a custom CSS class name and "
 "lightbox group name/slug for the block element."
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:203
+#: includes/widgets/premium/posts-block.php:269
 msgid "Block Class/Identifier"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:263
+#: includes/widgets/premium/posts-block.php:329
 msgid "Choose Block Style"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:265
+#: includes/widgets/premium/posts-block.php:331
 msgid "Block Style 1"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:266
+#: includes/widgets/premium/posts-block.php:332
 msgid "Block Style 2"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:267
+#: includes/widgets/premium/posts-block.php:333
 msgid "Block Style 3"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:268
+#: includes/widgets/premium/posts-block.php:334
 msgid "Block Style 4"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:269
+#: includes/widgets/premium/posts-block.php:335
 msgid "Block Style 5"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:270
+#: includes/widgets/premium/posts-block.php:336
 msgid "Block Style 6"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:271
+#: includes/widgets/premium/posts-block.php:337
 msgid "Block Style 7"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:272
+#: includes/widgets/premium/posts-block.php:338
 msgid "Block Style 8"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:273
+#: includes/widgets/premium/posts-block.php:339
 msgid "Block Style 9"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:274
+#: includes/widgets/premium/posts-block.php:340
 msgid "Block Style 10"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:275
+#: includes/widgets/premium/posts-block.php:341
 msgid "Block Style 11"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:276
+#: includes/widgets/premium/posts-block.php:342
 msgid "Block Style 12"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:277
+#: includes/widgets/premium/posts-block.php:343
 msgid "Block Style 13"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:446
+#: includes/widgets/premium/posts-block.php:512
 msgid "Display post comments below the post item?"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:499
+#: includes/widgets/premium/posts-block.php:565
 msgid ""
 "Display taxonomy info below the post item? Choose the right "
 "taxonomy in Block Content section above."
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:603
+#: includes/widgets/premium/posts-block.php:670
 msgid "Block Filters"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:686
+#: includes/widgets/premium/posts-block.php:753
 msgid "Entry Taxonomy Term"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:705
+#: includes/widgets/premium/posts-block.php:772
 msgid "Taxonomy Terms Background Color"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:865
+#: includes/widgets/premium/posts-block.php:932
 msgid "Read More Link"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:873
+#: includes/widgets/premium/posts-block.php:940
 msgid "Link Color"
 msgstr ""
 
-#: includes/widgets/premium/posts-block.php:885
-msgid "Link Hover Color"
-msgstr ""
-
-#: includes/widgets/premium/posts-block.php:908
+#: includes/widgets/premium/posts-block.php:975
 msgid "Read More Button"
 msgstr ""
 
@@ -3979,12 +4686,12 @@ msgid "Services Carousel"
 msgstr ""
 
 #: includes/widgets/premium/services-carousel.php:56
-#: includes/widgets/services.php:31 includes/widgets/services.php:54
+#: includes/widgets/services.php:32 includes/widgets/services.php:55
 msgid "Services"
 msgstr ""
 
 #: includes/widgets/premium/services-carousel.php:79
-#: includes/widgets/services.php:113
+#: includes/widgets/services.php:114
 msgid "Icon Image Size"
 msgstr ""
 
@@ -3993,22 +4700,23 @@ msgid "Size of icon image chosen for display"
 msgstr ""
 
 #: includes/widgets/premium/services-carousel.php:123
-#: includes/widgets/services.php:168
+#: includes/widgets/services.php:178
 msgid "Service Image"
 msgstr ""
 
 #: includes/widgets/premium/services-carousel.php:135
-#: includes/widgets/premium/services-carousel.php:475
-#: includes/widgets/services.php:147 includes/widgets/services.php:219
+#: includes/widgets/premium/services-carousel.php:491
+#: includes/widgets/services.php:157 includes/widgets/services.php:248
 msgid "Service Title"
 msgstr ""
 
 #: includes/widgets/premium/services-carousel.php:138
-#: includes/widgets/services.php:150
+#: includes/widgets/services.php:160
 msgid "My service title"
 msgstr ""
 
 #: includes/widgets/premium/services-carousel.php:145
+#: includes/widgets/premium/services-carousel.php:549
 msgid "Service Subtitle"
 msgstr ""
 
@@ -4016,26 +4724,47 @@ msgstr ""
 msgid "My service subtitle"
 msgstr ""
 
-#: includes/widgets/premium/services-carousel.php:155
-#: includes/widgets/services.php:193
-msgid "Service description"
+#: includes/widgets/premium/services-carousel.php:156
+#: includes/widgets/services.php:206
+msgid "Service URL"
 msgstr ""
 
 #: includes/widgets/premium/services-carousel.php:157
-#: includes/widgets/services.php:195
+#: includes/widgets/services.php:207
+msgid "The link for the page describing the service."
+msgstr ""
+
+#: includes/widgets/premium/services-carousel.php:164
+#: includes/widgets/services.php:214
+msgid "http://service-link.com"
+msgstr ""
+
+#: includes/widgets/premium/services-carousel.php:171
+#: includes/widgets/services.php:222
+msgid "Service description"
+msgstr ""
+
+#: includes/widgets/premium/services-carousel.php:173
+#: includes/widgets/services.php:224
 msgid "Service description goes here"
 msgstr ""
 
-#: includes/widgets/premium/services-carousel.php:166
+#: includes/widgets/premium/services-carousel.php:182
 msgid "Text for Service Link/Button"
 msgstr ""
 
-#: includes/widgets/premium/services-carousel.php:174
+#: includes/widgets/premium/services-carousel.php:190
 msgid "URL for the Service link/button"
 msgstr ""
 
-#: includes/widgets/premium/services-carousel.php:522
-#: includes/widgets/services.php:266
+#: includes/widgets/premium/services-carousel.php:528
+#: includes/widgets/services.php:285
+#: includes/widgets/team-members.php:418
+msgid "Hover Color for Link"
+msgstr ""
+
+#: includes/widgets/premium/services-carousel.php:578
+#: includes/widgets/services.php:306
 msgid "Service Text"
 msgstr ""
 
@@ -4135,150 +4864,150 @@ msgstr ""
 msgid "Animation Speed"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:30
-#: includes/widgets/premium/tabs.php:54
+#: includes/widgets/premium/tabs.php:31
+#: includes/widgets/premium/tabs.php:55
 msgid "Tabs"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:66
+#: includes/widgets/premium/tabs.php:67
 msgid "Tab Style 1"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:67
+#: includes/widgets/premium/tabs.php:68
 msgid "Tab Style 2"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:68
+#: includes/widgets/premium/tabs.php:69
 msgid "Tab Style 3"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:69
+#: includes/widgets/premium/tabs.php:70
 msgid "Tab Style 4"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:70
+#: includes/widgets/premium/tabs.php:71
 msgid "Tab Style 5"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:71
+#: includes/widgets/premium/tabs.php:72
 msgid "Tab Style 6"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:72
+#: includes/widgets/premium/tabs.php:73
 msgid "Vertical Tab Style 1"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:73
+#: includes/widgets/premium/tabs.php:74
 msgid "Vertical Tab Style 2"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:74
+#: includes/widgets/premium/tabs.php:75
 msgid "Vertical Tab Style 3"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:75
+#: includes/widgets/premium/tabs.php:76
 msgid "Vertical Tab Style 4"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:85
+#: includes/widgets/premium/tabs.php:86
 msgid "The device resolution at which the mobile view takes effect"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:97
+#: includes/widgets/premium/tabs.php:98
 msgid "Tab Panes"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:102
+#: includes/widgets/premium/tabs.php:103
 msgid "Tab #1"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:103
-#: includes/widgets/premium/tabs.php:107
-#: includes/widgets/premium/tabs.php:111
+#: includes/widgets/premium/tabs.php:104
+#: includes/widgets/premium/tabs.php:108
+#: includes/widgets/premium/tabs.php:112
 msgid ""
 "I am tab content. Click edit button to change this text. Lorem "
 "ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, "
 "luctus nec ullamcorper mattis, pulvinar dapibus leo."
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:106
+#: includes/widgets/premium/tabs.php:107
 msgid "Tab #2"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:110
+#: includes/widgets/premium/tabs.php:111
 msgid "Tab #3"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:117
+#: includes/widgets/premium/tabs.php:118
 msgid "Tab ID"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:118
+#: includes/widgets/premium/tabs.php:119
 msgid ""
 "The Tab ID is required to link to a tab. It must be unique across "
 "the page, must begin with a letter and may be followed by any "
 "number of letters, digits, hyphens or underscores."
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:123
+#: includes/widgets/premium/tabs.php:124
 msgid "Tab Icon Type"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:134
+#: includes/widgets/premium/tabs.php:135
 msgid "Tab Image"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:146
+#: includes/widgets/premium/tabs.php:148
 msgid "Tab Icon"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:156
+#: includes/widgets/premium/tabs.php:159
 msgid "Tab Title & Content"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:158
-#: includes/widgets/premium/tabs.php:184
+#: includes/widgets/premium/tabs.php:161
+#: includes/widgets/premium/tabs.php:187
 msgid "Tab Title"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:166
-#: includes/widgets/premium/tabs.php:268
+#: includes/widgets/premium/tabs.php:169
+#: includes/widgets/premium/tabs.php:271
 msgid "Tab Content"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:168
+#: includes/widgets/premium/tabs.php:171
 msgid "Tabs Content"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:192
+#: includes/widgets/premium/tabs.php:195
 msgid "Tab Title Color"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:203
+#: includes/widgets/premium/tabs.php:206
 msgid "Active Tab Title Color"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:214
+#: includes/widgets/premium/tabs.php:217
 msgid "Hover Tab Title Color"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:225
+#: includes/widgets/premium/tabs.php:228
 msgid "Tab highlight Border color"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:245
+#: includes/widgets/premium/tabs.php:248
 msgid "Tab Title Padding"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:276
+#: includes/widgets/premium/tabs.php:279
 msgid "Tab Content Padding"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:352
+#: includes/widgets/premium/tabs.php:355
 msgid "Active Tab Icon Color"
 msgstr ""
 
-#: includes/widgets/premium/tabs.php:364
+#: includes/widgets/premium/tabs.php:367
 msgid "Hover Tab Icon Color"
 msgstr ""
 
@@ -4379,24 +5108,34 @@ msgid "Display posted date for the twitter post?"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:246
+#: includes/widgets/premium/vimeo-grid.php:300
+#: includes/widgets/premium/youtube-grid.php:251
 msgid "Date Format"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:247
+#: includes/widgets/premium/vimeo-grid.php:301
+#: includes/widgets/premium/youtube-grid.php:252
 msgid ""
 "The Standard format is derived from site-wide format specified in "
 "Settings->General."
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:249
+#: includes/widgets/premium/vimeo-grid.php:303
+#: includes/widgets/premium/youtube-grid.php:254
 msgid "Elapsed Time"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:250
+#: includes/widgets/premium/vimeo-grid.php:304
+#: includes/widgets/premium/youtube-grid.php:255
 msgid "Standard Date"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:251
+#: includes/widgets/premium/vimeo-grid.php:305
+#: includes/widgets/premium/youtube-grid.php:256
 msgid "Standard Date and Time"
 msgstr ""
 
@@ -4421,6 +5160,8 @@ msgid "Enable Lightbox Twitter Grid?"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:376
+#: includes/widgets/premium/vimeo-grid.php:462
+#: includes/widgets/premium/youtube-grid.php:413
 msgid ""
 "Choose pagination type or choose None if no pagination is desired. "
 "Make sure you enter the items per page value in the option 'Number "
@@ -4437,6 +5178,11 @@ msgid "Tweet Text"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:492
+#: includes/widgets/premium/vimeo-grid.php:680
+#: includes/widgets/premium/vimeo-grid.php:1179
+#: includes/widgets/premium/vimeo-grid.php:1239
+#: includes/widgets/premium/youtube-grid.php:592
+#: includes/widgets/premium/youtube-grid.php:1121
 msgid "Text Color"
 msgstr ""
 
@@ -4500,20 +5246,481 @@ msgstr ""
 msgid "Retweets Count Color"
 msgstr ""
 
-#: includes/widgets/premium/twitter-grid.php:741
-msgid "Likes"
-msgstr ""
-
 #: includes/widgets/premium/twitter-grid.php:749
+#: includes/widgets/premium/vimeo-grid.php:878
+#: includes/widgets/premium/youtube-grid.php:790
 msgid "Likes Icon size in pixels"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:770
+#: includes/widgets/premium/vimeo-grid.php:899
+#: includes/widgets/premium/youtube-grid.php:811
 msgid "Likes Icon Color"
 msgstr ""
 
 #: includes/widgets/premium/twitter-grid.php:781
+#: includes/widgets/premium/vimeo-grid.php:910
+#: includes/widgets/premium/youtube-grid.php:822
 msgid "Likes Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:33
+#: includes/widgets/premium/vimeo-grid.php:60
+msgid "Vimeo Grid"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:68
+msgid "Vimeo Grid Class/Identifier"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:77
+msgid "Vimeo Source"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:78
+msgid ""
+"Specify the Vimeo source to display in the grid. Ensure Vimeo "
+"Client ID and Vimeo Client Secret is provided in the Social API tab "
+"of the "
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:78
+#: includes/widgets/premium/youtube-grid.php:78
+msgid "admin settings."
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:80
+msgid "User"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:81
+msgid "Album"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:82
+msgid "Group"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:83
+#: includes/widgets/premium/youtube-grid.php:80
+msgid "Channel"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:93
+msgid "Vimeo Channel"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:94
+msgid ""
+"Enter the Vimeo Channel name. The channel name can be found in the "
+"URL (e.g.: goprocreative)"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:111
+msgid "Vimeo Album"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:112
+msgid "Enter the Vimeo Album ID found in the URL (e.g.: 1893031)"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:129
+msgid "Vimeo Group"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:130
+msgid "Enter the Vimeo Group ID found in the URL (e.g.: animation)"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:147
+msgid "Vimeo User"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:148
+msgid "Enter the Vimeo User ID found in the URL (e.g.: gopro)"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:165
+msgid "Sort By"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:166
+#: includes/widgets/premium/youtube-grid.php:111
+msgid "Specify the sort order of the videos"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:169
+#: includes/widgets/premium/youtube-grid.php:113
+msgid "Date"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:170
+msgid "Alphabetical"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:171
+msgid "Number of views"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:172
+msgid "Number of likes"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:173
+msgid "Number of comments"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:174
+msgid "Video duration"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:175
+msgid "Modified time"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:176
+msgid "Manual (Channel/Album only)"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:177
+msgid "Added (Channel only)"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:188
+msgid "Specify the sort direction of the videos"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:202
+#: includes/widgets/premium/youtube-grid.php:165
+msgid "Video Information"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:209
+msgid "Display title for the vimeo video on thumbnail hover?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:224
+msgid "Display title for the vimeo video below thumbnail?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:236
+msgid "Display categories for the vimeo video?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:248
+msgid "Display excerpt for the vimeo video?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:275
+msgid "Display user account information for each vimeo video?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:287
+msgid "Display posted date for the vimeo video?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:317
+msgid "Display comments for each vimeo post?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:329
+msgid "Display views count for the vimeo post?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:341
+msgid "Display duration for the vimeo post?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:353
+msgid "Display likes count for the vimeo post?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:378
+msgid "Vimeo Grid Style 1"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:379
+msgid "Vimeo Grid Style 2"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:409
+msgid "Choose a layout for the Vimeo grid"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:421
+#: includes/widgets/premium/youtube-grid.php:372
+msgid "Display videos inline?"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:434
+#: includes/widgets/premium/youtube-grid.php:385
+msgid ""
+"Choose the preferred library for the lightbox if videos are not "
+"chosen to be displayed inline."
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:475
+#: includes/widgets/premium/youtube-grid.php:426
+msgid ""
+"Number of videos to be displayed per page and on each load more "
+"invocation."
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:570
+#: includes/widgets/premium/youtube-grid.php:521
+msgid "Video Title"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:629
+msgid "Video Categories"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:637
+msgid "Category Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:648
+msgid "Category Hover Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:669
+#: includes/widgets/premium/youtube-grid.php:581
+msgid "Video Excerpt"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:691
+#: includes/widgets/premium/youtube-grid.php:603
+msgid "Text Link Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:703
+#: includes/widgets/premium/youtube-grid.php:615
+msgid "Text Link Hover Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:725
+#: includes/widgets/premium/youtube-grid.php:637
+msgid "Channel Name"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:733
+#: includes/widgets/premium/vimeo-grid.php:1138
+#: includes/widgets/premium/youtube-grid.php:645
+#: includes/widgets/premium/youtube-grid.php:1050
+msgid "Channel Name Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:744
+#: includes/widgets/premium/vimeo-grid.php:1149
+#: includes/widgets/premium/youtube-grid.php:656
+#: includes/widgets/premium/youtube-grid.php:1061
+msgid "Channel Name Link Hover Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:766
+#: includes/widgets/premium/youtube-grid.php:678
+msgid "Posted Date"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:774
+#: includes/widgets/premium/youtube-grid.php:686
+msgid "Posted Date Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:785
+#: includes/widgets/premium/youtube-grid.php:697
+msgid "Posted Date Link Hover Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:807
+#: includes/widgets/premium/youtube-grid.php:719
+msgid "Views"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:816
+#: includes/widgets/premium/youtube-grid.php:728
+msgid "Views Icon size in pixels"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:837
+#: includes/widgets/premium/youtube-grid.php:749
+msgid "Views Icon Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:848
+#: includes/widgets/premium/youtube-grid.php:760
+msgid "Views Count Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:932
+#: includes/widgets/premium/youtube-grid.php:844
+msgid "Comments"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:940
+#: includes/widgets/premium/youtube-grid.php:852
+msgid "Comments Icon size in pixels"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:961
+#: includes/widgets/premium/youtube-grid.php:873
+msgid "Comments Icon Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:972
+#: includes/widgets/premium/youtube-grid.php:884
+msgid "Comments Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:994
+#: includes/widgets/premium/youtube-grid.php:906
+msgid "Duration"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:1002
+#: includes/widgets/premium/youtube-grid.php:914
+msgid "Duration Background Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:1013
+#: includes/widgets/premium/youtube-grid.php:925
+msgid "Duration Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:1130
+#: includes/widgets/premium/youtube-grid.php:1042
+msgid "Banner Channel Name"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:1171
+msgid "Channel Location"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:1201
+#: includes/widgets/premium/youtube-grid.php:1083
+msgid "Channel Stats"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:1209
+#: includes/widgets/premium/youtube-grid.php:1091
+msgid "Channel Stats Color"
+msgstr ""
+
+#: includes/widgets/premium/vimeo-grid.php:1231
+#: includes/widgets/premium/youtube-grid.php:1113
+msgid "Channel Description"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:33
+#: includes/widgets/premium/youtube-grid.php:60
+msgid "YouTube Grid"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:68
+msgid "YouTube Grid Class/Identifier"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:77
+msgid "YouTube source"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:78
+msgid ""
+"Specify the YouTube source to display in the grid. Ensure YouTube "
+"API key is provided in the Social API tab of the "
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:81
+msgid "Playlist"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:92
+msgid "YouTube Channel"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:93
+msgid ""
+"Enter the YouTube Channel ID. To find your YouTube Channel ID, "
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:93
+msgid "visit page."
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:115
+msgid "Number of Views"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:129
+msgid "YouTube Playlist"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:130
+msgid ""
+"Enter the YouTube playlist ID. To know how to find your YouTube "
+"playlist ID, "
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:130
+msgid "watch video."
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:146
+msgid "YouTube Videos"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:147
+msgid ""
+"Specify a comma separated list of video IDs. (ex. bqHNxfarW6E, "
+"MRzeLDkWT1c, bYAUx40dDFI)"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:172
+msgid "Display title for the YouTube video on thumbnail hover?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:187
+msgid "Display title for the YouTube video below thumbnail?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:199
+msgid "Display excerpt for the YouTube video?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:226
+msgid "Display channel name for each YouTube video?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:238
+msgid "Display posted date for the YouTube video?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:268
+msgid "Display comments for each youtube post?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:280
+msgid "Display views count for the youtube post?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:292
+msgid "Display duration for the youtube post?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:304
+msgid "Display likes count for the youtube post?"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:329
+msgid "YouTube Grid Style 1"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:330
+msgid "YouTube Grid Style 2"
+msgstr ""
+
+#: includes/widgets/premium/youtube-grid.php:360
+msgid "Choose a layout for the YouTube grid"
 msgstr ""
 
 #: includes/widgets/pricing-table.php:66
@@ -4619,27 +5826,27 @@ msgstr ""
 msgid "Button Spacing"
 msgstr ""
 
-#: includes/widgets/services.php:64
+#: includes/widgets/services.php:65
 msgid "Style 4"
 msgstr ""
 
-#: includes/widgets/services.php:65
+#: includes/widgets/services.php:66
 msgid "Style 5"
 msgstr ""
 
-#: includes/widgets/services.php:114
+#: includes/widgets/services.php:115
 msgid "Size of icon image if chosen for display"
 msgstr ""
 
-#: includes/widgets/services.php:183
+#: includes/widgets/services.php:193
 msgid "Service Icon"
 msgstr ""
 
-#: includes/widgets/services.php:295
+#: includes/widgets/services.php:335
 msgid "Service Icons"
 msgstr ""
 
-#: includes/widgets/services.php:322
+#: includes/widgets/services.php:362
 msgid "Icon Custom Color"
 msgstr ""
 
@@ -4674,10 +5881,6 @@ msgstr ""
 
 #: includes/widgets/stats-bars.php:185
 msgid "Stats Bar Border Radius"
-msgstr ""
-
-#: includes/widgets/stats-bars.php:240
-msgid "Spacing from Stats Title"
 msgstr ""
 
 #: includes/widgets/team-members.php:33
@@ -4746,149 +5949,161 @@ msgstr ""
 msgid "Team Member Image"
 msgstr ""
 
-#: includes/widgets/team-members.php:165
-msgid "Team Member details"
-msgstr ""
-
 #: includes/widgets/team-members.php:167
-msgid "Details about team member"
+msgid "Team Member URL"
 msgstr ""
 
 #: includes/widgets/team-members.php:168
-msgid "Provide a short writeup for the team member"
+msgid "The link for the page describing the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:176
-msgid "Social Profile"
-msgstr ""
-
-#: includes/widgets/team-members.php:182
-msgid "Email Address"
+#: includes/widgets/team-members.php:175
+msgid "http://member-link.com"
 msgstr ""
 
 #: includes/widgets/team-members.php:183
+msgid "Team Member details"
+msgstr ""
+
+#: includes/widgets/team-members.php:185
+msgid "Details about team member"
+msgstr ""
+
+#: includes/widgets/team-members.php:186
+msgid "Provide a short writeup for the team member"
+msgstr ""
+
+#: includes/widgets/team-members.php:194
+msgid "Social Profile"
+msgstr ""
+
+#: includes/widgets/team-members.php:200
+msgid "Email Address"
+msgstr ""
+
+#: includes/widgets/team-members.php:201
 msgid "Enter the email address of the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:195
+#: includes/widgets/team-members.php:213
 msgid "Facebook Page URL"
 msgstr ""
 
-#: includes/widgets/team-members.php:196
+#: includes/widgets/team-members.php:214
 msgid "URL of the Facebook page of the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:208
+#: includes/widgets/team-members.php:226
 msgid "Twitter Profile URL"
 msgstr ""
 
-#: includes/widgets/team-members.php:209
+#: includes/widgets/team-members.php:227
 msgid "URL of the Twitter page of the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:221
+#: includes/widgets/team-members.php:239
 msgid "LinkedIn Page URL"
 msgstr ""
 
-#: includes/widgets/team-members.php:222
+#: includes/widgets/team-members.php:240
 msgid "URL of the LinkedIn profile of the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:234
+#: includes/widgets/team-members.php:252
 msgid "Pinterest Page URL"
 msgstr ""
 
-#: includes/widgets/team-members.php:235
+#: includes/widgets/team-members.php:253
 msgid "URL of the Pinterest page for the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:247
+#: includes/widgets/team-members.php:265
 msgid "Dribbble Profile URL"
 msgstr ""
 
-#: includes/widgets/team-members.php:248
+#: includes/widgets/team-members.php:266
 msgid "URL of the Dribbble profile of the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:260
+#: includes/widgets/team-members.php:278
 msgid "GooglePlus Page URL"
 msgstr ""
 
-#: includes/widgets/team-members.php:261
+#: includes/widgets/team-members.php:279
 msgid "URL of the Google Plus page of the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:273
+#: includes/widgets/team-members.php:291
 msgid "Instagram Page URL"
 msgstr ""
 
-#: includes/widgets/team-members.php:274
+#: includes/widgets/team-members.php:292
 msgid "URL of the Instagram feed for the team member."
 msgstr ""
 
-#: includes/widgets/team-members.php:311
+#: includes/widgets/team-members.php:329
 msgid "Team Member Spacing"
 msgstr ""
 
-#: includes/widgets/team-members.php:327
+#: includes/widgets/team-members.php:345
 msgid "Thumbnail Hover Brightness (%)"
 msgstr ""
 
-#: includes/widgets/team-members.php:349
+#: includes/widgets/team-members.php:367
 #: includes/widgets/testimonials.php:173
 msgid "Thumbnail Border Radius"
 msgstr ""
 
-#: includes/widgets/team-members.php:363
+#: includes/widgets/team-members.php:381
 msgid "Member Title"
 msgstr ""
 
-#: includes/widgets/team-members.php:410
+#: includes/widgets/team-members.php:439
 msgid "Member Position"
 msgstr ""
 
-#: includes/widgets/team-members.php:439
+#: includes/widgets/team-members.php:468
 msgid "Member Details"
 msgstr ""
 
-#: includes/widgets/team-members.php:469
+#: includes/widgets/team-members.php:498
 msgid "Social Icons"
 msgstr ""
 
-#: includes/widgets/team-members.php:477
+#: includes/widgets/team-members.php:506
 #: includes/widgets/testimonials-slider.php:405
 msgid "Icon size in pixels"
 msgstr ""
 
-#: includes/widgets/team-members.php:646
+#: includes/widgets/team-members.php:706
 msgid "Send an email"
 msgstr ""
 
-#: includes/widgets/team-members.php:648
+#: includes/widgets/team-members.php:708
 msgid "Follow on Facebook"
 msgstr ""
 
-#: includes/widgets/team-members.php:650
+#: includes/widgets/team-members.php:710
 msgid "Subscribe to Twitter Feed"
 msgstr ""
 
-#: includes/widgets/team-members.php:652
+#: includes/widgets/team-members.php:712
 msgid "View LinkedIn Profile"
 msgstr ""
 
-#: includes/widgets/team-members.php:654
+#: includes/widgets/team-members.php:714
 msgid "Follow on Google Plus"
 msgstr ""
 
-#: includes/widgets/team-members.php:656
+#: includes/widgets/team-members.php:716
 msgid "View Instagram Feed"
 msgstr ""
 
-#: includes/widgets/team-members.php:658
+#: includes/widgets/team-members.php:718
 msgid "Subscribe to Pinterest Feed"
 msgstr ""
 
-#: includes/widgets/team-members.php:660
+#: includes/widgets/team-members.php:720
 msgid "View Dribbble Portfolio"
 msgstr ""
 
@@ -5036,6 +6251,6 @@ msgstr ""
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: plugin.php:190
+#: plugin.php:208
 msgid "Livemesh Addons"
 msgstr ""

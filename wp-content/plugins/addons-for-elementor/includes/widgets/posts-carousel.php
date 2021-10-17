@@ -30,7 +30,7 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-posts-carousel';
+        return 'lae-icon-posts-carousel';
     }
 
     public function get_categories() {
@@ -48,12 +48,11 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
     protected function _register_controls() {
 
         $this->start_controls_section(
-            'section_posts_carousel',
+            'section_query',
             [
                 'label' => __('Posts Query', 'livemesh-el-addons'),
             ]
         );
-
 
         $this->add_control(
             'query_type',
@@ -131,6 +130,9 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             [
                 'label' => __('Posts Per Page', 'livemesh-el-addons'),
                 'type' => Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 50,
+                'step' => 1,
                 'default' => 6,
                 'condition' => [
                     'query_type' => ['custom_query', 'related']
@@ -207,12 +209,58 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'section_post_content',
+            'section_carousel_skin',
             [
-                'label' => __('Post Content', 'livemesh-el-addons'),
+                'label' => __('Carousel Skin', 'livemesh-el-addons'),
             ]
         );
 
+        $this->add_control(
+            'carousel_skin',
+            [
+                'label' => __('Choose Carousel Skin', 'livemesh-el-addons'),
+                'description' => __('The "Classic Skin" is the built-in styling provided for the carousel items. Choose "Custom Skin" if you want to use theme builder template for the carousel items.', 'livemesh-el-addons'),
+                'type' => Controls_Manager::SELECT,
+                'options' => array(
+                    'classic_skin' => __('Classic Skin', 'livemesh-el-addons'),
+                    'custom_skin' => __('Custom Skin', 'livemesh-el-addons'),
+                ),
+                'default' => 'classic_skin',
+            ]
+        );
+
+        $this->add_control(
+            'item_template',
+            [
+                'label' => __('Select the custom skin template for the carousel item', 'livemesh-el-addons'),
+                'description' => '<div style="text-align:center;font-style: normal;">'
+                    . '<a target="_blank" class="elementor-button elementor-button-default" href="'
+                    . esc_url(admin_url('/edit.php?post_type=elementor_library&tabs_group=theme&elementor_library_type=livemesh_item'))
+                    . '">'
+                    . __('Create/Edit the Item Skin Builder Templates', 'livemesh-el-addons')
+                    . '</a>'
+                    . '</div>',
+                'type' => Controls_Manager::SELECT,
+                'label_block' => true,
+                'default' => [],
+                'options' => $this->get_item_template_options(),
+                'condition' => [
+                    'carousel_skin' => 'custom_skin'
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_post_content',
+            [
+                'label' => __('Post Content', 'livemesh-el-addons'),
+                'condition' => [
+                    'carousel_skin' => 'classic_skin'
+                ],
+            ]
+        );
 
         $this->add_control(
             'taxonomy_chosen',
@@ -226,12 +274,29 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             ]
         );
 
+
+
+        $this->add_control(
+            'display_thumbnail',
+            [
+                'label' => __('Display post thumbnail?', 'livemesh-el-addons'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'livemesh-el-addons'),
+                'label_off' => __('No', 'livemesh-el-addons'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),
             [
                 'name' => 'thumbnail_size',
                 'label' => __('Image Size', 'livemesh-el-addons'),
                 'default' => 'large',
+                'condition' => [
+                    'display_thumbnail' => 'yes'
+                ],
             ]
         );
 
@@ -244,13 +309,58 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
                 'label_off' => __('No', 'livemesh-el-addons'),
                 'return_value' => 'yes',
                 'default' => 'yes',
+                'condition' => [
+                    'display_thumbnail' => 'yes'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'post_link_new_window',
+            [
+                'label' => __('Open post links in new window?', 'livemesh-el-addons'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'livemesh-el-addons'),
+                'label_off' => __('No', 'livemesh-el-addons'),
+                'return_value' => 'yes',
+                'default' => '',
+            ]
+        );
+
+        $this->add_control(
+            'display_title_on_thumbnail',
+            [
+                'label' => __('Display posts title on the post/portfolio thumbnail?', 'livemesh-el-addons'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'livemesh-el-addons'),
+                'label_off' => __('No', 'livemesh-el-addons'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'condition' => [
+                    'display_thumbnail' => 'yes'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'display_taxonomy_on_thumbnail',
+            [
+                'label' => __('Display taxonomy info on post/project thumbnail?', 'livemesh-el-addons'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'livemesh-el-addons'),
+                'label_off' => __('No', 'livemesh-el-addons'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'condition' => [
+                    'display_thumbnail' => 'yes'
+                ],
             ]
         );
 
         $this->add_control(
             'display_title',
             [
-                'label' => __('Display posts title below the post item?', 'livemesh-el-addons'),
+                'label' => __('Display posts title?', 'livemesh-el-addons'),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'livemesh-el-addons'),
                 'label_off' => __('No', 'livemesh-el-addons'),
@@ -262,7 +372,7 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
         $this->add_control(
             'display_summary',
             [
-                'label' => __('Display post excerpt/summary below the post item?', 'livemesh-el-addons'),
+                'label' => __('Display post excerpt/summary?', 'livemesh-el-addons'),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'livemesh-el-addons'),
                 'label_off' => __('No', 'livemesh-el-addons'),
@@ -271,20 +381,10 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             ]
         );
 
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'section_post_meta',
-            [
-                'label' => __('Post Meta', 'livemesh-el-addons'),
-            ]
-        );
-
-
         $this->add_control(
             'display_author',
             [
-                'label' => __('Display post author info below the post item?', 'livemesh-el-addons'),
+                'label' => __('Display post author info?', 'livemesh-el-addons'),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'livemesh-el-addons'),
                 'label_off' => __('No', 'livemesh-el-addons'),
@@ -293,11 +393,10 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             ]
         );
 
-
         $this->add_control(
             'display_post_date',
             [
-                'label' => __('Display post date info below the post item?', 'livemesh-el-addons'),
+                'label' => __('Display post date info?', 'livemesh-el-addons'),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'livemesh-el-addons'),
                 'label_off' => __('No', 'livemesh-el-addons'),
@@ -310,12 +409,34 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
         $this->add_control(
             'display_taxonomy',
             [
-                'label' => __('Display taxonomy info below the post item?', 'livemesh-el-addons'),
+                'label' => __('Display taxonomy info?', 'livemesh-el-addons'),
                 'type' => Controls_Manager::SWITCHER,
                 'label_on' => __('Yes', 'livemesh-el-addons'),
                 'label_off' => __('No', 'livemesh-el-addons'),
                 'return_value' => 'yes',
                 'default' => 'no',
+            ]
+        );
+
+        $this->add_control(
+            'display_read_more',
+            [
+                'label' => __('Display read more link to the post/portfolio?', 'livemesh-el-addons'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'livemesh-el-addons'),
+                'label_off' => __('No', 'livemesh-el-addons'),
+                'return_value' => 'yes',
+                'default' => 'no',
+            ]
+        );
+
+        $this->add_control(
+            'read_more_text',
+            [
+                'label' => __('Read more text', 'livemesh-el-addons'),
+                'type' => Controls_Manager::TEXT,
+                "description" => __('Specify the text for the read more link/button', 'livemesh-el-addons'),
+                'default' => __('Read More', 'livemesh-el-addons'),
             ]
         );
 
@@ -376,6 +497,19 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
                 'default' => 'no',
                 'label' => __('Autoplay?', 'livemesh-el-addons'),
                 'description' => __('Should the carousel autoplay as in a slideshow.', 'livemesh-el-addons'),
+            ]
+        );
+
+        $this->add_control(
+            'adaptive_height',
+            [
+                'type' => Controls_Manager::SWITCHER,
+                'label_off' => __('No', 'livemesh-el-addons'),
+                'label_on' => __('Yes', 'livemesh-el-addons'),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'label' => __('Adaptive Height?', 'livemesh-el-addons'),
+                'description' => __('Enables adaptive height for single slide horizontal carousels.', 'livemesh-el-addons'),
             ]
         );
 
@@ -578,37 +712,8 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             [
                 'label' => __('Post Thumbnail', 'livemesh-el-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-
-        $this->add_control(
-            'thumbnail_hover_bg_color',
-            [
-                'label' => __('Thumbnail Hover Background Color', 'livemesh-el-addons'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-project-image .lae-image-overlay' => 'background-color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'thumbnail_hover_opacity',
-            [
-                'label' => __('Thumbnail Hover Opacity (%)', 'livemesh-el-addons'),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 0.5,
-                ],
-                'range' => [
-                    'px' => [
-                        'max' => 1,
-                        'min' => 0.10,
-                        'step' => 0.01,
-                    ],
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-project-image:hover .lae-image-overlay' => 'opacity: {{SIZE}};',
+                'condition' => [
+                    'carousel_skin' => 'classic_skin'
                 ],
             ]
         );
@@ -705,6 +810,9 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             [
                 'label' => __('Post Entry Title', 'livemesh-el-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'carousel_skin' => 'classic_skin'
+                ],
             ]
         );
 
@@ -752,6 +860,9 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             [
                 'label' => __('Post Entry Summary', 'livemesh-el-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'carousel_skin' => 'classic_skin'
+                ],
             ]
         );
 
@@ -781,6 +892,9 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             [
                 'label' => __('Post Entry Meta', 'livemesh-el-addons'),
                 'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'carousel_skin' => 'classic_skin'
+                ],
             ]
         );
 
@@ -841,7 +955,87 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             ]
         );
 
+        $this->end_controls_section();
 
+        $this->start_controls_section(
+            'section_read_more_styling',
+            [
+                'label' => __('Read More', 'livemesh-el-addons'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'carousel_skin' => 'classic_skin'
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_color',
+            [
+                'label' => __('Read More Color', 'livemesh-el-addons'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-read-more, {{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-read-more a' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'read_more_hover_color',
+            [
+                'label' => __('Read More Hover Color', 'livemesh-el-addons'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-read-more:hover, {{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-read-more a:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'read_more_typography',
+                'selector' => '{{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-read-more, {{WRAPPER}} .lae-posts-carousel .lae-posts-carousel-item .lae-read-more a',
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+    }
+
+    protected function get_item_template_content($template_id, $settings) {
+
+        /* Initialize the theme builder templates - Requires elementor pro plugin */
+        if (!is_plugin_active('elementor-pro/elementor-pro.php')) {
+            $output = lae_template_error(__('Custom skin requires Elementor Pro but the plugin is not installed/active', 'livemesh-el-addons'));
+        }
+        else {
+            $output = lae_get_item_template_content($template_id, $settings);
+        }
+
+        return $output;
+
+    }
+
+    protected function get_item_template_options() {
+
+        $template_options = array();
+
+        /* Initialize the theme builder templates - Requires elementor pro plugin */
+        if (!is_plugin_active('elementor-pro/elementor-pro.php')) {
+            $template_options = [0 => __('No templates found. Elementor Pro is not installed/active', 'livemesh-el-addons')];
+        }
+        else {
+            $templates = lae_get_livemesh_item_templates();
+
+            //$template_options = [0 => __('Select a template', 'livemesh-el-addons')];
+
+            foreach ($templates as $template) {
+                $template_options[$template->ID] = $template->post_title;
+            }
+        }
+
+        return $template_options;
     }
 
     protected function render() {
@@ -861,6 +1055,7 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
             'autoplay_speed' => absint($settings['autoplay_speed']),
             'animation_speed' => absint($settings['animation_speed']),
             'pause_on_hover' => ('yes' === $settings['pause_on_hover']),
+            'adaptive_height' => ('yes' === $settings['adaptive_height']),
         ];
 
         $responsive_settings = [
@@ -887,115 +1082,159 @@ class LAE_Posts_Carousel_Widget extends Widget_Base {
 
         $loop = new \WP_Query($query_args);
 
+        $template_id = $settings['item_template'];
+
         // Loop through the posts and do something with them.
         if ($loop->have_posts()) :
 
-            $post_id = get_the_ID();
+            $target = $settings['post_link_new_window'] == 'yes' ? ' target="_blank"' : '';
 
             $output = '<div' . $dir . ' id="lae-posts-carousel-' . uniqid()
-                . '" class="lae-posts-carousel lae-container" data-settings=\'' . wp_json_encode($carousel_settings) . '\'>';
+                . '" class="lae-posts-carousel lae-container ' 
+                . 'lae-' . str_replace('_', '-', $settings['carousel_skin'])
+                . '" data-settings=\'' . wp_json_encode($carousel_settings) . '\'>';
 
             $taxonomies[] = $settings['taxonomy_chosen'];
 
             while ($loop->have_posts()) : $loop->the_post();
 
+                $post_id = get_the_ID();
+
                 $entry_output = '<div data-id="id-' . get_the_ID() . '" class="lae-posts-carousel-item">';
 
                 $entry_output .= '<article id="post-' . get_the_ID() . '" class="' . join(' ', get_post_class('', $post_id)) . '">';
 
-                if ($thumbnail_exists = has_post_thumbnail()):
+                if ($settings['carousel_skin'] == 'custom_skin') :
 
-                    $entry_image = '<div class="lae-project-image">';
+                    if ($template_id)
 
-                    $image_setting = ['id' => get_post_thumbnail_id()];
+                        $entry_output .= $this->get_item_template_content($template_id, $settings);
+                    else
+                        $entry_output .= lae_template_error(__('Choose a custom skin template for the carousel item', 'livemesh-el-addons'));
 
-                    $thumbnail_html = lae_get_image_html($image_setting, 'thumbnail_size', $settings);
+                else :
 
-                    if ($settings['image_linkable'] == 'yes'):
+                    if ($thumbnail_exists = has_post_thumbnail() && $settings['display_thumbnail'] == 'yes'):
 
-                        $thumbnail_html = '<a href="' . get_the_permalink() . '">' . $thumbnail_html . '</a>';
+                        $entry_image = '<div class="lae-project-image">';
 
-                    endif;
+                        $image_setting = ['id' => get_post_thumbnail_id()];
 
-                    $entry_image .= apply_filters('lae_posts_carousel_thumbnail_html', $thumbnail_html, $image_setting, $settings);
+                        $thumbnail_html = lae_get_image_html($image_setting, 'thumbnail_size', $settings);
 
-                    $image_info = '<div class="lae-image-info">';
+                        if ($settings['image_linkable'] == 'yes'):
 
-                    $image_info .= '<div class="lae-entry-info">';
-
-                    $image_info .= '<' . $settings['title_tag'] . ' class="lae-post-title"><a href="' . get_permalink() . '" title="' . get_the_title() . '" rel="bookmark">' . get_the_title() . '</a></' . $settings['title_tag'] . '>';
-
-                    $image_info .= lae_get_info_for_taxonomies($taxonomies);
-
-                    $image_info .= '</div>';
-
-                    $image_info .= '</div><!-- .lae-image-info -->';
-
-                    $entry_image .= apply_filters('lae_posts_carousel_image_info', $image_info, $post_id, $settings);
-
-                    $entry_image .= '</div>';
-
-                    $entry_output .= apply_filters('lae_posts_carousel_entry_image', $entry_image, $post_id, $image_setting, $settings);
-
-                endif;
-
-                if (($settings['display_title'] == 'yes') || ($settings['display_summary'] == 'yes')) :
-
-                    $entry_output .= '<div class="lae-entry-text-wrap ' . ($thumbnail_exists ? '' : ' nothumbnail') . '">';
-
-                    if ($settings['display_title'] == 'yes') :
-
-                        $entry_title = '<' . $settings['entry_title_tag']
-                            . ' class="entry-title"><a href="' . get_permalink()
-                            . '" title="' . get_the_title()
-                            . '" rel="bookmark">' . get_the_title()
-                            . '</a></' . $settings['entry_title_tag'] . '>';
-
-                        $entry_output .= apply_filters('lae_posts_carousel_entry_title', $entry_title, $post_id, $settings);
-
-                    endif;
-
-                    if (($settings['display_post_date'] == 'yes') || ($settings['display_author'] == 'yes') || ($settings['display_taxonomy'] == 'yes')) :
-
-                        $entry_meta = '<div class="lae-entry-meta">';
-
-                        if ($settings['display_author'] == 'yes'):
-
-                            $entry_meta .= lae_entry_author();
+                            $thumbnail_html = '<a href="' . get_the_permalink() . '"' . $target . '>' . $thumbnail_html . '</a>';
 
                         endif;
 
-                        if ($settings['display_post_date'] == 'yes'):
+                        $entry_image .= apply_filters('lae_posts_carousel_thumbnail_html', $thumbnail_html, $image_setting, $settings);
 
-                            $entry_meta .= lae_entry_published();
+                        if (($settings['display_title_on_thumbnail'] == 'yes') || ($settings['display_taxonomy_on_thumbnail'] == 'yes')):
+
+                            $image_info = '<div class="lae-image-info">';
+
+                            $image_info .= '<div class="lae-entry-info">';
+
+                            if ($settings['display_title_on_thumbnail'] == 'yes'):
+
+                                $image_info .= '<' . $settings['title_tag'] . ' class="lae-post-title"><a href="' . get_permalink() . '" title="' . get_the_title() . '" rel="bookmark"' . $target . '>' . get_the_title() . '</a></' . $settings['title_tag'] . '>';
+
+                            endif;
+
+                            if ($settings['display_taxonomy_on_thumbnail'] == 'yes'):
+
+                                $image_info .= lae_get_info_for_taxonomies($taxonomies);
+
+                            endif;
+
+                            $image_info .= '</div>';
+
+                            $image_info .= '</div><!-- .lae-image-info -->';
+
+                            $entry_image .= apply_filters('lae_posts_carousel_image_info', $image_info, $post_id, $settings);
+
+                            $entry_image .= '</div>';
 
                         endif;
 
-                        if ($settings['display_taxonomy'] == 'yes'):
+                        $entry_output .= apply_filters('lae_posts_carousel_entry_image', $entry_image, $post_id, $image_setting, $settings);
 
-                            $entry_meta .= lae_get_info_for_taxonomies($taxonomies);
+                    endif;
+
+                    if (($settings['display_title'] == 'yes') || ($settings['display_summary'] == 'yes')) :
+
+                        $entry_output .= '<div class="lae-entry-text-wrap ' . ($thumbnail_exists ? '' : ' nothumbnail') . '">';
+
+                        if ($settings['display_title'] == 'yes') :
+
+                            $entry_title = '<' . $settings['entry_title_tag']
+                                . ' class="entry-title"><a href="' . get_permalink()
+                                . '" title="' . get_the_title()
+                                . '" rel="bookmark"' . $target . '>' . get_the_title()
+                                . '</a></' . $settings['entry_title_tag'] . '>';
+
+                            $entry_output .= apply_filters('lae_posts_carousel_entry_title', $entry_title, $post_id, $settings);
 
                         endif;
 
-                        $entry_meta .= '</div>';
+                        if (($settings['display_post_date'] == 'yes') || ($settings['display_author'] == 'yes') || ($settings['display_taxonomy'] == 'yes')) :
 
-                        $entry_output .= apply_filters('lae_posts_carousel_entry_meta', $entry_meta, $post_id, $settings);
+                            $entry_meta = '<div class="lae-entry-meta">';
+
+                            if ($settings['display_author'] == 'yes'):
+
+                                $entry_meta .= lae_entry_author();
+
+                            endif;
+
+                            if ($settings['display_post_date'] == 'yes'):
+
+                                $entry_meta .= lae_entry_published();
+
+                            endif;
+
+                            if ($settings['display_taxonomy'] == 'yes'):
+
+                                $entry_meta .= lae_get_info_for_taxonomies($taxonomies);
+
+                            endif;
+
+                            $entry_meta .= '</div>';
+
+                            $entry_output .= apply_filters('lae_posts_carousel_entry_meta', $entry_meta, $post_id, $settings);
+
+                        endif;
+
+                        if ($settings['display_summary'] == 'yes') :
+
+                            $excerpt = '<div class="entry-summary">';
+
+                            $excerpt .= get_the_excerpt();
+
+                            $excerpt .= '</div>';
+
+                            $entry_output .= apply_filters('lae_posts_carousel_entry_excerpt', $excerpt, $post_id, $settings);
+
+                        endif;
+
+                        if ($settings['display_read_more'] == 'yes') :
+
+                            $read_more_text = $settings['read_more_text'];
+
+                            $read_more = '<div class="lae-read-more">';
+
+                            $read_more .= '<a href="' . get_the_permalink() . '"' . $target . '>' . $read_more_text . '</a>';
+
+                            $read_more .= '</div>';
+
+                            $entry_output .= apply_filters('lae_posts_carousel_read_more_link', $read_more, $post_id, $settings);
+
+                        endif;
+
+                        $entry_output .= '</div>';
 
                     endif;
-
-                    if ($settings['display_summary'] == 'yes') :
-
-                        $excerpt = '<div class="entry-summary">';
-
-                        $excerpt .= get_the_excerpt();
-
-                        $excerpt .= '</div>';
-
-                        $entry_output .= apply_filters('lae_posts_carousel_entry_excerpt', $excerpt, $post_id, $settings);
-
-                    endif;
-
-                    $entry_output .= '</div>';
 
                 endif;
 

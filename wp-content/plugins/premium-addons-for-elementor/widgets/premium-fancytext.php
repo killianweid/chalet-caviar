@@ -1,8 +1,11 @@
 <?php
 
+/**
+ * Premium Fancy Text.
+ */
 namespace PremiumAddons\Widgets;
 
-use PremiumAddons\Helper_Functions;
+// Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
@@ -11,8 +14,14 @@ use Elementor\Scheme_Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 
+// PremiumAddons Classes.
+use PremiumAddons\Helper_Functions;
+
 if ( ! defined( 'ABSPATH' ) ) exit; // If this file is called directly, abort.
 
+/**
+ * Class Premium_Fancytext
+ */
 class Premium_Fancytext extends Widget_Base {
     
     public function get_name() {
@@ -44,17 +53,24 @@ class Premium_Fancytext extends Widget_Base {
     public function get_categories() {
         return [ 'premium-elements' ];
     }
+    
+    public function get_custom_help_url() {
+		return 'https://premiumaddons.com/support/';
+	}
 
-    // Adding the controls fields for the premium fancy text
-    // This will controls the animation, colors and background, dimensions etc
+    /**
+	 * Register Testimonials controls.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
     protected function _register_controls() {
 
-        /*Start Text Content Section*/
         $this->start_controls_section('premium_fancy_text_content',
-                [
-                    'label'         => __('Fancy Text', 'premium-addons-for-elementor'),
-                    ]
-                );
+            [
+                'label'         => __('Fancy Text', 'premium-addons-for-elementor'),
+            ]
+        );
         
         /*Prefix Text*/ 
         $this->add_control('premium_fancy_prefix_text',
@@ -81,24 +97,24 @@ class Premium_Fancytext extends Widget_Base {
         
         /*Fancy Text Strings*/
         $this->add_control('premium_fancy_text_strings',
-                [
-                    'label'         => __( 'Fancy Text', 'premium-addons-for-elementor' ),
-                    'type'          => Controls_Manager::REPEATER,
-                    'default'       => [
-                        [
-                            'premium_text_strings_text_field' => __( 'Designer', 'premium-addons-for-elementor' ),
-                            ],
-                        [
-                            'premium_text_strings_text_field' => __( 'Developer', 'premium-addons-for-elementor' ),
-                            ],
-                        [
-                            'premium_text_strings_text_field' => __( 'Awesome', 'premium-addons-for-elementor' ),
-                            ],
+            [
+                'label'         => __( 'Fancy Text', 'premium-addons-for-elementor' ),
+                'type'          => Controls_Manager::REPEATER,
+                'default'       => [
+                    [
+                        'premium_text_strings_text_field' => __( 'Designer', 'premium-addons-for-elementor' ),
                         ],
-                    'fields'        => array_values( $repeater->get_controls() ),
-                    'title_field'   => '{{{ premium_text_strings_text_field }}}',
-                    ]
-                );
+                    [
+                        'premium_text_strings_text_field' => __( 'Developer', 'premium-addons-for-elementor' ),
+                        ],
+                    [
+                        'premium_text_strings_text_field' => __( 'Awesome', 'premium-addons-for-elementor' ),
+                        ],
+                    ],
+                'fields'        => $repeater->get_controls(),
+                'title_field'   => '{{{ premium_text_strings_text_field }}}',
+            ]
+        );
 
 		/*Prefix Text*/ 
         $this->add_control('premium_fancy_suffix_text',
@@ -141,63 +157,110 @@ class Premium_Fancytext extends Widget_Base {
         $this->end_controls_section();
         
         $this->start_controls_section('premium_fancy_additional_settings',
-                [
-                    'label'         => __('Additional Settings', 'premium-addons-for-elementor'),
-                    ]
-                );
+            [
+                'label'         => __('Additional Settings', 'premium-addons-for-elementor'),
+            ]
+        );
         
-        /*Text Effect*/
         $this->add_control('premium_fancy_text_effect', 
-                [
-                    'label'         => __('Effect', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::SELECT,
-                    'options'       => [
-                        'typing'=> __('Typing', 'premium-addons-for-elementor'),
-                        'slide' => __('Slide Up', 'premium-addons-for-elementor')
-                    ],
-                    'default'       => 'typing',
-                    'label_block'   => true,
-                    ]
-                );
-        
-        /*Type Speed*/
+            [
+                'label'         => __('Effect', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::SELECT,
+                'options'       => [
+                    'typing' => __('Typing', 'premium-addons-for-elementor'),
+                    'slide'  => __('Slide Up', 'premium-addons-for-elementor'),
+                    'zoomout'=> __('Zoom Out', 'premium-addons-for-elementor'),
+                    'rotate' => __('Rotate', 'premium-addons-for-elementor'),
+                    'custom' => __('Custom', 'premium-addons-for-elementor'),
+                ],
+                'default'       => 'typing',
+                'render_type'   => 'template',
+                'label_block'   => true,
+            ]
+        );
+
+        $this->add_control('custom_animation', 
+            [
+                'label'         => __('Animations', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::ANIMATION,
+                'render_type'   => 'template',
+                'default'       => 'fadeIn',
+                'condition'     => [
+                    'premium_fancy_text_effect' => 'custom'
+                ]
+            ]
+		);
+
         $this->add_control('premium_fancy_text_type_speed',
-                [
-                    'label'         => __('Type Speed', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::NUMBER,
-                    'default'       => 30,
-                    'description'   => __( 'Set typing effect speed in milliseconds.', 'premium-addons-for-elementor' ),
-                    'condition'     => [
-                        'premium_fancy_text_effect' => 'typing',
-                        ],
-                ]
-                );
+            [
+                'label'         => __('Type Speed', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::NUMBER,
+                'default'       => 30,
+                'description'   => __( 'Set typing effect speed in milliseconds.', 'premium-addons-for-elementor' ),
+                'condition'     => [
+                    'premium_fancy_text_effect' => 'typing',
+                ],
+            ]
+        );
         
-        /*Back Speed*/
+        $this->add_control('premium_fancy_text_zoom_speed',
+            [
+                'label'         => __('Animation Speed', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::NUMBER,
+                'description'   => __('Set animation speed in milliseconds. Default value is 1000', 'premium-addons-for-elementor'),
+                'condition'     => [
+                    'premium_fancy_text_effect!' => [ 'typing', 'slide' ],
+                ],
+                'selectors'     => [
+                    '{{WRAPPER}} .premium-fancy-text-wrapper:not(.typing):not(.slide) .premium-fancy-list-items'   => 'animation-duration: {{VALUE}}ms'
+                ]
+            ]
+        );
+        
+        $this->add_control('premium_fancy_text_zoom_delay',
+            [
+                'label'         => __('Animation Delay', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::NUMBER,
+                'description'   => __('Set animation delay in milliseconds.Default value is 2500', 'premium-addons-for-elementor'),
+                'condition'     => [
+                    'premium_fancy_text_effect!' => [ 'typing', 'slide' ],
+                ]
+            ]
+        );
+
+        $this->add_control('loop_count',
+            [
+                'label'         => __('Loop Count', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::NUMBER,
+                'condition'     => [
+                    'premium_fancy_text_effect!' => [ 'typing', 'slide' ],
+                ],
+            ]
+        );
+        
         $this->add_control('premium_fancy_text_back_speed',
-                [
-                    'label'         => __('Back Speed', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::NUMBER,
-                    'default'       => 30,
-                    'description'   => __( 'Set a speed for backspace effect in milliseconds.', 'premium-addons-for-elementor' ),
-                    'condition'     => [
-                        'premium_fancy_text_effect' => 'typing',
-                        ],
-                ]
-                );
+            [
+                'label'         => __('Back Speed', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::NUMBER,
+                'default'       => 30,
+                'description'   => __( 'Set a speed for backspace effect in milliseconds.', 'premium-addons-for-elementor' ),
+                'condition'     => [
+                    'premium_fancy_text_effect' => 'typing',
+                ],
+            ]
+        );
         
-        /*Start Delay*/
         $this->add_control('premium_fancy_text_start_delay',
-                [
-                    'label'         => __('Start Delay', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::NUMBER,
-                    'default'       => 30,
-                    'description'   => __( 'If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-addons-for-elementor' ),
-                    'condition'     => [
-                        'premium_fancy_text_effect' => 'typing',
-                        ],
-                ]
-                );
+            [
+                'label'         => __('Start Delay', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::NUMBER,
+                'default'       => 30,
+                'description'   => __( 'If you set it on 5000 milliseconds, the first word/string will appear after 5 seconds.', 'premium-addons-for-elementor' ),
+                'condition'     => [
+                    'premium_fancy_text_effect' => 'typing',
+                ],
+            ]
+        );
         
         /*Back Delay*/
         $this->add_control('premium_fancy_text_back_delay',
@@ -249,19 +312,18 @@ class Premium_Fancytext extends Widget_Base {
                         ],
                     ]
                 );
-        
-        /*Slide Up Speed*/
+
         $this->add_control('premium_slide_up_speed',
-                [
-                    'label'         => __('Animation Speed', 'premium-addons-for-elementor'),
-                    'type'          => Controls_Manager::NUMBER,
-                    'default'       => 200,
-                    'description'   => __( 'Set a duration value in milliseconds for slide up effect.', 'premium-addons-for-elementor' ),
-                    'condition'     => [
-                        'premium_fancy_text_effect' => 'slide',
-                        ],
-                ]
-                );
+            [
+                'label'         => __('Animation Speed', 'premium-addons-for-elementor'),
+                'type'          => Controls_Manager::NUMBER,
+                'default'       => 200,
+                'description'   => __( 'Set a duration value in milliseconds for slide up effect.', 'premium-addons-for-elementor' ),
+                'condition'     => [
+                    'premium_fancy_text_effect' => 'slide',
+                ],
+            ]
+        );
         
         /*Slide Up Pause Time*/
         $this->add_control('premium_slide_up_pause_time',
@@ -295,7 +357,6 @@ class Premium_Fancytext extends Widget_Base {
                 'label'         => __('Pause on Hover','premium-addons-for-elementor'),
                 'type'          => Controls_Manager::SWITCHER,
                 'description'   => __( 'If you enabled this option, the slide will be paused when mouseover.', 'premium-addons-for-elementor' ),
-                'default'       => 'no',
                 'condition'     => [
                     'premium_fancy_text_effect' => 'slide',
                 ],
@@ -486,28 +547,37 @@ class Premium_Fancytext extends Widget_Base {
         $this->end_controls_section();
     }
 
-    protected function render( ) {
+    /**
+	 * Render Fancy Text widget output on the frontend.
+	 *
+	 * Written in PHP and used to generate the final HTML.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
+    protected function render() {
         
-        $settings = $this->get_settings_for_display();
+        $settings   = $this->get_settings_for_display();
         
-        $cursor_text = addslashes( $settings['premium_fancy_text_cursor_text'] );
+        $effect     = $settings['premium_fancy_text_effect'];
         
-        if($settings['premium_fancy_text_effect'] == 'slide'){
-            $this->add_render_attribute( 'prefix', 'class', 'premium-fancy-text-span-align' );
-            $this->add_render_attribute( 'suffix', 'class', 'premium-fancy-text-span-align' );
-        }
-        
-        if($settings['premium_fancy_text_effect'] == 'typing'){
-            $show_cursor = (!empty($settings['premium_fancy_text_show_cursor'])) ? true : false;
-            $loop = !empty( $settings['premium_fancy_text_type_loop'] ) ? true : false;
+        if( $effect === 'typing' ) {
+            
+            $show_cursor = ( ! empty( $settings['premium_fancy_text_show_cursor'] ) ) ? true : false;
+            
+            $cursor_text = addslashes( $settings['premium_fancy_text_cursor_text'] );
+            
+            $loop = ! empty( $settings['premium_fancy_text_type_loop'] ) ? true : false;
+            
             $strings = array();
-            foreach ( $settings['premium_fancy_text_strings'] as $item ) :
-                if ( ! empty( $item['premium_text_strings_text_field'] ) ) :
-                    array_push( $strings, str_replace('\'','`', $item['premium_text_strings_text_field'] ) );
-                endif;
-            endforeach;
+            
+            foreach ( $settings['premium_fancy_text_strings'] as $item ) {
+                if ( ! empty( $item['premium_text_strings_text_field'] ) ) {
+                    array_push( $strings, str_replace('\'','&#39;', $item['premium_text_strings_text_field'] ) );
+                }
+            }
             $fancytext_settings = [
-                'effect'    => $settings['premium_fancy_text_effect'],
+                'effect'    => $effect,
                 'strings'   => $strings,
                 'typeSpeed' => $settings['premium_fancy_text_type_speed'],
                 'backSpeed' => $settings['premium_fancy_text_back_speed'],
@@ -517,31 +587,61 @@ class Premium_Fancytext extends Widget_Base {
                 'cursorChar'=> $cursor_text,
                 'loop'      => $loop,
             ];
-        } else {
-            $mause_pause = !empty( $settings['premium_slide_up_hover_pause'] ) ? true : false;
+        } elseif( $effect === 'slide' ) {
+            
+            $this->add_render_attribute( 'prefix', 'class', 'premium-fancy-text-span-align' );
+            $this->add_render_attribute( 'suffix', 'class', 'premium-fancy-text-span-align' );
+            
+            $mause_pause = 'yes' === $settings['premium_slide_up_hover_pause'] ? true : false;
             $fancytext_settings = [
-                'effect'        => $settings['premium_fancy_text_effect'],
+                'effect'        => $effect,
                 'speed'         => $settings['premium_slide_up_speed'],
                 'showItems'     => $settings['premium_slide_up_shown_items'],
                 'pause'         => $settings['premium_slide_up_pause_time'],
                 'mousePause'    => $mause_pause
             ];
+        } else {
+
+            $fancytext_settings = [
+                'effect'        => $effect,
+                'delay'         => $settings['premium_fancy_text_zoom_delay'],
+                'count'         => $settings['loop_count'],
+            ];
+
+            if( $effect === 'custom' ) {
+                $fancytext_settings['animation'] = $settings['custom_animation'];
+            }
         }
+        
+        $this->add_render_attribute('wrapper', 'class', [ 'premium-fancy-text-wrapper', $effect ] );
+        
+        $this->add_render_attribute('wrapper', 'data-settings', wp_json_encode( $fancytext_settings ) );
         
     ?>
     
-    <div class="premium-fancy-text-wrapper" data-settings='<?php echo wp_json_encode($fancytext_settings); ?>'>
-        <span class="premium-prefix-text"><span <?php echo $this->get_render_attribute_string('prefix'); ?>><?php echo wp_kses( ( $settings['premium_fancy_prefix_text'] ), true ); ?></span></span>
+        <div <?php echo $this->get_render_attribute_string('wrapper'); ?>>
+            <span class="premium-prefix-text"><span <?php echo $this->get_render_attribute_string('prefix'); ?>><?php echo wp_kses( ( $settings['premium_fancy_prefix_text'] ), true ); ?></span></span>
 
-        <?php if ( $settings['premium_fancy_text_effect'] === 'typing'  ) : ?>
-            <span class="premium-fancy-text" ></span>
+        <?php if ( $effect === 'typing'  ) : ?>
+            <span class="premium-fancy-text"></span>
         <?php else : ?> 
-            <div class="premium-fancy-text" style=' display: inline-block; text-align: center;'>
-                <ul>
-                    <?php foreach ( $settings['premium_fancy_text_strings'] as $item ) :
-                        if ( ! empty( $item['premium_text_strings_text_field'] ) ) : 
-                            echo "<li class='premium-fancy-list-items' >" . esc_attr( $item['premium_text_strings_text_field'] ) . "</li>"; 
-                        endif; 
+            <div class="premium-fancy-text" style='display: inline-block; text-align: center'>
+                <ul class="premium-fancy-text-items-wrapper">
+                    <?php foreach ( $settings['premium_fancy_text_strings'] as $index => $item ) :
+                        if ( ! empty( $item['premium_text_strings_text_field'] ) ) :
+                            $this->add_render_attribute( 'text_' . $item['_id'], 'class', 'premium-fancy-list-items' );
+                        
+                            if( ( 'typing' !== $effect && 'slide' !== $effect ) && 0 !== $index ) {
+                                $this->add_render_attribute( 'text_' . $item['_id'], 'class', 'premium-fancy-item-hidden' );
+                            } else {
+                                $this->add_render_attribute( 'text_' . $item['_id'], 'class', 'premium-fancy-item-visible' );
+                            }
+
+                        ?>
+                            <li <?php echo $this->get_render_attribute_string('text_' . $item['_id'] ) ?>>
+                                <?php echo esc_html( $item['premium_text_strings_text_field'] ); ?>
+                            </li>
+                        <?php endif; 
                     endforeach; ?>
                 </ul>
             </div>
@@ -551,27 +651,32 @@ class Premium_Fancytext extends Widget_Base {
     <?php
     }
     
-    protected function _content_template() {
+    /**
+	 * Render Fancy Text widget output in the editor.
+	 *
+	 * Written as a Backbone JavaScript template and used to generate the live preview.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
+    protected function content_template() {
         ?>
         <#
         
             view.addInlineEditingAttributes('prefix');
             view.addInlineEditingAttributes('suffix');
             
+            var effect = settings.premium_fancy_text_effect;
             
-            var cursorText          = settings.premium_fancy_text_cursor_text,
-                cursorTextEscaped   = cursorText.replace(/'/g, "\\'");
-        
             var fancyTextSettings = {};
-                
-        if( 'slide' === settings.premium_fancy_text_effect ) {
-            view.addRenderAttribute( 'prefix', 'class', 'premium-fancy-text-span-align' );
-            view.addRenderAttribute( 'suffix', 'class', 'premium-fancy-text-span-align' );
-        }
+            
+            fancyTextSettings.effect = effect;
         
-        if( 'typing' === settings.premium_fancy_text_effect ) {
+        if( 'typing' === effect ) {
         
-            var showCursor  = settings.premium_fancy_text_show_cursor ? true : false,
+            var cursorText          = settings.premium_fancy_text_cursor_text,
+                cursorTextEscaped   = cursorText.replace(/'/g, "\\'"),
+                showCursor  = settings.premium_fancy_text_show_cursor ? true : false,
                 loop        = settings.premium_fancy_text_type_loop ? true : false,
                 strings     = [];
             
@@ -580,13 +685,10 @@ class Premium_Fancytext extends Widget_Base {
                 
                     var fancyString = item.premium_text_strings_text_field;
                     
-                    strings.push( fancyString.replace( '\'','`' ) );
+                    strings.push( fancyString );
                 }
             });
-            
-            
-            
-            fancyTextSettings.effect     = settings.premium_fancy_text_effect,
+
             fancyTextSettings.strings    = strings,
             fancyTextSettings.typeSpeed  = settings.premium_fancy_text_type_speed,
             fancyTextSettings.backSpeed  = settings.premium_fancy_text_back_speed,
@@ -597,19 +699,30 @@ class Premium_Fancytext extends Widget_Base {
             fancyTextSettings.loop       = loop;
             
             
-        } else {
+        } else if ( 'slide' === effect ) {
+
+            view.addRenderAttribute( 'prefix', 'class', 'premium-fancy-text-span-align' );
+            view.addRenderAttribute( 'suffix', 'class', 'premium-fancy-text-span-align' );
         
-            var mausePause = settings.premium_slide_up_hover_pause ? true : false;
+            var mausePause = 'yes' === settings.premium_slide_up_hover_pause ? true : false;
             
-            fancyTextSettings.effect        = settings.premium_fancy_text_effect,
             fancyTextSettings.speed         = settings.premium_slide_up_speed,
             fancyTextSettings.showItems     = settings.premium_slide_up_shown_items,
             fancyTextSettings.pause         = settings.premium_slide_up_pause_time,
             fancyTextSettings.mousePause    = mausePause
            
+        } else {
+            
+            fancyTextSettings.delay         = settings.premium_fancy_text_zoom_delay;
+            fancyTextSettings.count         = settings.loop_count;
+
+            if( 'custom' === effect ) {
+                fancyTextSettings.animation = settings.custom_animation;
+            }
+        
         }
         
-            view.addRenderAttribute( 'container', 'class', 'premium-fancy-text-wrapper' );
+            view.addRenderAttribute( 'container', 'class', [ 'premium-fancy-text-wrapper', effect ] );
             view.addRenderAttribute( 'container', 'data-settings', JSON.stringify( fancyTextSettings ) );
         
         #>
@@ -617,15 +730,23 @@ class Premium_Fancytext extends Widget_Base {
             <div {{{ view.getRenderAttributeString('container') }}}>
                 <span class="premium-prefix-text"><span {{{ view.getRenderAttributeString('prefix') }}}>{{{ settings.premium_fancy_prefix_text }}}</span></span>
 
-            <# if ( 'typing' === settings.premium_fancy_text_effect ) { #>
-                <span class="premium-fancy-text" ></span>
+            <# if ( 'typing' === effect ) { #>
+                <span class="premium-fancy-text"></span>
             <# } else { #> 
                 <div class="premium-fancy-text" style=' display: inline-block; text-align: center;'>
-                    <ul>
-                        <# _.each ( settings.premium_fancy_text_strings, function ( item ) {
-                            if ( '' !== item.premium_text_strings_text_field ) #>
-                                <li class='premium-fancy-list-items'>{{{ item.premium_text_strings_text_field }}}</li>
-                        <# }); #>
+                    <ul class="premium-fancy-text-items-wrapper">
+                        <# _.each ( settings.premium_fancy_text_strings, function ( item, index ) {
+                            if ( '' !== item.premium_text_strings_text_field ) {
+                                view.addRenderAttribute( 'text_' + item._id, 'class', 'premium-fancy-list-items' );
+                        
+                            if( ( 'typing' !== effect && 'slide' !== effect ) && 0 !== index ) {
+                                view.addRenderAttribute( 'text_' + item._id, 'class', 'premium-fancy-item-hidden' );
+                            } else {
+                                view.addRenderAttribute( 'text_' + item._id, 'class', 'premium-fancy-item-visible' );
+                            } #>
+                            
+                                <li {{{ view.getRenderAttributeString('text_' + item._id ) }}}>{{{ item.premium_text_strings_text_field }}}</li>
+                        <# } }); #>
                     </ul>
                 </div>
             <# } #>

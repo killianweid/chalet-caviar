@@ -14,8 +14,8 @@ $open_section = filter_input(INPUT_GET, 'open_section', FILTER_SANITIZE_STRING, 
 HELP FORM -->
 <div id="main-help">
 <div class="help-online"><br/>
-	<i class="far fa-file-alt fa-sm"></i> For complete help visit the
-	<a href="https://snapcreek.com/support/docs/" target="_blank">Online Knowledge-Base</a> <br/>
+	<i class="far fa-file-alt fa-sm"></i> For complete help visit
+	<a href="https://snapcreek.com/support/docs/" target="_blank">Duplicator Migration and Backup Online Help</a> <br/>
 	<small>Features available only in Duplicator Pro are flagged with a <sup>pro</sup> tag.</small>
 </div>
 
@@ -218,19 +218,19 @@ $expandClass =  $sectionId == $open_section ? 'open' : 'close';
                         present will be removed.
                         <br/><br/>
 
-                        <b>Restore Original:</b> This option simply renames the htaccess.orig or web.config.orig	files to .htaccess or web.config. The *.orig files come from the original
+                        <b>Restore Original:</b> This option simply renames the .htaccess__[HASH] or web.config.orig	files to .htaccess or web.config. The *.orig files come from the original
                         web server where the package was built.	Please note this option will cause issues with the install process if the configuration files are not properly setup to
                         handle the new server environment.  This is an	advanced option and should only be used if you know how to properly configure your web servers configuration.
                         <br/><br/>
 
                         <b>Ignore All:</b> This option simply does nothing.  No files are backed up, nothing is renamed or created.  This advanced option assumes you already have your
-                        config files setup and know how they should behave in the new environment.  When the package is build it will always create a htaccess.orig or web.config.orig.
+                        config files setup and know how they should behave in the new environment.  When the package is build it will always create a .htaccess__[HASH] or web.config.orig.
                         Since these files are already in the archive file they will show up when the archive is extracted.
                         <br/><br/>
 
                         <b>Additional Notes:</b>
                         Inside the archive.zip will be a copy of the original .htaccess (Apache) or the web.config (IIS) files that were setup with your packaged site.  They are both
-                        renamed to htaccess.orig and web.config.orig.  When using either 'Create New' or 'Restore Original' any existing config files  will	be backed up with a .bak extension.
+                        renamed to .htaccess__[HASH] and web.config.orig.  When using either 'Create New' or 'Restore Original' any existing config files  will	be backed up with a .bak extension.
                         <i>None of these changes are made until Step 3 is completed, to avoid any issues the .htaccess might cause during the install</i>
                         <br/><br/>
                     </td>
@@ -515,11 +515,11 @@ $expandClass =  $sectionId == $open_section ? 'open' : 'close';
                 </tr>
                 <tr>
                     <td class="col-opt">Site URL</td>
-                    <td> For details see WordPress <a href="http://codex.wordpress.org/Changing_The_Site_URL" target="_blank">Site URL</a> &amp; <a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory" target="_blank">Alternate Directory</a>.  If you're not sure about this value then leave it the same as the new settings URL.</td>
+                    <td> For details see WordPress <a href="http://codex.wordpress.org/Changing_The_Site_URL" target="_blank">Site URL</a> &amp; <a href="http://codex.wordpress.org/Giving_WordPress_Its_Own_Directory" target="_blank">Alternate Directory</a>.  If you're not sure about this value then leave it the same as the new setup URL.</td>
                 </tr>
                 <tr>
                     <td class="col-opt">Scan Tables</td>
-                    <td>Select the tables to be updated. This process will update all of the 'Old Settings' with the 'New Settings'. Hold down the 'ctrl key' to select/deselect multiple.</td>
+                    <td>Select the tables to be updated. This process will update all of the 'Old Settings' with the new 'Setup' settings. Hold down the 'ctrl key' to select/deselect multiple.</td>
                 </tr>
                 <tr>
                     <td class="col-opt">Activate Plugins</td>
@@ -628,7 +628,7 @@ $expandClass =  $sectionId == $open_section ? 'open' : 'close';
             <div style="padding: 0px 10px 10px 10px;">
                 <b>Common Quick Fix Issues:</b>
                 <ul>
-                    <li>Use an <a href='https://snapcreek.com/wordpress-hosting/' target='_blank'>approved hosting provider</a></li>
+                    <li>Use a <a href='https://snapcreek.com/wordpress-hosting/' target='_blank'>Duplicator approved hosting provider</a></li>
                     <li>Validate directory and file permissions (see below)</li>
                     <li>Validate web server configuration file (see below)</li>
                     <li>Clear your browsers cache</li>
@@ -642,7 +642,7 @@ $expandClass =  $sectionId == $open_section ? 'open' : 'close';
                 <br/><br/>
 
                 <b>Web server configuration files:</b><br/>
-                For Apache web server the root .htaccess file was copied to htaccess.orig. A new stripped down .htaccess file was created to help simplify access issues.  For IIS web server the web.config file was copied to web.config.orig, however no new web.config file was created.  If you have not altered this file manually then resaving your permalinks and resaving your plugins should resolve most all changes that were made to the root web configuration file.   If your still experiencing issues then open the .orig file and do a compare to see what changes need to be made. <br/><br/><b>Plugin Notes:</b><br/> It's impossible to know how all 3rd party plugins function.  The Duplicator attempts to fix the new install URL for settings stored in the WordPress options table.   Please validate that all plugins retained there settings after installing.   If you experience issues try to bulk deactivate all plugins then bulk reactivate them on your new duplicated site. If you run into issues were a plugin does not retain its data then try to resave the plugins settings.
+                For Apache web server the root .htaccess file was copied to .htaccess__[HASH]. A new stripped down .htaccess file was created to help simplify access issues.  For IIS web server the web.config file was copied to web.config.orig, however no new web.config file was created.  If you have not altered this file manually then resaving your permalinks and resaving your plugins should resolve most all changes that were made to the root web configuration file.   If your still experiencing issues then open the .orig file and do a compare to see what changes need to be made. <br/><br/><b>Plugin Notes:</b><br/> It's impossible to know how all 3rd party plugins function.  The Duplicator attempts to fix the new install URL for settings stored in the WordPress options table.   Please validate that all plugins retained there settings after installing.   If you experience issues try to bulk deactivate all plugins then bulk reactivate them on your new duplicated site. If you run into issues were a plugin does not retain its data then try to resave the plugins settings.
                 <br/><br/>
 
                  <b>Cache Systems:</b><br/>
@@ -662,7 +662,7 @@ $expandClass =  $sectionId == $open_section ? 'open' : 'close';
     </div>
 </section>
 
-<div style="text-align:center; margin-top: 28px;">For additional help please visit the <a href="https://snapcreek.com/support/docs/" target="_blank">online resources</a></div>
+<div style="text-align:center; margin-top: 28px;">For additional help please visit <a href="https://snapcreek.com/support/docs/" target="_blank">Duplicator Migration and Backup Online Help</a></div>
 
 
 </div>

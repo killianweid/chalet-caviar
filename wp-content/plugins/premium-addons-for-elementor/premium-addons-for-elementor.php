@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Premium Addons for Elementor
-Description: Premium Addons Plugin Includes 22+ premium widgets for Elementor Page Builder.
+Description: Premium Addons for Elementor plugin includes widgets and addons like Blog Post Grid, Gallery, Carousel, Modal Popup, Google Maps, Pricing Tables, Lottie Animations, Countdown, Testimonials.
 Plugin URI: https://premiumaddons.com
-Version: 3.7.8
+Version: 3.21.6
 Author: Leap13
 Author URI: https://leap13.com/
 Text Domain: premium-addons-for-elementor
@@ -14,12 +14,12 @@ License: GNU General Public License v3.0
 if ( ! defined('ABSPATH') ) exit; // No access of directly access
 
 // Define Constants
-define('PREMIUM_ADDONS_VERSION', '3.7.8');
-define('PREMIUM_ADDONS_URL', plugins_url('/', __FILE__));
-define('PREMIUM_ADDONS_PATH', plugin_dir_path(__FILE__));
+define('PREMIUM_ADDONS_VERSION', '3.21.6');
+define('PREMIUM_ADDONS_URL', plugins_url( '/', __FILE__ ) );
+define('PREMIUM_ADDONS_PATH', plugin_dir_path( __FILE__ ) );
 define('PREMIUM_ADDONS_FILE', __FILE__);
 define('PREMIUM_ADDONS_BASENAME', plugin_basename( PREMIUM_ADDONS_FILE ) );
-define('PREMIUM_ADDONS_STABLE_VERSION', '3.7.7');
+define('PREMIUM_ADDONS_STABLE_VERSION', '3.21.5');
 
 if( ! class_exists('Premium_Addons_Elementor') ) {
     
@@ -100,11 +100,17 @@ if( ! class_exists('Premium_Addons_Elementor') ) {
          */
         public function init_files() {
             
+            require_once ( PREMIUM_ADDONS_PATH . 'includes/class-helper-functions.php' );
+            require_once ( PREMIUM_ADDONS_PATH . 'admin/settings/maps.php' );
+            require_once ( PREMIUM_ADDONS_PATH . 'admin/settings/modules-setting.php' );
+            require_once ( PREMIUM_ADDONS_PATH . 'includes/elementor-helper.php' );
+            
             if ( is_admin() ) {
                 
                 require_once ( PREMIUM_ADDONS_PATH . 'admin/includes/dep/maintenance.php');
                 require_once ( PREMIUM_ADDONS_PATH . 'admin/includes/dep/rollback.php');
                 
+                require_once ( PREMIUM_ADDONS_PATH . 'admin/includes/dep/admin-helper.php');
                 require_once ( PREMIUM_ADDONS_PATH . 'includes/class-beta-testers.php');
                 require_once ( PREMIUM_ADDONS_PATH . 'includes/plugin.php');
                 require_once ( PREMIUM_ADDONS_PATH . 'admin/includes/admin-notices.php' );
@@ -112,15 +118,10 @@ if( ! class_exists('Premium_Addons_Elementor') ) {
                 require_once ( PREMIUM_ADDONS_PATH . 'admin/includes/version-control.php');
                 require_once ( PREMIUM_ADDONS_PATH . 'admin/includes/reports.php');
                 require_once ( PREMIUM_ADDONS_PATH . 'admin/includes/papro-actions.php');
-                $beta_testers = new Premium_Beta_Testers();
+                // $beta_testers = new Premium_Beta_Testers();
                 
             }
     
-            require_once ( PREMIUM_ADDONS_PATH . 'includes/class-helper-functions.php' );
-            require_once ( PREMIUM_ADDONS_PATH . 'admin/settings/maps.php' );
-            require_once ( PREMIUM_ADDONS_PATH . 'admin/settings/modules-setting.php' );
-            require_once ( PREMIUM_ADDONS_PATH . 'includes/elementor-helper.php' );
-            
         }
         
         /**
@@ -190,10 +191,8 @@ if( ! class_exists('Premium_Addons_Elementor') ) {
             
             $this->init_addons();
             
-            if ( PremiumAddons\Admin\Settings\Modules_Settings::check_premium_templates() ) {
+            if ( PremiumAddons\Admin\Settings\Modules_Settings::check_premium_templates() )
                 $this->init_templates();
-            
-            }
             
         }
 

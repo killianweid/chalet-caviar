@@ -54,10 +54,18 @@ global $virtue;
 									<?php esc_html_e( 'Your Cart', 'virtue' );?>
 									<span class="kad-cart-dash">-</span>
 									<?php 
-									if ( WC()->cart->tax_display_cart == 'incl' ) {
-										echo wp_kses_post( WC()->cart->get_cart_subtotal() ); 
+									if ( version_compare( WC_VERSION, '4.4', '<' ) ) {
+										if ( WC()->cart->tax_display_cart == 'incl' ) {
+											echo WC()->cart->get_cart_subtotal(); 
+										} else {
+											echo WC()->cart->get_cart_total();
+										}
 									} else {
-										echo wp_kses_post( WC()->cart->get_cart_total() );
+										if ( WC()->cart->get_tax_price_display_mode() == 'incl' ) {
+											echo WC()->cart->get_cart_subtotal(); 
+										} else {
+											echo WC()->cart->get_cart_total();
+										}
 									}
 									?>
 								</a>

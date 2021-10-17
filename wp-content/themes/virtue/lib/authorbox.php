@@ -27,52 +27,52 @@ function virtue_author_box() { ?>
 					
 					<?php if ( get_the_author_meta( 'facebook' ) ) { ?>
 						<span class="facebooklink">
-						<a href="<?php the_author_meta( 'facebook' ); ?>" title="<?php esc_html_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Facebook', 'virtue' );?>"><i class="icon-facebook"></i></a>
+						<a href="<?php the_author_meta( 'facebook' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Facebook', 'virtue' );?>"><i class="icon-facebook"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'twitter' ) ) { ?>
 						<span class="twitterlink">
-							<a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php esc_html_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Twitter', 'virtue' );?>"><i class="icon-twitter"></i></a>
+							<a href="http://twitter.com/<?php the_author_meta( 'twitter' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Twitter', 'virtue' );?>"><i class="icon-twitter"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'google' ) ) { ?>
 						<span class="googlepluslink">
-							<a href="<?php the_author_meta( 'google' ); ?>" title="<?php esc_html_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Google Plus', 'virtue' );?>"><i class="icon-google-plus"></i></a>
+							<a href="<?php the_author_meta( 'google' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Google Plus', 'virtue' );?>"><i class="icon-google-plus"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'youtube' ) ) { ?>
 						<span class="youtubelink">
-							<a href="<?php the_author_meta( 'youtube' ); ?>" title="<?php esc_html_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on YouTube', 'virtue' );?>"><i class="icon-youtube"></i></a>
+							<a href="<?php the_author_meta( 'youtube' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on YouTube', 'virtue' );?>"><i class="icon-youtube"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'flickr' ) ) { ?>
 						<span class="flickrlink">
-							<a href="<?php the_author_meta( 'flickr' ); ?>" title="<?php esc_html_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Flickr', 'virtue' );?>"><i class="icon-flickr"></i></a>
+							<a href="<?php the_author_meta( 'flickr' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Flickr', 'virtue' );?>"><i class="icon-flickr"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'vimeo' ) ) { ?>
 						<span class="vimeolink">
-							<a href="<?php the_author_meta( 'vimeo' ); ?>" title="<?php esc_html_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Vimeo', 'virtue' );?>"><i class="icon-vimeo"></i></a>
+							<a href="<?php the_author_meta( 'vimeo' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue' ); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Vimeo', 'virtue' );?>"><i class="icon-vimeo"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'linkedin' ) ) { ?>
 						<span class="linkedinlink">
-							<a href="<?php the_author_meta( 'linkedin' ); ?>" title="<?php esc_html_e('Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on linkedin', 'virtue' );?>"><i class="icon-linkedin"></i></a>
+							<a href="<?php the_author_meta( 'linkedin' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on linkedin', 'virtue' );?>"><i class="icon-linkedin"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'dribbble' ) ) { ?>
 						<span class="dribbblelink">
-							<a href="<?php the_author_meta( 'dribbble' ); ?>" title="<?php esc_html_e('Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Dribbble', 'virtue' );?>"><i class="icon-dribbble"></i></a>
+							<a href="<?php the_author_meta( 'dribbble' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Dribbble', 'virtue' );?>"><i class="icon-dribbble"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'pinterest' ) ) { ?>
 						<span class="pinterestlink">
-							<a href="<?php the_author_meta( 'pinterest' ); ?>" title="<?php esc_html_e('Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Pinterest', 'virtue' );?>"><i class="icon-pinterest"></i></a>
+							<a href="<?php the_author_meta( 'pinterest' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Pinterest', 'virtue' );?>"><i class="icon-pinterest"></i></a>
 						</span>
 					<?php }
 					if ( get_the_author_meta( 'instagram' ) ) { ?>
 						<span class="instagramlink">
-							<a href="<?php the_author_meta( 'instagram' ); ?>" title="<?php esc_html_e('Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Instagram', 'virtue' );?>"><i class="icon-instagram"></i></a>
+							<a href="<?php the_author_meta( 'instagram' ); ?>" title="<?php esc_attr_e( 'Follow', 'virtue'); ?>  <?php the_author_meta( 'display_name' ); ?> <?php esc_html_e( 'on Instagram', 'virtue' );?>"><i class="icon-instagram"></i></a>
 						</span>
 					<?php } ?>
 				</div><!--Author Follow-->

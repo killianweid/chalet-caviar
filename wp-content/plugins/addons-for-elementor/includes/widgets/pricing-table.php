@@ -67,7 +67,7 @@ class LAE_Pricing_Table_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-price-table';
+        return 'lae-icon-pricing-table';
     }
 
     public function get_categories() {

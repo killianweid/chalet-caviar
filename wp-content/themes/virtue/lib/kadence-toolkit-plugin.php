@@ -19,10 +19,10 @@ function virtue_kadence_toolkit_notice() {
 	}
 	$installed_plugins = get_plugins();
 	if ( ! isset( $installed_plugins['virtue-toolkit/virtue_toolkit.php'] ) ) {
-		$button_label = esc_html__( 'Install Kadence Toolkit', 'virtue' );
+		$button_label = esc_html__( 'Install Virtue Toolkit', 'virtue' );
 		$data_action  = 'install';
 	} elseif ( ! Virtue_Plugin_Check::active_check( 'virtue-toolkit/virtue_toolkit.php' ) ) {
-		$button_label = esc_html__( 'Activate Kadence Toolkit', 'virtue' );
+		$button_label = esc_html__( 'Activate Virtue Toolkit', 'virtue' );
 		$data_action  = 'activate';
 	} else {
 		return;
@@ -42,7 +42,7 @@ function virtue_kadence_toolkit_notice() {
 	?>
 	<div id="message" class="is-dismissible notice updated kt-plugin-install-notice-wrapper">
 		<h3 class="kt-notice-title"><?php echo esc_html__( 'Thanks for choosing the Virtue Theme', 'virtue' ); ?></h3>
-		<p class="kt-notice-description"><?php /* translators: %s: <strong> */ printf( esc_html__( 'To take full advantage of the Virtue Theme please install the %1$sKadence Toolkit%2$s, this adds extra settings and features.', 'virtue' ), '<strong>', '</strong>' ); ?></p>
+		<p class="kt-notice-description"><?php /* translators: %s: <strong> */ printf( esc_html__( 'To take full advantage of the Virtue Theme please install the %1$sVirtue Toolkit%2$s, this adds extra settings and features.', 'virtue' ), '<strong>', '</strong>' ); ?></p>
 		<p class="submit">
 			<a class="button button-primary kt-install-toolkit-btn" data-redirect-url="<?php echo esc_url( admin_url( 'themes.php?page=kadence_welcome_page' ) ); ?>" data-activating-label="<?php echo esc_attr__( 'Activating...', 'virtue' ); ?>" data-activated-label="<?php echo esc_attr__( 'Activated', 'virtue' ); ?>" data-installing-label="<?php echo esc_attr__( 'Installing...', 'virtue' ); ?>" data-installed-label="<?php echo esc_attr__( 'Installed', 'virtue' ); ?>" data-action="<?php echo esc_attr( $data_action ); ?>" data-install-url="<?php echo esc_attr( $install_link ); ?>" data-activate-url="<?php echo esc_attr( $activation_link ); ?>"><?php echo esc_html( $button_label ); ?></a>
 			<a href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'virtue-kadence-toolkit-plugin-notice', 'install' ), 'virtue_toolkit_hide_notices_nonce', '_notice_nonce' ) ); ?>" class="notice-dismiss kt-close-notice"><span class="screen-reader-text"><?php esc_html_e( 'Dismiss this notice.', 'virtue' ); ?></span></a>
@@ -134,7 +134,7 @@ function virtue_register_required_plugins() {
 
 	$plugins = array(
 		array(
-			'name'               => 'Kadence Toolkit',
+			'name'               => 'Virtue/Ascend/Pinnacle Toolkit',
 			'slug'               => 'virtue-toolkit',
 			'required'           => false,
 			'version'            => '4.8',

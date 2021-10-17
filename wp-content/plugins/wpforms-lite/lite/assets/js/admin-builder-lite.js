@@ -1,4 +1,7 @@
-;(function($) {
+/* globals wpforms_builder_lite, wpforms_builder */
+'use strict';
+
+( function( $ ) {
 
 	var WPFormsBuilderLite = {
 
@@ -10,9 +13,9 @@
 		init: function() {
 
 			// Document ready
-			$(document).ready(function() {
+			$( function() {
 				WPFormsBuilderLite.ready();
-			});
+			} );
 
 			WPFormsBuilderLite.bindUIActions();
 		},
@@ -42,6 +45,8 @@
 		 * Warn users if they disable email notifications.
 		 *
 		 * @since 1.5.0
+		 *
+		 * @param {string} value Whether notifications enabled or not. 0 is disabled, 1 is enabled.
 		 */
 		formBuilderNotificationAlert: function( value ) {
 
@@ -60,7 +65,7 @@
 					confirm: {
 						text: wpforms_builder.ok,
 						btnClass: 'btn-confirm',
-						keys: [ 'enter' ]
+						keys: [ 'enter' ],
 					}
 				}
 			} );
@@ -69,4 +74,4 @@
 
 	WPFormsBuilderLite.init();
 
-})(jQuery);
+}( jQuery ) );

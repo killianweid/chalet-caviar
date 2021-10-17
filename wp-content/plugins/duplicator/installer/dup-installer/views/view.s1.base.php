@@ -40,7 +40,6 @@ $datetime1	= $GLOBALS['DUPX_AC']->created;
 $datetime2	= date("Y-m-d H:i:s");
 $fulldays	= round(abs(strtotime($datetime1) - strtotime($datetime2))/86400);
 $root_path	= DupLiteSnapLibIOU::safePath($GLOBALS['DUPX_ROOT'], true);
-$archive_path	= DupLiteSnapLibIOU::safePath($GLOBALS['FW_PACKAGE_PATH'], true);
 $wpconf_path	= "{$root_path}/wp-config.php";
 $max_time_zero	= ($GLOBALS['DUPX_ENFORCE_PHP_INI']) ? false : @set_time_limit(0);
 $max_time_size	= 314572800;  //300MB
@@ -95,18 +94,17 @@ $zip_archive_enabled = class_exists('ZipArchive') ? 'Enabled' : 'Not Enabled';
 $archive_config  = DUPX_ArchiveConfig::getInstance();
 ?>
 
-<form id="s1-input-form" method="post" class="content-form">
+<form id="s1-input-form" method="post" class="content-form" autocomplete="off">
 <input type="hidden" name="view" value="step1" />
 <input type="hidden" name="csrf_token" value="<?php echo DUPX_CSRF::generate('step1'); ?>"> 
 <input type="hidden" name="ctrl_action" value="ctrl-step1" />
 <input type="hidden" name="ctrl_csrf_token" value="<?php echo DUPX_U::esc_attr(DUPX_CSRF::generate('ctrl-step1')); ?>"> 
 <input type="hidden" name="secure-pass" value="<?php echo DUPX_U::esc_html($_POST['secure-pass']); ?>" />
-<input type="hidden" name="bootloader" value="<?php echo DUPX_U::esc_attr($GLOBALS['BOOTLOADER_NAME']); ?>" />
-<input type="hidden" name="archive" value="<?php echo DUPX_U::esc_attr($GLOBALS['FW_PACKAGE_PATH']); ?>" />
 <input type="hidden" id="s1-input-form-extra-data" name="extra_data" />
 
 <div class="hdr-main">
 	Step <span class="step">1</span> of 4: Deployment
+	<div class="sub-header">This step will extract the archive file contents.</div>
 </div><br/>
 
 <!-- ====================================
@@ -158,14 +156,13 @@ SETUP TYPE: @todo implement
 	</div><br/>
 
 </div>
-<!--br/><br/-->
 
 
 <!-- ====================================
 ARCHIVE
 ==================================== -->
 <div class="hdr-sub1 toggle-hdr" data-type="toggle" data-target="#s1-area-archive-file">
-	<a id="s1-area-archive-file-link"><i class="fa fa-plus-square"></i>Archive</a>
+	<a id="s1-area-archive-file-link"><i class="fa fa-plus-square"></i>Setup</a>
 	<?php
 	$badge = DUPX_View_Funcs::getBadgeClassFromCheckStatus($arcCheck);
 	?>
@@ -176,7 +173,7 @@ ARCHIVE
 <div id="s1-area-archive-file" style="display:none" class="hdr-sub1-area">
 <div id="tabs">
 	<ul>
-		<li><a href="#tabs-1">Server</a></li>
+		<li><a href="#tabs-1">Archive</a></li>
 	</ul>
 	<div id="tabs-1">
 
@@ -713,13 +710,11 @@ OPTIONS
 <!-- =========================================
 VIEW: STEP 1 - DB QUICK TEST
 ========================================= -->
-<form id="s1-dbtest-form" method="post" target="_blank">
+<form id="s1-dbtest-form" method="post" target="_blank" autocomplete="off">
 	<input type="hidden" name="dbonlytest" value="1" />
 	<input type="hidden" name="view" value="step2" />
 	<input type="hidden" name="csrf_token" value="<?php echo DUPX_CSRF::generate('step2'); ?>">
 	<input type="hidden" name="secure-pass" value="<?php echo DUPX_U::esc_attr($_POST['secure-pass']); ?>" />
-	<input type="hidden" name="bootloader" value="<?php echo DUPX_U::esc_attr($GLOBALS['BOOTLOADER_NAME']); ?>" />
-	<input type="hidden" name="archive" value="<?php echo DUPX_U::esc_attr($GLOBALS['FW_PACKAGE_PATH']); ?>" />
 </form>
 
 
@@ -727,11 +722,12 @@ VIEW: STEP 1 - DB QUICK TEST
 VIEW: STEP 1 - AJAX RESULT
 Auto Posts to view.step2.php
 ========================================= -->
-<form id='s1-result-form' method="post" class="content-form" style="display:none">
+<form id='s1-result-form' method="post" class="content-form" style="display:none" autocomplete="off">
 
     <div class="dupx-logfile-link"><?php DUPX_View_Funcs::installerLogLink(); ?></div>
     <div class="hdr-main">
-        Step <span class="step">1</span> of 4: Extraction
+        Step <span class="step">1</span> of 4: Deployment
+		<div class="sub-header">This step will extract the archive file contents.</div>
     </div>
 
     <!--  POST PARAMS -->
@@ -740,8 +736,6 @@ Auto Posts to view.step2.php
         <input type="hidden" name="view" value="step2" />
 		<input type="hidden" name="csrf_token" value="<?php echo DUPX_CSRF::generate('step2'); ?>">
 		<input type="hidden" name="secure-pass" value="<?php echo DUPX_U::esc_attr($_POST['secure-pass']); ?>" />
-		<input type="hidden" name="bootloader" value="<?php echo DUPX_U::esc_attr($GLOBALS['BOOTLOADER_NAME']); ?>" />
-		<input type="hidden" name="archive" value="<?php echo DUPX_U::esc_attr($GLOBALS['FW_PACKAGE_PATH']); ?>" />
 		<input type="hidden" name="logging" id="ajax-logging"  />
         <input type="hidden" name="config_mode" id="ajax-config-mode" />
         <input type="hidden" name="exe_safe_mode" id="exe-safe-mode"  value="0" />
@@ -767,10 +761,9 @@ Auto Posts to view.step2.php
         <div style="padding: 0px 10px 10px 0px;">
             <div id="ajaxerr-data">An unknown issue has occurred with the file and database setup process.  Please see the <?php DUPX_View_Funcs::installerLogLink(); ?> file for more details.</div>
             <div style="text-align:center; margin:10px auto 0px auto">
-                <!-- <input type="button" class="default-btn" onclick="DUPX.hideErrorResult()" value="&laquo; Try Again" /> -->
 				<br/>
-				<a href="../<?php echo $GLOBALS['BOOTLOADER_NAME'];?>" class="default-btn">&laquo; Try Again</a>
-				<br/><br/>
+                <input type="button" class="default-btn" onclick="DUPX.hideErrorResult()" value="&laquo; Try Again" />
+                <br/><br/>
                 <i style='font-size:11px'>See online help for more details at <a href='https://snapcreek.com/ticket' target='_blank'>snapcreek.com</a></i>
             </div>
         </div>
@@ -1003,7 +996,7 @@ DUPX.pingDAWS = function ()
 						$("#ajax-config-mode").val($("#config_mode").val());
 						$("#ajax-json").val(escape(dataJSON));
 
-						<?php if (!$GLOBALS['DUPX_DEBUG']) : ?>
+						<?php if (!DUPX_Log::isLevel(DUPX_Log::LV_DEBUG)) : ?>
 						setTimeout(function () {
 							$('#s1-result-form').submit();
 						}, 500);
@@ -1060,16 +1053,11 @@ DUPX.kickOffDupArchiveExtract = function ()
 	var isClientSideKickoff = DUPX.isClientSideKickoff();
 
 	request.action = "start_expand";
-	request.archive_filepath = '<?php echo DUPX_U::esc_js($archive_path); ?>';
 	request.restore_directory = '<?php echo DUPX_U::esc_js($root_path); ?>';
 	request.worker_time = DUPX.DAWS.KickoffWorkerTimeInSec;
 	request.client_driven = isClientSideKickoff ? 1 : 0;
 	request.throttle_delay = DUPX.throttleDelay;
 	request.filtered_directories = ['dup-installer'];
-
-    if(!DUPX.areConfigFilesPreserved()) {
-        request.file_renames = {".htaccess":"htaccess.orig"};
-    }
 
 	var requestString = JSON.stringify(request);
 
@@ -1226,7 +1214,7 @@ DUPX.runStandardExtraction = function ()
 				$("#ajax-config-mode").val($("#config_mode").val());
 				$("#ajax-json").val(escape(dataJSON));
 
-				<?php if (!$GLOBALS['DUPX_DEBUG']) : ?>
+				<?php if (!DUPX_Log::isLevel(DUPX_Log::LV_DEBUG)) : ?>
 					setTimeout(function () {$('#s1-result-form').submit();}, 500);
 				<?php endif; ?>
 				$('#progress-area').fadeOut(1000);

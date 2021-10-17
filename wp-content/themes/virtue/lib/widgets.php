@@ -797,7 +797,7 @@ class Simple_About_With_Image extends WP_Widget {
     <p>
         <label for="<?php echo esc_attr( $this->get_field_id('image_uri') ); ?>"><?php esc_html_e('Image URL', 'virtue'); ?></label><br />
         <input type="text" class="widefat kad_custom_media_url" name="<?php echo esc_attr( $this->get_field_name('image_uri') ); ?>" id="<?php echo esc_attr( $this->get_field_id('image_uri') ); ?>" value="<?php echo esc_attr( $image_uri ); ?>">
-        <input type="button" value="<?php esc_html_e('Upload', 'virtue'); ?>" class="button kad_custom_media_upload" id="kad_custom_image_uploader" />
+        <input type="button" value="<?php esc_attr_e('Upload', 'virtue'); ?>" class="button kad_custom_media_upload" id="kad_custom_image_uploader" />
     </p>
     <p>
         <label for="<?php echo esc_attr( $this->get_field_id('image_link_open') ); ?>"><?php esc_html_e('Image opens in', 'virtue'); ?></label><br />

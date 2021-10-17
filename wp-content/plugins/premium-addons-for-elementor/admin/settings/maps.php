@@ -61,7 +61,7 @@ class Maps {
         
         $settings = $this->pa_maps_get_settings;
         
-        $locales = Helper_Functions::get_google_languages();
+        $locales = Helper_Functions::get_google_maps_prefixes();
         
         ?>
         <div class="wrap">
@@ -72,7 +72,7 @@ class Maps {
                   <h1 class="pa-title-main"><?php echo Helper_Functions::name(); ?></h1>
                  <h3 class="pa-title-sub"><?php echo sprintf(__('Thank you for using %s. This plugin has been developed by %s and we hope you enjoy using it.','premium-addons-for-elementor'), Helper_Functions::name(), Helper_Functions::author()); ?></h3>
               </div>
-              <?php if( ! Helper_Functions::is_show_logo()) : ?>
+              <?php if( ! Helper_Functions::is_hide_logo()) : ?>
                     <div class="pa-title-right">
                         <img class="pa-logo" src="<?php echo PREMIUM_ADDONS_URL . 'admin/images/premium-addons-logo.png';?>">
                     </div>
@@ -132,7 +132,7 @@ class Maps {
                        </tr>
                     </table>
                     <input type="submit" value="<?php echo __('Save Settings', 'premium-addons-for-elementor'); ?>" class="button pa-btn pa-save-button">
-                    <?php if( ! Helper_Functions::is_show_rate() ) : ?>
+                    <?php if( ! Helper_Functions::is_hide_rate() ) : ?>
                         <div>
                                 <p><?php echo __('Did you like Premium Addons for Elementor Plugin? Please ', 'premium-addons-for-elementor'); ?><a href="https://wordpress.org/support/plugin/premium-addons-for-elementor/reviews/#new-post" target="_blank"><?php echo __('Click Here to Rate it ★★★★★', 'premium-addons-for-elementor'); ?></a></p>
                         </div>

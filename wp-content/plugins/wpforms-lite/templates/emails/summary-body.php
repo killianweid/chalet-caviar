@@ -4,11 +4,7 @@
  *
  * This template can be overridden by copying it to yourtheme/wpforms/emails/summary-body.php.
  *
- * @package    WPForms\Emails\Templates
- * @author     WPForms
- * @since      1.5.4
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2019, WPForms LLC
+ * @since 1.5.4
  *
  * @version 1.5.4
  *
@@ -26,9 +22,9 @@ if ( ! \defined( 'ABSPATH' ) ) {
 	<tbody>
 	<tr>
 		<td>
-			<h6 class="greeting"><?php \esc_html_e( 'Hi there!', 'wpforms' ); ?></h6>
+			<h6 class="greeting"><?php \esc_html_e( 'Hi there!', 'wpforms-lite' ); ?></h6>
 			<?php if ( \wpforms()->pro ) : ?>
-				<p class="large"><?php \esc_html_e( 'Let’s see how your forms performed in the past week.', 'wpforms' ); ?></p>
+				<p class="large"><?php \esc_html_e( 'Let’s see how your forms performed in the past week.', 'wpforms-lite' ); ?></p>
 			<?php else : ?>
 				<p class="large"><?php \esc_html_e( 'Let’s see how your forms performed.', 'wpforms-lite' ); ?></p>
 				<p class="lite-disclaimer">

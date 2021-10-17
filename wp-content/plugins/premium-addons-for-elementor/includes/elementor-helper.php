@@ -47,18 +47,9 @@ class premium_Template_Tags {
 
 	public function get_all_post() {
 
-		$post_types = get_post_types();
-		$post_type_not__in = array('attachment', 'revision', 'nav_menu_item', 'custom_css', 'customize_changeset', 'elementor_library', 'post');
-
-		foreach ( $post_type_not__in as $post_type_not ) {
-			unset( $post_types[$post_type_not] );
-		}
-		$post_type = array_values( $post_types );
-        
-
 		$all_posts = get_posts( array(
                 'posts_per_page'    => -1,
-				'post_type'         => 'page',
+				'post_type'         => array ( 'page', 'post' ),
 			)
 		);
 		if( !empty( $all_posts ) && !is_wp_error( $all_posts ) ) {
@@ -116,8 +107,10 @@ class premium_Template_Tags {
         
         $frontend = new Frontend;
         
-        $id = $this->get_id_by_title( $title );
-        
+		$id = $this->get_id_by_title( $title );
+		
+		$id = apply_filters( 'wpml_object_id', $id, 'elementor_library', TRUE );
+		
         $template_content = $frontend->get_builder_content( $id, true );
         
         return $template_content;

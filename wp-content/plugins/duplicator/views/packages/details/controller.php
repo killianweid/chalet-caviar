@@ -9,7 +9,7 @@ $package_id  = isset($_REQUEST["id"])  ? sanitize_text_field($_REQUEST["id"]) : 
 
 $package			= DUP_Package::getByID($package_id);
 $err_found		    = ($package == null || $package->Status < 100);
-$link_log			= "{$package->StoreURL}{$package->NameHash}.log";
+$link_log			= DUP_Settings::getSsdirUrl()."/{$package->NameHash}.log";
 $err_link_log		= "<a target='_blank' href='".esc_url($link_log)."' >" . esc_html__('package log', 'duplicator') . '</a>';
 $err_link_faq		= '<a target="_blank" href="https://snapcreek.com/duplicator/docs/faqs-tech/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=pkg_details_faq">' . esc_html__('FAQ', 'duplicator') . '</a>';
 $err_link_ticket	= '<a target="_blank" href="https://snapcreek.com/duplicator/docs/faqs-tech/?utm_source=duplicator_free&utm_medium=wordpress_plugin&utm_campaign=problem_resolution&utm_content=pkg_details_resources#faq-resource">' . esc_html__('resources page', 'duplicator') . '</a>';
@@ -19,8 +19,7 @@ $err_link_ticket	= '<a target="_blank" href="https://snapcreek.com/duplicator/do
     .narrow-input { width: 80px; }
     .wide-input {width: 400px; }
 	 table.form-table tr td { padding-top: 25px; }
-	 div.all-packages {float:right; margin-top: -30px; }
-	 div.all-packages a.add-new-h2 {font-size: 16px}
+	 div.all-packages {float:right; margin-top: -35px; }
 </style>
 
 <div class="wrap">
@@ -45,7 +44,7 @@ $err_link_ticket	= '<a target="_blank" href="https://snapcreek.com/duplicator/do
 			<?php esc_html_e('Transfer', 'duplicator'); ?>
 		</a>
     </h2>
-	<div class="all-packages"><a href="?page=duplicator" class="add-new-h2"><i class="fa fa-archive fa-sm"></i> <?php esc_html_e('Packages', 'duplicator'); ?></a></div>
+	<div class="all-packages"><a href="?page=duplicator" class="button"><i class="fa fa-archive fa-sm"></i> <?php esc_html_e('Packages', 'duplicator'); ?></a></div>
 
     <?php
     switch ($current_tab) {

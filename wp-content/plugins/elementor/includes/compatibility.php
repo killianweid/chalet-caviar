@@ -62,8 +62,10 @@ class Compatibility {
 			return;
 		}
 
-		$replacement = "`elementor/element/wp-post/{$section_id}/{$current_sub_action}` or `elementor/element/wp-page/{$section_id}/{$current_sub_action}`";
-		_deprecated_hook( $deprecated_action, '2.7.0', $replacement );
+		// TODO: Hard deprecation on 3.1.0.
+		// $replacement = "`elementor/element/wp-post/{$section_id}/{$current_sub_action}` or `elementor/element/wp-page/{$section_id}/{$current_sub_action}`";
+		// _deprecated_hook( $deprecated_action, '2.7.0', $replacement );
+
 		do_action( $deprecated_action, $instance, $section_id, $args );
 	}
 
@@ -144,18 +146,6 @@ class Compatibility {
 		if ( defined( 'NGG_PLUGIN_VERSION' ) ) {
 			add_filter( 'elementor/document/urls/edit', function( $edit_link ) {
 				return add_query_arg( 'display_gallery_iframe', '', $edit_link );
-			} );
-		}
-
-		// Hack for Ninja Forms.
-		if ( class_exists( '\Ninja_Forms' ) && class_exists( '\NF_Display_Render' ) ) {
-			add_action( 'elementor/preview/enqueue_styles', function() {
-				ob_start();
-				\NF_Display_Render::localize( 0 );
-
-				ob_clean();
-
-				wp_add_inline_script( 'nf-front-end', 'var nfForms = nfForms || [];' );
 			} );
 		}
 
@@ -343,14 +333,39 @@ class Compatibility {
 	 * @return array Updated post meta.
 	 */
 	public static function on_wp_import_post_meta( $post_meta ) {
-		foreach ( $post_meta as &$meta ) {
-			if ( '_elementor_data' === $meta['key'] ) {
-				$meta['value'] = wp_slash( $meta['value'] );
-				break;
+		$is_wp_importer_before_0_7 = self::is_wp_importer_before_0_7();
+
+		if ( $is_wp_importer_before_0_7 ) {
+			foreach ( $post_meta as &$meta ) {
+				if ( '_elementor_data' === $meta['key'] ) {
+					$meta['value'] = wp_slash( $meta['value'] );
+					break;
+				}
 			}
 		}
 
 		return $post_meta;
+	}
+
+	/**
+	 * Is WP Importer Before 0.7
+	 *
+	 * Checks if WP Importer is installed, and whether its version is older than 0.7.
+	 *
+	 * @return bool
+	 */
+	public static function is_wp_importer_before_0_7() {
+		$wp_importer = get_plugins( '/wordpress-importer' );
+
+		if ( ! empty( $wp_importer ) ) {
+			$wp_importer_version = $wp_importer['wordpress-importer.php']['Version'];
+
+			if ( version_compare( $wp_importer_version, '0.7', '<' ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
@@ -370,8 +385,12 @@ class Compatibility {
 	 * @return array Updated post meta.
 	 */
 	public static function on_wxr_importer_pre_process_post_meta( $post_meta ) {
-		if ( '_elementor_data' === $post_meta['key'] ) {
-			$post_meta['value'] = wp_slash( $post_meta['value'] );
+		$is_wp_importer_before_0_7 = self::is_wp_importer_before_0_7();
+
+		if ( $is_wp_importer_before_0_7 ) {
+			if ( '_elementor_data' === $post_meta['key'] ) {
+				$post_meta['value'] = wp_slash( $post_meta['value'] );
+			}
 		}
 
 		return $post_meta;

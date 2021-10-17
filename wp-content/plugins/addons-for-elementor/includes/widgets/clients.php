@@ -31,7 +31,7 @@ class LAE_Clients_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-person';
+        return 'lae-icon-clients';
     }
 
     public function get_categories() {

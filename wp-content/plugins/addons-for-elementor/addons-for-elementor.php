@@ -8,7 +8,7 @@
  * Author URI: https://livemeshelementor.com
  * License: GPL3
  * License URI: https://www.gnu.org/licenses/gpl-3.0.txt
- * Version: 2.8
+ * Version: 4.4
  * Text Domain: livemesh-el-addons
  * Domain Path: languages
  *
@@ -35,7 +35,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 if ( !function_exists( 'lae_fs' ) ) {
     // Plugin version
-    define( 'LAE_VERSION', '2.8' );
+    define( 'LAE_VERSION', '4.4' );
     // Plugin Root File
     define( 'LAE_PLUGIN_FILE', __FILE__ );
     // Plugin Folder Path

@@ -1,6 +1,8 @@
 <?php
 use ShortPixel\ShortpixelLogger\ShortPixelLogger as Log;
 
+use ShortPixel\Controller\ApiKeyController as ApiKeyController;
+
 class ShortPixelView {
 
     private $ctrl;
@@ -16,8 +18,11 @@ class ShortPixelView {
         $this->__construct($controller);
     }
 
+/** @todo REMOVE this from this view. Moved to adminnotices controller */
     public function displayQuotaExceededAlert($quotaData, $averageCompression = false, $recheck = false)
-    { ?>
+    {
+      return; // no longer active.
+      ?>
         <br/>
         <div class="wrap sp-quota-exceeded-alert"  id="short-pixel-notice-exceed">
             <?php if($averageCompression) { ?>
@@ -33,8 +38,8 @@ class ShortPixelView {
                 </div>
             </div>
             <?php } ?>
-            <img src="<?php echo(plugins_url('/shortpixel-image-optimiser/res/img/robo-scared.png'));?>"
-                 srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-scared.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-scared@2x.png' ));?> 2x'
+            <img src="<?php echo(wpSPIO()->plugin_url('res/img/robo-scared.png'));?>"
+                 srcset='<?php echo(wpSPIO()->plugin_url('res/img/robo-scared.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/robo-scared@2x.png' ));?> 2x'
                  class='short-pixel-notice-icon'>
             <h3><?php /* translators: header of the alert box */ _e('Quota Exceeded','shortpixel-image-optimiser');?></h3>
             <p><?php /* translators: body of the alert box */
@@ -68,150 +73,11 @@ class ShortPixelView {
         </div> <?php self::includeProposeUpgradePopup();
     }
 
-    public static function displayApiKeyAlert()
-    { ?>
-        <p><?php _e('In order to start the optimization process, you need to validate your API Key in the '
-                . '<a href="options-general.php?page=wp-shortpixel-settings">ShortPixel Settings</a> page in your WordPress Admin.','shortpixel-image-optimiser');?>
-        </p>
-        <p><?php _e('If you don’t have an API Key, you can get one delivered to your inbox, for free.','shortpixel-image-optimiser');?></p>
-        <p><?php _e('Please <a href="https://shortpixel.com/wp-apikey' . WPShortPixel::getAffiliateSufix() . '" target="_blank">sign up to get your API key.</a>','shortpixel-image-optimiser');?>
-        </p>
-    <?php
-    }
-
-    public static function displayActivationNotice($when = 'activate', $extra = '')  {
-        $extraStyle = ($when == 'compat' || $when == 'fileperms' ? "background-color: #ff9999;margin: 5px 20px 15px 0;'" : '');
-        $icon = false;
-        $extraClass = 'notice-warning';
-        switch($when) {
-            case 'compat': $extraClass = 'notice-error below-h2';
-            case 'fileperms': $icon = 'scared'; $extraClass = 'notice-error'; break;
-            case 'unlisted': $icon = 'magnifier'; break;
-            case 'upgmonth':
-            case 'upgbulk': $icon = 'notes'; $extraClass = 'notice-success'; break;
-            case 'spai':
-            case 'generic-err': $extraClass = 'notice-error is-dismissible'; break;
-            case 'activate': $icon = 'scared'; break;
-        }
-        ?>
-        <div class='notice <?php echo($extraClass);?> notice-warning' id='short-pixel-notice-<?php echo($when);?>' <?php echo($extraStyle);?>>
-            <?php if($when != 'activate') { ?>
-            <div style="float:right;">
-                <?php if($when == 'upgmonth' || $when == 'upgbulk'){ ?>
-                    <button class="button button-primary" id="shortpixel-upgrade-advice" onclick="ShortPixel.proposeUpgrade()" style="margin-top:10px;margin-left:10px;"><strong>
-                         <?php _e('Show me the best available options', 'shortpixel-image-optimiser'); ?></strong></button>
-                <?php } ?>
-                <?php if($when == 'unlisted'){ ?>
-                <a href="javascript:ShortPixel.includeUnlisted()" class="button button-primary" style="margin-top:10px;margin-left:10px;">
-                    <strong><?php _e('Yes, include these thumbnails','shortpixel-image-optimiser');?></strong></a>
-                <?php }
-                if($when !== 'fileperms' && $when !== 'compat' && $when !== 'generic-err' && $when !== 'spai') { ?>
-                <a href="javascript:dismissShortPixelNotice('<?php echo($when);?>')" class="button" style="margin-top:10px;"><?php _e('Dismiss','shortpixel-image-optimiser');?></a>
-                <?php }
-                if($when == 'compat') { ?>
-                <a href="javascript:dismissShortPixelNotice('<?php echo($when);?>')" class="button" style="margin-top:10px;"><?php _e('I know what I\'m doing','shortpixel-image-optimiser');?></a>
-                <?php } ?>
-            </div>
-            <?php
-            if($when == 'generic-err') {?>
-                <button type="button" class="notice-dismiss"><span class="screen-reader-text"><?php _e('Dismiss this notice.','shortpixel-image-optimiser');?></span></button>
-            <?php }
-            }
-            if($icon){ ?>
-                <img src="<?php echo(plugins_url('/shortpixel-image-optimiser/res/img/robo-' . $icon . '.png'));?>"
-                     srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-' . $icon . '.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-' . $icon . '@2x.png' ));?> 2x'
-                     class='short-pixel-notice-icon'>
-            <?php } ?>
-            <h3><?php _e('ShortPixel Image Optimizer','shortpixel-image-optimiser');
-            if($when == 'compat') { echo(' '); _e('Warning','shortpixel-image-optimiser');}
-            if($when == 'unlisted') { echo(' '); _e(' alert','shortpixel-image-optimiser');}
-            if($when == 'upgmonth' || $when == 'upgbulk') { echo(' '); _e('advice','shortpixel-image-optimiser');}
-            ?></h3> <?php
-            switch($when) {
-                case '2h' :
-                    _e("Action needed. Please <a href='https://shortpixel.com/wp-apikey' target='_blank'>get your API key</a> to activate your ShortPixel plugin.",'shortpixel-image-optimiser') . "<BR><BR>";
-                    break;
-                case '3d':
-                    _e("Your image gallery is not optimized. It takes 2 minutes to <a href='https://shortpixel.com/wp-apikey' target='_blank'>get your API key</a> and activate your ShortPixel plugin.",'shortpixel-image-optimiser') . "<BR><BR>";
-                    break;
-                case 'activate':
-                    self::displayApiKeyAlert();
-                    break;
-                case 'fileperms' :
-                    printf(__("ShortPixel is not able to write to the uploads folder so it cannot optimize images, please check permissions (tried to create the file %s/.shortpixel-q-1).",'shortpixel-image-optimiser'),
-                        SHORTPIXEL_UPLOADS_BASE);
-                    break;
-                case 'compat' :
-                    _e("The following plugins are not compatible with ShortPixel and may lead to unexpected results: ",'shortpixel-image-optimiser');
-                    echo('<ul class="sp-conflict-plugins">');
-                    foreach($extra as $plugin) {
-                        //ShortPixelVDD($plugin);
-                        $action = $plugin['action'];
-                        $link = ( $action == 'Deactivate' )
-                            ? wp_nonce_url( admin_url( 'admin-post.php?action=shortpixel_deactivate_plugin&plugin=' . urlencode( $plugin['path'] ) ), 'sp_deactivate_plugin_nonce' )
-                            : $plugin['href'];
-                        echo('<li class="sp-conflict-plugins-list"><strong>' . $plugin['name'] . '</strong>');
-                        echo('<a href="' . $link . '" class="button button-primary">'
-                                . __( $action, 'shortpixel_image_optimiser' ) . '</a>');
-                        if($plugin['details']) echo('<br>');
-                        if($plugin['details']) echo('<span>' . $plugin['details'] . '</span>');
-                    }
-                    echo("</ul>");
-                    break;
-                case 'upgmonth' :
-                case 'upgbulk' : ?>
-                    <p> <?php
-                    if($when == 'upgmonth') {
-                        printf(__("You are adding an average of <strong>%d images and thumbnails every month</strong> to your Media Library and you have <strong>a plan of %d images/month</strong>."
-                              . " You might need to upgrade your plan in order to have all your images optimized.", 'shortpixel-image-optimiser'), $extra['monthAvg'], $extra['monthlyQuota']);
-                    } else {
-                        printf(__("You currently have <strong>%d images and thumbnails to optimize</strong> but you only have <strong>%d images</strong> available in your current plan."
-                              . " You might need to upgrade your plan in order to have all your images optimized.", 'shortpixel-image-optimiser'), $extra['filesTodo'], $extra['quotaAvailable']);
-                    }?></p><?php
-                    self::includeProposeUpgradePopup();
-                    break;
-                case 'unlisted' :
-                    _e("<p>ShortPixel found thumbnails which are not registered in the metadata but present alongside the other thumbnails. These thumbnails could be created and needed by some plugin or by the theme. Let ShortPixel optimize them as well?</p>", 'shortpixel-image-optimiser');?>
-                    <p>
-                        <?php _e("For example, the image", 'shortpixel-image-optimiser');?>
-                        <a href='post.php?post=<?php echo($extra->id);?>&action=edit' target='_blank'>
-                            <?php echo($extra->name); ?>
-                        </a> has also these thumbs not listed in metadata:
-                        <?php echo(implode(', ', $extra->unlisted)); ?>
-                    </p><?php
-                    break;
-                case 'spai' :
-                case 'generic' :
-                case 'generic-err' :
-                    echo("<p>$extra</p>");
-                    break;
-            }
-            ?>
-        </div>
-    <?php
-    }
-    protected static function includeProposeUpgradePopup() {
-        wp_enqueue_style('short-pixel-modal.min.css', plugins_url('/res/css/short-pixel-modal.min.css',SHORTPIXEL_PLUGIN_FILE), array(), SHORTPIXEL_IMAGE_OPTIMISER_VERSION);
-        ?>
-
-        <div id="shortPixelProposeUpgradeShade" class="sp-modal-shade" style="display:none;">
-            <div id="shortPixelProposeUpgrade" class="shortpixel-modal shortpixel-hide" style="min-width:610px;margin-left:-305px;">
-                <div class="sp-modal-title">
-                    <button type="button" class="sp-close-upgrade-button" onclick="ShortPixel.closeProposeUpgrade()">&times;</button>
-                    <?php _e('Upgrade your ShortPixel account', 'shortpixel-image-optimiser');?>
-                </div>
-                <div class="sp-modal-body sptw-modal-spinner" style="height:auto;min-height:400px;padding:0;">
-                </div>
-            </div>
-        </div>
-    <?php }
-
     public function displayBulkProcessingForm($quotaData,  $thumbsProcessedCount, $under5PercentCount, $bulkRan,
                                               $averageCompression, $filesOptimized, $savedSpace, $percent, $customCount) {
         $settings = $this->ctrl->getSettings();
         //$this->ctrl->outputHSBeacon();
-        \ShortPixel\HelpScout::outputBeacon($this->ctrl->getApiKey());
-
+        \ShortPixel\HelpScout::outputBeacon();
 
         $this->bulkType = $this->ctrl->getPrioQ()->getBulkTypeForDisplay(); // adding to the mess
         $hider = ($this->bulkType == ShortPixelQueue::BULK_TYPE_RESTORE) ? 'sp-hidden' : '';
@@ -223,6 +89,7 @@ class ShortPixelView {
             ?>
             <div class="sp-notice sp-notice-info sp-floating-block sp-full-width">
                 <form class='start' action='' method='POST' id='startBulk'>
+                  <?php wp_nonce_field('sp-bulk', 'sp-nonce'); ?>
                     <input type='hidden' id='mainToProcess' value='<?php echo($quotaData['mainFiles'] - $quotaData['mainProcessedFiles']);?>'/>
                     <input type='hidden' id='totalToProcess' value='<?php echo($quotaData['totalFiles'] - $quotaData['totalProcessedFiles']);?>'/>
                     <div class="bulk-stats-container">
@@ -234,6 +101,14 @@ class ShortPixelView {
                         <div style='width:165px; display:inline-block; padding-left: 5px'>
                             <input type='checkbox' id='thumbnails' name='thumbnails' onclick='ShortPixel.checkThumbsUpdTotal(this)' <?php echo($this->ctrl->processThumbnails() ? "checked":"");?>>
                             <?php _e('Include thumbnails','shortpixel-image-optimiser');?>
+                        </div><br><br>
+                        <div>
+
+                          <input name="createWebp" type="checkbox" id="createWebp" value="1" <?php checked( $settings->createWebp, "1" );?> >
+                          <label for="createWebp">
+                              <?php _e('Also create <a href="http://blog.shortpixel.com/how-webp-images-can-speed-up-your-site/" target="_blank">WebP versions</a> of the images, <strong>for free</strong>.','shortpixel-image-optimiser');?>
+                          </label>
+
                         </div><br>
                         <?php if($quotaData["totalProcessedMlFiles"] > 0) { ?>
                         <div class="bulk-label bulk-total"><?php _e('Total images','shortpixel-image-optimiser');?></div>
@@ -266,8 +141,8 @@ class ShortPixelView {
                                                             : "onclick=\"document.getElementById('startBulk').submit();\""); ?> class='button'>
                             <div style="width: 320px">
                                 <div class="bulk-btn-img" class="bulk-btn-img">
-                                    <img src='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-slider.png' ));?>'
-                                         srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-slider.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-slider@2x.png' ));?> 2x'/>
+                                    <img src='<?php echo(wpSPIO()->plugin_url('res/img/robo-slider.png' ));?>'
+                                         srcset='<?php echo(wpSPIO()->plugin_url('res/img/robo-slider.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/robo-slider@2x.png' ));?> 2x'/>
                                 </div>
                                 <div  class="bulk-btn-txt">
                                     <?php printf(__('<span class="label">Start Optimizing</span><br> <span class="total">%s</span> images','shortpixel-image-optimiser'),
@@ -276,7 +151,7 @@ class ShortPixelView {
                                                 number_format(max(0, $quotaData['mainMlFiles'] - $quotaData['mainProcessedMlFiles']) + $customCount));?>
                                 </div>
                                 <div class="bulk-btn-img" class="bulk-btn-img">
-                                    <img src='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/arrow.png' ));?>'/>
+                                    <img src='<?php echo(wpSPIO()->plugin_url('res/img/arrow.png' ));?>'/>
                                 </div>
                             </div>
                         </a>
@@ -344,8 +219,8 @@ class ShortPixelView {
             <div class="sp-container">
                 <div class='sp-notice sp-notice-success sp-floating-block sp-single-width' style="height: 80px;overflow:hidden;">
                     <div style='float:left;margin:5px 20px 5px 0'>
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/slider.png' ));?>"
-                             srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/slider.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/slider@2x.png' ));?> 2x'>
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/slider.png' ));?>"
+                             srcset='<?php echo(wpSPIO()->plugin_url('res/img/slider.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/slider@2x.png' ));?> 2x'>
                     </div>
                     <div class="sp-bulk-summary <?php echo $hider ?>">
                         <input type="text" value="<?php echo("" . round($averageCompression))?>" id="sp-total-optimization-dial" class="dial">
@@ -420,7 +295,7 @@ class ShortPixelView {
                         <a href="https://wordpress.org/support/view/plugin-reviews/shortpixel-image-optimiser?rate=5#postform" target="_blank">
                             <span>
                                 <?php _e('Please rate us!','shortpixel-image-optimiser');?>&nbsp;
-                            </span><br><img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/stars.png' ));?>">
+                            </span><br><img src="<?php echo(wpSPIO()->plugin_url('res/img/stars.png' ));?>">
                         </a>
                     </div>
                     <?php } ?>
@@ -431,7 +306,7 @@ class ShortPixelView {
             </div>
             <p><?php printf(__('Go to the ShortPixel <a href="%soptions-general.php?page=wp-shortpixel-settings&part=stats">Stats</a>
                                and see all your websites\' optimized stats. Download your detailed <a href="https://%s/v2/report.php?key=%s">Optimization Report</a>
-                               to check your image optimization statistics for the last 40 days.','shortpixel-image-optimiser'),
+                               to check your image optimization statistics for the last 30 days.','shortpixel-image-optimiser'),
                               get_admin_url(), SHORTPIXEL_API, (defined("SHORTPIXEL_HIDE_API_KEY") ? '' : $this->ctrl->getApiKey()) );?></p>
             <?php
             $failed = $this->ctrl->getPrioQ()->getFailed();
@@ -553,8 +428,19 @@ class ShortPixelView {
                     <?php } ?>
                 </p>
                 <form action='' method='POST' >
+                  <?php wp_nonce_field('sp-bulk', 'sp-nonce'); ?>
+
                     <input type='checkbox' id='bulk-thumbnails' name='thumbnails' <?php echo($this->ctrl->processThumbnails() ? "checked":"");?>
                            onchange="ShortPixel.onBulkThumbsCheck(this)"> <?php _e('Include thumbnails','shortpixel-image-optimiser');?><br><br>
+
+                     <div>
+
+                       <input name="createWebp" type="checkbox" id="createWebp" value="1" <?php checked( $settings->createWebp, "1" );?> >
+                       <label for="createWebp">
+                           <?php _e('Also create <a href="http://blog.shortpixel.com/how-webp-images-can-speed-up-your-site/" target="_blank">WebP versions</a> of the images, <strong>for free</strong>.','shortpixel-image-optimiser');?>
+                       </label>
+
+                     </div><br>
 
                    <a class='button' style="float: right;" href='<?php echo add_query_arg('part','bulk-restore-all'); ?> '><?php _e('Bulk Restore Images','shortpixel-image-optimiser'); ?></a>
 
@@ -583,42 +469,60 @@ class ShortPixelView {
             <h1><?php _e('Bulk Image Optimization by ShortPixel','shortpixel-image-optimiser');?></h1>
             <?php $this->displayBulkProgressBar(true, $percent, $message, $remainingQuota, $averageCompression, $type);?>
 
-            <!-- Partners: SQUIRLY -->
-            <?php if(!isset($dismissed['squirrly']) && $quotaData['APICallsQuotaOneTimeNumeric']<10000 && $quotaData['APICallsQuotaNumeric']<5000) { ?>
+            <!-- Partners: WSO Website Speed Optimization -->
+            <?php
+              if(!isset($dismissed['squirrly'])) // keep the same dismiss option
+              {
+            ?>
             <div id="short-pixel-notice-squirrly" class="sp-notice sp-notice-info bulk-progress bulk-progress-partners sp-floating-block sp-full-width">
-                <div style="float:right"><a href="javascript:dismissShortPixelNotice('squirrly')"><?php _e('Dismiss','shortpixel-image-optimiser');?></a></div>
-                <a href="https://my.squirrly.co/go120073/squirrly.co/short-pixel-seo" target="_blank">
-                    <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/squirrly.png' ));?>" height="50">
-                    <div><?php _e('While you wait for your images to optimize, check out Squirrly, a great plugin for further boosting your SEO.','shortpixel-image-optimiser');?></div>
-                </a>
+                <div style="float:right"><a href="javascript:dismissShortPixelNotice('squirrly')"><?php _e('Dismiss','shortpixel-image-optimiser'); ?></a></div>
+                    <div style="display: flex; align-items: center;">
+                      <span class='icon' style="margin-right: 25px;"><img src="<?php echo(wpSPIO()->plugin_url('res/img/robo-winky.png' ));?>" ></span>
+                      <span class='content'>
+                       <p><?php _e('After you optimized all your images your site speed might still be improved. Allow ShortPixel Specialists to tell you how.', 'shortpixel-image-optimiser');  ?><p>
+                        <p style='font-size: 16px;'><a href="https://shortpixel.com/lp/wso/?utm_source=SPIO" target="_blank" style='font-weight: 700;'><?php _e('Get Your Site Assessment','shortpixel-image-optimiser'); ?></a></p>
+                      </span>
+                  </div>
             </div>
+            <?php } ?>
+            <?php
+            // deactivated for the moment, because of the WSO notice above
+            if(false && !isset($dismissed['squirrly']) && $quotaData['APICallsQuotaOneTimeNumeric']<10000 && $quotaData['APICallsQuotaNumeric']<5000) { ?>
+                <!-- Partners: SQUIRLY -->
+                <div id="short-pixel-notice-squirrly" class="sp-notice sp-notice-info bulk-progress bulk-progress-partners sp-floating-block sp-full-width">
+                    <div style="float:right"><a href="javascript:dismissShortPixelNotice('squirrly')"><?php _e('Dismiss','shortpixel-image-optimiser');?></a></div>
+                    <a href="https://my.squirrly.co/go120073/squirrly.co/short-pixel-seo" target="_blank">
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/squirrly.png' ));?>" height="50">
+                        <div><?php _e('While you wait for your images to optimize, check out Squirrly, a great plugin for further boosting your SEO.','shortpixel-image-optimiser');?></div>
+                    </a>
+                </div>
             <?php } ?>
 
             <div class="sp-floating-block sp-notice bulk-notices-parent">
                 <div class="bulk-notice-container">
                     <div class="bulk-notice-msg bulk-lengthy">
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/loading-dark-big.gif' ));?>">
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/loading-dark-big.gif' ));?>">
                         <?php _e('Lengthy operation in progress:','shortpixel-image-optimiser');?><br>
                         <?php _e('Optimizing image','shortpixel-image-optimiser');?> <a href="#" data-href="<?php echo(get_admin_url());?>/post.php?post=__ID__&action=edit" target="_blank">placeholder.png</a>
                     </div>
                     <div class="bulk-notice-msg bulk-maintenance">
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/loading-dark-big.gif' ));?>">
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/loading-dark-big.gif' ));?>">
                         <?php _e("The ShortPixel API is in maintenance mode. Please don't close this window. The bulk will resume automatically as soon as the API is back online.",'shortpixel-image-optimiser');?>
                     </div>
                     <div class="bulk-notice-msg bulk-queue-full">
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/loading-dark-big.gif' ));?>">
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/loading-dark-big.gif' ));?>">
                         <?php _e("Too many images processing simultaneously for your site, automatically retrying in 1 min. Please don't close this window.",'shortpixel-image-optimiser');?>
                     </div>
                     <div class="bulk-notice-msg bulk-error" id="bulk-error-template">
                         <div style="float: right; margin-top: -4px; margin-right: -3px;">
                             <a href="javascript:void(0);" onclick="ShortPixel.removeBulkMsg(this)" style='color: #c32525;font-size: 20px;text-decoration: none;'>&times;</a>
                         </div>
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/exclamation-big.png' ));?>">
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/exclamation-big.png' ));?>">
                         <span class="sp-err-title"><?php _e('Error processing file:','shortpixel-image-optimiser');?><br></span>
                         <span class="sp-err-content"><?php echo $message; ?></span> <a class="sp-post-link" href="<?php echo(get_admin_url());?>/post.php?post=__ID__&action=edit" target="_blank">placeholder.png</a>
                     </div>
                     <div class="bulk-notice-msg bulk-searching">
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/loading-dark-big.gif' ));?>">
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/loading-dark-big.gif' ));?>">
                         <?php _e('Please bear with me. ShortPixel is checking many already optimized images to see if they\'re OK, so the progress bar could stop for a while.','shortpixel-image-optimiser');?><br>
                     </div>
                 </div>
@@ -713,8 +617,8 @@ class ShortPixelView {
                 <?php }?>
                 <div id="bulk-progress" class="progress" >
                     <div class="progress-img" style="left: <?php echo($percent);?>%;">
-                        <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/slider.png' ));?>"
-                             srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/slider.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/slider@2x.png' ));?> 2x'>
+                        <img src="<?php echo(wpSPIO()->plugin_url('res/img/slider.png' ));?>"
+                             srcset='<?php echo(wpSPIO()->plugin_url('res/img/slider.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/slider@2x.png' ));?> 2x'>
                         <span><?php echo($percentAfter);?></span>
                     </div>
                     <div class="progress-left" style="width: <?php echo($percent);?>%"><?php echo($percentBefore);?></div>
@@ -723,11 +627,14 @@ class ShortPixelView {
                     &nbsp;<?php echo($message);?>
                 </div>
                 <form action='' method='POST' style="display:inline;">
+                    <?php wp_nonce_field('sp-bulk', 'sp-nonce'); ?>
                     <input type="submit" class="button button-primary bulk-cancel"  onclick="clearBulkProcessor();"
                            name="bulkProcessStop" value="Stop" style="margin-left:10px"/>
                     <input type="submit" class="button button-primary bulk-cancel"  onclick="clearBulkProcessor();"
                            name="<?php echo($running ? "bulkProcessPause" : "bulkProcessResume");?>" value="<?php echo($running ? __('Pause','shortpixel-image-optimiser') : __('All media','shortpixel-image-optimiser'));?>"/>
-                    <?php if(!$running && $customPending) {?>
+                    <?php
+                    // Off since this doesn't work.
+                    if(false && !$running && $customPending) {?>
                         <input type="submit" class="button button-primary bulk-cancel"  onclick="clearBulkProcessor();"
                                name="skipToCustom" value="<?php _e('Only other media','shortpixel-image-optimiser');?>" title="<?php _e('Process only the other media, skipping the Media Library','shortpixel-image-optimiser');?>" style="margin-right:10px"/>
                     <?php }?>
@@ -794,8 +701,8 @@ class ShortPixelView {
             ?>
         <br/>
         <div class="clearfix <?php echo($extraClass);?>" style="background-color: #fff; border-left-style: solid; border-left-width: 4px; box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1); padding: 1px 12px;;width: 95%">
-            <img src="<?php echo(plugins_url('/shortpixel-image-optimiser/res/img/robo-' . $icon . '.png'));?>"
-                 srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-' . $icon . '.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/robo-' . $icon . '@2x.png' ));?> 2x'
+            <img src="<?php echo(wpSPIO()->plugin_url('res/img/robo-' . $icon . '.png'));?>"
+                 srcset='<?php echo(wpSPIO()->plugin_url('res/img/robo-' . $icon . '.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/robo-' . $icon . '@2x.png' ));?> 2x'
                  class='short-pixel-notice-icon'>
             <p><?php echo($notice['msg']);?></p>
         </div>
@@ -900,8 +807,8 @@ class ShortPixelView {
                                 }
                                 ?><br><span style="position:relative;">
                                     <input name="tos" type="checkbox" id="tos">
-                                    <img id="tos-robo" src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/slider.png' ));?>" style="position: absolute;left: -95px;bottom: -26px;display:none;">
-                                    <img id="tos-hand" src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/point.png' ));?>" style="position: absolute;left: -39px;bottom: -9px;display:none;">
+                                    <img id="tos-robo" src="<?php echo(wpSPIO()->plugin_url('res/img/slider.png' ));?>" style="position: absolute;left: -95px;bottom: -26px;display:none;">
+                                    <img id="tos-hand" src="<?php echo(wpSPIO()->plugin_url('res/img/point.png' ));?>" style="position: absolute;left: -39px;bottom: -9px;display:none;">
                                 </span>
                                 <?php _e('I have read and I agree to the <a href="https://shortpixel.com/tos" target="_blank">Terms of Service</a> and the <a href="https://shortpixel.com/privacy" target="_blank">Privacy Policy</a> (<a href="https://shortpixel.com/privacy#gdpr" target="_blank">GDPR compliant</a>).','shortpixel-image-optimiser');
                                 ?>
@@ -1049,12 +956,12 @@ class ShortPixelView {
                         </p>
                         <div style="margin-top: 10px;">
                             <input type="radio" name="resize_type" id="resize_type_outer" value="outer" <?php echo($settings->resizeType == 'inner' ? '' : 'checked') ?> style="margin: -50px 10px 60px 0;">
-                            <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-outer.png' ));?>"
-                                 srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-outer.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-outer@2x.png' ));?> 2x'
+                            <img src="<?php echo(wpSPIO()->plugin_url('res/img/resize-outer.png' ));?>"
+                                 srcset='<?php echo(wpSPIO()->plugin_url('res/img/resize-outer.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/resize-outer@2x.png' ));?> 2x'
                                  title="<?php _e('Sizes will be greater or equal to the corresponding value. For example, if you set the resize dimensions at 1000x1200, an image of 2000x3000px will be resized to 1000x1500px while an image of 3000x2000px will be resized to 1800x1200px','shortpixel-image-optimiser');?>">
                             <input type="radio" name="resize_type" id="resize_type_inner" value="inner" <?php echo($settings->resizeType == 'inner' ? 'checked' : '') ?> style="margin: -50px 10px 60px 35px;">
-                            <img src="<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-inner.png' ));?>"
-                                 srcset='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-inner.png' ));?> 1x, <?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/resize-inner@2x.png' ));?> 2x'
+                            <img src="<?php echo(wpSPIO()->plugin_url('res/img/resize-inner.png' ));?>"
+                                 srcset='<?php echo(wpSPIO()->plugin_url('res/img/resize-inner.png' ));?> 1x, <?php echo(wpSPIO()->plugin_url('res/img/resize-inner@2x.png' ));?> 2x'
                                  title="<?php _e('Sizes will be smaller or equal to the corresponding value. For example, if you set the resize dimensions at 1000x1200, an image of 2000x3000px will be resized to 800x1200px while an image of 3000x2000px will be resized to 1000x667px','shortpixel-image-optimiser');?>">
                             <div style="display:inline-block;margin-left: 20px;"><a href="https://blog.shortpixel.com/resize-images/" class="shortpixel-help-link" target="_blank">
                                 <span class="dashicons dashicons-editor-help"></span><?php _e('What is this?','shortpixel-image-optimiser');?></a>
@@ -1188,7 +1095,7 @@ class ShortPixelView {
                                     <td>
                                         <?php if(!($st == "Empty")) { ?>
                                         <a href="javascript:none();"  title="<?php echo $fullStat; ?>" style="text-decoration: none;">
-                                            <img src='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/info-icon.png' ));?>' style="margin-bottom: -2px;"/>
+                                            <img src='<?php echo(wpSPIO()->plugin_url('res/img/info-icon.png' ));?>' style="margin-bottom: -2px;"/>
                                         </a>&nbsp;<?php  } echo($typ.$st.$err); ?>
 
                                     </td>
@@ -1617,7 +1524,7 @@ class ShortPixelView {
                     </tr>
                     <tr>
                         <th><a href="https://<?php echo(SHORTPIXEL_API);?>/v2/report.php?key=<?php echo(defined("SHORTPIXEL_HIDE_API_KEY") ? '' : $this->ctrl->getApiKey());?>" target="_blank">
-                                <?php _e('See report (last 40 days)','shortpixel-image-optimiser');?>
+                                <?php _e('See report (last 30 days)','shortpixel-image-optimiser');?>
                             </a></th>
                         <td>&nbsp;</td>
                     </tr>
@@ -1664,13 +1571,18 @@ class ShortPixelView {
     public function renderCustomColumn($id, $data, $extended = false){ ?>
         <?php if ($extended) // extended ( edit-media ) moved to it's own view.
         {
-            $controller = new \ShortPixel\editMediaController();
+            $controller = new \ShortPixel\Controller\EditMediaController();
             $controller->setTempData($data);
             $controller->setLegacyView($this);
             $controller->setShortPixel($this->ctrl);
             $controller->load($id);
+            if (\wpSPIO()->env()->is_debug)
+            {
+              \wpSPIO()->load_script('shortpixel-debug');
+            }
             return;
         }
+
         ?>
         <div id='sp-msg-<?php echo($id);?>' class='column-wp-shortPixel'>
 
@@ -1730,34 +1642,7 @@ class ShortPixelView {
                     $excluded = (isset($data['excludeSizes']) ? count($data['excludeSizes']) : 0);
                     $successText = $this->getSuccessText($data['percent'],$data['bonus'],$data['type'],$data['thumbsOpt'],$data['thumbsTotal'], $data['retinasOpt'], $data['excludeSizes']);
                     $todoSizes = $missingThumbs = $excludeSizes = '';
-                    /*if($extended) {
-                        if(isset($data['thumbsToOptimizeList']) && count($data['thumbsToOptimizeList'])) {
-                            $todoSizes .= "<br><span style='word-break: break-all;'> <span style='font-weight: bold;'>" . __("To optimize:", 'shortpixel-image-optimiser') . "</span>";
-                            foreach($data['thumbsToOptimizeList'] as $todoItem) {
-                                $todoSizes .= "<br> &#8226;&nbsp;" . $todoItem;
-                            }
-                            $todoSizes .= '</span>';
-                        }
-                        if(isset($data['excludeSizes'])) {
-                            $excludeSizes .= "<br><span style='word-break: break-all;'> <span style='font-weight: bold;'>" . __("Excluded thumbnails:", 'shortpixel-image-optimiser') . "</span>";
-                            foreach($data['excludeSizes'] as $excludedItem) {
-                                $excludeSizes .= "<br> &#8226;&nbsp;" . $excludedItem;
-                            }
-                            $excludeSizes .= '</span>';
-                        }
-                        if(count($data['thumbsMissing'])) {
-                            $missingThumbs .= "<br><span style='word-break: break-all;'> <span style='font-weight: bold;'>" . __("Missing thumbnails:", 'shortpixel-image-optimiser') . "</span>";
-                            foreach($data['thumbsMissing'] as $miss) {
-                                $missingThumbs .= "<br> &#8226&nbsp;" . $miss;
-                            }
-                            $missingThumbs .= '</span>';
-                        }
-                        $successText .= ($data['webpCount'] ? "<br>+" . $data['webpCount'] . __(" WebP images", 'shortpixel-image-optimiser') : "")
-                                . "<br>EXIF: " . ($data['exifKept'] ? __('kept','shortpixel-image-optimiser') :  __('removed','shortpixel-image-optimiser'))
-                                . ($data['png2jpg'] ? '<br>' . __('Converted from PNG','shortpixel-image-optimiser'): '')
-                                . "<br>" . __("Optimized on", 'shortpixel-image-optimiser') . ": " . $data['date']
-                                . $todoSizes . $excludeSizes . $missingThumbs;
-                    } */
+
                     $this->renderListCell($id, $data['status'], $data['showActions'], $data['thumbsToOptimize'],
                             $data['backup'], $data['type'], $data['invType'], $successText);
 
@@ -1825,11 +1710,12 @@ class ShortPixelView {
     }
 
     public function getQuotaExceededHTML($message = '') {
+      $keyControl = ApiKeyController::getInstance();
         return "<div class='sp-column-actions' style='width:110px;'>
-        <a class='button button-smaller button-primary' href='https://shortpixel.com/login/". (defined("SHORTPIXEL_HIDE_API_KEY") ? '' : $this->ctrl->getApiKey()) . "' target='_blank'>"
+        <a class='button button-smaller button-primary' href='https://shortpixel.com/login/". $keyControl->getKeyForDisplay() . "' target='_blank'>"
             . __('Extend Quota','shortpixel-image-optimiser') .
         "</a>
-        <a class='button button-smaller' href='admin.php?action=shortpixel_check_quota'>"
+        <a class='button button-smaller' href='javascript:ShortPixel.checkQuota();'>"
             . __('Check&nbsp;&nbsp;Quota','shortpixel-image-optimiser') .
         "</a></div>
         <div class='sp-column-info'>" . $message . " " . __('Quota Exceeded','shortpixel-image-optimiser') . "</div>";

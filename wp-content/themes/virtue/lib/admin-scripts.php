@@ -126,7 +126,7 @@ function virtue_editor_dynamic_css() {
 			echo 'body.block-editor-page .editor-post-title__block .editor-post-title__input, body.block-editor-page .wp-block-heading h1, body.block-editor-page .editor-block-list__block h1, body.block-editor-page .editor-post-title__block .editor-post-title__input {
 					font-size: ' . esc_attr( $virtue['font_h1']['font-size'] ) . ';
 					line-height: ' . esc_attr( $virtue['font_h1']['line-height'] ) . ';
-					font-weight: ' . esc_attr( $virtue['font_h1']['font-weight'] ) . ';
+					font-weight: ' . ( isset( $virtue['font_h1']['font-weight'] ) ? esc_attr( $virtue['font_h1']['font-weight'] ) : '400' ) . ';
 					font-family: ' . esc_attr( $virtue['font_h1']['font-family'] ) . ';
 					color: ' . esc_attr( ( isset( $virtue['font_h1']['color'] ) && ! empty( $virtue['font_h1']['color'] ) && '#ffffff' !== $virtue['font_h1']['color'] ? $virtue['font_h1']['color'] : '' ) ) . ';
 				}';
@@ -135,7 +135,7 @@ function virtue_editor_dynamic_css() {
 			echo 'body.block-editor-page .wp-block-heading h2, body.block-editor-page .editor-block-list__block h2 {
 				font-size: ' . esc_attr( $virtue['font_h2']['font-size'] ) . ';
 				line-height: ' . esc_attr( $virtue['font_h2']['line-height'] ) . ';
-				font-weight: ' . esc_attr( $virtue['font_h2']['font-weight'] ) . ';
+				font-weight: ' . ( isset( $virtue['font_h2']['font-weight'] ) ? esc_attr( $virtue['font_h2']['font-weight'] ) : '400' ) . ';
 				font-family: ' . esc_attr( $virtue['font_h2']['font-family'] ) . ';
 				color: ' . esc_attr( ( isset( $virtue['font_h2']['color'] ) && ! empty( $virtue['font_h2']['color'] ) && '#ffffff' !== $virtue['font_h2']['color'] ? $virtue['font_h2']['color'] : '' ) ) . ';
 			}';
@@ -144,7 +144,7 @@ function virtue_editor_dynamic_css() {
 			echo 'body.block-editor-page .wp-block-heading h3, body.block-editor-page .editor-block-list__block h3 {
 				font-size: ' . esc_attr( $virtue['font_h3']['font-size'] ) . ';
 				line-height: ' . esc_attr( $virtue['font_h3']['line-height'] ) . ';
-				font-weight: ' . esc_attr( $virtue['font_h3']['font-weight'] ) . ';
+				font-weight: ' . ( isset( $virtue['font_h3']['font-weight'] ) ? esc_attr( $virtue['font_h3']['font-weight'] ) : '400' ) . ';
 				font-family: ' . esc_attr( $virtue['font_h3']['font-family'] ) . ';
 				color: ' . esc_attr( ( isset( $virtue['font_h3']['color'] ) && ! empty( $virtue['font_h3']['color'] ) && '#ffffff' !== $virtue['font_h3']['color'] ? $virtue['font_h3']['color'] : '' ) ) . ';
 			}';
@@ -153,7 +153,7 @@ function virtue_editor_dynamic_css() {
 			echo 'body.block-editor-page .wp-block-heading h4, body.block-editor-page .editor-block-list__block h4 {
 				font-size: ' . esc_attr( $virtue['font_h4']['font-size'] ) . ';
 				line-height: ' . esc_attr( $virtue['font_h4']['line-height'] ) . ';
-				font-weight: ' . esc_attr( $virtue['font_h4']['font-weight'] ) . ';
+				font-weight: ' . ( isset( $virtue['font_h4']['font-weight'] ) ? esc_attr( $virtue['font_h4']['font-weight'] ) : '400' ) . ';
 				font-family: ' . esc_attr( $virtue['font_h4']['font-family'] ) . ';
 				color: ' . esc_attr( ( isset( $virtue['font_h4']['color'] ) && ! empty( $virtue['font_h4']['color'] ) && '#ffffff' !== $virtue['font_h4']['color'] ? $virtue['font_h4']['color'] : '' ) ) . ';
 			} body.gutenberg-editor-page .editor-block-list__block .widgets-container .so-widget h4 {font-size:inherit; letter-spacing:normal; font-family:inherit;}';
@@ -162,7 +162,7 @@ function virtue_editor_dynamic_css() {
 			echo 'body.block-editor-page .wp-block-heading h5, body.block-editor-page .editor-block-list__block h5 {
 				font-size: ' . esc_attr( $virtue['font_h5']['font-size'] ) . ';
 				line-height: ' . esc_attr( $virtue['font_h5']['line-height'] ) . ';
-				font-weight: ' . esc_attr( $virtue['font_h5']['font-weight'] ) . ';
+				font-weight: ' . ( isset( $virtue['font_h5']['font-weight'] ) ? esc_attr( $virtue['font_h5']['font-weight'] ) : '700' ) . ';
 				font-family: ' . esc_attr( $virtue['font_h5']['font-family'] ) . ';
 				color: ' . esc_attr( ( isset( $virtue['font_h5']['color'] ) && ! empty( $virtue['font_h5']['color'] ) && '#ffffff' !== $virtue['font_h5']['color'] ? $virtue['font_h5']['color'] : '' ) ) . ';
 			}';
@@ -170,7 +170,7 @@ function virtue_editor_dynamic_css() {
 		if ( isset( $virtue['font_p'] ) ) {
 			echo '.edit-post-visual-editor, .edit-post-visual-editor p, .edit-post-visual-editor.editor-styles-wrapper p, .edit-post-visual-editor .wp-block-button {
 				font-size: ' . esc_attr( $virtue['font_p']['font-size'] ) . ';
-				font-weight: ' . esc_attr( $virtue['font_p']['font-weight'] ) . ';
+				font-weight: ' . ( isset( $virtue['font_p']['font-weight'] ) ? esc_attr( $virtue['font_p']['font-weight'] ) : '400' ) . ';
 				font-family: ' . esc_attr( $virtue['font_p']['font-family'] ) . ';
 			}';
 			echo '.block-editor-page .edit-post-visual-editor {

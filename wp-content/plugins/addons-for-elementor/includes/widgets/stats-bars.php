@@ -31,7 +31,7 @@ class LAE_Stats_Bars_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'fa fa-tasks';
+        return 'lae-icon-stats-bars';
     }
 
     public function get_categories() {

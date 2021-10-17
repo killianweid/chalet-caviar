@@ -34,7 +34,7 @@ class LAE_Services_Widget extends Widget_Base
     
     public function get_icon()
     {
-        return 'fa fa-clone';
+        return 'lae-icon-services';
     }
     
     public function get_categories()

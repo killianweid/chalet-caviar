@@ -31,7 +31,7 @@ class LAE_Piecharts_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-counter-circle';
+        return 'lae-icon-piechart3';
     }
 
     public function get_categories() {

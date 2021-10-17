@@ -31,7 +31,7 @@ class LAE_Testimonials_Slider_Widget extends Widget_Base {
     }
 
     public function get_icon() {
-        return 'eicon-blockquote';
+        return 'lae-icon-testimonials1';
     }
 
     public function get_categories() {
@@ -206,6 +206,19 @@ class LAE_Testimonials_Slider_Widget extends Widget_Base {
                 'default' => 'no',
                 'label' => __('Pause slider on action?', 'livemesh-el-addons'),
                 'description' => __('Should the slideshow pause once user initiates an action using navigation/direction controls.', 'livemesh-el-addons'),
+            ]
+        );
+
+        $this->add_control(
+            'smooth_height',
+            [
+                'type' => Controls_Manager::SWITCHER,
+                'label_off' => __('No', 'livemesh-el-addons'),
+                'label_on' => __('Yes', 'livemesh-el-addons'),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'label' => __('Smooth Height?', 'livemesh-el-addons'),
+                'description' => __('Animate the height of the slider smoothly for slides of varying height.', 'livemesh-el-addons'),
             ]
         );
 
@@ -452,7 +465,8 @@ class LAE_Testimonials_Slider_Widget extends Widget_Base {
             'control_nav' => ('yes' === $settings['control_nav']),
             'direction_nav' => ('yes' === $settings['direction_nav']),
             'pause_on_hover' => ('yes' === $settings['pause_on_hover']),
-            'pause_on_action' => ('yes' === $settings['pause_on_action'])
+            'pause_on_action' => ('yes' === $settings['pause_on_action']),
+            'smooth_height' => ('yes' === $settings['smooth_height'])
         ];
 
         $output = '<div' . $dir . $style . ' class="lae-testimonials-slider lae-flexslider lae-container" data-settings=\'' . wp_json_encode($slider_options) . '\'>';

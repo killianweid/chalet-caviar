@@ -35,7 +35,7 @@ if (typeof (jQuery) != 'undefined') {
 
                 output_custom_css: function () {
 
-                    var custom_css = lae_settings['custom_css'];
+                    var custom_css = lae_js_vars.custom_css;
                     if (custom_css !== undefined && custom_css != '') {
                         custom_css = '<style type="text/css">' + custom_css + '</style>';
                         $('head').append(custom_css);

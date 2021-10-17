@@ -25,7 +25,6 @@ $rand_txt[0] = $atext0;
 ?>
 
 <style>
-    .add-new-h2.disabled {cursor: not-allowed; border-color: #ccc !important; background: #f7f7f7 !important; color: #ccc !important;}
 	a#dup-create-new {margin-left:-5px}
     div#dup-progress-area {text-align:center; max-width:800px; min-height:200px;  border:1px solid silver; border-radius:5px; margin:25px auto 10px auto; padding:0px; box-shadow: 0 8px 6px -6px #999;}
     div.dup-progress-title {font-size:22px;padding:5px 0 20px 0; font-weight: bold}
@@ -38,14 +37,14 @@ $rand_txt[0] = $atext0;
     div.dup-msg-success-links {margin:20px 5px 5px 5px; font-size: 13px;}
     div#dup-progress-area div.done-title {font-size:18px; font-weight:bold; margin:0px 0px 10px 0px}
     div#dup-progress-area div.dup-panel-title {background-color: #dfdfdf;}
-    div.hdr-pack-complete {font-size:18px; color:green; font-weight: bold}
+	div.hdr-pack-complete {font-size:18px; color:green; font-weight: bold}
 
     div#dup-create-area-nolink, div#dup-create-area-link {float:right; font-weight: bold; margin: 0; padding: 0}
     div#dup-create-area-link {display:none; margin-left: -5px}
     div#dup-progress-area div.dup-panel-panel { border-top: 1px solid silver}
     fieldset.download-area {border:2px dashed #dfdfdf; padding:20px 20px 10px 20px; border-radius:9px; margin: auto; width:400px }
     fieldset.download-area legend {font-weight: bold; font-size: 16px; margin:auto}
-    button#dup-btn-installer, button#dup-btn-archive {min-width: 150px}
+    button#dup-btn-installer, button#dup-btn-archive { line-height: 28px; min-width: 150px}
     div.one-click-download {margin:15px 0 10px 0; font-size:16px; font-weight: bold}
     div.one-click-download i.fa-bolt{padding-right: 5px}
     div.one-click-download i.fa-file-archive-o{padding-right: 5px}
@@ -86,7 +85,7 @@ TOOL BAR: STEPS -->
             </div>
         </td>
         <td style="padding-bottom:4px">
-            <span><a href="?page=duplicator" class="add-new-h2">
+            <span><a href="?page=duplicator" class="button">
                     <i class="fa fa-archive fa-sm"></i> <?php esc_html_e("Packages",'duplicator'); ?>
                 </a></span> 
             <?php
@@ -96,7 +95,7 @@ TOOL BAR: STEPS -->
 			<a id="dup-create-new"
                onClick="return !jQuery(this).hasClass('disabled');"
                href="<?php echo $package_nonce_url;?>"
-               class="add-new-h2 <?php echo ($active_package_present ? 'disabled' : ''); ?>"
+               class="button <?php echo ($active_package_present ? 'disabled' : ''); ?>"
                >
                 <?php esc_html_e("Create New", 'duplicator'); ?>
             </a>
@@ -151,12 +150,22 @@ TOOL BAR: STEPS -->
 					<a href="javascript:void(0)" id="dup-link-download-both" title="<?php esc_attr_e("Click to download both files", 'duplicator') ?>">
 						 <?php esc_html_e("One-Click Download",   'duplicator') ?>
 					</a>
-					<sup><i class="fas fa-question-circle fa-sm" style='font-size:11px'
+					<sup>
+						<i class="fas fa-question-circle fa-sm" style='font-size:11px'
 							data-tooltip-title="<?php esc_attr_e("One Click:", 'duplicator'); ?>"
 							data-tooltip="<?php esc_attr_e('Clicking this link will open both the installer and archive download prompts at the same time. '
 								.'On some browsers you may have to disable pop-up warnings on this domain for this to work correctly.', 'duplicator'); ?>">
-						</i></sup>
+						</i>
+					</sup>
 				</div>
+                <div style="margin-top:20px; font-size:11px">
+                    <span id="dup-click-to-copy-installer-name" class="link-style no-decoration" data-dup-copy-text="<?php echo esc_attr(DUP_Installer::DEFAULT_INSTALLER_FILE_NAME_WITHOUT_HASH); ?>">
+                        <?php
+                        esc_html_e("[Copy Installer Name to Clipboard]", 'duplicator');
+                        ?>
+                        <i class="far fa-copy"></i>
+                    </span>
+                </div>
 			</fieldset>
 
 			<div class="dup-howto-exe">
@@ -244,7 +253,7 @@ TOOL BAR: STEPS -->
 					<div style="color:#777; padding: 15px 5px 5px 5px">
 						<b> <?php esc_html_e('Notice', 'duplicator'); ?></b><br/>
 						<?php
-						printf('<b><i class="fa fa-folder-o"></i> %s %s</b> <br/> %s', esc_html__('Build Folder:'), DUPLICATOR_SSDIR_PATH_TMP,
+						printf('<b><i class="fa fa-folder-o"></i> %s %s</b> <br/> %s', esc_html__('Build Folder:'), DUP_Settings::getSsdirTmpPath(),
 							__("On some servers the build will continue to run in the background. To validate if a build is still running; open the 'tmp' folder above and see "
 								."if the archive file is growing in size or check the main packages screen to see if the package completed. If it is not then your server "
 								."has strict timeout constraints.", 'duplicator')
@@ -423,7 +432,14 @@ jQuery(document).ready(function ($)
 					console.log(xHr);
 					return false;
 				}
-				Duplicator.Pack.WireDownloadLinks(data);
+                
+                if ((data != null) && (typeof (data) != 'undefined') && data.status == 1) {
+                    Duplicator.Pack.WireDownloadLinks(data);
+                } else {
+                    var message = (typeof (data.error) != 'undefined' && data.error.length) ? data.error : 'Error processing package';
+                    Duplicator.Pack.DupArchiveProcessingFailed(message);
+                }
+                
 			},
 			error: function (xHr) {
 				$('#dup-progress-bar-area').hide();
@@ -507,7 +523,7 @@ jQuery(document).ready(function ($)
 								alert(errorMessage);
 							}
 
-						   Duplicator.Pack.WireDownloadLinks(data);
+						    Duplicator.Pack.WireDownloadLinks(data);
 
 						} else {
 							// data.Status == 4
@@ -602,8 +618,14 @@ jQuery(document).ready(function ($)
 	Duplicator.Pack.WireDownloadLinks = function(data)
 	{
 		var pack = data.package;
-		var archive_name = pack.Archive.File;
-		var archive_url = "<?php echo DUPLICATOR_SSDIR_URL; ?>" + "/" + archive_name;
+		var archive_json = {
+		    filename: pack.Archive.File,
+            url: "<?php echo DUP_Settings::getSsdirUrl(); ?>" + "/" + pack.Archive.File
+        };
+		var installer_json = {
+		    id: pack.ID,
+            hash: pack.Hash
+        };
 
 		$('#dup-progress-bar-area').hide();
 		$('#dup-progress-area, #dup-msg-success').show(300);
@@ -614,9 +636,13 @@ jQuery(document).ready(function ($)
         $('#dup-create-new').removeClass('disabled');
         
 		//Wire Up Downloads
-		$('#dup-btn-installer').click(function() { Duplicator.Pack.DownloadPackageFile(0, pack.ID); return false});
+		$('#dup-btn-installer').click(function() {
+		    Duplicator.Pack.DownloadInstaller(installer_json);
+		    return false;
+		});
+
 		$('#dup-btn-archive').click(function() {
-			Duplicator.Pack.DownloadFile(archive_name, archive_url);
+			Duplicator.Pack.DownloadFile(archive_json);
 			return false;
 		});
 
@@ -627,6 +653,8 @@ jQuery(document).ready(function ($)
 			}, 700);
 			return false;
 		});
+		
+		$('#dup-click-to-copy-installer-name').data('dup-copy-text', data.instDownloadName);
 	};
 
 	Duplicator.Pack.HandleDupArchiveInterruption = function (errorText)

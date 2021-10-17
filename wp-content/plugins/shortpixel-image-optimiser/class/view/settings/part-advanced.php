@@ -14,21 +14,21 @@ namespace ShortPixel;
     if( $this->is_nginx ){
         $deliverWebpUnaltered = '';                         // Uncheck
         $deliverWebpUnalteredDisabled = 'disabled';         // Disable
-        $deliverWebpUnalteredLabel = __('It looks like you\'re running your site on an NginX server. This means that you can only achieve this functionality by directly configuring the server config files. Please follow this link for instructions on how to achieve this:','shortpixel-image-optimiser')." <a href=\"javascript:void(0)\" data-beacon-article=\"5bfeb9de2c7d3a31944e78ee\">Open article</a>";
+        $deliverWebpUnalteredLabel = __('It looks like you\'re running your site on an NginX server. This means that you can only achieve this functionality by directly configuring the server config files. Please follow this link for instructions on how to achieve this:','shortpixel-image-optimiser')." <a href=\"https://help.shortpixel.com/article/111-configure-nginx-to-transparently-serve-webp-files-when-supported\" target=\"_blank\" data-beacon-article=\"5bfeb9de2c7d3a31944e78ee\">Open article</a>";
     } else {
         if( !$this->is_htaccess_writable ){
             $deliverWebpUnalteredDisabled = 'disabled';     // Disable
-            if( $deliverWebp == 3 ){
+            if( $view->data->deliverWebp == 3 ){
                 $deliverWebpAlteredDisabled = 'disabled';   // Disable
-                $deliverWebpUnalteredLabel = __('It looks like you recently moved from an Apache server to an NGINX server, while the option to use .htacces was in use. Please follow this tutorial to see how you could implement by yourself this functionality, outside of the WP plugin. ','shortpixel-image-optimiser');
+                $deliverWebpUnalteredLabel = __('It looks like you recently moved from an Apache server to an NGINX server, while the option to use .htacces was in use. Please follow this tutorial to see how you could implement by yourself this functionality, outside of the WP plugin: ','shortpixel-image-optimiser') . '<a href="https://help.shortpixel.com/article/111-configure-nginx-to-transparently-serve-webp-files-when-supported" target="_blank" data-beacon-article="5bfeb9de2c7d3a31944e78ee">Open article</a>';
             } else {
                 $deliverWebpUnalteredLabel = __('It looks like your .htaccess file cannot be written. Please fix this and then return to refresh this page to enable this option.','shortpixel-image-optimiser');
             }
         } elseif (strpos($_SERVER['HTTP_USER_AGENT'], 'Chrome') !== false) {
             // Show a message about the risks and caveats of serving WEBP images via .htaccess
             $deliverWebpUnalteredLabel = '<span style="color: initial;">'.__('Based on testing your particular hosting configuration, we determined that your server','shortpixel-image-optimiser').
-                '&nbsp;<img src="'. plugins_url( 'res/img/test.jpg' , SHORTPIXEL_PLUGIN_FILE) .'">&nbsp;'.
-                __('serve the WEBP versions of the JPEG files seamlessly, via .htaccess.','shortpixel-image-optimiser').' <a href="javascript:void(0)" data-beacon-article="5c1d050e04286304a71d9ce4">Open article to read more about this.</a></span>';
+                '&nbsp;<img alt="can or can not" src="'. plugins_url( 'res/img/test.jpg' , SHORTPIXEL_PLUGIN_FILE) .'">&nbsp;'.
+                __('serve the WEBP versions of the JPEG files seamlessly, via .htaccess.','shortpixel-image-optimiser').' <a href="https://help.shortpixel.com/article/127-delivering-webp-images-via-htaccess" target="_blank" data-beacon-article="5c1d050e04286304a71d9ce4">Open article to read more about this.</a></span>';
         }
     }
 
@@ -41,6 +41,7 @@ namespace ShortPixel;
         }
         $excludePatterns = substr($excludePatterns, 0, -2);
     }
+
     ?>
 
     <div class="wp-shortpixel-options wp-shortpixel-tab-content" style='visibility: hidden'>
@@ -51,59 +52,76 @@ namespace ShortPixel;
                 <td>
                     <span style="display:none;">Current PHP version: <?php echo(phpversion()) ?></span>
                     <?php if($view->customFolders) { ?>
-                        <table class="shortpixel-folders-list">
-                            <tr style="font-weight: bold;">
-                                <td><?php _e('Folder name','shortpixel-image-optimiser');?></td>
-                                <td><?php _e('Type &amp;<br>Status','shortpixel-image-optimiser');?></td>
-                                <td><?php _e('Files','shortpixel-image-optimiser');?></td>
-                                <td><?php _e('Last change','shortpixel-image-optimiser');?></td>
-                                <td></td>
-                            </tr>
-                        <?php foreach($view->customFolders as $folder) {
-                            $typ = $folder->getType();
-                            $typ = $typ ? $typ . "<br>" : "";
-                            $stat = $this->shortPixel->getSpMetaDao()->getFolderOptimizationStatus($folder->getId());
-                            $cnt = $folder->getFileCount();
+
+                        <div class="shortpixel-folders-list">
+                            <div class='heading'>
+                                <span><?php _e('Folder name','shortpixel-image-optimiser');?></span>
+                                <span><?php _e('Type &amp; Status','shortpixel-image-optimiser');?></span>
+                                <span><?php _e('Files','shortpixel-image-optimiser');?></span>
+                                <span><?php _e('Last change','shortpixel-image-optimiser');?></span>
+                                <span>&nbsp;</span>
+                                <span class='action'>&nbsp;</span>
+                            </div>
+
+                        <?php
+                        foreach($view->customFolders as $index => $dirObj) {
+                            $folder_id = $dirObj->getID();
+
+
+                            $type_display = ($dirObj->isNextGen() ) ? __('Nextgen', 'shortpixel-image-optimiser') . "<br>" : "";
+                        //    $stat = $this->shortPixel->getSpMetaDao()->getFolderOptimizationStatus($folder->getId());
+                            $stat = $dirObj->getStats();
+
+                            $cnt = $stat->Total;
+
                             $st = ($cnt == 0
                                 ? __("Empty",'shortpixel-image-optimiser')
                                 : ($stat->Total == $stat->Optimized
                                     ? __("Optimized",'shortpixel-image-optimiser')
                                     : ($stat->Optimized + $stat->Pending > 0 ? __("Pending",'shortpixel-image-optimiser') : __("Waiting",'shortpixel-image-optimiser'))));
 
-                            $err = $stat->Failed > 0 && !$st == __("Empty",'shortpixel-image-optimiser') ? " ({$stat->Failed} failed)" : "";
+                            $err = $stat->Failed > 0 && !$st == __("Empty",'shortpixel-image-optimiser') ? " ({$stat->Failed} failed)" : false;
+                            if (! $dirObj->exists() && ! $err)
+                              $err = __('Directory does not exist', 'shortpixel-image-optimiser');
 
                             $action = ($st == __("Optimized",'shortpixel-image-optimiser') || $st == __("Empty",'shortpixel-image-optimiser') ? __("Stop monitoring",'shortpixel-image-optimiser') : __("Stop optimizing",'shortpixel-image-optimiser'));
+
+                            if ($dirObj->isNextGen() && $view->data->includeNextGen == 1)
+                              $action = false;
 
                             $fullStat = $st == __("Empty",'shortpixel-image-optimiser') ? "" : __("Optimized",'shortpixel-image-optimiser') . ": " . $stat->Optimized . ", "
                                     . __("Pending",'shortpixel-image-optimiser') . ": " . $stat->Pending . ", " . __("Waiting",'shortpixel-image-optimiser') . ": " . $stat->Waiting . ", "
                                     . __("Failed",'shortpixel-image-optimiser') . ": " . $stat->Failed;
-                            ?>
-                            <tr>
-                                <td>
-                                    <?php echo($folder->getPath()); ?>
-                                </td>
-                                <td>
-                                    <?php if(!($st == "Empty")) { ?>
-                                    <a href="javascript:none();"  title="<?php echo $fullStat; ?>" style="text-decoration: none;">
-                                        <img src='<?php echo(plugins_url( 'shortpixel-image-optimiser/res/img/info-icon.png' ));?>' style="margin-bottom: -2px;"/>
-                                    </a>&nbsp;<?php  } echo($typ.$st.$err); ?>
 
-                                </td>
-                                <td>
+                              $refreshUrl = add_query_arg(array('sp-action' => 'action_refreshfolder', 'folder_id' => $folder_id, 'part' => 'adv-settings'), $this->url);
+                            ?>
+                            <div>
+                                <span class='folder folder-<?php echo $dirObj->getId() ?>'><?php echo($dirObj->getPath()); ?></span>
+                                <span>
+                                    <?php if(!($st == "Empty")) { ?>
+                                    <span title="<?php echo $fullStat; ?>" class='info-icon'>
+                                        <img alt='<?php _e('Info Icon', 'shortpixel-image-optimiser') ?>' src='<?php echo( wpSPIO()->plugin_url('res/img/info-icon.png' ));?>' style="margin-bottom: -2px;"/>
+                                    </span>&nbsp;<?php  }
+                                    echo($type_display. ' ' . $st . '<br>' . $err);
+                                    ?>
+                                </span>
+                                <span>
                                     <?php echo($cnt); ?> files
-                                </td>
-                                <td>
-                                    <?php echo($folder->getTsUpdated()); ?>
-                                </td>
-                                <td>
-                                    <input type="button" class="button remove-folder-button" data-value="<?php echo($folder->getPath()); ?>" title="<?php echo($action . " " . $folder->getPath()); ?>" value="<?php echo $action;?>">
-                                    <input type="button" style="display:none;" class="button button-alert recheck-folder-button" data-value="<?php echo($folder->getPath()); ?>"
-                                           title="<?php _e('Full folder refresh, check each file of the folder if it changed since it was optimized. Might take up to 1 min. for big folders.','shortpixel-image-optimiser');?>"
-                                           value="<?php _e('Refresh','shortpixel-image-optimiser');?>">
-                                </td>
-                            </tr>
+                                </span>
+                                <span>
+                                    <?php echo( date_i18n(  get_option('date_format') . ' H:i', $dirObj->getUpdated() )); ?>
+                                </span>
+                                <span>
+                                  <a href='<?php echo $refreshUrl ?>' title="<?php _e('Recheck for new images', 'shortpixel-image-optimiser'); ?>" class='refresh-folder'><i class='dashicons dashicons-update'>&nbsp;</i></a>
+                                </span>
+                                <span class='action'>
+                                  <?php if ($action): ?>
+                                    <input type="button" class="button remove-folder-button" data-value="<?php echo($dirObj->getID()); ?>" data-name="<?php echo $dirObj->getPath() ?>" title="<?php echo($action . " " . $dirObj->getPath()); ?>" value="<?php echo $action;?>">
+                                 <?php endif; ?>
+                                </span>
+                            </div>
                         <?php }?>
-                        </table>
+                      </div> <!-- shortpixel-folders-list -->
                     <?php } ?>
 
                     <div class='addCustomFolder'>
@@ -112,7 +130,7 @@ namespace ShortPixel;
                       <p class='add-folder-text'><strong><?php _e('Add a custom folder', 'shortpixel-image-optimiser'); ?></strong></p>
                       <input type="text" name="addCustomFolderView" id="addCustomFolderView" class="regular-text" value="" disabled style="">&nbsp;
                       <input type="hidden" name="addCustomFolder" id="addCustomFolder" value=""/>
-                      <input type="hidden" id="customFolderBase" value="<?php echo $this->shortPixel->getCustomFolderBase(); ?>">
+                      <input type="hidden" id="customFolderBase" value="<?php echo $this->view->customFolderBase; ?>">
 
                       <a class="button select-folder-button" title="<?php _e('Select the images folder on your server.','shortpixel-image-optimiser');?>" href="javascript:void(0);">
                           <?php _e('Select ...','shortpixel-image-optimiser');?>
@@ -311,16 +329,6 @@ namespace ShortPixel;
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php _e('Process in front-end','shortpixel-image-optimiser');?></th>
-                <td>
-                    <input name="frontBootstrap" type="checkbox" id="frontBootstrap" value="1" <?php checked( $view->data->frontBootstrap, '1' );?>>
-                    <label for="frontBootstrap"><?php _e('Automatically optimize images added by users in front end.','shortpixel-image-optimiser');?></label>
-                    <p class="settings-info">
-                        <?php _e('Check this if you have users that add images or PDF documents from custom forms in the front-end. This could increase the load on your server if you have a lot of users simultaneously connected.','shortpixel-image-optimiser');?>
-                    </p>
-                </td>
-            </tr>
-            <tr>
                 <th scope="row"><?php _e('Optimize media on upload','shortpixel-image-optimiser');?></th>
                 <td>
                     <input name="autoMediaLibrary" type="checkbox" id="autoMediaLibrary" value="1" <?php checked( $view->data->autoMediaLibrary, "1" );?>>
@@ -329,6 +337,29 @@ namespace ShortPixel;
                         <?php _e('By default, ShortPixel will automatically optimize all the freshly uploaded image and PDF files. If you uncheck this you\'ll need to either run Bulk ShortPixel or go to Media Library (in list view) and click on the right side "Optimize now" button(s).','shortpixel-image-optimiser');?>
                     </p>
                 </td>
+            </tr>
+            <tr id="frontBootstrapRow">
+                <th scope="row"><?php _e('Process in front-end','shortpixel-image-optimiser');?></th>
+                <td>
+                    <input name="frontBootstrap" type="checkbox" id="frontBootstrap" value="1" <?php checked( $view->data->frontBootstrap, '1' );?>>
+                    <label for="frontBootstrap"><?php _e('Automatically optimize images added by users in front end.','shortpixel-image-optimiser');?></label>
+                    <p class="settings-info">
+                        <?php _e('Check this if you have users that add images or PDF documents from custom forms in the front-end. This could increase the load on your server if you have a lot of users simultaneously connected.','shortpixel-image-optimiser');?>
+                    </p>
+                </td>
+                <script>
+                    var spaiAML = document.getElementById('autoMediaLibrary');
+                    document.getElementById('frontBootstrapRow').setAttribute('style', spaiAML.checked ? '' : 'display:none;');
+                    spaiAML.addEventListener('change', function() {
+                        if(this.checked) {
+                            jQuery('#frontBootstrapRow').show(500);
+                        } else {
+                            jQuery('#frontBootstrapRow').hide(500);
+                        }
+                    });
+
+
+                </script>
             </tr>
             <tr>
                 <th scope="row"><label for="excludeSizes"><?php _e('Exclude thumbnail sizes','shortpixel-image-optimiser');?></label></th>

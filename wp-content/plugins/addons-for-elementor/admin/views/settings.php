@@ -22,6 +22,7 @@ $deactivate_element_stats_bar = lae_get_option( 'lae_deactivate_element_stats_ba
 $deactivate_element_team = lae_get_option( 'lae_deactivate_element_team', false );
 $deactivate_element_testimonials = lae_get_option( 'lae_deactivate_element_testimonials', false );
 $deactivate_element_testimonials_slider = lae_get_option( 'lae_deactivate_element_testimonials_slider', false );
+$deactivate_element_tab_slider = lae_get_option( 'lae_deactivate_element_tab_slider', false );
 ?>
 
 <div class="lae-settings">
@@ -80,7 +81,7 @@ echo  __( 'Theme Colors', 'livemesh-el-addons' ) ;
                     <div class="lae-inner lae-box-inner">
                         <div class="lae-row lae-field">
                             <label
-                                class="lae-label"><?php 
+                                    class="lae-label"><?php 
 echo  __( 'Theme Color Scheme', 'livemesh-el-addons' ) ;
 ?></label>
                             <p class="lae-desc"><?php 
@@ -122,7 +123,6 @@ echo  __( 'Select the default hover color for your theme.', 'livemesh-el-addons'
 echo  $theme_hover_color ;
 ?>"/>
                         </div>
-
 
 
                     </div>
@@ -434,6 +434,27 @@ echo  checked( !empty($deactivate_element_testimonials_slider), 1, false ) ;
                                 </div>
                             </div>
 
+                            <div class="lae-row lae-type-checkbox lae-field">
+                                <label class="lae-label"><?php 
+echo  __( 'Deactivate Tab Slider', 'livemesh-el-addons' ) ;
+?></label>
+                                <p class="lae-desc"><?php 
+echo  __( 'Deactivate the tab slider element.', 'livemesh-el-addons' ) ;
+?></p>
+                                <div class="lae-spacer" style="height: 5px"></div>
+                                <div class="lae-toggle">
+                                    <input type="checkbox" class="lae-checkbox"
+                                           name="lae_deactivate_element_tab_slider"
+                                           id="lae_deactivate_element_tab_slider" data-default=""
+                                           value="<?php 
+echo  $deactivate_element_tab_slider ;
+?>" <?php 
+echo  checked( !empty($deactivate_element_tab_slider), 1, false ) ;
+?>>
+                                    <label for="lae_deactivate_element_tab_slider"></label>
+                                </div>
+                            </div>
+
                             <?php 
 ?>
 
@@ -444,7 +465,7 @@ echo  checked( !empty($deactivate_element_testimonials_slider), 1, false ) ;
                     <div class="lae-spacer"></div>
 
                     <div class="lae-clearfix"></div>
-                    
+
 
                 </div>
 
@@ -461,7 +482,7 @@ echo  __( 'Custom CSS', 'livemesh-el-addons' ) ;
                     <div class="lae-inner lae-box-inner">
                         <div class="lae-row lae-field lae-custom-css">
                             <label
-                                class="lae-label"><?php 
+                                    class="lae-label"><?php 
 echo  __( 'Custom CSS', 'livemesh-el-addons' ) ;
 ?></label>
                             <div class="lae-spacer" style="height: 5px"></div>
@@ -471,7 +492,8 @@ echo  __( 'Please enter custom CSS for custom styling of addons', 'livemesh-el-a
 
                             <div class="lae-spacer" style="height: 15px"></div>
 
-                            <textarea class="lae-textarea" name="lae_custom_css" id="lae_custom_css" rows="20" cols="120"><?php 
+                            <textarea class="lae-textarea" name="lae_custom_css" id="lae_custom_css" rows="20"
+                                      cols="120"><?php 
 echo  $custom_css ;
 ?></textarea>
 
@@ -495,7 +517,7 @@ echo  __( 'Debug Mode', 'livemesh-el-addons' ) ;
                     <div class="lae-inner lae-box-inner">
                         <div class="lae-spacer" style="height: 15px"></div>
                         <label
-                            class="lae-label lae-label-outside"><?php 
+                                class="lae-label lae-label-outside"><?php 
 echo  __( 'Enable Script Debug Mode', 'livemesh-el-addons' ) ;
 ?></label>
                         <div class="lae-row lae-type-checkbox lae-field">
@@ -503,8 +525,10 @@ echo  __( 'Enable Script Debug Mode', 'livemesh-el-addons' ) ;
 echo  __( 'Use unminified Javascript files instead of minified ones to help developers debug an issue', 'livemesh-el-addons' ) ;
 ?></p>
                             <div class="lae-toggle">
-                                <input type="checkbox" class="lae-checkbox" name="lae_enable_debug" id="lae_enable_debug"
-                                       data-default="" value="<?php 
+                                <input type="checkbox" class="lae-checkbox" name="lae_enable_debug"
+                                       id="lae_enable_debug"
+                                       data-default=""
+                                       value="<?php 
 echo  $debug_mode ;
 ?>" <?php 
 echo  checked( !empty($debug_mode), 1, false ) ;
@@ -526,7 +550,7 @@ echo  __( 'System Info', 'livemesh-el-addons' ) ;
 
                         <div class="lae-row lae-field">
                             <label
-                                class="lae-label"><?php 
+                                    class="lae-label"><?php 
 echo  __( 'System Information', 'livemesh-el-addons' ) ;
 ?></label>
                             <p class="lae-desc"><?php 
@@ -584,58 +608,83 @@ if ( lae_fs()->is_not_paying() ) {
 ?>
 
                             <p>The premium version helps us to continue development of this plugin incorporating even
-                                more features and enhancements along with offering more responsive support. Following are
+                                more features and enhancements along with offering more responsive support. Following
+                                are
                                 some of the reasons why you may want to upgrade to the premium version of this
                                 plugin.</p>
 
                             <label class="lae-label">New Premium Widgets</label>
 
-                            <p>Although the free version of the Addons for Elementor features a large repertoire of premium quality addons, the premium
+                            <p>Although the free version of the Addons for Elementor features a large repertoire of
+                                premium quality addons, the premium
                                 version does even more.</p>
 
 
                             <ul>
-                                <li><a href="https://livemeshelementor.com/posts-block/" title="Post Blocks Addon" target="_blank">Post
-                                        Blocks!</a> - Present your blog posts, events, news items or portfolio in a dozen creative ways. Comes with AJAX filtering,
-                                    pagination and load more features to help visitors navigate your entire collection of blog posts or custom post types and
+                                <li><a href="https://livemeshelementor.com/posts-block/" title="Post Blocks Addon"
+                                       target="_blank">Post
+                                        Blocks!</a> - Present your blog posts, events, news items or portfolio in a
+                                    dozen creative ways. Comes with AJAX filtering,
+                                    pagination and load more features to help visitors navigate your entire collection
+                                    of blog posts or custom post types and
                                     their categories without reloading the page.
                                 </li>
+                                <li><a href="https://livemeshelementor.com/twitter-grid/" title="Twitter Grid Addon">Twitter Grid</a> to help showcase tweets on your site with load more option.</li>
+                                <li><a href="https://livemeshelementor.com/youtube-grid/" title="YouTube Grid Addon">YouTube Grid</a> to display a collection of YouTube videos obtained from YouTube API given a Channel ID, PlayList ID or a list of Video IDs. Load More option is provided.</li>
+                                <li><a href="https://livemeshelementor.com/vimeo-grid/" title="Vimeo Grid Addon">Vimeo Grid</a> to help showcase showcase a collection of Vimeo videos obtained using Vimeo API given a User ID, Channel ID, Album ID or a Group ID. Load More option is provided.</li>
+                                <li><a href="https://livemeshelementor.com/instagram-grid/" title="Instagram Grid Addon">Instagram Grid</a> to help display images and videos obtained from Instagram API given one or more user names or hash tags.</li>
+                                <li><a href="https://livemeshelementor.com/woocommerce-grid/" title="WooCommerce Grid Addon">WooCommerce Grid</a> is an enhancement of Posts Grid addon that lets you capture details of WooCommerce products like name, price, rating, add to cart, add to wish list etc. Comes with a quick view option to display product details in a modal window.</li>
                                 <li><a href="https://livemeshelementor.com/tabs/" title="Tabs Addon" target="_blank">Responsive
-                                        Tabs</a> - Exquisitely designed tabs that function seamlessly across all devices and resolutions. The
+                                        Tabs</a> - Exquisitely designed tabs that function seamlessly across all devices
+                                    and resolutions. The
                                     plugin features never before choice of over dozen styles of tabs to choose from.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/accordion/" title="Accordion/Toggle Addon" target="_blank">Accordion/Toggle</a> - Controls
+                                <li><a href="https://livemeshelementor.com/accordion/" title="Accordion/Toggle Addon"
+                                       target="_blank">Accordion/Toggle</a> - Controls
                                     that capture collapsible content panels when space is limited.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/sliders/" title="Image Slider Widget" target="_blank">Image
+                                <li><a href="https://livemeshelementor.com/sliders/" title="Image Slider Widget"
+                                       target="_blank">Image
                                         Slider</a> - Create a responsive slider of images with support
                                     for captions,
                                     multiple slider types like Nivo, Flex, Slick and lightweight sliders, thumbnail
                                     navigation etc.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/image-gallery/" title="Image Gallery Widget" target="_blank">Image
+                                <li><a href="https://livemeshelementor.com/image-gallery/" title="Image Gallery Widget"
+                                       target="_blank">Image
                                         Gallery</a> - Create a gallery of images with options for masonry
                                     or fit rows, pagination, lazy load, lightbox support etc.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/video-gallery/" title="Video Gallery Widget" target="_blank">Video
+                                <li><a href="https://livemeshelementor.com/video-gallery/" title="Video Gallery Widget"
+                                       target="_blank">Video
                                         Gallery</a> - Create a beautiful gallery of videos to help
                                     showcase a collection of YouTube/Vimeo videos on your site.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/gallery-carousel/" title="Image Carousel" target="_blank">Image
-                                        Carousel</a> - Build a responsive carousel of images.</li>
-                                <li><a href="https://livemeshelementor.com/gallery-carousel/" title="Video Carousel" target="_blank">Video
+                                <li><a href="https://livemeshelementor.com/gallery-carousel/" title="Image Carousel"
+                                       target="_blank">Image
+                                        Carousel</a> - Build a responsive carousel of images.
+                                </li>
+                                <li><a href="https://livemeshelementor.com/gallery-carousel/" title="Video Carousel"
+                                       target="_blank">Video
                                         Carousel</a> - Build a responsive carousel of YouTube/Vimeo
                                     videos.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/buttons/" title="Buttons Addon" target="_blank">Buttons</a> - Animated buttons with great choice of colors.
+                                <li><a href="https://livemeshelementor.com/buttons/" title="Buttons Addon"
+                                       target="_blank">Buttons</a> - Animated buttons with great choice of colors.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/icon-lists/" title="Icon List" target="_blank">Icon List</a> - - Create a list of icons with description and link - for social media profiles,
+                                <li><a href="https://livemeshelementor.com/icon-lists/" title="Icon List"
+                                       target="_blank">Icon List</a> - - Create a list of icons with description and
+                                    link - for social media profiles,
                                     for showcasing services or features as well with icons or images.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/faq-element/" title="FAQ Addon" target="_blank">FAQ</a> - Create a set of Frequently Asked Questions for display in a
+                                <li><a href="https://livemeshelementor.com/faq-element/" title="FAQ Addon"
+                                       target="_blank">FAQ</a> - Create a set of Frequently Asked Questions for display
+                                    in a
                                     page.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/features/" title="Features Addon" target="_blank">Features Addon</a> for showcasing product features or services provided by an agency/business.
+                                <li><a href="https://livemeshelementor.com/features/" title="Features Addon"
+                                       target="_blank">Features Addon</a> for showcasing product features or services
+                                    provided by an agency/business.
                                 </li>
                             </ul>
 
@@ -648,9 +697,11 @@ if ( lae_fs()->is_not_paying() ) {
 
                                 <a class="lae-button purchase" href="<?php 
     echo  lae_fs()->get_upgrade_url() ;
-    ?>"><i class="dashicons dashicons-cart"></i><?php 
+    ?>"><i
+                                            class="dashicons dashicons-cart"></i><?php 
     echo  __( 'Purchase Now', 'livemesh-el-addons' ) ;
-    ?></a>
+    ?>
+                                </a>
 
                                 <div class="lae-spacer" style="height: 25px"></div>
 
@@ -665,21 +716,35 @@ if ( lae_fs()->is_not_paying() ) {
                                 updated with additional features for existing elements -</p>
 
                             <ul>
-                                <li><a href="https://livemeshelementor.com/portfolio-grid-pro/" title="Posts Grid" target="_blank">Lazy Load</a> - The portfolio/post grid and image gallery elements
+                                <li><a href="https://livemeshelementor.com/portfolio-grid-pro/" title="Posts Grid"
+                                       target="_blank">Lazy Load</a> - The portfolio/post grid and image gallery
+                                    elements
                                     incorporate option to lazy load posts/images with the click of a Load More button.
                                 </li>
-                                <li><a href="https://livemeshelementor.com/portfolio-grid-pro/" title="Posts Grid" target="_blank">Pagination</a> - Create a grid of posts or custom post types with AJAX
+                                <li><a href="https://livemeshelementor.com/portfolio-grid-pro/" title="Posts Grid"
+                                       target="_blank">Load on Scroll or Infinite Scroll</a> - The portfolio/post grid and image gallery
+                                    elements
+                                    incorporate option to lazy load posts/images automatically as the user scrolls down the page (infinite scroll).
+                                </li>
+                                <li><a href="https://livemeshelementor.com/portfolio-grid-pro/" title="Posts Grid"
+                                       target="_blank">Pagination</a> - Create a grid of posts or custom post types with
+                                    AJAX
                                     based pagination support.
+                                </li>
+                                <li><a href="https://livemeshelementor.com/woocommerce-grid/" title="WooCommerce Grid Addon">WooCommerce Grid</a> is an enhancement of Posts Grid addon that lets you capture details of WooCommerce products like name, price, rating, add to cart, add to wish list etc. Comes with a quick view option to display product details in a modal window.</li>
+
+                                <li><strong>Multiple Skins/Styles</strong> - The premium version comes with support for about eight skins for posts/portfolio grid.
+                                </li>
+                                <li><strong>Header Styles</strong> - About seven header styles with responsive dropdown support for filters on posts/portfolio grid.
                                 </li>
                                 <li><strong>Lightbox Support</strong> - The premium version comes with support for
                                     Lightbox for grid and carousel elements.
                                 </li>
-                                <li><strong>Customizations</strong> - Ability to choose custom font sizes and colors for
-                                    certain elements like services and icon lists.
-                                </li>
-                                <li><strong>Custom Animations</strong> - Choose from over <strong>40+ animations</strong>
+                                <li><strong>Custom Animations</strong> - Choose from over <strong>40+
+                                        animations</strong>
                                     for most elements (excludes sliders, carousels and grid). The animations display on
-                                    user scrolling to the element or when the element becomes visible in the browser window.
+                                    user scrolling to the element or when the element becomes visible in the browser
+                                    window.
                                 </li>
                                 <li><strong>Sample Data</strong> - Sample data that you can import into your site to get
                                     started quickly on the addon elements and some sample layouts.
@@ -691,7 +756,8 @@ if ( lae_fs()->is_not_paying() ) {
                             <p>We offer premium support for our paid customers with following benefits - </p>
 
                             <ul>
-                                <li><strong>Dedicated Support Portal</strong> - The customers will be provided access to a
+                                <li><strong>Dedicated Support Portal</strong> - The customers will be provided access to
+                                    a
                                     dedicated support portal powered by Freshdesk.
                                 </li>
                                 <li><strong>Private Tickets</strong> - Private tickets help you work with us
@@ -719,17 +785,21 @@ if ( lae_fs()->is_not_paying() ) {
 
                                 <a class="lae-button purchase" href="<?php 
     echo  lae_fs()->get_upgrade_url() ;
-    ?>"><i class="dashicons dashicons-cart"></i><?php 
+    ?>"><i
+                                            class="dashicons dashicons-cart"></i><?php 
     echo  __( 'Go Premium', 'livemesh-el-addons' ) ;
-    ?></a>
+    ?>
+                                </a>
 
                             <?php 
 } else {
     ?>
 
-                                <a class="lae-button know-more" href="https://livemeshelementor.com/"><i class="dashicons dashicons-external"></i><?php 
+                                <a class="lae-button know-more" href="https://livemeshelementor.com/"><i
+                                            class="dashicons dashicons-external"></i><?php 
     echo  __( 'Know More', 'livemesh-el-addons' ) ;
-    ?></a>
+    ?>
+                                </a>
 
                             <?php 
 }
@@ -745,7 +815,7 @@ if ( lae_fs()->is_not_paying() ) {
 
                 <!-------------------  OPTIONS HOLDER END  -------------------->
             </div>
-            
+
         </div>
 
         <!------------------- BUILD PANEL SETTINGS -------------------->
